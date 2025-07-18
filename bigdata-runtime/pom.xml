@@ -46,7 +46,7 @@ Copyright 2010 by TalkingTrends (Amsterdam, The Netherlands)
         <executions>
           <execution>
             <id>copy</id>
-            <phase>compile</phase>
+            <phase>post-package</phase>
             <goals>
               <goal>copy</goal>
             </goals>

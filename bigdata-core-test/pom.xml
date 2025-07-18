@@ -238,7 +238,7 @@ See https://maven.apache.org/plugins/maven-jar-plugin/examples/create-test-jar.h
         <executions>
           <execution>
             <id>copy</id>
-            <phase>compile</phase>
+            <phase>post-package</phase>
             <goals>
               <goal>copy</goal>
             </goals>
