@@ -27,6 +27,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 package com.bigdata.util;
 
+import org.junit.Ignore;
+
 import junit.framework.TestCase;
 
 /**
@@ -41,6 +43,7 @@ import junit.framework.TestCase;
  * @author <a href="mailto:thompsonbry@users.sourceforge.net">Bryan Thompson</a>
  * @version $Id$
  */
+@Ignore("Class being tested should not be used.")
 public class TestHybridTimestampFactory extends TestCase {
 
     /**
