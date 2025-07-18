@@ -88,13 +88,13 @@ ga('send', 'pageview');
   </reporting>
   <modules>
     <!-- Legacy artifacts for /bigdata context path -->
-    <module>../bigdata-war</module>
-    <module>../bigdata-jar</module>
+    <!-- <module>../bigdata-war</module>
+    <module>../bigdata-jar</module> -->
     <!-- Blazegraph artifacts -->
     <module>../blazegraph-war</module>
-    <module>../blazegraph-jar</module>
+    <!-- <module>../blazegraph-jar</module>
     <module>../blazegraph-deb</module>
     <module>../blazegraph-rpm</module>
-    <module>../blazegraph-tgz</module>
+    <module>../blazegraph-tgz</module> -->
   </modules>
 </project>
