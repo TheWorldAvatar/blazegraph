@@ -33,7 +33,7 @@ import junit.framework.TestCase2;
  * @author <a href="mailto:thompsonbry@users.sourceforge.net">Bryan Thompson</a>
  * @version $Id$
  */
-public class AbstractCoordinateTestCase extends TestCase2 {
+abstract public class AbstractCoordinateTestCase extends TestCase2 {
     /**
      * 
      */

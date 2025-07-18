@@ -45,7 +45,7 @@ import com.bigdata.service.AbstractEmbeddedFederationTestCase;
  * @author <a href="mailto:thompsonbry@users.sourceforge.net">Bryan Thompson</a>
  * @version $Id$
  */
-public class AbstractRepositoryTestCase extends
+abstract public class AbstractRepositoryTestCase extends
         AbstractEmbeddedFederationTestCase {
 
     /**

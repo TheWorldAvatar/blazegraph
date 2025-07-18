@@ -35,7 +35,7 @@ import com.bigdata.journal.ITx;
  * @author <a href="mailto:thompsonbry@users.sourceforge.net">Bryan Thompson</a>
  * @version $Id$
  */
-public class AbstractEmbeddedTripleStoreTestCase extends
+abstract public class AbstractEmbeddedTripleStoreTestCase extends
         AbstractEmbeddedBigdataFederationTestCase {
 
     /**

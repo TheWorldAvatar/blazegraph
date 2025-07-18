@@ -39,7 +39,7 @@ import com.bigdata.io.DataOutputBuffer;
  * @author <a href="mailto:thompsonbry@users.sourceforge.net">Bryan Thompson</a>
  * @version $Id$
  */
-public class AbstractLeafDataRecordTestCase extends
+abstract public class AbstractLeafDataRecordTestCase extends
         AbstractNodeOrLeafDataRecordTestCase {
 
     /**

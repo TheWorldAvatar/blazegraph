@@ -57,7 +57,7 @@ import com.bigdata.util.DaemonThreadFactory;
  * @author <a href="mailto:thompsonbry@users.sourceforge.net">Bryan Thompson</a>
  * @version $Id$
  */
-public class AbstractMasterTestCase extends TestCase2 {
+abstract public class AbstractMasterTestCase extends TestCase2 {
 
     /**
      * 

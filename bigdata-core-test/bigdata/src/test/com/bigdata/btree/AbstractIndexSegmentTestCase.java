@@ -42,7 +42,7 @@ import com.bigdata.io.DirectBufferPool;
  * @author <a href="mailto:thompsonbry@users.sourceforge.net">Bryan Thompson</a>
  * @version $Id$
  */
-public class AbstractIndexSegmentTestCase extends AbstractBTreeTestCase {
+abstract public class AbstractIndexSegmentTestCase extends AbstractBTreeTestCase {
 
     /**
      * 

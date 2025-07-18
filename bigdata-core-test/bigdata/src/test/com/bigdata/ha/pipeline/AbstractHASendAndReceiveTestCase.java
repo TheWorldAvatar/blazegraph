@@ -35,7 +35,7 @@ import com.bigdata.ha.msg.IHAWriteMessageBase;
 import com.bigdata.io.ChecksumUtility;
 import com.bigdata.io.TestCase3;
 
-public class AbstractHASendAndReceiveTestCase extends TestCase3 {
+abstract public class AbstractHASendAndReceiveTestCase extends TestCase3 {
 
     public AbstractHASendAndReceiveTestCase() {
     }
