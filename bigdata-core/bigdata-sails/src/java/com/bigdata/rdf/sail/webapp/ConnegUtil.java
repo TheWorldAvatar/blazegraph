@@ -143,6 +143,9 @@ public class ConnegUtil {
 		} else {
 			StringBuilder sb = new StringBuilder();
 			for(String acceptHeader: acceptHeaders) {
+				if (null == acceptHeader) {
+					return BigdataRDFServlet.MIME_SPARQL_RESULTS_XML;
+				}
 				if (sb.length()>0) {
 					sb.append(", ");
 				}
