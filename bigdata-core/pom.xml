@@ -135,17 +135,17 @@ Copyright 2010 by TalkingTrends (Amsterdam, The Netherlands)
                   <arg value="HEAD"/>
                 </exec>
                 <echo file="${buildinfo.file}">
-package com.bigdata;
-public class BuildInfo {
-    public static final String buildVersion="${build.ver}";
-    public static final String gitBranch = "${git.branch}";
-    public static final String gitCommit = "${git.commit}";
-    public static final String buildTimestamp="${build.timestamp}";
-    public static final String buildUser="${user.name}";
-    public static final String osArch="${os.arch}";
-    public static final String osName="${os.name}";
-    public static final String osVersion="${os.version}";
-}
+                  package com.bigdata;
+                  public class BuildInfo {
+                  public static final String buildVersion="${build.ver}";
+                  public static final String gitBranch = "${git.branch}";
+                  public static final String gitCommit = "${git.commit}";
+                  public static final String buildTimestamp="${build.timestamp}";
+                  public static final String buildUser="${user.name}";
+                  public static final String osArch="${os.arch}";
+                  public static final String osName="${os.name}";
+                  public static final String osVersion="${os.version}";
+                  }
 </echo>
                 <loadfile property="buildinfo" srcFile="${buildinfo.file}"/>
                 <echo message="${buildinfo}"/>
@@ -451,6 +451,16 @@ public class BuildInfo {
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
       <version>${servlet.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>javax.xml.bind</groupId>
+      <artifactId>jaxb-api</artifactId>
+      <version>2.3.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.corba</groupId>
+      <artifactId>glassfish-corba-orb</artifactId>
+      <version>4.2.5</version>
     </dependency>
   </dependencies>
 </project>
