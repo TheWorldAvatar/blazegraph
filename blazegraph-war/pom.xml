@@ -72,6 +72,9 @@ Copyright 2010 by TalkingTrends (Amsterdam, The Netherlands)
               <build>
                 <!-- filter>@</filter-->
                 <contextDir>${project.basedir}</contextDir>
+                <args>
+                  <VERSION>${project.version}</VERSION>
+                </args>
               </build>
             </image>
           </images>
