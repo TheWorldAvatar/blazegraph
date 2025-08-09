@@ -52,7 +52,7 @@ import com.bigdata.rawstore.IRawStore;
 import com.bigdata.util.Bytes;
 import com.bigdata.util.BytesUtil;
 
-public class AbstractHTreeTestCase extends TestCase2 {
+abstract public class AbstractHTreeTestCase extends TestCase2 {
 
     public AbstractHTreeTestCase() {
 	}

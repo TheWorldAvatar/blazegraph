@@ -28,12 +28,12 @@ Copyright 2010 by TalkingTrends (Amsterdam, The Netherlands)
   <parent>
     <groupId>com.blazegraph</groupId>
     <artifactId>blazegraph-parent</artifactId>
-    <version>2.1.6-SNAPSHOT</version>
+    <version>2.3.0</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
   <groupId>com.blazegraph</groupId>
   <artifactId>blazegraph-artifacts</artifactId>
-  <version>2.1.6-SNAPSHOT</version>
+  <version>2.3.0</version>
   <name>Blazegraph Deployment Artifacts</name>
   <description>Parent POM for Blazegraph Deployment (war, jar, deb, rpm, tgz) artifacts</description>
   <packaging>pom</packaging>
@@ -88,13 +88,13 @@ ga('send', 'pageview');
   </reporting>
   <modules>
     <!-- Legacy artifacts for /bigdata context path -->
-    <module>../bigdata-war</module>
-    <module>../bigdata-jar</module>
+    <!-- <module>../bigdata-war</module>
+    <module>../bigdata-jar</module> -->
     <!-- Blazegraph artifacts -->
     <module>../blazegraph-war</module>
-    <module>../blazegraph-jar</module>
+    <!-- <module>../blazegraph-jar</module>
     <module>../blazegraph-deb</module>
     <module>../blazegraph-rpm</module>
-    <module>../blazegraph-tgz</module>
+    <module>../blazegraph-tgz</module> -->
   </modules>
 </project>

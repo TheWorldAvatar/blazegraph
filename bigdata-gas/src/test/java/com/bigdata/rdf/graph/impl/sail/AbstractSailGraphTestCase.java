@@ -30,7 +30,7 @@ import com.bigdata.rdf.graph.AbstractGraphTestCase;
 import com.bigdata.rdf.graph.util.IGraphFixture;
 import com.bigdata.rdf.graph.util.IGraphFixtureFactory;
 
-public class AbstractSailGraphTestCase extends AbstractGraphTestCase {
+abstract public class AbstractSailGraphTestCase extends AbstractGraphTestCase {
 
 //    private static final Logger log = Logger
 //            .getLogger(AbstractGraphTestCase.class);

@@ -1360,9 +1360,9 @@ public class LinkedBlockingDequeTest extends JSR166TestCase {
      * toArray(null) throws NullPointerException
      */
     public void testToArray_NullArg() {
-        LinkedBlockingDeque q = populatedDeque(SIZE);
+        LinkedBlockingDeque<Integer> q = populatedDeque(SIZE);
         try {
-            q.toArray(null);
+            q.toArray((Integer[]) null);
             shouldThrow();
         } catch (NullPointerException success) {}
     }

@@ -46,6 +46,7 @@ import java.util.concurrent.FutureTask;
 import org.apache.log4j.Logger;
 import org.openrdf.model.Literal;
 import org.openrdf.model.URI;
+import org.openrdf.query.algebra.evaluation.util.QueryEvaluationUtil;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.BOpContextBase;
@@ -98,6 +99,7 @@ import com.bigdata.rdf.spo.ISPO;
 import com.bigdata.rdf.spo.SPO;
 import com.bigdata.rdf.spo.SPOKeyOrder;
 import com.bigdata.rdf.store.AbstractTripleStore;
+import com.bigdata.rdf.store.TempTripleStore;
 import com.bigdata.relation.IRelation;
 import com.bigdata.relation.accesspath.AccessPath;
 import com.bigdata.relation.accesspath.BlockingBuffer;
@@ -166,11 +168,7 @@ public class GeoSpatialServiceFactory extends AbstractServiceFactoryBase {
 
       final AbstractTripleStore store = createParams.getTripleStore();
 
-      final Properties props = store.getIndexManager() != null
-            && store.getIndexManager() instanceof AbstractJournal ? ((AbstractJournal) store
-            .getIndexManager()).getProperties() : null;
-
-      final GeoSpatialDefaults dflts = new GeoSpatialDefaults(props);
+      final GeoSpatialDefaults dflts = new GeoSpatialDefaults(getStoreProperties(store));
 
       final ServiceNode serviceNode = createParams.getServiceNode();
 
@@ -199,7 +197,7 @@ public class GeoSpatialServiceFactory extends AbstractServiceFactoryBase {
 
       validateSearch(searchVar, statementPatterns);
 
-      /**
+      /*
        * Get the service call configuration from annotations (attachable via query hints).
        * Here's how to define the hints:
        * 
@@ -253,6 +251,20 @@ public class GeoSpatialServiceFactory extends AbstractServiceFactoryBase {
             minDatapointsPerTask, threadLocalBufferCapacity, 
             globalBufferChunkOfChunksCapacity, createParams.getStats());
 
+   }
+
+   /**
+    * Extract properties from store.
+    */
+   private static Properties getStoreProperties(AbstractTripleStore store) {
+      if ( store.getIndexManager() != null
+              && store.getIndexManager() instanceof AbstractJournal) {
+         return ((AbstractJournal) store
+                 .getIndexManager()).getProperties();
+      } else if (store instanceof TempTripleStore) {
+         return store.getProperties();
+      }
+      throw new IllegalArgumentException("Failed to get store properties");
    }
 
    /**
@@ -2459,7 +2471,7 @@ public class GeoSpatialServiceFactory extends AbstractServiceFactoryBase {
             IGeoSpatialLiteralSerializer serializer = null;
             GeoSpatialDatatypeConfiguration pconfig = null;
 
-            if (lit.getDatatype() != null) {
+            if (!QueryEvaluationUtil.isSimpleLiteral(lit)) {
                 // If we have datatype that can extract coordinates, use it to exteract
                 pconfig = geoSpatialConfig.getConfigurationForDatatype(lit.getDatatype());
                 if (pconfig.hasLat() && pconfig.hasLon()) {

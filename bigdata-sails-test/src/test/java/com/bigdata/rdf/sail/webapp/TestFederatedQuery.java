@@ -320,7 +320,7 @@ public class TestFederatedQuery<S extends IIndexManager> extends
     private void loadDataSet(final RemoteRepository rep, final String datasetFile)
             throws Exception {
 
-		final URL datasetUri = TestFederatedQuery.class.getClass().getResource(
+		final URL datasetUri = TestFederatedQuery.class.getResource(
 				TEST_RESOURCE_PATH + datasetFile);
 		
 		if(log.isInfoEnabled()) {
@@ -575,7 +575,7 @@ public class TestFederatedQuery<S extends IIndexManager> extends
      * </pre>
      */
 //    public void test12() throws Exception {
-//        final URI serviceURI = new URIImpl("http://dbpedia.org/sparql");
+//        final URI serviceURI = new URIImpl("https://dbpedia.org/sparql");
 //        ServiceRegistry.getInstance().add(serviceURI,
 //                new RemoteServiceFactoryImpl(false/* isSparql11 */));
 //        try {

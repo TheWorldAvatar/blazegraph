@@ -25,7 +25,7 @@ import com.bigdata.rdf.graph.impl.ram.RAMGASEngine.RAMGraph;
 import com.bigdata.rdf.graph.util.IGraphFixture;
 import com.bigdata.rdf.graph.util.IGraphFixtureFactory;
 
-public class AbstractRAMGraphTestCase extends AbstractGraphTestCase {
+abstract public class AbstractRAMGraphTestCase extends AbstractGraphTestCase {
 
 //    private static final Logger log = Logger
 //            .getLogger(AbstractGraphTestCase.class);

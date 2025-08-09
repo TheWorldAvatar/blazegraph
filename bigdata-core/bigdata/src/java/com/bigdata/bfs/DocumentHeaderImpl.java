@@ -60,7 +60,7 @@ public class DocumentHeaderImpl implements DocumentHeader
      * @param version
      *            The file version.
      */
-    void getVersion(int version) {
+    void setVersion(int version) {
         
         properties.put(FileMetadataSchema.VERSION,Integer.valueOf(version));
         

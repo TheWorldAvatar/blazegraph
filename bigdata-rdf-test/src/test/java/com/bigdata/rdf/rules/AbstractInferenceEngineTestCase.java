@@ -40,7 +40,7 @@ import com.bigdata.relation.accesspath.IAccessPath;
  * @author <a href="mailto:thompsonbry@users.sourceforge.net">Bryan Thompson</a>
  * @version $Id$
  */
-public class AbstractInferenceEngineTestCase extends AbstractTripleStoreTestCase {
+abstract public class AbstractInferenceEngineTestCase extends AbstractTripleStoreTestCase {
 
     /**
      * 

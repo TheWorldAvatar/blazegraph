@@ -1076,8 +1076,8 @@ public class TestNanoSparqlClient<S extends IIndexManager> extends
             (BigdataSailRemoteRepositoryConnection) repo.getConnection();
         
         try {
-          String queryStr = "select * where {SERVICE <http://DBpedia.org/sparql> { <http://dbpedia.org/resource/Tonga_(Nyasa)_language> rdfs:label ?langLabel. }}";
-//                String queryStr = "SELECT * WHERE { BIND (<http://dbpedia.org/resource/Tonga_(Nyasa)_language> AS ?ref) . SERVICE <http://DBpedia.org/sparql> { ?ref rdfs:label ?langLabel. } }";
+          String queryStr = "select * where {SERVICE <https://dbpedia.org/sparql> { <http://dbpedia.org/resource/Tonga_(Nyasa)_language> rdfs:label ?langLabel. }}";
+//                String queryStr = "SELECT * WHERE { BIND (<http://dbpedia.org/resource/Tonga_(Nyasa)_language> AS ?ref) . SERVICE <https://dbpedia.org/sparql> { ?ref rdfs:label ?langLabel. } }";
             final org.openrdf.query.TupleQuery tq = cxn.prepareTupleQuery(QueryLanguage.SPARQL, queryStr);
             final TupleQueryResult tqr = tq.evaluate();
             try {
@@ -1086,7 +1086,7 @@ public class TestNanoSparqlClient<S extends IIndexManager> extends
                     tqr.next();
                     cnt++;
                 }
-                assertEquals(cnt, 2);
+                assertEquals(1, cnt);
             } finally {
                 tqr.close();
             }

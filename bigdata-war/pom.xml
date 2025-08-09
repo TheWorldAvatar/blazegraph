@@ -28,12 +28,12 @@ Copyright 2010 by TalkingTrends (Amsterdam, The Netherlands)
   <parent>
     <groupId>com.blazegraph</groupId>
     <artifactId>blazegraph-artifacts</artifactId>
-    <version>2.1.6-SNAPSHOT</version>
+    <version>2.2.0-java8-SNAPSHOT</version>
     <relativePath>../blazegraph-artifacts/pom.xml</relativePath>
   </parent>
   <groupId>com.blazegraph</groupId>
   <artifactId>bigdata-war</artifactId>
-  <version>2.1.6-SNAPSHOT</version>
+  <version>2.2.0-java8-SNAPSHOT</version>
   <name>Blazegraph WAR (bigdata legacy context path)</name>
   <description>Blazegraph Web Application Archive with legacy /bigdata deployment path</description>
   <packaging>war</packaging>
@@ -42,7 +42,7 @@ Copyright 2010 by TalkingTrends (Amsterdam, The Netherlands)
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
-        <version>2.6</version>
+        <version>3.4.0</version>
         <configuration>
           <webXml>../bigdata-war-html/src/main/webapp/WEB-INF/web.xml</webXml>
           <failOnMissingWebXml>false</failOnMissingWebXml>
@@ -357,11 +357,15 @@ ga('send', 'pageview');
     <!-- jsonld -->
     <dependency>
       <groupId>com.github.jsonld-java</groupId>
-      <artifactId>jsonld-java-sesame</artifactId>
+      <artifactId>jsonld-java</artifactId>
       <version>${jsonld.version}</version>
       <exclusions>
         <exclusion>
           <groupId>org.openrdf.sesame</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apache.httpcomponents</groupId>
           <artifactId>*</artifactId>
         </exclusion>
       </exclusions>

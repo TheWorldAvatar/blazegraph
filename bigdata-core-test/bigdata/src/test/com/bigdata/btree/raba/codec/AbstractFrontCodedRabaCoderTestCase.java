@@ -41,7 +41,7 @@ import com.bigdata.btree.raba.ReadOnlyKeysRaba;
  * @author <a href="mailto:thompsonbry@users.sourceforge.net">Bryan Thompson</a>
  * @version $Id$
  */
-public class AbstractFrontCodedRabaCoderTestCase extends AbstractRabaCoderTestCase {
+abstract public class AbstractFrontCodedRabaCoderTestCase extends AbstractRabaCoderTestCase {
 
     /**
      * 

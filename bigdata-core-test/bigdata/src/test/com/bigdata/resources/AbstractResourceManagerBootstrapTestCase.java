@@ -39,7 +39,7 @@ import com.bigdata.resources.ResourceManager.Options;
  * @author <a href="mailto:thompsonbry@users.sourceforge.net">Bryan Thompson</a>
  * @version $Id$
  */
-public class AbstractResourceManagerBootstrapTestCase extends TestCase2 {
+abstract public class AbstractResourceManagerBootstrapTestCase extends TestCase2 {
 
     /**
      * 

@@ -127,7 +127,7 @@ import com.bigdata.rdf.sparql.ast.optimizers.IASTOptimizer;
  *      local or remote (and whether the index is key-range distributed or hash
  *      partitioned).
  */
-public class AbstractRTOTestCase extends AbstractDataDrivenSPARQLTestCase {
+abstract public class AbstractRTOTestCase extends AbstractDataDrivenSPARQLTestCase {
 
     protected final static Logger log = Logger.getLogger(AbstractRTOTestCase.class);
     

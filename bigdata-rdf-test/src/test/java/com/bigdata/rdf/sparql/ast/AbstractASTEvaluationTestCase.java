@@ -69,7 +69,7 @@ import com.bigdata.rdf.store.LocalTripleStore;
  * @author <a href="mailto:thompsonbry@users.sourceforge.net">Bryan Thompson</a>
  * @version $Id$
  */
-public class AbstractASTEvaluationTestCase extends AbstractQueryEngineTestCase {
+abstract public class AbstractASTEvaluationTestCase extends AbstractQueryEngineTestCase {
 
     private static final Logger log = Logger
             .getLogger(AbstractASTEvaluationTestCase.class);

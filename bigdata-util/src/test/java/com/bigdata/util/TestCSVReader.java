@@ -32,6 +32,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Iterator;
+import java.util.Locale;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -91,6 +92,9 @@ public class TestCSVReader extends TestCase2 {
      */
     public void test_read_test_csv() throws IOException, ParseException {
         
+        Locale defaultLocale = Locale.getDefault();
+        Locale.setDefault(Locale.US);
+
         Header[] headers = new Header[] {
           
                 new Header("Name"),
@@ -148,6 +152,7 @@ public class TestCSVReader extends TestCase2 {
          */
         assertFalse(r.hasNext());
         
+        Locale.setDefault(defaultLocale);
     }
 
     /**
@@ -159,6 +164,8 @@ public class TestCSVReader extends TestCase2 {
      */
     public void test_read_test_no_headers_csv() throws IOException, ParseException {
         
+        Locale.setDefault(Locale.US);
+
         Header[] headers = new Header[] {
           
                 new Header("1"),

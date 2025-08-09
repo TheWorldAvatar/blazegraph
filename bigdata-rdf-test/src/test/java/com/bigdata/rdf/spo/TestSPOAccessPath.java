@@ -108,7 +108,7 @@ public class TestSPOAccessPath extends AbstractTripleStoreTestCase {
         final IV<?,?> P = factory.newTermId(VTE.URI, 2);
         final IV<?,?> O = factory.newTermId(VTE.URI, 3);
         final IV<?,?> C = factory.newTermId(VTE.URI, 4);
-        final IV<?,?> _ = factory.newTermId(VTE.URI, 0);
+        final IV<?,?> o = factory.newTermId(VTE.URI, 0);
 
         try {
 
@@ -126,32 +126,32 @@ public class TestSPOAccessPath extends AbstractTripleStoreTestCase {
                  */
 
                 // SPOC
-                assertEquals(SPOKeyOrder.SPOC, r.getAccessPath(_, _, _, _).getKeyOrder());
-                assertEquals(SPOKeyOrder.SPOC, r.getAccessPath(S, _, _, _).getKeyOrder());
-                assertEquals(SPOKeyOrder.SPOC, r.getAccessPath(S, P, _, _).getKeyOrder());
-                assertEquals(SPOKeyOrder.SPOC, r.getAccessPath(S, P, O, _).getKeyOrder());
+                assertEquals(SPOKeyOrder.SPOC, r.getAccessPath(o, o, o, o).getKeyOrder());
+                assertEquals(SPOKeyOrder.SPOC, r.getAccessPath(S, o, o, o).getKeyOrder());
+                assertEquals(SPOKeyOrder.SPOC, r.getAccessPath(S, P, o, o).getKeyOrder());
+                assertEquals(SPOKeyOrder.SPOC, r.getAccessPath(S, P, O, o).getKeyOrder());
                 assertEquals(SPOKeyOrder.SPOC, r.getAccessPath(S, P, O, C).getKeyOrder());
                 
                 // POCS
-                assertEquals(SPOKeyOrder.POCS, r.getAccessPath(_, P, _, _).getKeyOrder());
-                assertEquals(SPOKeyOrder.POCS, r.getAccessPath(_, P, O, _).getKeyOrder());
-                assertEquals(SPOKeyOrder.POCS, r.getAccessPath(_, P, O, C).getKeyOrder());
+                assertEquals(SPOKeyOrder.POCS, r.getAccessPath(o, P, o, o).getKeyOrder());
+                assertEquals(SPOKeyOrder.POCS, r.getAccessPath(o, P, O, o).getKeyOrder());
+                assertEquals(SPOKeyOrder.POCS, r.getAccessPath(o, P, O, C).getKeyOrder());
                 
                 // OCSP
-                assertEquals(SPOKeyOrder.OCSP, r.getAccessPath(_, _, O, _).getKeyOrder());
-                assertEquals(SPOKeyOrder.OCSP, r.getAccessPath(_, _, O, C).getKeyOrder());
-                assertEquals(SPOKeyOrder.OCSP, r.getAccessPath(S, _, O, C).getKeyOrder());
+                assertEquals(SPOKeyOrder.OCSP, r.getAccessPath(o, o, O, o).getKeyOrder());
+                assertEquals(SPOKeyOrder.OCSP, r.getAccessPath(o, o, O, C).getKeyOrder());
+                assertEquals(SPOKeyOrder.OCSP, r.getAccessPath(S, o, O, C).getKeyOrder());
                 
                 // CSPO
-                assertEquals(SPOKeyOrder.CSPO, r.getAccessPath(_, _, _, C).getKeyOrder());
-                assertEquals(SPOKeyOrder.CSPO, r.getAccessPath(S, _, _, C).getKeyOrder());
-                assertEquals(SPOKeyOrder.CSPO, r.getAccessPath(S, P, _, C).getKeyOrder());
+                assertEquals(SPOKeyOrder.CSPO, r.getAccessPath(o, o, o, C).getKeyOrder());
+                assertEquals(SPOKeyOrder.CSPO, r.getAccessPath(S, o, o, C).getKeyOrder());
+                assertEquals(SPOKeyOrder.CSPO, r.getAccessPath(S, P, o, C).getKeyOrder());
                 
                 // PCSO
-                assertEquals(SPOKeyOrder.PCSO, r.getAccessPath(_, P, _, C).getKeyOrder());
+                assertEquals(SPOKeyOrder.PCSO, r.getAccessPath(o, P, o, C).getKeyOrder());
 
                 // SOPC
-                assertEquals(SPOKeyOrder.SOPC, r.getAccessPath(S, _, O, _).getKeyOrder());
+                assertEquals(SPOKeyOrder.SOPC, r.getAccessPath(S, o, O, o).getKeyOrder());
 
             } else {
                 

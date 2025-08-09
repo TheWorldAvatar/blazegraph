@@ -23,17 +23,19 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 Copyright 2010 by TalkingTrends (Amsterdam, The Netherlands)
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.blazegraph</groupId>
     <artifactId>blazegraph-artifacts</artifactId>
-    <version>2.1.6-SNAPSHOT</version>
+    <version>2.3.0</version>
     <relativePath>../blazegraph-artifacts/pom.xml</relativePath>
   </parent>
   <groupId>com.blazegraph</groupId>
   <artifactId>blazegraph-war</artifactId>
-  <version>2.1.6-SNAPSHOT</version>
+  <version>2.3.0</version>
   <name>Blazegraph WAR</name>
   <description>Blazegraph Web Application Archive</description>
   <packaging>war</packaging>
@@ -42,7 +44,7 @@ Copyright 2010 by TalkingTrends (Amsterdam, The Netherlands)
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
-        <version>2.6</version>
+        <version>3.4.0</version>
         <configuration>
           <webXml>../bigdata-war-html/src/main/webapp/WEB-INF/web.xml</webXml>
           <failOnMissingWebXml>false</failOnMissingWebXml>
@@ -56,6 +58,48 @@ Copyright 2010 by TalkingTrends (Amsterdam, The Netherlands)
               </includes>
             </overlay>
           </overlays>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>io.fabric8</groupId>
+        <artifactId>docker-maven-plugin</artifactId>
+        <version>0.46.0</version>
+        <configuration>
+          <images>
+            <image>
+              <name>ghcr.io/theworldavatar/blazegraph:%v</name>
+              <alias>dockerfile</alias>
+              <build>
+                <!-- filter>@</filter-->
+                <contextDir>${project.basedir}</contextDir>
+                <args>
+                  <VERSION>${project.version}</VERSION>
+                </args>
+              </build>
+            </image>
+          </images>
+        </configuration>
+        <executions>
+          <execution>
+            <id>docker-build</id>
+            <goals>
+              <goal>build</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>docker-deploy</id>
+            <goals>
+              <goal>push</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-deploy-plugin</artifactId>
+        <version>3.1.4</version>
+        <configuration>
+          <skip>true</skip>
         </configuration>
       </plugin>
     </plugins>
@@ -357,11 +401,15 @@ ga('send', 'pageview');
     <!-- jsonld -->
     <dependency>
       <groupId>com.github.jsonld-java</groupId>
-      <artifactId>jsonld-java-sesame</artifactId>
+      <artifactId>jsonld-java</artifactId>
       <version>${jsonld.version}</version>
       <exclusions>
         <exclusion>
           <groupId>org.openrdf.sesame</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apache.httpcomponents</groupId>
           <artifactId>*</artifactId>
         </exclusion>
       </exclusions>

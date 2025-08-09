@@ -91,7 +91,7 @@ import cutthecrap.utils.striterators.IFilter;
  * @author <a href="mailto:thompsonbry@users.sourceforge.net">Bryan Thompson</a>
  * @version $Id$
  */
-public class AbstractResourceManagerTestCase extends
+abstract public class AbstractResourceManagerTestCase extends
         AbstractResourceManagerBootstrapTestCase {
 
     /**

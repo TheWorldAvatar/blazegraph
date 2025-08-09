@@ -28,12 +28,12 @@ Copyright 2010 by TalkingTrends (Amsterdam, The Netherlands)
   <parent>
     <groupId>com.blazegraph</groupId>
     <artifactId>blazegraph-parent</artifactId>
-    <version>2.1.6-SNAPSHOT</version>
+    <version>2.3.0</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
   <groupId>com.blazegraph</groupId>
   <artifactId>system-utils</artifactId>
-  <version>2.1.6-SNAPSHOT</version>
+  <version>2.3.0</version>
   <name>Blazegraph System Utilities</name>
   <description>System Utilities for Blazegraph DB</description>
   <build>
@@ -41,7 +41,7 @@ Copyright 2010 by TalkingTrends (Amsterdam, The Netherlands)
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
-        <version>2.6</version>
+        <version>3.4.2</version>
         <executions>
           <execution>
             <goals>

@@ -3,7 +3,7 @@ package com.bigdata.counters.osx;
 import junit.framework.AssertionFailedError;
 import junit.framework.TestCase2;
 
-public class AbstractParserTestCase extends TestCase2 {
+abstract public class AbstractParserTestCase extends TestCase2 {
 
 	public AbstractParserTestCase() {
 	}

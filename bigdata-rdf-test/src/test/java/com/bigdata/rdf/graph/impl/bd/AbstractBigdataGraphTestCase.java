@@ -39,7 +39,7 @@ import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.sail.BigdataSail;
 import com.bigdata.rdf.sail.BigdataSail.BigdataSailConnection;
 
-public class AbstractBigdataGraphTestCase extends AbstractGraphTestCase {
+abstract public class AbstractBigdataGraphTestCase extends AbstractGraphTestCase {
 
 //    private static final Logger log = Logger
 //            .getLogger(AbstractGraphTestCase.class);

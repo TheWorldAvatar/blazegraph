@@ -71,7 +71,7 @@ import junit.framework.TestCase;
  * 
  * @author <a href="mailto:thompsonbry@users.sourceforge.net">Bryan Thompson</a>
  */
-public class AbstractBigdataExprBuilderTestCase extends TestCase {
+abstract public class AbstractBigdataExprBuilderTestCase extends TestCase {
 
     private static final Logger log = Logger
             .getLogger(AbstractBigdataExprBuilderTestCase.class);

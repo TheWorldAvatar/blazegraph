@@ -69,7 +69,7 @@ import com.bigdata.util.DaemonThreadFactory;
  * @author <a href="mailto:thompsonbry@users.sourceforge.net">Bryan Thompson</a>
  * @version $Id$
  */
-public class AbstractKeyRangeMasterTestCase extends TestCase2 {
+abstract public class AbstractKeyRangeMasterTestCase extends TestCase2 {
 
     /**
      * 
