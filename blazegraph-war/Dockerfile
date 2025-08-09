@@ -11,8 +11,10 @@ COPY docker/tomcat/conf/tomcat-users.xml /usr/local/tomcat/conf/tomcat-users.xml
 # the war file before tomcat is started.
 COPY docker/blazegraph_war /tmp/blazegraph
 
+ARG VERSION
+
 # Copy in Blazegraph .war file
-COPY target/blazegraph-war-*.war /usr/local/tomcat/webapps/blazegraph.war
+COPY target/blazegraph-war-${VERSION}.war /usr/local/tomcat/webapps/blazegraph.war
 
 # Copy in script and set it as the entry point
 COPY docker/docker-entrypoint.sh /
