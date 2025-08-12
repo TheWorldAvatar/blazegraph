@@ -48,5 +48,5 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: echo mvn -B ${{matrix.test}} surefire:test -Dsurefire.rerunFailingTestsCount=2 -f ${{matrix.project}}/pom.xml
+      run: mvn -B ${{matrix.test}} surefire:test -Dsurefire.rerunFailingTestsCount=2 -f ${{matrix.project}}/pom.xml
   
