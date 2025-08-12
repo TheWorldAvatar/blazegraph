@@ -22,7 +22,7 @@ jobs:
     - name: Build with Maven
       run: mvn -B deploy -DskipTests -P github-twa-deploy
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   test:
     needs: build
     strategy:
