@@ -20,7 +20,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn -B deploy -DskipTests -P github-twa-deploy
+      run: mvn -B deploy -DskipTests -P github-twa-deploy,Development
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   test:
@@ -56,7 +56,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn -B ${{matrix.test}} surefire:test -Dsurefire.rerunFailingTestsCount=2 -f ${{matrix.project}}/pom.xml -P github-twa-deploy
+      run: mvn -B ${{matrix.test}} surefire:test -Dsurefire.rerunFailingTestsCount=2 -f ${{matrix.project}}/pom.xml -P github-twa-deploy,Development
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   
