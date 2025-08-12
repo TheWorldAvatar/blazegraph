@@ -17,7 +17,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn -B deploy -DskipTests
+      run: mvn -B deploy -DskipTests -P github-twa-deploy
   test:
     needs: build
     strategy:
@@ -48,5 +48,5 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn -B ${{matrix.test}} surefire:test -Dsurefire.rerunFailingTestsCount=2 -f ${{matrix.project}}/pom.xml
+      run: mvn -B ${{matrix.test}} surefire:test -Dsurefire.rerunFailingTestsCount=2 -f ${{matrix.project}}/pom.xml -P github-twa-deploy
   
