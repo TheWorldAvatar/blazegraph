@@ -26,7 +26,9 @@ Copyright 2010 by TalkingTrends (Amsterdam, The Netherlands)
 <!--
     For information on Blazegraph and Maven see:  https://wiki.blazegraph.com/wiki/index.php/MavenNotes.
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.blazegraph</groupId>
   <artifactId>blazegraph-parent</artifactId>
@@ -345,6 +347,31 @@ Copyright 2010 by TalkingTrends (Amsterdam, The Netherlands)
       </repositories>
     </profile>
     <profile>
+      <id>github-twa-deploy</id>
+      <!-- Repository locations to fetch from -->
+      <repositories>
+        <repository>
+          <id>github</id>
+          <name>The World Avatar Blazegraph Maven Repository</name>
+          <url>https://maven.pkg.github.com/TheWorldAvatar/blazegraph</url>
+        </repository>
+      </repositories>
+
+      <!-- Repository locations to deploy to -->
+      <distributionManagement>
+        <repository>
+          <id>github</id>
+          <name>The World Avatar Blazegraph Maven Repository</name>
+          <url>https://maven.pkg.github.com/TheWorldAvatar/blazegraph</url>
+        </repository>
+        <snapshotRepository>
+          <id>github</id>
+          <name>The World Avatar Blazegraph Maven Repository</name>
+          <url>https://maven.pkg.github.com/TheWorldAvatar/blazegraph</url>
+        </snapshotRepository>
+      </distributionManagement>
+    </profile>
+    <profile>
       <!-- Profile for just building the development artifacts -->
       <id>Development</id>
       <activation>
@@ -466,7 +493,7 @@ Copyright 2010 by TalkingTrends (Amsterdam, The Netherlands)
           <rerunFailingTestsCount>2</rerunFailingTestsCount>
         </configuration>
       </plugin>
-       <plugin>
+      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
         <version>3.6.1</version>
@@ -481,7 +508,7 @@ Copyright 2010 by TalkingTrends (Amsterdam, The Netherlands)
                 <requireMavenVersion>
                   <version>3.6.3</version>
                 </requireMavenVersion>
-              </rules>    
+              </rules>
             </configuration>
           </execution>
         </executions>
