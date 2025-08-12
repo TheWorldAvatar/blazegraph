@@ -27,8 +27,18 @@ jobs:
     needs: build
     strategy:
       matrix:
-        project: [junit-ext, blazegraph-colt, ctc-striterators, lgpl-utils, dsi-utils, system-utils, rdf-properties, sparql-grammar, bigdata-util, bigdata-common-util, bigdata-statics, bigdata-cache, bigdata-client, bigdata-ganglia, bigdata-gas, bigdata-core, vocabularies, bigdata-war-html, bigdata-blueprints, bigdata-runtime, bigdata-core-test, bigdata-rdf-test, blazegraph-artifacts]
+        project: [junit-ext, blazegraph-colt, ctc-striterators, lgpl-utils, dsi-utils, system-utils, rdf-properties, sparql-grammar, bigdata-util, bigdata-common-util, bigdata-statics, bigdata-cache, bigdata-client, bigdata-ganglia, bigdata-gas, bigdata-core, vocabularies, bigdata-war-html, bigdata-blueprints, bigdata-runtime, bigdata-rdf-test, blazegraph-artifacts]
         include:
+          - project: bigdata-core-test
+            test: -Dsurefire.excludes=com/bigdata/service/TestAll.java,com/bigdata/bop/fed/TestAll.java,com/bigdata/sparse/TestAll.java,com/bigdata/search/TestAll.java,com/bigdata/TestAll.java,com/bigdata/bfs/TestAll.java
+          - project: bigdata-core-test
+            test: -Dtest=com/bigdata/service/TestAll.java
+          - project: bigdata-core-test
+            test: -Dtest=com/bigdata/bop/fed/TestAll.java
+          - project: bigdata-core-test
+            test: -Dtest=com/bigdata/sparse/TestAll.java
+          - project: bigdata-core-test
+            test: -Dtest=com/bigdata/search/TestAll.java
           - project: bigdata-sails-test
             test: -Dtest=com.bigdata.rdf.sail.sparql.TestAll
           - project: bigdata-sails-test
