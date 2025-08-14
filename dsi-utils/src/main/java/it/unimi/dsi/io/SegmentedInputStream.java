@@ -58,7 +58,7 @@ public class SegmentedInputStream extends MeasurableInputStream {
 	/** Underlying input stream. */
 	private InputStream in;
 	/** Relative position within the current segment. */
-	private int relativePos;
+	private long relativePos;
 	/** Byte length of the current segment. */
 	private int segmentLen; 
 	/** List of known blocks. */
