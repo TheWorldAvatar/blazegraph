@@ -24,7 +24,7 @@ jobs:
       if: always() && steps.setup-java.outputs.cache-hit == 'true'
       uses: actions/cache/save@v4
       with:
-        key: setup-java-${{ platform }}-${{ packageManager }}-${{ fileHash('**/pom.xml') }}
+        key: setup-java-Linux-x64-maven-${{ fileHash('**/pom.xml') }}
         path: ~/.m2/repository
   test:
     needs: build
