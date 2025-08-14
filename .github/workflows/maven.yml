@@ -17,14 +17,19 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
-        cache: maven
+    - name: Restore .m2
+      uses: actions/cache/restore@v4
+      with:
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        path: ~/.m2/repository
+        restore-keys: |
+          ${{ runner.os }}-maven-
     - name: Build with Maven
       run: mvn -B install -DskipTests -P github-twa-deploy,Development
-    - name: Always Save .m2
-      if: always() && steps.setup-java.outputs.cache-hit == 'true'
+    - name: Save .m2
       uses: actions/cache/save@v4
       with:
-        key: setup-java-Linux-x64-maven-${{ hashFiles('**/pom.xml') }}
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
         path: ~/.m2/repository
   test:
     needs: build
@@ -67,7 +72,13 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
-        cache: maven
+    - name: Restore .m2
+      uses: actions/cache/restore@v4
+      with:
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        path: ~/.m2/repository
+        restore-keys: |
+          ${{ runner.os }}-maven-
     - name: Build with Maven
       run: mvn -B ${{matrix.test}} test -Dsurefire.rerunFailingTestsCount=2 -f ${{matrix.project}}/pom.xml -P github-twa-deploy,Development
       env:
