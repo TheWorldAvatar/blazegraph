@@ -87,8 +87,9 @@ ga('send', 'pageview');
   </reporting>
   <dependencies>
     <dependency>
-      <groupId>log4j</groupId>
-      <artifactId>log4j</artifactId>
+      <!-- log4j is the primary logger for bigdata. -->
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-1.2-api</artifactId>
       <version>${log4j.version}</version>
     </dependency>
     <dependency>

@@ -296,29 +296,9 @@ See https://maven.apache.org/plugins/maven-jar-plugin/examples/create-test-jar.h
       <version>${icu.version}</version>
     </dependency>
     <dependency>
-      <!-- log4j is the primary logger for bigdata. -->
-      <groupId>log4j</groupId>
-      <artifactId>log4j</artifactId>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-1.2-api</artifactId>
       <version>${log4j.version}</version>
-      <!-- There is a bug with log4j 1.2.15 where it has a lot  -->
-      <!-- of dependencies that we do not need in its POM. The  -->
-      <!-- exclusions are only necessary with that version.     -->
-      <!-- 
-           <exclusions>
-             <exclusion>
-               <groupId>javax.jms</groupId>
-               <artifactId>jms</artifactId>
-             </exclusion>
-             <exclusion>
-               <groupId>com.sun.jdmk</groupId>
-               <artifactId>jmxtools</artifactId>
-             </exclusion>
-             <exclusion>
-               <groupId>com.sun.jmx</groupId>
-               <artifactId>jmxri</artifactId>
-             </exclusion>
-           </exclusions>
-           -->
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>

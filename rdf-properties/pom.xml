@@ -113,8 +113,9 @@ ga('send', 'pageview');
       <version>${semargl.version}</version>
     </dependency>
     <dependency>
-      <groupId>log4j</groupId>
-      <artifactId>log4j</artifactId>
+      <!-- log4j is the primary logger for bigdata. -->
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-1.2-api</artifactId>
       <version>${log4j.version}</version>
     </dependency>
   </dependencies>
