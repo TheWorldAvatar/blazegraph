@@ -91,7 +91,6 @@ ga('send', 'pageview');
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-1.2-api</artifactId>
       <version>${log4j.version}</version>
-      <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.blazegraph</groupId>
