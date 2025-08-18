@@ -98,12 +98,6 @@ public class Banner {
          */
         String NOCATCH = "com.bigdata.Banner.nocatch";
 
-        /**
-         * This may be used to disable JMX MBeans which self-report on the log4j
-         * properties.
-         */
-        String LOG4J_MBEANS_DISABLE = "com.bigdata.jmx.log4j.disable";
-
     }
     
     /**
@@ -208,37 +202,7 @@ public class Banner {
                 System.out.println(sb);
                 
             }
-
-            /*
-             * Note: I have modified this to test for disabled registration and
-             * to use reflection in order to decouple the JMX dependency for
-             * anzo.
-             */
-            if (!Boolean.getBoolean(Options.LOG4J_MBEANS_DISABLE)) {
-
-                try {
-
-                    final Class<?> cls = Class
-                            .forName("com.bigdata.jmx.JMXLog4jMBeanUtil");
-
-                    final Method m = cls.getMethod("registerLog4jMBeans",
-                            new Class[] {});
-
-                    // Optionally register a log4j MBean.
-                    m.invoke(null/* obj */);
-
-                    // JMXLog4jMBeanUtil.registerLog4jMBeans();
-
-                } catch (Throwable t) {
-
-                    log.info("Problem registering log4j mbean?", t);
-
-                }
-
-            }
-            
         }
-        
     }
     
     /**
