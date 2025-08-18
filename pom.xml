@@ -243,6 +243,23 @@ Copyright 2010 by TalkingTrends (Amsterdam, The Netherlands)
     <java.net.preferIPv4Stack>true</java.net.preferIPv4Stack>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>com.tinkerpop.rexster</groupId>
+        <artifactId>rexster-core</artifactId>
+        <version>${rexster.version}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
   <profiles>
     <profile>
       <id>maven-central</id>
@@ -483,6 +500,11 @@ Copyright 2010 by TalkingTrends (Amsterdam, The Netherlands)
                 <requireMavenVersion>
                   <version>3.6.3</version>
                 </requireMavenVersion>
+                <bannedDependencies>
+                  <excludes>
+                    <exclude>log4j:log4j</exclude>
+                  </excludes>
+                </bannedDependencies>
               </rules>
             </configuration>
           </execution>
