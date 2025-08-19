@@ -25,7 +25,8 @@ package com.bigdata.journal;
 
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.counters.AbstractStatisticsCollector;
 import com.bigdata.counters.ICounterSet;
@@ -37,7 +38,7 @@ import com.bigdata.counters.ICounterSet;
  */
 public class PlatformStatsPlugIn implements IPlugIn<Journal, AbstractStatisticsCollector> {
 
-    private static final Logger log = Logger.getLogger(PlatformStatsPlugIn.class);
+    private static final Logger log = LogManager.getLogger(PlatformStatsPlugIn.class);
 
     public interface Options extends AbstractStatisticsCollector.Options {
         

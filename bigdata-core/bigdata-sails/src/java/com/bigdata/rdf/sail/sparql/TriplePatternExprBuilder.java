@@ -30,7 +30,8 @@ package com.bigdata.rdf.sail.sparql;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Literal;
 import org.openrdf.model.Resource;
 import org.openrdf.model.URI;
@@ -81,7 +82,7 @@ import com.bigdata.rdf.sparql.ast.optimizers.ASTPropertyPathOptimizer;
  */
 public class TriplePatternExprBuilder extends ValueExprBuilder {
 
-	private static final transient Logger log = Logger.getLogger(TriplePatternExprBuilder.class);
+	private static final transient Logger log = LogManager.getLogger(TriplePatternExprBuilder.class);
 	
     /**
      * @param context

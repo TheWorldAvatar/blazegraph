@@ -41,7 +41,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.journal.IIndexManager;
 import com.bigdata.journal.Journal;
@@ -57,7 +58,7 @@ import com.bigdata.util.InnerCause;
  */
 public abstract class AbstractHostLBSPolicy extends AbstractLBSPolicy {
 
-    private static final Logger log = Logger.getLogger(AbstractHostLBSPolicy.class);
+    private static final Logger log = LogManager.getLogger(AbstractHostLBSPolicy.class);
 
     /**
      * 

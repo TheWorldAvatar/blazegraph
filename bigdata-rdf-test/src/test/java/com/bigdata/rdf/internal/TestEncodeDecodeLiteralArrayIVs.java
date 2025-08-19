@@ -25,7 +25,8 @@ package com.bigdata.rdf.internal;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
 import com.bigdata.btree.keys.IKeyBuilder;
@@ -44,7 +45,7 @@ import com.bigdata.rdf.internal.impl.uri.VocabURIByteIV;
  */
 public class TestEncodeDecodeLiteralArrayIVs extends AbstractEncodeDecodeMixedIVsTest {
 
-    private static final transient Logger log = Logger.getLogger(TestEncodeDecodeLiteralArrayIVs.class);
+    private static final transient Logger log = LogManager.getLogger(TestEncodeDecodeLiteralArrayIVs.class);
     
     /**
      * 

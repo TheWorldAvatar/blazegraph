@@ -48,7 +48,7 @@ import com.bigdata.rdf.graph.impl.BaseGASProgram;
 public class BFS extends BaseGASProgram<BFS.VS, BFS.ES, Void> implements
         IPredecessor<BFS.VS, BFS.ES, Void> {
 
-//    private static final Logger log = Logger.getLogger(BFS.class);
+//    private static final Logger log = LogManager.getLogger(BFS.class);
     
     public static class VS {
 

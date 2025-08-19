@@ -30,7 +30,8 @@ import java.io.IOException;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.ha.msg.IHAWriteMessage;
 import com.bigdata.io.DirectBufferPool;
@@ -48,7 +49,7 @@ public class HALogManager {
 	/**
 	 * Logger for HA events.
 	 */
-	private static final Logger haLog = Logger.getLogger("com.bigdata.haLog");
+	private static final Logger haLog = LogManager.getLogger("com.bigdata.haLog");
 
 	private final File m_halogdir;
 	

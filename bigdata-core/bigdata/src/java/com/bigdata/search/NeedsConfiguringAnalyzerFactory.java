@@ -41,7 +41,8 @@ import java.util.UUID;
 import java.util.WeakHashMap;
 import java.util.regex.Pattern;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.core.StopAnalyzer;
 import org.apache.lucene.analysis.pattern.PatternTokenizer;
@@ -66,7 +67,7 @@ import com.bigdata.search.ConfigurableAnalyzerFactory.Options;
  *
  */
 class NeedsConfiguringAnalyzerFactory implements IAnalyzerFactory {
-	final private static transient Logger log = Logger.getLogger(NeedsConfiguringAnalyzerFactory.class);
+	final private static transient Logger log = LogManager.getLogger(NeedsConfiguringAnalyzerFactory.class);
 	
 	/**
 	 * We create only one {@link ConfiguredAnalyzerFactory} per namespace

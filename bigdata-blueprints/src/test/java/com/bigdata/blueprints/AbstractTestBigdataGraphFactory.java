@@ -28,7 +28,8 @@ import java.io.InputStream;
 
 import junit.framework.TestCase;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
 import com.tinkerpop.blueprints.Edge;
@@ -47,8 +48,7 @@ import com.tinkerpop.blueprints.util.io.graphml.GraphMLReader;
  */
 public abstract class AbstractTestBigdataGraphFactory extends TestCase {
 
-	private static final transient Logger log = Logger
-			.getLogger(AbstractTestBigdataGraphFactory.class);
+	private static final transient Logger log = LogManager.getLogger(AbstractTestBigdataGraphFactory.class);
 
 	public static void testPrint(Object message) {
 		assert (message != null);

@@ -2,7 +2,8 @@ package com.bigdata.relation.rule.eval;
 
 import java.io.Serializable;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.relation.accesspath.IBuffer;
 import com.bigdata.relation.rule.IRule;
@@ -18,7 +19,7 @@ import com.bigdata.relation.rule.IRule;
  */
 public class RunRuleAndFlushBufferTask implements IStepTask, Serializable {
 
-    protected static final Logger log = Logger.getLogger(RunRuleAndFlushBufferTask.class);
+    protected static final Logger log = LogManager.getLogger(RunRuleAndFlushBufferTask.class);
     
     protected static final boolean DEBUG = log.isDebugEnabled();
     

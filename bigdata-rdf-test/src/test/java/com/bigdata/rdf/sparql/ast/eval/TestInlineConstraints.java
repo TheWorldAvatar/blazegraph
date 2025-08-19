@@ -62,7 +62,7 @@ import com.bigdata.striterator.IChunkedOrderedIterator;
  */
 public class TestInlineConstraints extends AbstractDataDrivenSPARQLTestCase {
 
-//	private static final Logger log = Logger.getLogger(TestInlineConstraints.class);
+//	private static final Logger log = LogManager.getLogger(TestInlineConstraints.class);
 	
     /**
      * 

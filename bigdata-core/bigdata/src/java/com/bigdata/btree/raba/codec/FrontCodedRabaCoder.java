@@ -33,7 +33,8 @@ import java.io.ObjectOutput;
 import java.io.OutputStream;
 import java.util.Iterator;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.raba.IRaba;
 import com.bigdata.io.AbstractFixedByteArrayBuffer;
@@ -53,8 +54,7 @@ public class FrontCodedRabaCoder implements IRabaCoder, Externalizable {
      */
     private static final long serialVersionUID = 4943035649252818747L;
     
-    protected static final Logger log = Logger
-            .getLogger(FrontCodedRabaCoder.class);
+    protected static final Logger log = LogManager.getLogger(FrontCodedRabaCoder.class);
 
     private int ratio;
 

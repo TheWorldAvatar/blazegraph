@@ -23,12 +23,14 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 package com.bigdata.blueprints;
 
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.config.Configurator;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
 
 /**
  * Aggregates test suites in increase dependency order.
@@ -69,11 +71,11 @@ public class TestAll extends TestCase {
          */
         {
 
-            final Logger log = Logger.getRootLogger();
+            final Logger log = LogManager.getRootLogger();
 
             if (log.getLevel().equals(Level.DEBUG)) {
 
-                log.setLevel(Level.WARN);
+                Configurator.setAllLevels(LogManager.getRootLogger().getName(), Level.WARN);
 
                 log.warn("Defaulting debugging level to WARN for the unit tests");
 

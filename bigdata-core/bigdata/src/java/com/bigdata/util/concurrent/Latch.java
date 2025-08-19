@@ -34,7 +34,8 @@ import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.util.InnerCause;
 
@@ -55,7 +56,7 @@ import com.bigdata.util.InnerCause;
  */
 public class Latch {
 
-    protected transient static final Logger log = Logger.getLogger(Latch.class);
+    protected transient static final Logger log = LogManager.getLogger(Latch.class);
     
     private final AtomicLong counter = new AtomicLong();
     

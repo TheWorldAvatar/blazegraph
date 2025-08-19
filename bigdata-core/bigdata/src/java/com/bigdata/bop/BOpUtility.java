@@ -38,7 +38,8 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.BOp.Annotations;
 import com.bigdata.bop.aggregate.IAggregate;
@@ -68,8 +69,7 @@ import cutthecrap.utils.striterators.Striterator;
  */
 public class BOpUtility {
 
-    private static transient final Logger log = Logger
-            .getLogger(BOpUtility.class);
+    private static transient final Logger log = LogManager.getLogger(BOpUtility.class);
     
     /**
      * Pre-order recursive visitation of the operator tree (arguments only, no

@@ -30,7 +30,8 @@ package com.bigdata.rdf.sparql.ast.optimizers;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.URI;
 import org.openrdf.query.algebra.Compare.CompareOp;
 
@@ -62,7 +63,7 @@ import com.bigdata.rdf.sparql.ast.eval.AST2BOpUtility;
 public class ASTRangeOptimizer extends AbstractJoinGroupOptimizer
 		implements IASTOptimizer {
 
-	private static final transient Logger log = Logger.getLogger(ASTRangeOptimizer.class);
+	private static final transient Logger log = LogManager.getLogger(ASTRangeOptimizer.class);
 	
 	public ASTRangeOptimizer() {
 		super(false /* childFirst */, true /* optimizeServiceNodes */);

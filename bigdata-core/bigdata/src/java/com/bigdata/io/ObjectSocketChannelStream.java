@@ -37,7 +37,8 @@ import java.nio.channels.Channel;
 import java.nio.channels.Channels;
 import java.nio.channels.SocketChannel;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Utility class that provides dual Channel/ObjectStream access.
@@ -46,7 +47,7 @@ import org.apache.log4j.Logger;
  *
  */
 public class ObjectSocketChannelStream {
-	protected static final Logger log = Logger.getLogger(ObjectSocketChannelStream.class);
+	protected static final Logger log = LogManager.getLogger(ObjectSocketChannelStream.class);
 
 	ObjectOutputStream outStr = null;
 	ObjectInputStream inStr = null;

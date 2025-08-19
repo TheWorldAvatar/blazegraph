@@ -2,7 +2,8 @@ package com.bigdata.search;
 
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Metadata about a search result.
@@ -13,7 +14,7 @@ import org.apache.log4j.Logger;
 public class Hit<V extends Comparable<V>> implements IHit<V>,
         Comparable<Hit<V>> {
 
-    final private static transient Logger log = Logger.getLogger(Hit.class);
+    final private static transient Logger log = LogManager.getLogger(Hit.class);
    
     /** note: defaults to an illegal value. */
     private V docId = null;

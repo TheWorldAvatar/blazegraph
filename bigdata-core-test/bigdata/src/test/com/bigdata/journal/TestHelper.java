@@ -30,7 +30,8 @@ package com.bigdata.journal;
 import junit.extensions.proxy.IProxyTest;
 import junit.framework.TestCase;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.io.DirectBufferPoolTestHelper;
 
@@ -42,7 +43,7 @@ import com.bigdata.io.DirectBufferPoolTestHelper;
  */
 public class TestHelper {
 
-    private final static Logger log = Logger.getLogger(TestHelper.class);
+    private final static Logger log = LogManager.getLogger(TestHelper.class);
     
     /**
      * Verify that any journal created by the test have been destroyed.

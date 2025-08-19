@@ -49,8 +49,9 @@ import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
-import org.apache.log4j.Logger;
-import org.apache.log4j.MDC;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.ThreadContext;
 
 import com.bigdata.btree.BTree;
 import com.bigdata.concurrent.NonBlockingLockManagerWithNewDesign;
@@ -146,19 +147,17 @@ public class WriteExecutorService extends ThreadPoolExecutor {
     /**
      * Main logger for the {@link WriteExecutorService}.
      */
-    private static final Logger log = Logger
-            .getLogger(WriteExecutorService.class);
+    private static final Logger log = LogManager.getLogger(WriteExecutorService.class);
 
     /**
      * Uses the {@link OverflowManager} log for things relating to synchronous
      * overflow processing.
      */
-    protected static final Logger overflowLog = Logger
-            .getLogger(OverflowManager.class);
+    protected static final Logger overflowLog = LogManager.getLogger(OverflowManager.class);
 
     /**
      * When <code>true</code>, writes the set of {@link #active} tasks into
-     * the {@link MDC} under the <code>activeTasks</code> key. This is of
+     * the {@link ThreadContext} under the <code>activeTasks</code> key. This is of
      * interest if you want to know which tasks are in the same commit group.
      */
     final boolean trackActiveSetInMDC = false; // MUST be false for deploy
@@ -827,11 +826,11 @@ public class WriteExecutorService extends ThreadPoolExecutor {
         
             if (trackActiveSetInMDC) {
 
-                MDC.put("activeTasks", active.values().toString());
+                ThreadContext.put("activeTasks", active.values().toString());
                 
             }
 
-            MDC.put("taskState", "running");
+            ThreadContext.put("taskState", "running");
 
             /*
              * Note: This is the commit counter at the instant that this task
@@ -839,7 +838,7 @@ public class WriteExecutorService extends ThreadPoolExecutor {
              * commitCounter at after the task had executed to see how many
              * group commits were made while this task was running.
              */
-            MDC.put("commitCounter", "commitCounter=" + ngroupCommits);
+            ThreadContext.put("commitCounter", "commitCounter=" + ngroupCommits);
 
             if (log.isInfoEnabled())
                 log.info("nrunning=" + nrunning);
@@ -882,7 +881,7 @@ public class WriteExecutorService extends ThreadPoolExecutor {
             
             final int nrunning = this.nrunning.decrementAndGet(); // dec. counter.
 
-            MDC.remove("taskState");
+            ThreadContext.remove("taskState");
 
             if(log.isInfoEnabled()) log.info("nrunning="+nrunning);
             
@@ -924,7 +923,7 @@ public class WriteExecutorService extends ThreadPoolExecutor {
                 // another task executed successfully.
                 successTaskCount++;
 
-                MDC.put("taskState","waitingOnCommit");
+                ThreadContext.put("taskState","waitingOnCommit");
 
                 if (!groupCommit()) {
                     
@@ -968,7 +967,7 @@ public class WriteExecutorService extends ThreadPoolExecutor {
 
                 failedTaskCount++;
                 
-                MDC.put("taskState","failure");
+                ThreadContext.put("taskState","failure");
 
                 if (InnerCause.isInnerCause(t, ValidationError.class)) {
 
@@ -1041,13 +1040,13 @@ public class WriteExecutorService extends ThreadPoolExecutor {
 
             if(trackActiveSetInMDC) {
 
-                MDC.put("activeTasks",active.values().toString());
+                ThreadContext.put("activeTasks",active.values().toString());
                 
             }
 
-            MDC.remove("taskState");
+            ThreadContext.remove("taskState");
 
-            MDC.remove("commitCounter");
+            ThreadContext.remove("commitCounter");
             
             lock.unlock();
             
@@ -1289,7 +1288,7 @@ public class WriteExecutorService extends ThreadPoolExecutor {
                 commit.await();
 
                 // did commit, so the commit counter was updated.
-                MDC.put("commitCounter","commitCounter="+ngroupCommits);
+                ThreadContext.put("commitCounter","commitCounter="+ngroupCommits);
 
                 return true;
 
@@ -1508,12 +1507,12 @@ public class WriteExecutorService extends ThreadPoolExecutor {
                     log.info("Will do overflow now: nrunning=" + nrunning);
 
                 // this task will do synchronous overflow processing.
-                MDC.put("taskState","doSyncOverflow");
+                ThreadContext.put("taskState","doSyncOverflow");
                 
                 // pass in the pinned hard reference to the resource manager.
                 overflow(rm);
 
-                MDC.put("taskState","didSyncOverflow");
+                ThreadContext.put("taskState","didSyncOverflow");
 
                 if (log.isInfoEnabled())
                     log.info("Did overflow.");
@@ -2441,10 +2440,10 @@ public class WriteExecutorService extends ThreadPoolExecutor {
             ngroupCommits.incrementAndGet();
             
             // did commit, so the commit counter was updated.
-            MDC.put("commitCounter","commitCounter="+ngroupCommits);
+            ThreadContext.put("commitCounter","commitCounter="+ngroupCommits);
 
             // this task did the commit.
-            MDC.put("taskState", "didCommit");
+            ThreadContext.put("taskState", "didCommit");
             
             if (log.isInfoEnabled()) {
             

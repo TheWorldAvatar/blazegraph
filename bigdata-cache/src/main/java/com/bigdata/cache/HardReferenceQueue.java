@@ -61,7 +61,7 @@ package com.bigdata.cache;
  */
 public class HardReferenceQueue<T> extends RingBuffer<T> implements IHardReferenceQueue<T> {
 
-//    protected static final Logger log = Logger.getLogger(HardReferenceQueue.class);
+//    protected static final Logger log = LogManager.getLogger(HardReferenceQueue.class);
     
 //    protected static final boolean INFO = log.isInfoEnabled(); 
     

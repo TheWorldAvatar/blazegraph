@@ -22,7 +22,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 package com.bigdata.rdf.sail.webapp.client;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.eclipse.jetty.client.HttpClient;
 import org.eclipse.jetty.util.ssl.SslContextFactory;
 
@@ -42,7 +43,7 @@ import org.eclipse.jetty.util.ssl.SslContextFactory;
  */
 public final class DefaultHttpClientFactory implements IHttpClientFactory {
 
-	private static final Logger log = Logger.getLogger(DefaultHttpClientFactory.class);
+	private static final Logger log = LogManager.getLogger(DefaultHttpClientFactory.class);
 	
 	public interface Options {
 

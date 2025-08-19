@@ -32,7 +32,8 @@ import java.util.Properties;
 import java.util.concurrent.Callable;
 import java.util.concurrent.Future;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.Banner;
 
@@ -46,7 +47,7 @@ import com.bigdata.Banner;
 abstract public class ClientService extends AbstractService implements
         IClientService, ISession {
 
-    protected static final Logger log = Logger.getLogger(DataService.class);
+    protected static final Logger log = LogManager.getLogger(DataService.class);
 
     /**
      * Configuration options.

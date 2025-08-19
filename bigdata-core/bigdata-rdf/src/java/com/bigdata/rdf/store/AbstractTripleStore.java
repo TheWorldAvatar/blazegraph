@@ -45,7 +45,8 @@ import java.util.concurrent.Future;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.atomic.AtomicReference;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Literal;
 import org.openrdf.model.Resource;
 import org.openrdf.model.Statement;
@@ -201,7 +202,7 @@ abstract public class AbstractTripleStore extends
         AbstractResource<IDatabase<AbstractTripleStore>> implements ITripleStore,
         IRawTripleStore, IMutableDatabase<AbstractTripleStore> {
 
-    final static private Logger log = Logger.getLogger(AbstractTripleStore.class);
+    final static private Logger log = LogManager.getLogger(AbstractTripleStore.class);
     
     final protected static boolean INFO = log.isInfoEnabled();
     final protected static boolean DEBUG = log.isDebugEnabled();

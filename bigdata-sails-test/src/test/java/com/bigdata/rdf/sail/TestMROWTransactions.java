@@ -70,7 +70,7 @@ import com.bigdata.util.InnerCause;
  */
 abstract public class TestMROWTransactions extends ProxyBigdataSailTestCase {
 
-//    private static final Logger txLog = Logger.getLogger("com.bigdata.txLog");
+//    private static final Logger txLog = LogManager.getLogger("com.bigdata.txLog");
 
     TestMROWTransactions() {
     }

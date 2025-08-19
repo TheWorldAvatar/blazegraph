@@ -37,8 +37,9 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.apache.log4j.Logger;
-import org.apache.log4j.MDC;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.ThreadContext;
 import org.openrdf.model.Value;
 import org.openrdf.query.Binding;
 import org.openrdf.query.BindingSet;
@@ -106,7 +107,7 @@ public class ASTEvalHelper {
      * A logger whose sole purpose is to log the SPARQL queries which are being
      * evaluated <strong>DO NOT USE THIS FOR OTHER PURPOSES !!! </strong>
      */
-    private static final Logger log = Logger.getLogger(ASTEvalHelper.class);
+    private static final Logger log = LogManager.getLogger(ASTEvalHelper.class);
 
     /**
      * Evaluate a boolean query.
@@ -1202,13 +1203,13 @@ public class ASTEvalHelper {
 
     private static void setupLoggingContext(final IEvaluationContext context) {
 
-        MDC.put("tx", TimestampUtility.toString(context.getTimestamp()));
+        ThreadContext.put("tx", TimestampUtility.toString(context.getTimestamp()));
 
     }
     
     private static void clearLoggingContext() {
         
-        MDC.remove("tx");
+        ThreadContext.remove("tx");
     }
     
 }

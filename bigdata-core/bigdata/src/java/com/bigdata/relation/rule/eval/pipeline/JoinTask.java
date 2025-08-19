@@ -21,8 +21,9 @@ import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.IBindingSet;
 import com.bigdata.bop.IPredicate;
@@ -141,22 +142,22 @@ import com.bigdata.util.concurrent.LatchedExecutor;
  */
 abstract public class JoinTask implements Callable<Void> {
 
-    static protected final Logger log = Logger.getLogger(JoinTask.class);
+    static protected final Logger log = LogManager.getLogger(JoinTask.class);
 
     /**
      * True iff the {@link #log} level is WARN or less.
      */
-    static final protected boolean WARN = log.isEnabledFor(Level.WARN);
+    static final protected boolean WARN = log.getLevel().isMoreSpecificThan(Level.WARN);
 
     /**
      * True iff the {@link #log} level is INFO or less.
      */
-    static final protected boolean INFO = log.isInfoEnabled();
+    static final protected boolean INFO = log.getLevel().isMoreSpecificThan(Level.INFO);
 
     /**
      * True iff the {@link #log} level is DEBUG or less.
      */
-    static final protected boolean DEBUG = log.isDebugEnabled();
+    static final protected boolean DEBUG = log.getLevel().isMoreSpecificThan(Level.DEBUG);
 
     /** The rule that is being evaluated. */
     final protected IRule<?> rule;

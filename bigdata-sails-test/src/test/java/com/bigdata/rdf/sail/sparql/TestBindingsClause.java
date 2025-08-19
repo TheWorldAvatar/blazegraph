@@ -31,7 +31,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.query.MalformedQueryException;
 import org.openrdf.query.algebra.StatementPattern.Scope;
 
@@ -64,8 +65,7 @@ import com.bigdata.util.InnerCause;
  */
 public class TestBindingsClause extends AbstractBigdataExprBuilderTestCase {
 
-    private static final Logger log = Logger
-            .getLogger(TestBindingsClause.class);
+    private static final Logger log = LogManager.getLogger(TestBindingsClause.class);
     
     public TestBindingsClause() {
     }

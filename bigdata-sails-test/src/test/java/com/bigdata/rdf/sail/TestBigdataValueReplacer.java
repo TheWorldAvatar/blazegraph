@@ -73,7 +73,7 @@ public class TestBigdataValueReplacer extends ProxyBigdataSailTestCase {
     @Override
     public Properties getProperties() {
         
-//        Logger.getLogger(BigdataValueReplacer.class).setLevel(Level.ALL);
+//        Configurator.setAllLevels(LogManager.getLogger(BigdataValueReplacer.class).getName(), Level.ALL);
         
         final Properties props = super.getProperties();
         

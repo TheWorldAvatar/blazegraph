@@ -32,7 +32,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.counters.CounterSet;
 import com.bigdata.counters.ICounterSetAccess;
@@ -53,7 +54,7 @@ import com.bigdata.util.httpd.AbstractHTTPD;
  */
 public class CounterSetHTTPD extends AbstractHTTPD {
     
-	static private final Logger log = Logger.getLogger(CounterSetHTTPD.class);
+	static private final Logger log = LogManager.getLogger(CounterSetHTTPD.class);
 
     /**
      * Access to the {@link CounterSet} exposed by this service.

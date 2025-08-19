@@ -24,7 +24,8 @@ package com.bigdata.rdf.sail;
 
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.URI;
 import org.openrdf.model.impl.URIImpl;
 
@@ -64,7 +65,7 @@ import com.bigdata.striterator.IChunkedOrderedIterator;
  */
 public class RDRHistory implements IChangeLog {
     
-    private static final Logger log = Logger.getLogger(RDRHistory.class);
+    private static final Logger log = LogManager.getLogger(RDRHistory.class);
     
 
     /**

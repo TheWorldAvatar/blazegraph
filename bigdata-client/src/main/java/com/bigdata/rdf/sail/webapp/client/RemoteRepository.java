@@ -39,7 +39,8 @@ import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.entity.mime.FormBodyPart;
 import org.apache.http.entity.mime.MultipartEntity;
 import org.apache.http.entity.mime.content.ByteArrayBody;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Resource;
 import org.openrdf.model.Statement;
 import org.openrdf.model.URI;
@@ -65,8 +66,7 @@ import com.bigdata.rdf.sail.remote.BigdataSailRemoteRepository;
  */
 public class RemoteRepository extends RemoteRepositoryBase {
 
-    private static final transient Logger log = Logger
-            .getLogger(RemoteRepository.class);
+    private static final transient Logger log = LogManager.getLogger(RemoteRepository.class);
 
    /**
     * The {@link RemoteRepositoryManager} object use to manage all access to the

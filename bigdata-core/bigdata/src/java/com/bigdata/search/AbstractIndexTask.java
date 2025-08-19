@@ -1,6 +1,7 @@
 package com.bigdata.search;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.keys.IKeyBuilder;
 import com.bigdata.btree.keys.SuccessorUtil;
@@ -14,7 +15,7 @@ import com.bigdata.btree.keys.SuccessorUtil;
  */
 public abstract class AbstractIndexTask<V extends Comparable<V>> {
 
-    final private static Logger log = Logger.getLogger(AbstractIndexTask.class);
+    final private static Logger log = LogManager.getLogger(AbstractIndexTask.class);
 
     protected final String queryTerm;
     protected final int queryTermNdx;

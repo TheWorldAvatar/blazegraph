@@ -52,7 +52,8 @@ import java.util.regex.Pattern;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.counters.History;
 import com.bigdata.counters.ICounterSet;
@@ -72,7 +73,7 @@ import com.bigdata.util.httpd.NanoHTTPD;
  */
 public class URLQueryModel {
 
-    private static transient final Logger log = Logger.getLogger(URLQueryModel.class);
+    private static transient final Logger log = LogManager.getLogger(URLQueryModel.class);
     
     /**
      * Name of the URL query parameter specifying the starting path for the page

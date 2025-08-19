@@ -31,7 +31,8 @@ package com.bigdata.service;
 import java.util.Properties;
 import java.util.concurrent.atomic.AtomicReference;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.Banner;
 
@@ -43,7 +44,7 @@ import com.bigdata.Banner;
  */
 abstract public class AbstractClient<T> implements IBigdataClient<T> {
     
-    protected static final Logger log = Logger.getLogger(IBigdataClient.class);
+    protected static final Logger log = LogManager.getLogger(IBigdataClient.class);
 
     /**
      * The properties specified to the ctor.

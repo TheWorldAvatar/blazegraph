@@ -35,7 +35,8 @@ import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.ganglia.util.DaemonThreadFactory;
 
@@ -116,7 +117,7 @@ import com.bigdata.ganglia.util.DaemonThreadFactory;
  */
 public class GangliaService implements Runnable, IGangliaMetricsReporter {
 
-	private static final Logger log = Logger.getLogger(GangliaService.class);
+	private static final Logger log = LogManager.getLogger(GangliaService.class);
 
 	/**
 	 * Timestamp when the service starts and zero if the service is not running.

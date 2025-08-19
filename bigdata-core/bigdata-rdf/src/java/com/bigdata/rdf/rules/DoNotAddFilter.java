@@ -51,7 +51,7 @@ import com.bigdata.relation.rule.eval.ISolution;
  */
 public class DoNotAddFilter<E extends ISPO> extends SPOFilter<E> {
 
-//    protected static final Logger log = Logger.getLogger(DoNotAddFilter.class);
+//    protected static final Logger log = LogManager.getLogger(DoNotAddFilter.class);
 //    
 //    protected static final boolean INFO = log.isInfoEnabled();
 //    

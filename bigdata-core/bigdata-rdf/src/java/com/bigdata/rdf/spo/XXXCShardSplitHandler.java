@@ -29,7 +29,8 @@ package com.bigdata.rdf.spo;
 
 import java.io.Serializable;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.ILinearList;
 import com.bigdata.btree.ISimpleSplitHandler;
@@ -58,8 +59,7 @@ public class XXXCShardSplitHandler implements ISimpleSplitHandler, Serializable 
      */
     private static final long serialVersionUID = 1L;
 
-    private static final transient Logger log = Logger
-            .getLogger(XXXCShardSplitHandler.class);
+    private static final transient Logger log = LogManager.getLogger(XXXCShardSplitHandler.class);
 
     /**
      * Return a separator key which does not split quads for the same triple

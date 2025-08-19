@@ -12,7 +12,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Literal;
 import org.openrdf.model.URI;
 import org.openrdf.model.Value;
@@ -103,8 +104,7 @@ import com.bigdata.relation.accesspath.IAccessPath;
 @SuppressWarnings( { "rawtypes", "unchecked" } )
 public class ASTDeferredIVResolution {
     
-    private final static Logger log = Logger
-            .getLogger(ASTDeferredIVResolution.class);
+    private final static Logger log = LogManager.getLogger(ASTDeferredIVResolution.class);
     
     /**
      * Anonymous instances of Handler interface are used as a deferred code,

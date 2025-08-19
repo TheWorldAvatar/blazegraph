@@ -17,7 +17,7 @@ import com.bigdata.rdf.internal.IVUtility;
 public class MergeSortIterator implements Iterator<Value> {
 
     // private final static Logger log =
-    // Logger.getLogger(MergeSortIterator.class);
+    // LogManager.getLogger(MergeSortIterator.class);
 
     /**
      * The #of source iterators.

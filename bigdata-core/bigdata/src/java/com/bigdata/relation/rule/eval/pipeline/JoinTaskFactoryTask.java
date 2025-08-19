@@ -7,7 +7,8 @@ import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bfs.BigdataFileSystem;
 import com.bigdata.bop.IBindingSet;
@@ -96,7 +97,7 @@ public class JoinTaskFactoryTask extends DataServiceCallable<Future> {
      */
     private static final long serialVersionUID = -2637166803787195001L;
     
-    protected static final transient Logger log = Logger.getLogger(JoinTaskFactoryTask.class);
+    protected static final transient Logger log = LogManager.getLogger(JoinTaskFactoryTask.class);
 
     /**
      * @deprecated This is only used by a logging statement.

@@ -29,7 +29,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.IBindingSet;
 import com.bigdata.bop.IConstant;
@@ -53,7 +54,7 @@ import com.bigdata.counters.CAT;
  */
 public class JVMHashIndex {
 
-    private static final Logger log = Logger.getLogger(JVMHashIndex.class);
+    private static final Logger log = LogManager.getLogger(JVMHashIndex.class);
 
     /**
      * Note: If joinVars is an empty array, then the solutions will all hash to

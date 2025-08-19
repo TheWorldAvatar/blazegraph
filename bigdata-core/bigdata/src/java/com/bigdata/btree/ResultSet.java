@@ -37,7 +37,8 @@ import java.io.ObjectOutput;
 import java.io.OutputStream;
 import java.util.Iterator;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.data.DefaultLeafCoder;
 import com.bigdata.btree.data.ILeafData;
@@ -82,7 +83,7 @@ public class ResultSet implements ILeafData, Externalizable {
      */
     private static final long serialVersionUID = 1334143885190084268L;
 
-    private transient static final Logger log = Logger.getLogger(ResultSet.class);
+    private transient static final Logger log = LogManager.getLogger(ResultSet.class);
 
 //    protected transient static final boolean INFO = log.isInfoEnabled();
 //

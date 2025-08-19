@@ -46,7 +46,7 @@ import com.bigdata.service.IBigdataFederation;
  */
 public class BOpContextBase {
 
-//    static private final transient Logger log = Logger.getLogger(BOpContextBase.class);
+//    static private final transient Logger log = LogManager.getLogger(BOpContextBase.class);
 
     /**
      * The federation iff running in scale-out.

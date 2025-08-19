@@ -28,7 +28,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 package com.bigdata.mdi;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.AbstractBTree;
 import com.bigdata.btree.DelegateIndex;
@@ -49,7 +50,7 @@ import com.bigdata.mdi.MetadataIndex.MetadataIndexMetadata;
  */
 public class MetadataIndexView extends DelegateIndex implements IMetadataIndex {
 
-    protected static final Logger log = Logger.getLogger(MetadataIndexView.class);
+    protected static final Logger log = LogManager.getLogger(MetadataIndexView.class);
     
 //    protected static final boolean INFO = log.isInfoEnabled();
 //    protected static final boolean DEBUG = log.isDebugEnabled();

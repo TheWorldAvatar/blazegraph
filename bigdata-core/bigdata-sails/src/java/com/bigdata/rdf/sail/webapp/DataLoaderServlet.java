@@ -34,7 +34,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.rio.RDFFormat;
 
 import com.bigdata.journal.ITx;
@@ -65,8 +66,7 @@ public class DataLoaderServlet extends BigdataRDFServlet {
      */
 	private static final long serialVersionUID = 1L;
 
-	static private final transient Logger log = Logger
-			.getLogger(DataLoaderServlet.class);
+	static private final transient Logger log = LogManager.getLogger(DataLoaderServlet.class);
 
 	/**
 	 * Delegate for the sparql end point expressed by

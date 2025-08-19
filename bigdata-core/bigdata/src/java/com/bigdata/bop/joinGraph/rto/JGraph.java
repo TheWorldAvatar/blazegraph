@@ -42,7 +42,8 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.BOpUtility;
@@ -221,7 +222,7 @@ public class JGraph {
 
     private static final String NA = "N/A";
 
-	private static final transient Logger log = Logger.getLogger(JGraph.class);
+	private static final transient Logger log = LogManager.getLogger(JGraph.class);
 
     /**
      * The pipeline operator for executing the RTO. This provides additional

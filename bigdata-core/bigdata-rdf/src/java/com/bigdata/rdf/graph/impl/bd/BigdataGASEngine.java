@@ -6,7 +6,8 @@ import java.util.Iterator;
 import java.util.Random;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Resource;
 import org.openrdf.model.Statement;
 import org.openrdf.model.Value;
@@ -118,7 +119,7 @@ import cutthecrap.utils.striterators.Striterator;
  */
 public class BigdataGASEngine extends GASEngine {
 
-    private static final Logger log = Logger.getLogger(GASEngine.class);
+    private static final Logger log = LogManager.getLogger(GASEngine.class);
 
 //    /**
 //     * The {@link IIndexManager} is used to access the graph.

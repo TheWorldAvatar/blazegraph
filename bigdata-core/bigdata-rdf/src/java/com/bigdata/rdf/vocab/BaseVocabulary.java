@@ -37,7 +37,8 @@ import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.URI;
 import org.openrdf.model.Value;
 
@@ -61,8 +62,7 @@ import com.bigdata.rdf.store.AbstractTripleStore;
  */
 abstract public class BaseVocabulary implements Vocabulary, Externalizable {
 
-    final static private transient Logger log = Logger
-            .getLogger(BaseVocabulary.class);
+    final static private transient Logger log = LogManager.getLogger(BaseVocabulary.class);
 
     /**
      * The serialVersionUID as reported by the trunk on Oct 6, 2010.

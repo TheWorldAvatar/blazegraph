@@ -34,7 +34,8 @@ import java.util.concurrent.atomic.AtomicLong;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Graph;
 import org.openrdf.model.Resource;
 import org.openrdf.model.Statement;
@@ -56,8 +57,7 @@ import org.xml.sax.ext.DefaultHandler2;
  */
 public class RemoteRepositoryBase extends RemoteRepositoryDecls {
 
-   private static final transient Logger log = Logger
-         .getLogger(RemoteRepositoryDecls.class);
+   private static final transient Logger log = LogManager.getLogger(RemoteRepositoryDecls.class);
 
    /**
     * Return the web application context path for the default deployment of the

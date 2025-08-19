@@ -20,7 +20,8 @@ import java.util.Set;
 
 import junit.framework.TestCase;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.rdf.graph.util.IGraphFixture;
 import com.bigdata.rdf.graph.util.IGraphFixtureFactory;
@@ -32,8 +33,7 @@ import com.bigdata.rdf.graph.util.IGraphFixtureFactory;
  */
 abstract public class AbstractGraphTestCase extends TestCase {
 
-    protected static final Logger log = Logger
-            .getLogger(AbstractGraphTestCase.class);
+    protected static final Logger log = LogManager.getLogger(AbstractGraphTestCase.class);
     
     public AbstractGraphTestCase() {
     }

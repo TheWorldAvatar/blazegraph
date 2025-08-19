@@ -32,7 +32,8 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.BNode;
 import org.openrdf.model.Value;
 import org.openrdf.query.Binding;
@@ -60,8 +61,7 @@ import com.bigdata.rdf.sail.webapp.client.AST2SPARQLUtil;
  */
 public class RemoteSparql10QueryBuilder implements IRemoteSparqlQueryBuilder {
 
-    private static final Logger log = Logger
-            .getLogger(RemoteSparql10QueryBuilder.class);
+    private static final Logger log = LogManager.getLogger(RemoteSparql10QueryBuilder.class);
 
     // private final ServiceNode serviceNode;
 

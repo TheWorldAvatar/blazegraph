@@ -2,7 +2,8 @@ package com.bigdata.rdf.inf;
 
 import java.util.Arrays;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.BOpBase;
@@ -45,7 +46,7 @@ import com.bigdata.striterator.IKeyOrder;
 public class OwlSameAsPropertiesExpandingIterator implements
         IChunkedOrderedIterator<ISPO> {
     protected final static Logger log =
-            Logger.getLogger(OwlSameAsPropertiesExpandingIterator.class);
+            LogManager.getLogger(OwlSameAsPropertiesExpandingIterator.class);
 
     private final IChunkedOrderedIterator<ISPO> src;
 

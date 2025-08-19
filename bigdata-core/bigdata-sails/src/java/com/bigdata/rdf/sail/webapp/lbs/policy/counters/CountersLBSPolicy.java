@@ -35,7 +35,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.eclipse.jetty.client.HttpClient;
 import org.eclipse.jetty.client.api.Request;
 import org.eclipse.jetty.http.HttpMethod;
@@ -77,7 +78,7 @@ import com.bigdata.rdf.sail.webapp.lbs.ServiceScore;
  */
 public class CountersLBSPolicy extends AbstractHostLBSPolicy {
 
-    private static final Logger log = Logger.getLogger(CountersLBSPolicy.class);
+    private static final Logger log = LogManager.getLogger(CountersLBSPolicy.class);
 
     /**
      * 

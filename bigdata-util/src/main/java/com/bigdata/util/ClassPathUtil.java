@@ -27,7 +27,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Utility class for returning an instance of an interface.
@@ -36,7 +37,7 @@ import org.apache.log4j.Logger;
  */
 public class ClassPathUtil {
 
-	private static final Logger log = Logger.getLogger(ClassPathUtil.class);
+	private static final Logger log = LogManager.getLogger(ClassPathUtil.class);
 
     /**
      * True iff the {@link #log} level is DEBUG or less.

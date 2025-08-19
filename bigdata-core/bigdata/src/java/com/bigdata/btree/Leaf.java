@@ -31,7 +31,7 @@ import java.nio.ByteBuffer;
 import java.util.Iterator;
 import java.util.WeakHashMap;
 
-import org.apache.log4j.Level;
+import org.apache.logging.log4j.Level;
 
 import com.bigdata.btree.data.DefaultLeafCoder;
 import com.bigdata.btree.data.ILeafData;
@@ -2043,7 +2043,7 @@ public class Leaf extends AbstractNode<Leaf> implements ILeafData, IRawRecordAcc
     public boolean dump(final Level level, final PrintStream out,
             final int height, final boolean recursive) {
 
-        final boolean debug = level.toInt() <= Level.DEBUG.toInt();
+        final boolean debug = level.isMoreSpecificThan(Level.DEBUG);
         
         // Set to false iff an inconsistency is detected.
         boolean ok = true;

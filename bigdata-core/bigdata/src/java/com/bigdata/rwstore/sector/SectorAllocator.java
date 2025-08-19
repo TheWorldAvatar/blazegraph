@@ -26,7 +26,8 @@ package com.bigdata.rwstore.sector;
 
 import java.util.ArrayList;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.rwstore.IWriteCacheManager;
 
@@ -77,7 +78,7 @@ import com.bigdata.rwstore.IWriteCacheManager;
  */
 public class SectorAllocator implements Comparable<SectorAllocator> {
     
-	private static final Logger log = Logger.getLogger(SectorAllocator.class);
+	private static final Logger log = LogManager.getLogger(SectorAllocator.class);
 
     static final int getBitMask(int bits) {
 		int ret = 0;

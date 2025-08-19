@@ -52,7 +52,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Value;
 
 import com.bigdata.rdf.internal.IV;
@@ -68,8 +69,7 @@ import com.bigdata.striterator.IChunkedIterator;
  */
 public class BigdataValueIteratorImpl implements BigdataValueIterator {
 
-    final private static Logger log = Logger
-            .getLogger(BigdataValueIteratorImpl.class);
+    final private static Logger log = LogManager.getLogger(BigdataValueIteratorImpl.class);
 
     /**
      * The database whose lexicon will be used to resolve term identifiers to

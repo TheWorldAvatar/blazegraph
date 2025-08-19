@@ -31,7 +31,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import org.openrdf.model.Literal;
 import org.openrdf.model.Resource;
@@ -64,8 +65,7 @@ import com.bigdata.rdf.sparql.ast.eval.AST2BOpUtility;
  */
 public class BigdataComplexSparqlQueryTest extends ComplexSPARQLQueryTest {
 
-    static private final Logger logger = Logger
-            .getLogger(BigdataComplexSparqlQueryTest.class);
+    static private final Logger logger = LogManager.getLogger(BigdataComplexSparqlQueryTest.class);
 
     /**
      * 

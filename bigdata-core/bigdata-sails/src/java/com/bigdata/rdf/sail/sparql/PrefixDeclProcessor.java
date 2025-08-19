@@ -15,7 +15,8 @@ import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.vocabulary.DC;
 import org.openrdf.model.vocabulary.FN;
 import org.openrdf.model.vocabulary.FOAF;
@@ -51,7 +52,7 @@ import com.bigdata.rdf.vocab.decls.FOAFVocabularyDecl;
  */
 public class PrefixDeclProcessor {
 	
-    private static final Logger log = Logger.getLogger(PrefixDeclProcessor.class);
+    private static final Logger log = LogManager.getLogger(PrefixDeclProcessor.class);
 
 
     public static final Map<String,String> defaultDecls =

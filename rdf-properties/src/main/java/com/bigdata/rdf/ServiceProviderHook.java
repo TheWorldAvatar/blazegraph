@@ -35,7 +35,8 @@ import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.ServiceLoader;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.query.QueryLanguage;
 import org.openrdf.query.resultio.TupleQueryResultParserFactory;
 import org.openrdf.query.resultio.TupleQueryResultParserRegistry;
@@ -83,7 +84,7 @@ import org.openrdf.rio.RDFWriterRegistry;
  */
 public class ServiceProviderHook {
 
-	private static final Logger log = Logger.getLogger(ServiceProviderHook.class);
+	private static final Logger log = LogManager.getLogger(ServiceProviderHook.class);
 	
 	public static final String NTRIPLES_PARSER_FACTORY = "com.bigdata.rdf.rio.ntriples.BigdataNTriplesParserFactory";
 

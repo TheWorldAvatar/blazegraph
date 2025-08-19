@@ -32,7 +32,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * <p>
@@ -168,7 +169,7 @@ public class TxDag {
 	/**
 	 * Logger for this class.
 	 */
-    protected static final Logger log = Logger.getLogger(TxDag.class);
+    protected static final Logger log = LogManager.getLogger(TxDag.class);
 
     protected static final boolean INFO = log.isInfoEnabled();
     

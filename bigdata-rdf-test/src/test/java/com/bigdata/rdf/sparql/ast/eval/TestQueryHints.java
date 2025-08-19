@@ -33,7 +33,8 @@ import java.util.List;
 import java.util.Properties;
 import java.util.UUID;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.URI;
 import org.openrdf.model.impl.URIImpl;
 import org.openrdf.model.vocabulary.RDF;
@@ -102,7 +103,7 @@ import cutthecrap.utils.striterators.Striterator;
  */
 public class TestQueryHints extends AbstractDataDrivenSPARQLTestCase {
 
-    private static final Logger log = Logger.getLogger(TestQueryHints.class);
+    private static final Logger log = LogManager.getLogger(TestQueryHints.class);
 
     /**
      * 

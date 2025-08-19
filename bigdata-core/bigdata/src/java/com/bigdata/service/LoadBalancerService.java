@@ -23,7 +23,8 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.counters.AbstractStatisticsCollector;
 import com.bigdata.counters.CounterSet;
@@ -141,7 +142,7 @@ import com.bigdata.util.concurrent.IQueueCounters.IThreadPoolExecutorTaskCounter
 abstract public class LoadBalancerService extends AbstractService
     implements ILoadBalancerService, IServiceShutdown, IEventReportingService {
 
-    final static protected Logger log = Logger.getLogger(LoadBalancerService.class);
+    final static protected Logger log = LogManager.getLogger(LoadBalancerService.class);
 
     final protected String ps = ICounterSet.pathSeparator;
     
@@ -946,7 +947,7 @@ abstract public class LoadBalancerService extends AbstractService
          * class the name uses a "$" delimiter (vs a ".") between the outer and
          * the inner class names.
          */
-        final protected transient Logger log = Logger.getLogger(UpdateTask.class);
+        final protected transient Logger log = LogManager.getLogger(UpdateTask.class);
 
         public UpdateTask() {
         }

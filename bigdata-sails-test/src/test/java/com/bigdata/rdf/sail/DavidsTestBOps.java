@@ -32,7 +32,8 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Resource;
 import org.openrdf.model.ValueFactory;
 import org.openrdf.model.impl.URIImpl;
@@ -59,7 +60,7 @@ import com.bigdata.rdf.vocab.NoVocabulary;
  */
 public class DavidsTestBOps extends ProxyBigdataSailTestCase {
 
-    private static final Logger log = Logger.getLogger(DavidsTestBOps.class);
+    private static final Logger log = LogManager.getLogger(DavidsTestBOps.class);
     
     @Override
     public Properties getProperties() {

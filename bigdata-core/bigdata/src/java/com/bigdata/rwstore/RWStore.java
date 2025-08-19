@@ -61,7 +61,8 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock.ReadLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock.WriteLock;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.system.SystemUtil;
 
 import com.bigdata.btree.BTree.Counter;
@@ -265,13 +266,13 @@ import com.bigdata.util.ChecksumError;
 
 public class RWStore implements IStore, IBufferedWriter, IBackingReader {
 
-    private static final transient Logger log = Logger.getLogger(RWStore.class);
+    private static final transient Logger log = LogManager.getLogger(RWStore.class);
 
     /**
      * @see http://sourceforge.net/apps/trac/bigdata/ticket/443 (Logger for
      *      RWStore transaction service and recycler)
      */
-    private static final Logger txLog = Logger.getLogger("com.bigdata.txLog");
+    private static final Logger txLog = LogManager.getLogger("com.bigdata.txLog");
 
     /**
      * Options understood by the {@link RWStore}.

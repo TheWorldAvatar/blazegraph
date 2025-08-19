@@ -3,7 +3,8 @@ package com.bigdata.rdf.inf;
 import java.util.Properties;
 import java.util.Set;
 import java.util.TreeSet;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import com.bigdata.rdf.internal.IV;
 import com.bigdata.rdf.spo.ISPO;
 import com.bigdata.rdf.store.AbstractTripleStore;
@@ -12,7 +13,7 @@ import com.bigdata.striterator.IChunkedOrderedIterator;
 
 public abstract class BackchainOwlSameAsIterator implements IChunkedOrderedIterator<ISPO> {
     
-    protected final static Logger log = Logger.getLogger(BackchainOwlSameAsIterator.class);
+    protected final static Logger log = LogManager.getLogger(BackchainOwlSameAsIterator.class);
     
     /**
      * The database.

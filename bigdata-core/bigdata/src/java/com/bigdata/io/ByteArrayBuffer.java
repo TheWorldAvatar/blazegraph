@@ -36,7 +36,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.ByteBuffer;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.util.BytesUtil;
 
@@ -72,8 +73,7 @@ import com.bigdata.util.BytesUtil;
 public class ByteArrayBuffer extends OutputStream implements IByteArrayBuffer,
         RepositionableStream, LongPacker.IByteBuffer {
 
-    private static final transient Logger log = Logger
-            .getLogger(ByteArrayBuffer.class);
+    private static final transient Logger log = LogManager.getLogger(ByteArrayBuffer.class);
 
     /**
      * The default capacity of the buffer.

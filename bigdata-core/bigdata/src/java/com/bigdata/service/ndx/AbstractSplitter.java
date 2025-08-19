@@ -31,7 +31,8 @@ package com.bigdata.service.ndx;
 import java.util.Arrays;
 import java.util.LinkedList;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.keys.KVO;
 import com.bigdata.mdi.IMetadataIndex;
@@ -49,7 +50,7 @@ import com.bigdata.util.BytesUtil;
  */
 abstract public class AbstractSplitter implements ISplitter {
 
-    protected static final transient Logger log = Logger.getLogger(AbstractSplitter.class);
+    protected static final transient Logger log = LogManager.getLogger(AbstractSplitter.class);
 
     /**
      * Return the {@link IMetadataIndex} that will be used to compute the

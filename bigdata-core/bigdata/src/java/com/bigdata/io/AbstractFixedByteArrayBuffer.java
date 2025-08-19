@@ -51,7 +51,7 @@ import com.bigdata.util.BytesUtil;
  */
 abstract public class AbstractFixedByteArrayBuffer implements IFixedDataRecord {
 
-//    protected static final Logger log = Logger.getLogger(AbstractFixedByteArrayBuffer.class);
+//    protected static final Logger log = LogManager.getLogger(AbstractFixedByteArrayBuffer.class);
 //    
 //    protected static final boolean INFO = log.isInfoEnabled();
 

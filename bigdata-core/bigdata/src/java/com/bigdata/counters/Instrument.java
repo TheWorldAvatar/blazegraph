@@ -30,7 +30,8 @@ package com.bigdata.counters;
 
 import java.util.concurrent.TimeUnit;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Abstract class for reporting instrumented values supporting some useful
@@ -41,7 +42,7 @@ import org.apache.log4j.Logger;
  */
 abstract public class Instrument<T> implements IInstrument<T> {
 
-    protected static Logger log = Logger.getLogger(Instrument.class);
+    protected static Logger log = LogManager.getLogger(Instrument.class);
     
     /** <code>N/A</code> */
     protected static final transient String NA = "N/A";

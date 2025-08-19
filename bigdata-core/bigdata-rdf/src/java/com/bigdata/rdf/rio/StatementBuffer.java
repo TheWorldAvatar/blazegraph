@@ -41,7 +41,8 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Future;
 import java.util.concurrent.FutureTask;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.BNode;
 import org.openrdf.model.Resource;
 import org.openrdf.model.Statement;
@@ -99,7 +100,7 @@ import com.bigdata.util.concurrent.LatchedExecutor;
  */
 public class StatementBuffer<S extends Statement> implements IStatementBuffer<S>, ICounterSetAccess {
 
-    final private static Logger log = Logger.getLogger(StatementBuffer.class);
+    final private static Logger log = LogManager.getLogger(StatementBuffer.class);
    
 //    final static private boolean INFO = log.isInfoEnabled();
     final static private boolean DEBUG = log.isDebugEnabled();

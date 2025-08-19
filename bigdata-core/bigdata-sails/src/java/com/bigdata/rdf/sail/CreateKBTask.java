@@ -31,7 +31,8 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.ha.HAGlue;
 import com.bigdata.ha.QuorumService;
@@ -61,8 +62,8 @@ import com.bigdata.util.InnerCause;
  */
 public class CreateKBTask extends AbstractApiTask<Void> {
 
-    private static final transient Logger log = Logger.getLogger(CreateKBTask.class);
-    private static final transient Logger txLog = Logger.getLogger("com.bigdata.txLog");
+    private static final transient Logger log = LogManager.getLogger(CreateKBTask.class);
+    private static final transient Logger txLog = LogManager.getLogger("com.bigdata.txLog");
     
     /**
      * The effective properties that will be used to create the namespace.

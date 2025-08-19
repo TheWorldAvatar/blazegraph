@@ -44,7 +44,8 @@ import java.util.concurrent.FutureTask;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.apache.http.entity.ByteArrayEntity;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.eclipse.jetty.client.HttpClient;
 import org.eclipse.jetty.client.HttpRequest;
 import org.eclipse.jetty.client.api.Request;
@@ -89,7 +90,7 @@ import com.bigdata.util.PropertyUtil;
  */
 public class RemoteRepositoryManager extends RemoteRepositoryBase implements AutoCloseable {
 
-    private static final transient Logger log = Logger.getLogger(RemoteRepositoryManager.class);
+    private static final transient Logger log = LogManager.getLogger(RemoteRepositoryManager.class);
 
     final static String EXCEPTION_MSG = "Class not found for service provider hook. " +
             "Blazegraph specific parser extensions will not be available.";

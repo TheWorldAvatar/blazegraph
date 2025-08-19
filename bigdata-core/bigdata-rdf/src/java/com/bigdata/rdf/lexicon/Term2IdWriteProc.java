@@ -32,7 +32,8 @@ import java.io.ObjectInput;
 import java.io.ObjectOutput;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.ICounter;
 import com.bigdata.btree.IIndex;
@@ -117,7 +118,7 @@ import com.bigdata.util.BytesUtil;
 public class Term2IdWriteProc extends AbstractKeyArrayIndexProcedure<Result> implements
         IParallelizableIndexProcedure<Result>, IMutableRelationIndexWriteProcedure<Result> {
     
-    private static final Logger log = Logger.getLogger(Term2IdWriteProc.class);
+    private static final Logger log = LogManager.getLogger(Term2IdWriteProc.class);
     
 //    static {
 //        if(DEBUG) {

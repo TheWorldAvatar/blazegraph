@@ -42,7 +42,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import static org.apache.commons.lang.StringEscapeUtils.escapeHtml;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.BNode;
 import org.openrdf.model.Graph;
 import org.openrdf.model.impl.LinkedHashModel;
@@ -90,7 +91,7 @@ public class MultiTenancyServlet extends BigdataRDFServlet {
      */
     private static final long serialVersionUID = 1L;
     
-    static private final transient Logger log = Logger.getLogger(MultiTenancyServlet.class); 
+    static private final transient Logger log = LogManager.getLogger(MultiTenancyServlet.class); 
 
     /**
      * URL query parameter used to override the servlet init parameter

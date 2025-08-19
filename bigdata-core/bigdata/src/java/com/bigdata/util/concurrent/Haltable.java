@@ -41,8 +41,9 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.engine.QueryTimeoutException;
 import com.bigdata.relation.accesspath.BufferClosedException;
@@ -69,8 +70,7 @@ import com.bigdata.util.InnerCause;
  */
 public class Haltable<V> implements IHaltable<V> {
 
-    private final transient static Logger log = Logger
-            .getLogger(Haltable.class);
+    private final transient static Logger log = LogManager.getLogger(Haltable.class);
 
 //    /**
 //     * Exception used to indicate a {@link #cancel(boolean) cancelled}
@@ -469,7 +469,7 @@ public class Haltable<V> implements IHaltable<V> {
                 log.error(this + " : isFirstCause=" + isFirstCause + " : "
                         + cause, cause);
             }
-        } else if (log.isEnabledFor(Level.WARN)) {
+        } else if (log.isEnabled(Level.WARN)) {
             if (!deadline && error) {
                 log.warn(this + " : isFirstCause=" + isFirstCause + " : "
                         + cause, cause);

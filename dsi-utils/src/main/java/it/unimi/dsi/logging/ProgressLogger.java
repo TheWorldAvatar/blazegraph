@@ -23,8 +23,9 @@ package it.unimi.dsi.logging;
 
 import it.unimi.dsi.Util;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 
 /** Tunable progress logger.
@@ -137,7 +138,7 @@ public final class ProgressLogger {
 	 * to the {@linkplain Logger#getRootLogger() root logger}.
 	 */
 	public ProgressLogger() {
-		this( Logger.getRootLogger() );
+		this( LogManager.getRootLogger() );
 	}
 
 	/** Creates a new progress logger using <samp>items</samp> as items name and logging every {@link #DEFAULT_LOG_INTERVAL} milliseconds. 
@@ -207,7 +208,7 @@ public final class ProgressLogger {
 		final long currentTime = System.currentTimeMillis();
 		final long millisToEnd = Math.round( ( expectedUpdates - count ) * ( ( currentTime - start ) / ( count + 1.0 ) ) );
 		// Formatting is expensive, so we check for actual logging.
-		if ( logger.isEnabledFor( priority ) ) 
+		if ( logger.isEnabled( priority ) ) 
 			logger.log( priority, Util.format( count ) + " " + itemsName + ", " + 
 					millis2hms( millis() ) + ", " + Util.format( ( count * 1000.0 ) / ( currentTime - start ) ) + " " + itemsName + 
 					"/s"  + ( expectedUpdates > 0 ? "; " + Util.format( ( 100 * count ) / expectedUpdates ) + "% done, " + 

@@ -51,7 +51,8 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.IndexSegmentBuilder;
 import com.bigdata.counters.CounterSet;
@@ -110,7 +111,7 @@ import com.bigdata.util.ChecksumError;
  */
 abstract public class WriteCache implements IWriteCache {
 
-    protected static final Logger log = Logger.getLogger(WriteCache.class);
+    protected static final Logger log = LogManager.getLogger(WriteCache.class);
 
     /**
      * <code>true</code> iff per-record checksums are being maintained.

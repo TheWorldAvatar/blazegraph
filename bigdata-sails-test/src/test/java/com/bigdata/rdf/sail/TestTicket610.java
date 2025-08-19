@@ -26,7 +26,8 @@ package com.bigdata.rdf.sail;
 import java.util.Arrays;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Model;
 import org.openrdf.model.URI;
 import org.openrdf.model.impl.LinkedHashModel;
@@ -49,7 +50,7 @@ import com.bigdata.rdf.store.AbstractTripleStore;
  */
 public class TestTicket610 extends ProxyBigdataSailTestCase {
 
-    protected static final Logger log = Logger.getLogger(TestTicket610.class);
+    protected static final Logger log = LogManager.getLogger(TestTicket610.class);
 
     @Override
     public Properties getProperties() {

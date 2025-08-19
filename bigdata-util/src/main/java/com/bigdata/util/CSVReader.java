@@ -43,7 +43,8 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.TreeMap;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * A helper class to read CSV (comma separated value) and similar kinds of
@@ -69,7 +70,7 @@ import org.apache.log4j.Logger;
  */
 public class CSVReader implements Iterator<Map<String, Object>> {
 
-    private static final Logger log = Logger.getLogger(CSVReader.class);
+    private static final Logger log = LogManager.getLogger(CSVReader.class);
 
 //    protected static final boolean INFO = log.isInfoEnabled();
     

@@ -20,7 +20,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Statement;
 import org.openrdf.model.Value;
 import org.openrdf.model.ValueFactory;
@@ -79,7 +80,7 @@ import com.bigdata.rdf.graph.impl.BaseGASProgram;
  */
 public class PR extends BaseGASProgram<PR.VS, PR.ES, Double> {
 
-    private static final Logger log = Logger.getLogger(PR.class);
+    private static final Logger log = LogManager.getLogger(PR.class);
 
     // TOOD javadoc and config.
     protected static final int DEFAULT_LIMIT = 100;

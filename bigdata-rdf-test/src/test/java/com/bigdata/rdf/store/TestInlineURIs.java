@@ -30,7 +30,8 @@ import java.util.Properties;
 import java.util.StringTokenizer;
 import java.util.UUID;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.vocabulary.RDF;
 import org.openrdf.model.vocabulary.RDFS;
 
@@ -69,7 +70,7 @@ import com.bigdata.rdf.vocab.core.BigdataCoreVocabulary_v20151106;
  */
 public class TestInlineURIs extends AbstractTripleStoreTestCase {
 
-    protected static final Logger log = Logger.getLogger(TestInlineURIs.class);
+    protected static final Logger log = LogManager.getLogger(TestInlineURIs.class);
 
     /**
      * Please set your database properties here, except for your journal file,

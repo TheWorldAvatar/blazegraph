@@ -26,7 +26,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Statement;
 import org.openrdf.model.URI;
 import org.openrdf.model.Value;
@@ -58,7 +59,7 @@ import com.bigdata.rdf.internal.IV;
 public class PATHS extends BaseGASProgram<PATHS.VS, PATHS.ES, Void> implements
         IPredecessor<PATHS.VS, PATHS.ES, Void> {
 
-    private static final Logger log = Logger.getLogger(PATHS.class);
+    private static final Logger log = LogManager.getLogger(PATHS.class);
     
     public static class VS {
 

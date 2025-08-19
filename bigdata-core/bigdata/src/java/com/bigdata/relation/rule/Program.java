@@ -33,7 +33,8 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Mutable program may be used to create a variety of rule executions.
@@ -45,7 +46,7 @@ public class Program implements IProgram {
 
     private static final long serialVersionUID = 2774954504183880320L;
 
-    protected static final transient Logger log = Logger.getLogger(Program.class);
+    protected static final transient Logger log = LogManager.getLogger(Program.class);
 
     private final String name;
     

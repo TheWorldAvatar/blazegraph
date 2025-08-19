@@ -43,7 +43,8 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.Map.Entry;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.URI;
 import org.openrdf.model.Value;
 import org.openrdf.model.impl.URIImpl;
@@ -117,8 +118,7 @@ import com.bigdata.rdf.store.BD;
  */
 public class ASTDeferredIVResolutionInitializer extends ASTVisitorBase {
 
-    private final static Logger log = Logger
-            .getLogger(ASTDeferredIVResolutionInitializer.class);
+    private final static Logger log = LogManager.getLogger(ASTDeferredIVResolutionInitializer.class);
 
     private final static boolean INFO = log.isInfoEnabled();
 

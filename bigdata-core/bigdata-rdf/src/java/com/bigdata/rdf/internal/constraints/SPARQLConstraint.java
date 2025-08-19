@@ -26,7 +26,8 @@ package com.bigdata.rdf.internal.constraints;
 
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.IBindingSet;
@@ -50,8 +51,7 @@ public class SPARQLConstraint<X extends XSDBooleanIV> extends
 	 */
 	private static final long serialVersionUID = -5796492538735372727L;
 	
-    private static final transient Logger log = Logger
-            .getLogger(SPARQLConstraint.class);
+    private static final transient Logger log = LogManager.getLogger(SPARQLConstraint.class);
 
 	/**
 	 * The operand of this operator must evaluate to a boolean. If the operand

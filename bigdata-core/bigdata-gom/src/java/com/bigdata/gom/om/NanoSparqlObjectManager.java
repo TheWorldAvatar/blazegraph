@@ -28,7 +28,8 @@ package com.bigdata.gom.om;
 
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Statement;
 import org.openrdf.query.BindingSet;
 import org.openrdf.query.GraphQueryResult;
@@ -55,8 +56,7 @@ import cutthecrap.utils.striterators.ICloseableIterator;
  */
 public class NanoSparqlObjectManager extends ObjectMgrModel {
 
-    private static final Logger log = Logger
-            .getLogger(NanoSparqlObjectManager.class);
+    private static final Logger log = LogManager.getLogger(NanoSparqlObjectManager.class);
 
     private final RemoteRepository m_repo;
 	

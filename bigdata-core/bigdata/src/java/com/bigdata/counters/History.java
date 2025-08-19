@@ -4,7 +4,8 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 
 /**
@@ -19,7 +20,7 @@ import org.apache.log4j.Logger;
  */
 public class History<T> {
 
-    protected static final Logger log = Logger.getLogger(History.class);
+    protected static final Logger log = LogManager.getLogger(History.class);
     
     /**
      * The period in milliseconds between each sample in the buffer. The buffer

@@ -51,7 +51,8 @@ import java.util.concurrent.TimeoutException;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.locks.ReentrantLock;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import cern.colt.Arrays;
 
@@ -126,13 +127,13 @@ public class Journal extends AbstractJournal implements IConcurrencyManager,
     /**
      * Logger.
      */
-    static final Logger log = Logger.getLogger(Journal.class);
+    static final Logger log = LogManager.getLogger(Journal.class);
 
     /**
      * @see http://sourceforge.net/apps/trac/bigdata/ticket/443 (Logger for
      *      RWStore transaction service and recycler)
      */
-    private static final Logger txLog = Logger.getLogger("com.bigdata.txLog");
+    private static final Logger txLog = LogManager.getLogger("com.bigdata.txLog");
 
     /**
      * Object used to manage local transactions. 
@@ -4048,7 +4049,7 @@ public class Journal extends AbstractJournal implements IConcurrencyManager,
          * class the name uses a "$" delimiter (vs a ".") between the outer and
          * the inner class names.
          */
-        final private Logger log = Logger.getLogger(StartDeferredTasksTask.class);
+        final private Logger log = LogManager.getLogger(StartDeferredTasksTask.class);
 
         private StartDeferredTasksTask() {
         }

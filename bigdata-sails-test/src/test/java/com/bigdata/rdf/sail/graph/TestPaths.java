@@ -34,7 +34,8 @@ import java.util.List;
 import java.util.Properties;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.URI;
 import org.openrdf.model.impl.URIImpl;
 import org.openrdf.query.QueryLanguage;
@@ -54,7 +55,7 @@ import com.bigdata.rdf.vocab.VocabularyDecl;
 
 public class TestPaths extends ProxyBigdataSailTestCase {
 
-    protected static final Logger log = Logger.getLogger(TestPaths.class);
+    protected static final Logger log = LogManager.getLogger(TestPaths.class);
 
     protected static final boolean INFO = log.isInfoEnabled();
     

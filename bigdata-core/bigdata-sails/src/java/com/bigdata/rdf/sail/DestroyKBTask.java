@@ -26,7 +26,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 package com.bigdata.rdf.sail;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.journal.ITx;
 import com.bigdata.rdf.sail.BigdataSail.BigdataSailConnection;
@@ -48,9 +49,9 @@ import com.bigdata.rdf.task.AbstractApiTask;
  */
 public class DestroyKBTask extends AbstractApiTask<Void> {
 
-//   private static final transient Logger log = Logger.getLogger(DestroyKBTask.class);
+//   private static final transient Logger log = LogManager.getLogger(DestroyKBTask.class);
 
-   private static final transient Logger txLog = Logger.getLogger("com.bigdata.txLog");
+   private static final transient Logger txLog = LogManager.getLogger("com.bigdata.txLog");
 
    public DestroyKBTask(final String namespace) {
     

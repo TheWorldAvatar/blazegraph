@@ -9,7 +9,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.Constant;
@@ -55,8 +56,7 @@ import cutthecrap.utils.striterators.Striterator;
  */
 public class RDRHistoryServiceFactory implements CustomServiceFactory {
 
-    static private transient final Logger log = Logger
-            .getLogger(RDRHistoryServiceFactory.class);
+    static private transient final Logger log = LogManager.getLogger(RDRHistoryServiceFactory.class);
 
     private final BigdataNativeServiceOptions serviceOptions;
 

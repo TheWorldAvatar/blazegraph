@@ -6,7 +6,8 @@ import java.io.ObjectOutput;
 import java.util.Iterator;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.IIndex;
 import com.bigdata.btree.keys.IKeyBuilder;
@@ -27,7 +28,7 @@ public class AtomicRowDelete extends AbstractAtomicRowReadOrWrite {
      */
     private static final long serialVersionUID = 7481235291210326044L;
 
-    private static final Logger log = Logger.getLogger(AtomicRowDelete.class);
+    private static final Logger log = LogManager.getLogger(AtomicRowDelete.class);
 
     private long writeTime;
 

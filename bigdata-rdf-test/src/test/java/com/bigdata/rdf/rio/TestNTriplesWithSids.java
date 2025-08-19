@@ -4,7 +4,8 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.vocabulary.RDF;
 import org.openrdf.rio.RDFFormat;
 import org.openrdf.rio.RDFHandlerException;
@@ -28,7 +29,7 @@ import com.bigdata.rdf.store.DataLoader;
  */
 public class TestNTriplesWithSids extends AbstractTripleStoreTestCase {
 
-	protected static final transient Logger log = Logger.getLogger(TestNTriplesWithSids.class);
+	protected static final transient Logger log = LogManager.getLogger(TestNTriplesWithSids.class);
 	
 	public TestNTriplesWithSids() {
 	}

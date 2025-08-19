@@ -30,7 +30,8 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Literal;
 import org.openrdf.model.Resource;
 import org.openrdf.model.Statement;
@@ -65,7 +66,7 @@ import info.aduna.iteration.CloseableIteration;
  */
 public class TestSingleTailRule extends ProxyBigdataSailTestCase {
 
-    protected static final Logger log = Logger.getLogger(TestSingleTailRule.class);
+    protected static final Logger log = LogManager.getLogger(TestSingleTailRule.class);
     
     @Override
     public Properties getProperties() {

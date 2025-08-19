@@ -39,7 +39,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.proc.AbstractKeyArrayIndexProcedure;
 
@@ -51,7 +52,7 @@ import com.bigdata.btree.proc.AbstractKeyArrayIndexProcedure;
  */
 public class TPS implements ITPS, Externalizable, IRowStoreConstants {
 
-    protected static final transient Logger log = Logger.getLogger(TPS.class);
+    protected static final transient Logger log = LogManager.getLogger(TPS.class);
     
 //    protected static final transient boolean INFO = log.isInfoEnabled();
 //

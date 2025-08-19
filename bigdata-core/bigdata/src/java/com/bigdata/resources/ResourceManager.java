@@ -33,7 +33,8 @@ import java.util.NoSuchElementException;
 import java.util.Properties;
 import java.util.TreeMap;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.IndexSegmentBuilder;
 import com.bigdata.cache.ICacheEntry;
@@ -90,7 +91,7 @@ abstract public class ResourceManager extends OverflowManager implements
     /**
      * Logger.
      */
-    protected static final Logger log = Logger.getLogger(ResourceManager.class);
+    protected static final Logger log = LogManager.getLogger(ResourceManager.class);
 
     /**
      * Interface defines and documents the counters and counter namespaces for

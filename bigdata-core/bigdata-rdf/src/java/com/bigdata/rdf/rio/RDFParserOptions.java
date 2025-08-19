@@ -30,7 +30,8 @@ package com.bigdata.rdf.rio;
 import java.io.Serializable;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.rio.RDFParser;
 import org.openrdf.rio.RDFParser.DatatypeHandling;
 import org.openrdf.rio.helpers.RDFParserBase;
@@ -48,7 +49,7 @@ import org.openrdf.rio.helpers.RDFParserBase;
  */
 public class RDFParserOptions implements Serializable, IRDFParserOptions {
 
-    private static final Logger log = Logger.getLogger(RDFParserOptions.class);
+    private static final Logger log = LogManager.getLogger(RDFParserOptions.class);
     
     /**
      * 

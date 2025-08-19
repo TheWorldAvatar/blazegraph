@@ -32,7 +32,8 @@ import java.util.Iterator;
 import java.util.Properties;
 import java.util.UUID;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.BNode;
 import org.openrdf.model.Literal;
 import org.openrdf.model.Resource;
@@ -85,7 +86,7 @@ import com.bigdata.striterator.ChunkedArrayIterator;
  */
 public class TestTripleStore extends AbstractTripleStoreTestCase {
 
-    private static final Logger log = Logger.getLogger(TestTripleStore.class);
+    private static final Logger log = LogManager.getLogger(TestTripleStore.class);
     
     /**
      * 

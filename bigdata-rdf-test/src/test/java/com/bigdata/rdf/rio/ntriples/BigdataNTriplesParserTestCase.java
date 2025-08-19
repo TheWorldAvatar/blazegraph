@@ -9,7 +9,8 @@ import java.io.InputStream;
 
 import junit.framework.TestCase2;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Statement;
 import org.openrdf.rio.RDFHandlerException;
 import org.openrdf.rio.RDFParseException;
@@ -42,7 +43,7 @@ public abstract class BigdataNTriplesParserTestCase extends TestCase2 {
 	 */
 	private static String NTRIPLES_TEST_FILE_WITH_REIFICATION = "test-reify.nt";
 
-	private static final transient Logger log = Logger.getLogger(BigdataNTriplesParserTestCase.class);
+	private static final transient Logger log = LogManager.getLogger(BigdataNTriplesParserTestCase.class);
 	
 	/*---------*
 	 * Methods *

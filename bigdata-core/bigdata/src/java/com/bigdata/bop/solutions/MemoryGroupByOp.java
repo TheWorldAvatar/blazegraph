@@ -36,7 +36,8 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.FutureTask;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.BOpContext;
@@ -75,8 +76,7 @@ public class MemoryGroupByOp extends GroupByOp {
      */
     private static final long serialVersionUID = 1L;
 
-	private static final transient Logger log = Logger
-			.getLogger(MemoryGroupByOp.class);
+	private static final transient Logger log = LogManager.getLogger(MemoryGroupByOp.class);
     
     public interface Annotations extends GroupByOp.Annotations,
             HashMapAnnotations {

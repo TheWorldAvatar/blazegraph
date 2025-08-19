@@ -3,7 +3,8 @@ package com.bigdata.search;
 import java.util.Arrays;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.ITupleSerializer;
 import com.bigdata.btree.keys.KV;
@@ -22,7 +23,7 @@ import com.bigdata.btree.proc.LongAggregator;
  */
 public class TokenBuffer<V extends Comparable<V>> {
 
-    final private static Logger log = Logger.getLogger(TokenBuffer.class);
+    final private static Logger log = LogManager.getLogger(TokenBuffer.class);
 
     /** The object on which the buffer will write when it overflows. */
     private FullTextIndex<V> textIndexer;

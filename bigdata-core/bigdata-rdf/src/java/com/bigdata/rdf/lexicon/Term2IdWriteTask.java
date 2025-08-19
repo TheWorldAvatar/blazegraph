@@ -28,7 +28,8 @@ import java.util.Arrays;
 import java.util.concurrent.Callable;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.IIndex;
 import com.bigdata.btree.keys.KVO;
@@ -48,8 +49,7 @@ import com.bigdata.service.ndx.pipeline.KVOList;
 public class Term2IdWriteTask implements
         Callable<KVO<BigdataValue>[]> {
 
-    private static transient final Logger log = Logger
-            .getLogger(Term2IdWriteTask.class);
+    private static transient final Logger log = LogManager.getLogger(Term2IdWriteTask.class);
 
 //    private final LexiconRelation r;
     private final IIndex termIdIndex;

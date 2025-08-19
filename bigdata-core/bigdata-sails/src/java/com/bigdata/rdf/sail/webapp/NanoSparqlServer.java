@@ -36,7 +36,8 @@ import java.util.concurrent.TimeoutException;
 
 import javax.servlet.ServletContextListener;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.eclipse.jetty.server.Connector;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
@@ -81,7 +82,7 @@ import com.bigdata.util.httpd.Config;
  */
 public class NanoSparqlServer {
     
-    static private final Logger log = Logger.getLogger(NanoSparqlServer.class);
+    static private final Logger log = LogManager.getLogger(NanoSparqlServer.class);
 
     public interface SystemProperties {
 

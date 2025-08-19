@@ -39,7 +39,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Resource;
 import org.openrdf.model.Statement;
 import org.openrdf.model.URI;
@@ -68,7 +69,7 @@ import cutthecrap.utils.striterators.ICloseableIterator;
  */
 public abstract class ObjectMgrModel implements IObjectManager {
 
-    private static final Logger log = Logger.getLogger(ObjectMgrModel.class);
+    private static final Logger log = LogManager.getLogger(ObjectMgrModel.class);
 
     /**
      * The {@link UUID} for this object manager instance.

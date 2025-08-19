@@ -28,7 +28,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 package com.bigdata.bop.joinGraph;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.IPredicate;
 import com.bigdata.relation.IRelation;
@@ -55,8 +56,7 @@ import com.bigdata.relation.rule.eval.IJoinNexus;
  */
 public class DefaultRangeCountFactory implements IRangeCountFactory {
 
-    protected static final transient Logger log = Logger
-            .getLogger(DefaultRangeCountFactory.class);
+    protected static final transient Logger log = LogManager.getLogger(DefaultRangeCountFactory.class);
     
     protected static final transient boolean DEBUG = log.isDebugEnabled();
     

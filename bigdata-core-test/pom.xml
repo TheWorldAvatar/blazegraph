@@ -296,9 +296,21 @@ See https://maven.apache.org/plugins/maven-jar-plugin/examples/create-test-jar.h
       <version>${icu.version}</version>
     </dependency>
     <dependency>
+      <!-- log4j is the primary logger for bigdata. -->
       <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-1.2-api</artifactId>
+      <artifactId>log4j-core</artifactId>
       <version>${log4j.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-api</artifactId>
+      <version>${log4j.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-jul</artifactId>
+      <version>${log4j.version}</version>
+      <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>

@@ -6,7 +6,8 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.eclipse.jetty.client.HttpClient;
 import org.openrdf.model.Literal;
 import org.openrdf.model.Resource;
@@ -53,8 +54,7 @@ import cutthecrap.utils.striterators.ICloseableIterator;
  */
 public class Example2 implements Callable<Void> {
 
-    private static final transient Logger log = Logger
-            .getLogger(Example2.class);
+    private static final transient Logger log = LogManager.getLogger(Example2.class);
 
     private final IObjectManager om;
     

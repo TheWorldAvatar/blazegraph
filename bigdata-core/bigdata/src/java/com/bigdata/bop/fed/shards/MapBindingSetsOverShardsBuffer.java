@@ -62,7 +62,7 @@ import com.bigdata.striterator.IKeyOrder;
 public abstract class MapBindingSetsOverShardsBuffer<E extends IBindingSet, F>
         extends AbstractUnsynchronizedArrayBuffer<E> {
 
-//    static transient private final Logger log = Logger.getLogger(MapBindingSetsOverShardsBuffer.class);
+//    static transient private final Logger log = LogManager.getLogger(MapBindingSetsOverShardsBuffer.class);
     
     protected final AbstractScaleOutFederation<?> fed;
     

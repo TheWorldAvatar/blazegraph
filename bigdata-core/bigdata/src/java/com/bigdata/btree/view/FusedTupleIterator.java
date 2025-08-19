@@ -26,8 +26,9 @@ package com.bigdata.btree.view;
 
 import java.util.NoSuchElementException;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.DelegateTuple;
 import com.bigdata.btree.IRangeQuery;
@@ -48,19 +49,17 @@ import com.bigdata.util.BytesUtil;
 public class FusedTupleIterator<I extends ITupleIterator<E>, E> implements
         ITupleIterator<E> {
 
-    protected static final Logger log = Logger.getLogger(FusedTupleIterator.class);
+    protected static final Logger log = LogManager.getLogger(FusedTupleIterator.class);
 
     /**
      * True iff the {@link #log} level is INFO or less.
      */
-    final protected boolean INFO = log.getEffectiveLevel().toInt() <= Level.INFO
-            .toInt();
+    final protected boolean INFO = log.getLevel().isMoreSpecificThan(Level.INFO);
 
     /**
      * True iff the {@link #log} level is DEBUG or less.
      */
-    final protected boolean DEBUG = log.getEffectiveLevel().toInt() <= Level.DEBUG
-            .toInt();
+    final protected boolean DEBUG = log.getLevel().isMoreSpecificThan(Level.DEBUG);
 
     /**
      * The flags specified to the ctor.

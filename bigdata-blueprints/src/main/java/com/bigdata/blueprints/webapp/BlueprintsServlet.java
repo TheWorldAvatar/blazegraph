@@ -29,7 +29,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.blueprints.BigdataGraphBulkLoad;
 import com.bigdata.journal.ITx;
@@ -50,7 +51,7 @@ public class BlueprintsServlet extends BlueprintsServletProxy {
      */
     private static final long serialVersionUID = 1L;
     
-    static private final transient Logger log = Logger.getLogger(BlueprintsServlet.class); 
+    static private final transient Logger log = LogManager.getLogger(BlueprintsServlet.class); 
 
     static public final List<String> mimeTypes = Arrays.asList(new String[] {
         "application/graphml+xml"    

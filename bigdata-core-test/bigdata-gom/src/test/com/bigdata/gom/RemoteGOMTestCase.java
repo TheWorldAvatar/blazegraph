@@ -40,7 +40,8 @@ import junit.extensions.proxy.ProxyTestSuite;
 import junit.framework.Test;
 import junit.framework.TestCase;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.eclipse.jetty.client.HttpClient;
 import org.eclipse.jetty.server.Server;
 import org.openrdf.model.ValueFactory;
@@ -74,7 +75,7 @@ import com.bigdata.util.config.NicUtil;
  */
 public class RemoteGOMTestCase extends TestCase implements IGOMProxy  {
 
-    private static final Logger log = Logger.getLogger(RemoteGOMTestCase.class);
+    private static final Logger log = LogManager.getLogger(RemoteGOMTestCase.class);
 
     protected Server m_server;
 

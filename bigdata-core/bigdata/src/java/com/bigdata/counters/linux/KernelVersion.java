@@ -8,7 +8,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.system.SystemUtil;
 
 /**
@@ -25,7 +26,7 @@ import org.apache.system.SystemUtil;
  */
 public class KernelVersion {
     
-    static private final Logger log = Logger.getLogger(KernelVersion.class);
+    static private final Logger log = LogManager.getLogger(KernelVersion.class);
 
     public final int version;
     public final int major;

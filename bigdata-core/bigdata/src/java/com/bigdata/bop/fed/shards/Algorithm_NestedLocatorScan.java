@@ -3,7 +3,8 @@ package com.bigdata.bop.fed.shards;
 import java.util.Arrays;
 import java.util.Iterator;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.IBindingSet;
 import com.bigdata.mdi.IMetadataIndex;
@@ -23,8 +24,7 @@ import com.bigdata.util.BytesUtil;
 class Algorithm_NestedLocatorScan<E extends IBindingSet, F> implements
         IShardMapper<E, F> {
 
-    static transient private final Logger log = Logger
-            .getLogger(Algorithm_NestedLocatorScan.class);
+    static transient private final Logger log = LogManager.getLogger(Algorithm_NestedLocatorScan.class);
 
     private final MapBindingSetsOverShardsBuffer<E, F> op;
 

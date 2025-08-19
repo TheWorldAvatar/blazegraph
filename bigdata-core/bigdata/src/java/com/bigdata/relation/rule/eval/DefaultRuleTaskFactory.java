@@ -5,7 +5,8 @@ import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.IBindingSet;
 import com.bigdata.journal.IIndexManager;
@@ -25,7 +26,7 @@ import com.bigdata.service.IBigdataFederation;
  */
 public class DefaultRuleTaskFactory implements IRuleTaskFactory, Externalizable {
 
-    static protected final Logger log = Logger.getLogger(DefaultRuleTaskFactory.class);
+    static protected final Logger log = LogManager.getLogger(DefaultRuleTaskFactory.class);
     
     /**
      * 

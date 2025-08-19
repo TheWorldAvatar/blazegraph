@@ -47,7 +47,8 @@ import java.util.regex.Pattern;
 
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.xml.sax.SAXException;
 
 import com.bigdata.counters.CounterSet;
@@ -79,7 +80,7 @@ import com.bigdata.util.concurrent.IQueueCounters.IThreadPoolExecutorTaskCounter
  */
 public class QueryUtil {
 
-    protected static final Logger log = Logger.getLogger(QueryUtil.class);
+    protected static final Logger log = LogManager.getLogger(QueryUtil.class);
 
     /**
      * Return the data captured by {@link Pattern} from the path of the

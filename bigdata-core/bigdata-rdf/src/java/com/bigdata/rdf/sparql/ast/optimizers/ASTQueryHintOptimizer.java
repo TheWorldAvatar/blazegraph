@@ -33,7 +33,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Literal;
 import org.openrdf.model.URI;
 
@@ -111,8 +112,7 @@ import com.bigdata.rdf.sparql.ast.service.ServiceNode;
  */
 public class ASTQueryHintOptimizer implements IASTOptimizer {
 
-    private static final Logger log = Logger
-            .getLogger(ASTQueryHintOptimizer.class);
+    private static final Logger log = LogManager.getLogger(ASTQueryHintOptimizer.class);
     
     @SuppressWarnings("unchecked")
     @Override

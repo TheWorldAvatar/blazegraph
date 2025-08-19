@@ -29,7 +29,8 @@ import java.util.Map;
 import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.BOpContext;
@@ -63,7 +64,7 @@ public class InlineMaterializeOp<E> extends PipelineOp {
 	 */
 	private static final long serialVersionUID = 3371029059242171846L;
 	
-	private static final transient Logger log = Logger.getLogger(InlineMaterializeOp.class);
+	private static final transient Logger log = LogManager.getLogger(InlineMaterializeOp.class);
 	
 
 	public interface Annotations extends PipelineOp.Annotations {

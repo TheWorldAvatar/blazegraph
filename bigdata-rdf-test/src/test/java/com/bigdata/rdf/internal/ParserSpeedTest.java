@@ -13,7 +13,8 @@ import java.util.concurrent.FutureTask;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.zip.GZIPInputStream;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Statement;
 import org.openrdf.model.ValueFactory;
 import org.openrdf.model.impl.ValueFactoryImpl;
@@ -37,7 +38,7 @@ import com.bigdata.Banner;
  */
 public class ParserSpeedTest {
 
-	private final static Logger log = Logger.getLogger(ParserSpeedTest.class);
+	private final static Logger log = LogManager.getLogger(ParserSpeedTest.class);
 	
 	/**
 	 * Thread pool used to run the parser.

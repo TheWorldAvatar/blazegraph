@@ -35,7 +35,8 @@ import java.io.ObjectOutput;
 import java.io.OutputStream;
 import java.nio.ByteBuffer;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 
 /**
@@ -46,7 +47,7 @@ import org.apache.log4j.Logger;
  */
 public class NOPRecordCompressor implements IRecordCompressor, Externalizable {
 	
-    protected static final Logger log = Logger.getLogger(CompressorRegistry.class);
+    protected static final Logger log = LogManager.getLogger(CompressorRegistry.class);
 
     /**
      * 

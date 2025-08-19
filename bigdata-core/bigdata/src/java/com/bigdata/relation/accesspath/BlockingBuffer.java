@@ -42,7 +42,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.locks.ReentrantLock;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import cern.colt.Arrays;
 
@@ -96,7 +97,7 @@ public class BlockingBuffer<E> implements IBlockingBuffer<E> {
      * those log messages will be include stack traces which can help to
      * identify the the consumer or producer.
      */
-    protected static final Logger log = Logger.getLogger(BlockingBuffer.class);
+    protected static final Logger log = LogManager.getLogger(BlockingBuffer.class);
     
     /**
      * The initial delay before we will log a warning for {@link #add(Object)}

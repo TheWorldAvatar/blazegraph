@@ -85,7 +85,7 @@ import cutthecrap.utils.striterators.ICloseableIterator;
 public class VariableUnificationOp extends PipelineOp {
 
 //   private final static Logger log = 
-//      Logger.getLogger(VariableUnificationOp.class);
+//      LogManager.getLogger(VariableUnificationOp.class);
 
    private static final long serialVersionUID = 1L;
 

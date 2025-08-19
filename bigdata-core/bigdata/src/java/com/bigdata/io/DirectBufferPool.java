@@ -12,7 +12,8 @@ import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.counters.CAT;
 import com.bigdata.counters.CounterSet;
@@ -58,8 +59,7 @@ import com.bigdata.util.Bytes;
  */
 public class DirectBufferPool {
 
-    private static final Logger log = Logger
-            .getLogger(DirectBufferPool.class);
+    private static final Logger log = LogManager.getLogger(DirectBufferPool.class);
 
     /**
      * Object tracking state for allocated buffer instances. This is used to

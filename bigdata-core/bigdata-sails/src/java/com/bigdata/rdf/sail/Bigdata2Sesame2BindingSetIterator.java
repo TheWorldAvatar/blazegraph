@@ -29,7 +29,8 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.query.Binding;
 import org.openrdf.query.BindingSet;
 import org.openrdf.query.QueryEvaluationException;
@@ -61,8 +62,7 @@ import cutthecrap.utils.striterators.ICloseableIterator;
 public class Bigdata2Sesame2BindingSetIterator implements
         CloseableIteration<BindingSet, QueryEvaluationException> {
 
-    final protected static Logger log = Logger
-            .getLogger(Bigdata2Sesame2BindingSetIterator.class);
+    final protected static Logger log = LogManager.getLogger(Bigdata2Sesame2BindingSetIterator.class);
 
     /**
      * The source iterator (will be closed when this iterator is closed).

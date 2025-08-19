@@ -54,7 +54,8 @@ import javax.xml.parsers.SAXParserFactory;
 
 import junit.framework.TestCase2;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.system.SystemUtil;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
@@ -78,7 +79,7 @@ public class ExperimentDriver {
     /**
      * Logger.
      */
-    protected static final Logger log = Logger.getLogger(ExperimentDriver.class);
+    protected static final Logger log = LogManager.getLogger(ExperimentDriver.class);
     
     protected static final boolean INFO = log.isInfoEnabled();
 

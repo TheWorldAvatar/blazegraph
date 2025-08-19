@@ -32,7 +32,8 @@ import java.io.StringReader;
 import java.util.Set;
 import java.util.regex.Pattern;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.TokenFilter;
 import org.apache.lucene.analysis.TokenStream;
@@ -108,7 +109,7 @@ import org.apache.lucene.util.Version;
  *
  */
 public class ConfigurableAnalyzerFactory implements IAnalyzerFactory {
-	final private static transient Logger log = Logger.getLogger(ConfigurableAnalyzerFactory.class);
+	final private static transient Logger log = LogManager.getLogger(ConfigurableAnalyzerFactory.class);
 
 	/**
      * Options understood by the {@link ConfigurableAnalyzerFactory}.

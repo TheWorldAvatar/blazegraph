@@ -30,8 +30,9 @@ package com.bigdata.resources;
 
 import java.text.NumberFormat;
 
-import org.apache.log4j.Logger;
-import org.apache.log4j.MDC;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.ThreadContext;
 
 import com.bigdata.btree.AbstractBTree;
 import com.bigdata.btree.IndexSegment;
@@ -78,7 +79,7 @@ import com.bigdata.journal.TimestampUtility;
  * focused, which is fine. We also have the {@link CounterSet}s which allow us
  * to report statistics regarding classes of events.
  * 
- * @todo use {@link MDC} to put metadata into the logging context {thread, host,
+ * @todo use {@link ThreadContext} to put metadata into the logging context {thread, host,
  *       dataService, global index name, local index name (includes the index
  *       partition), etc}.
  * 
@@ -93,7 +94,7 @@ public class ResourceEvents {
      *       discovered service in order to aggregate results from multiple
      *       hosts in a scale-out solution.
      */
-    private static final Logger log = Logger.getLogger(ResourceEvents.class);
+    private static final Logger log = LogManager.getLogger(ResourceEvents.class);
 
 //    /**
 //     * True iff the {@link #log} level is DEBUG or less.

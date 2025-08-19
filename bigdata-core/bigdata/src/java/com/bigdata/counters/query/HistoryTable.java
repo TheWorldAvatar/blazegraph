@@ -2,7 +2,8 @@ package com.bigdata.counters.query;
 
 import java.util.Arrays;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.counters.HistoryInstrument;
 import com.bigdata.counters.ICounter;
@@ -23,7 +24,7 @@ import com.bigdata.counters.History.SampleIterator;
  */
 public class HistoryTable {
 
-    protected static final Logger log = Logger.getLogger(HistoryTable.class);
+    protected static final Logger log = LogManager.getLogger(HistoryTable.class);
     
     /**
      * The selected counters.

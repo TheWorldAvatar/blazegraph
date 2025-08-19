@@ -44,7 +44,8 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.zip.GZIPOutputStream;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Resource;
 import org.openrdf.model.Statement;
 import org.openrdf.rio.RDFFormat;
@@ -77,7 +78,7 @@ import info.aduna.iteration.CloseableIteration;
  */
 public class ExportKB {
 
-    private static final Logger log = Logger.getLogger(ExportKB.class);
+    private static final Logger log = LogManager.getLogger(ExportKB.class);
 
     /**
      * The connection that will be used to export the data.

@@ -35,7 +35,8 @@ import java.util.Vector;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.BTree;
 import com.bigdata.btree.Checkpoint;
@@ -53,15 +54,15 @@ import com.bigdata.btree.keys.KeyBuilder;
 import com.bigdata.counters.CounterSet;
 import com.bigdata.counters.DefaultInstrumentFactory;
 import com.bigdata.counters.History;
+import com.bigdata.counters.History.SampleIterator;
 import com.bigdata.counters.HistoryInstrument;
 import com.bigdata.counters.ICounter;
 import com.bigdata.counters.ICounterNode;
 import com.bigdata.counters.ICounterSet;
+import com.bigdata.counters.ICounterSet.IInstrumentFactory;
 import com.bigdata.counters.IHistoryEntry;
 import com.bigdata.counters.IInstrument;
 import com.bigdata.counters.PeriodEnum;
-import com.bigdata.counters.History.SampleIterator;
-import com.bigdata.counters.ICounterSet.IInstrumentFactory;
 import com.bigdata.io.SerializerUtil;
 import com.bigdata.rawstore.IRawStore;
 import com.bigdata.sparse.SparseRowStore;
@@ -122,9 +123,8 @@ import com.bigdata.util.Bytes;
  */
 public class CounterSetBTree extends BTree {
 
-    protected static transient final Logger log = Logger
-            .getLogger(CounterSetBTree.class);
-    
+    protected static transient final Logger log = LogManager.getLogger(CounterSetBTree.class);
+
     /**
      * @param store
      * @param checkpoint

@@ -132,7 +132,7 @@ import com.bigdata.util.ClassPathUtil;
  */
 public class DefaultOptimizerList extends ASTOptimizerList {
 
-//    private static final Logger log = Logger.getLogger(DefaultOptimizerList.class);
+//    private static final Logger log = LogManager.getLogger(DefaultOptimizerList.class);
 
     /**
      * 

@@ -26,7 +26,8 @@ package com.bigdata.rdf.internal.constraints;
 
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Literal;
 import org.openrdf.query.algebra.Compare.CompareOp;
 import org.openrdf.query.algebra.evaluation.ValueExprEvaluationException;
@@ -64,8 +65,7 @@ public class CompareBOp extends XSDBooleanIVValueExpression
 	 */
 	private static final long serialVersionUID = 5661497748051783499L;
 	
-    private static final transient Logger log = Logger
-            .getLogger(CompareBOp.class);
+    private static final transient Logger log = LogManager.getLogger(CompareBOp.class);
 	
     public interface Annotations extends XSDBooleanIVValueExpression.Annotations {
 

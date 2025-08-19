@@ -42,7 +42,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.atomic.AtomicLong;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.BOpContext;
@@ -113,8 +114,7 @@ import cutthecrap.utils.striterators.ICloseableIterator;
 public class PipelineJoin<E> extends PipelineOp implements
 		IShardwisePipelineOp<E> {
 
-	static private final transient Logger log = Logger
-			.getLogger(PipelineJoin.class);
+	static private final transient Logger log = LogManager.getLogger(PipelineJoin.class);
 
 	/**
      * 

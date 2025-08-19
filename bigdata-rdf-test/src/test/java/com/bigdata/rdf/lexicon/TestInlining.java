@@ -39,7 +39,8 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.UUID;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.URI;
 
 import com.bigdata.rdf.axioms.NoAxioms;
@@ -70,8 +71,7 @@ import com.bigdata.rdf.vocab.VocabularyDecl;
  */
 public class TestInlining extends AbstractTripleStoreTestCase {
 
-	private static final transient Logger log = Logger
-			.getLogger(TestInlining.class);
+	private static final transient Logger log = LogManager.getLogger(TestInlining.class);
 	
     /**
      * 

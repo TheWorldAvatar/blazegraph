@@ -49,7 +49,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.regex.Pattern;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Graph;
 import org.openrdf.model.impl.GraphImpl;
 import org.openrdf.query.BindingSet;
@@ -79,7 +80,7 @@ import com.bigdata.rdf.store.AbstractTripleStore.Options;
  */
 public class NanoSparqlClient {
 
-	private static final Logger log = Logger.getLogger(NanoSparqlClient.class);
+	private static final Logger log = LogManager.getLogger(NanoSparqlClient.class);
 	
 	/**
 	 * A SPARQL results set in XML.

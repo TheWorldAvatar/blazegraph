@@ -49,7 +49,8 @@ import java.util.Set;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.ZipInputStream;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.rio.RDFFormat;
 import org.openrdf.rio.RDFParseException;
 
@@ -92,7 +93,7 @@ public class DataLoader {
     /**
      * Logger.
      */
-    protected static final transient Logger log = Logger.getLogger(DataLoader.class);
+    protected static final transient Logger log = LogManager.getLogger(DataLoader.class);
 
     private final RDFParserOptions parserOptions;
     

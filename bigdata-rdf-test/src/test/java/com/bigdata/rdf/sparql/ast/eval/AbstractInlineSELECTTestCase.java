@@ -76,7 +76,8 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Resource;
 import org.openrdf.model.Statement;
 import org.openrdf.model.URI;
@@ -123,8 +124,7 @@ import com.bigdata.rdf.sparql.ast.QueryRoot;
 public abstract class AbstractInlineSELECTTestCase extends AbstractDataAndSPARQLTestCase
         {
 
-    private static final Logger log = Logger
-            .getLogger(AbstractInlineSELECTTestCase.class);
+    private static final Logger log = LogManager.getLogger(AbstractInlineSELECTTestCase.class);
     
     private final Map<String,String> prefixes = new HashMap<String,String>();
     /**

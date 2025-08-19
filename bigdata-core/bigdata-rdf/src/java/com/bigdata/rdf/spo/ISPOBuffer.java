@@ -28,8 +28,9 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 package com.bigdata.rdf.spo;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.relation.accesspath.IBuffer;
 
@@ -45,19 +46,17 @@ import com.bigdata.relation.accesspath.IBuffer;
  */
 public interface ISPOBuffer {
 
-    final public Logger log = Logger.getLogger(ISPOBuffer.class);
+    final public Logger log = LogManager.getLogger(ISPOBuffer.class);
 
     /**
      * True iff the {@link #log} level is INFO or less.
      */
-    final public boolean INFO = log.getEffectiveLevel().toInt() <= Level.INFO
-            .toInt();
+    final public boolean INFO = log.getLevel().isMoreSpecificThan(Level.INFO);
 
     /**
      * True iff the {@link #log} level is DEBUG or less.
      */
-    final public boolean DEBUG = log.getEffectiveLevel().toInt() <= Level.DEBUG
-            .toInt();
+    final public boolean DEBUG = log.getLevel().isMoreSpecificThan(Level.DEBUG);
 
     /**
      * The #of statements currently in the buffer.

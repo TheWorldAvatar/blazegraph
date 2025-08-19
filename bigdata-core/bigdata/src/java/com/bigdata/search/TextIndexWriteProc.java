@@ -28,7 +28,8 @@ import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.IIndex;
 import com.bigdata.btree.proc.AbstractKeyArrayIndexProcedure;
@@ -54,7 +55,7 @@ public class TextIndexWriteProc extends AbstractKeyArrayIndexProcedure<Long>
      */
     private static final long serialVersionUID = 9013449121306914750L;
 
-    private static transient final Logger log = Logger.getLogger(TextIndexWriteProc.class);
+    private static transient final Logger log = LogManager.getLogger(TextIndexWriteProc.class);
     
     public static class IndexWriteProcConstructor extends
             AbstractKeyArrayIndexProcedureConstructor<TextIndexWriteProc> {

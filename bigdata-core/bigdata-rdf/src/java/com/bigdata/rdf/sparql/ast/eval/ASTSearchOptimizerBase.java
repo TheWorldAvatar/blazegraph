@@ -31,7 +31,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.URI;
 import org.openrdf.query.algebra.StatementPattern.Scope;
 
@@ -80,7 +81,7 @@ import com.bigdata.service.fts.FTS;
 public abstract class ASTSearchOptimizerBase implements IASTOptimizer {
 
     private static final Logger log = 
-       Logger.getLogger(ASTSearchOptimizerBase.class);
+       LogManager.getLogger(ASTSearchOptimizerBase.class);
     
     
     /**

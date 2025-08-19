@@ -35,10 +35,11 @@ import java.util.Properties;
 import java.util.Random;
 import java.util.TreeMap;
 
-import junit.util.PropertyUtil;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import junit.util.PropertyUtil;
 
 /**
  * Extension of {@link TestCase} that supports logging, loading test
@@ -71,7 +72,7 @@ abstract public class TestCase2
      * "junit.framework.Test".
      */
 
-    protected static final Logger log = Logger.getLogger
+    protected static final Logger log = LogManager.getLogger
 	( junit.framework.Test.class
 	  );
 
@@ -2197,7 +2198,7 @@ abstract public class TestCase2
     static final public boolean isDEBUG( Logger log )
     {
     
-        return log.getEffectiveLevel().toInt() <= Level.DEBUG.toInt();
+        return log.getLevel().isMoreSpecificThan(Level.DEBUG);
 
     }
     
@@ -2216,7 +2217,7 @@ abstract public class TestCase2
     static final public boolean isINFO( Logger log )
     {
     
-        return log.getEffectiveLevel().toInt() <= Level.INFO.toInt();
+        return log.getLevel().isMoreSpecificThan(Level.INFO);
 
     }
 

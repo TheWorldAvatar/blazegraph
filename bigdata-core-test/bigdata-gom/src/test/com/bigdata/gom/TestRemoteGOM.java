@@ -41,7 +41,8 @@ import java.util.Properties;
 
 import junit.framework.TestCase;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.eclipse.jetty.client.HttpClient;
 import org.eclipse.jetty.server.Server;
 import org.openrdf.model.Resource;
@@ -80,7 +81,7 @@ import com.bigdata.util.config.NicUtil;
  */
 public class TestRemoteGOM extends TestCase {
 
-    private static final Logger log = Logger.getLogger(TestRemoteGOM.class);
+    private static final Logger log = LogManager.getLogger(TestRemoteGOM.class);
 
 	private Server m_server;
 

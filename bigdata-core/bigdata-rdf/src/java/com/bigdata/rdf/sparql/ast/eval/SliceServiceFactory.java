@@ -35,7 +35,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.URI;
 import org.openrdf.model.impl.URIImpl;
 
@@ -101,8 +102,7 @@ import cutthecrap.utils.striterators.ICloseableIterator;
  */
 public class SliceServiceFactory extends AbstractServiceFactory {
 
-    private static final Logger log = Logger
-            .getLogger(SliceServiceFactory.class);
+    private static final Logger log = LogManager.getLogger(SliceServiceFactory.class);
 
     /**
      * The URI service key.

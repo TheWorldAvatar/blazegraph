@@ -4,7 +4,8 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.io.Serializable;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.rio.RDFFormat;
 
 import com.bigdata.rdf.ServiceProviderHook;
@@ -20,8 +21,7 @@ import com.bigdata.rdf.ServiceProviderHook;
  */
 public class RDFFilenameFilter implements FilenameFilter, Serializable {
 
-    final protected transient static Logger log = Logger
-            .getLogger(RDFFilenameFilter.class);
+    final protected transient static Logger log = LogManager.getLogger(RDFFilenameFilter.class);
 
     /**
      * 

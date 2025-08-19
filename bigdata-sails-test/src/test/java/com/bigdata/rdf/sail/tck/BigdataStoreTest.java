@@ -41,7 +41,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Resource;
 import org.openrdf.model.Statement;
 import org.openrdf.model.URI;
@@ -77,7 +78,7 @@ import com.bigdata.rdf.store.AbstractTripleStore;
  */
 public class BigdataStoreTest extends RDFStoreTest {
 
-    private static final Logger log = Logger.getLogger(BigdataStoreTest.class);
+    private static final Logger log = LogManager.getLogger(BigdataStoreTest.class);
  
 //    /**
 //     * Return a test suite using the {@link LocalTripleStore} and pipeline

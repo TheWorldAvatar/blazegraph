@@ -35,7 +35,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.ha.HAGlue;
 import com.bigdata.ha.IHAJournal;
@@ -59,7 +60,7 @@ import com.bigdata.concurrent.FutureTaskMon;
 abstract public class AbstractLBSPolicy implements IHALoadBalancerPolicy,
         QuorumListener, Serializable {
 
-    private static final Logger log = Logger.getLogger(AbstractLBSPolicy.class);
+    private static final Logger log = LogManager.getLogger(AbstractLBSPolicy.class);
 
     /**
      * 

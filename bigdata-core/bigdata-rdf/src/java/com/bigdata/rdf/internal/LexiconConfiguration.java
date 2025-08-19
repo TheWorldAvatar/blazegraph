@@ -40,7 +40,8 @@ import java.util.Set;
 import java.util.TimeZone;
 import java.util.UUID;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.BNode;
 import org.openrdf.model.Literal;
 import org.openrdf.model.URI;
@@ -94,7 +95,7 @@ public class LexiconConfiguration<V extends BigdataValue>
         implements ILexiconConfiguration<V> {
 
     private static final Logger log =
-        Logger.getLogger(LexiconConfiguration.class);
+        LogManager.getLogger(LexiconConfiguration.class);
 
     /**
 	 * The maximum character length of an RDF {@link Value} before it will be

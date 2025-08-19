@@ -26,7 +26,8 @@ package com.bigdata.rwstore;
 
 import java.util.ArrayList;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.io.writecache.WriteCacheService;
 import com.bigdata.rwstore.RWStore.AllocationStats;
@@ -47,7 +48,7 @@ import com.bigdata.rwstore.RWStore.AllocationStats;
  */
 public class AllocBlock {
 
-    private static final Logger log = Logger.getLogger(AllocBlock.class);
+    private static final Logger log = LogManager.getLogger(AllocBlock.class);
     // Profiling for BLZG-1667 indicated that checking logging level is more expensive than expected
     private static final boolean s_islogDebug = log.isDebugEnabled();
     private static final boolean s_islogTrace = log.isTraceEnabled();

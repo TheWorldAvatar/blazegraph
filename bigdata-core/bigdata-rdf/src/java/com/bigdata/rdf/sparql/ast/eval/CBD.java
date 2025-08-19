@@ -32,7 +32,8 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.query.BindingSet;
 import org.openrdf.query.QueryEvaluationException;
 import org.openrdf.query.algebra.evaluation.iterator.CollectionIteration;
@@ -70,7 +71,7 @@ import com.bigdata.rdf.store.AbstractTripleStore;
  */
 public class CBD {
 
-    private static final Logger log = Logger.getLogger(CBD.class);
+    private static final Logger log = LogManager.getLogger(CBD.class);
    
     /** The {@link AbstractTripleStore}. */
     private final AbstractTripleStore store;

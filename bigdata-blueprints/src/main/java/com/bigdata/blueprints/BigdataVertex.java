@@ -25,7 +25,8 @@ package com.bigdata.blueprints;
 import java.util.Arrays;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.URI;
 
 import com.tinkerpop.blueprints.Direction;
@@ -43,7 +44,7 @@ import com.tinkerpop.blueprints.util.DefaultVertexQuery;
  */
 public class BigdataVertex extends BigdataElement implements Vertex {
 
-    private static final transient Logger log = Logger.getLogger(BigdataVertex.class);
+    private static final transient Logger log = LogManager.getLogger(BigdataVertex.class);
     
 	public BigdataVertex(final URI uri, final BigdataGraph graph) {
 		super(uri, graph);

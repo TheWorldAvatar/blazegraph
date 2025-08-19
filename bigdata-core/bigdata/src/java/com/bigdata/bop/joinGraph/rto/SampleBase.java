@@ -29,7 +29,8 @@ package com.bigdata.bop.joinGraph.rto;
 
 import java.util.concurrent.atomic.AtomicReference;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.IBindingSet;
 import com.bigdata.bop.engine.IChunkMessage;
@@ -54,8 +55,7 @@ import com.bigdata.rwstore.sector.IMemoryManager;
  */
 public abstract class SampleBase {
 
-    private static final transient Logger log = Logger
-            .getLogger(SampleBase.class);
+    private static final transient Logger log = LogManager.getLogger(SampleBase.class);
 
 	/**
 	 * The total estimated cardinality of the underlying access path (for a

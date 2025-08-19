@@ -40,7 +40,8 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.BOpEvaluationContext;
@@ -110,8 +111,7 @@ import com.bigdata.util.NT;
  */
 public class AST2BOpRTO extends AST2BOpJoins {
 
-    public static final transient Logger log = Logger
-            .getLogger(AST2BOpRTO.class);
+    public static final transient Logger log = LogManager.getLogger(AST2BOpRTO.class);
 
     public interface Annotations extends AST2BOpJoins.Annotations {
         

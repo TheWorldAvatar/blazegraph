@@ -37,7 +37,8 @@ import java.util.concurrent.atomic.AtomicReference;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.journal.AbstractJournal.ISnapshotData;
 import com.bigdata.quorum.Quorum;
@@ -57,7 +58,7 @@ public class SnapshotTask implements Callable<ISnapshotResult> {
    private final Journal journal;
    private final ISnapshotFactory snapshotFactory;
    
-   protected static final Logger log = Logger.getLogger(SnapshotTask.class);
+   protected static final Logger log = LogManager.getLogger(SnapshotTask.class);
    
    public interface Options {
 	   

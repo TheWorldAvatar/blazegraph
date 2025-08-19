@@ -51,7 +51,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 import java.util.concurrent.locks.ReentrantLock;
 
-import org.apache.log4j.Level;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.core.config.Configurator;
 
 import com.bigdata.btree.BTree;
 import com.bigdata.btree.IIndex;
@@ -786,7 +787,7 @@ public class StressTestConcurrent extends
             throws IOException {
 
         // explicitly set the log level for the load balancer.
-        LoadBalancerService.log.setLevel(Level.INFO);
+        Configurator.setAllLevels(LoadBalancerService.log.getName(), Level.INFO);
 
         final AbstractEmbeddedLoadBalancerService lbs = ((AbstractEmbeddedLoadBalancerService) ((EmbeddedFederation<?>) fed)
                 .getLoadBalancerService());

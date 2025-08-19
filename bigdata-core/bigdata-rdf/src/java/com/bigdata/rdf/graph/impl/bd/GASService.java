@@ -32,7 +32,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Literal;
 import org.openrdf.model.URI;
 import org.openrdf.model.Value;
@@ -317,8 +318,7 @@ public class GASService extends CustomServiceFactoryBase {
         
     }
 
-    static private transient final Logger log = Logger
-            .getLogger(GASService.class);
+    static private transient final Logger log = LogManager.getLogger(GASService.class);
 
     /**
      * The list of all out variables.

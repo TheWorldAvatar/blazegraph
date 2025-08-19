@@ -4,7 +4,8 @@ import java.lang.ref.SoftReference;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.locks.ReentrantLock;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.BTree;
 import com.bigdata.btree.BTreeCounters;
@@ -33,7 +34,7 @@ import com.bigdata.resources.StoreManager.ManagedJournal;
  */
 class BTreeMetadata {
 
-    static protected final Logger log = Logger.getLogger(BTreeMetadata.class);
+    static protected final Logger log = LogManager.getLogger(BTreeMetadata.class);
     
     /**
      * The object which may be used to (re-)open the {@link BTree} and the index

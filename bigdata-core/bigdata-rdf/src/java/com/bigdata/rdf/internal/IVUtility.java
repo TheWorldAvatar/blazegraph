@@ -97,7 +97,7 @@ import com.bigdata.rdf.spo.SPOKeyOrder;
 @SuppressWarnings({"unchecked","rawtypes"})
 public class IVUtility {
 
-//    private static final transient Logger log = Logger.getLogger(IVUtility.class);
+//    private static final transient Logger log = LogManager.getLogger(IVUtility.class);
 
     /**
      * When <code>true</code>, we will pack term identifiers using

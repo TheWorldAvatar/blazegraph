@@ -29,7 +29,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.service.IServiceShutdown;
 import com.bigdata.util.Bytes;
@@ -127,7 +128,7 @@ public class NanoHTTPD implements IServiceShutdown
      * <li>TRACE is gruesome detail</li>
      * </ul>
      */
-    final static private Logger log = Logger.getLogger(NanoHTTPD.class);
+    final static private Logger log = LogManager.getLogger(NanoHTTPD.class);
 
     /** The server socket. */
     private final ServerSocket ss;

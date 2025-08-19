@@ -67,7 +67,8 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock.ReadLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock.WriteLock;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.BigdataStatics;
 import com.bigdata.btree.AbstractBTree;
@@ -260,18 +261,18 @@ public abstract class AbstractJournal implements IJournal/* , ITimestampService 
 	/**
 	 * Logger.
 	 */
-	private static final Logger log = Logger.getLogger(AbstractJournal.class);
+	private static final Logger log = LogManager.getLogger(AbstractJournal.class);
 
     /**
      * @see http://sourceforge.net/apps/trac/bigdata/ticket/443 (Logger for
      *      RWStore transaction service and recycler)
      */
-    private static final Logger txLog = Logger.getLogger("com.bigdata.txLog");
+    private static final Logger txLog = LogManager.getLogger("com.bigdata.txLog");
 
     /**
      * Logger for HA events.
      */
-    protected static final Logger haLog = Logger.getLogger("com.bigdata.haLog");
+    protected static final Logger haLog = LogManager.getLogger("com.bigdata.haLog");
 
     /**
 	 * The index of the root address containing the address of the persistent

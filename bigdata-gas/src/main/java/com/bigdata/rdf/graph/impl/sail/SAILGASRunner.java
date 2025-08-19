@@ -17,7 +17,8 @@ package com.bigdata.rdf.graph.impl.sail;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Resource;
 import org.openrdf.sail.Sail;
 import org.openrdf.sail.SailConnection;
@@ -37,7 +38,7 @@ import com.bigdata.rdf.graph.util.SailGraphLoader;
  */
 public class SAILGASRunner<VS, ES, ST> extends GASRunnerBase<VS, ES, ST> {
 
-    private static final Logger log = Logger.getLogger(SAILGASRunner.class);
+    private static final Logger log = LogManager.getLogger(SAILGASRunner.class);
 
     public SAILGASRunner(String[] args) throws ClassNotFoundException {
         super(args);

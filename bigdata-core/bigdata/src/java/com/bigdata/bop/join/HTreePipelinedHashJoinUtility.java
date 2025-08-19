@@ -37,7 +37,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.BOpContext;
 import com.bigdata.bop.Constant;
@@ -80,7 +81,7 @@ public class HTreePipelinedHashJoinUtility extends HTreeHashJoinUtility implemen
         super(mmgr, op, joinType);
     }
 
-   private static final Logger log = Logger.getLogger(HTreePipelinedHashJoinUtility.class);
+   private static final Logger log = LogManager.getLogger(HTreePipelinedHashJoinUtility.class);
 
    /**
     * The #of distinct projections from the given input bindings

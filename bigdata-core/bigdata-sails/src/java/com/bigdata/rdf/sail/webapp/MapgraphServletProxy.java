@@ -34,7 +34,8 @@ import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.util.ClassPathUtil;
 
@@ -42,7 +43,7 @@ public class MapgraphServletProxy extends BigdataRDFServlet {
 	
 	private static final String DEFAULT_PROVIDER = "com.blazegraph.gpu.webapp.MapgraphServlet";
 	
-    static private final transient Logger log = Logger.getLogger(MapgraphServletProxy.class);
+    static private final transient Logger log = LogManager.getLogger(MapgraphServletProxy.class);
 
 	/**
 	 * Flag to signify a mapgraph operation.

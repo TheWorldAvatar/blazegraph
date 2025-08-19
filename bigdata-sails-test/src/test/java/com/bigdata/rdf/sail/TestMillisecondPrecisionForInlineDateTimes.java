@@ -27,7 +27,8 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.vocabulary.RDF;
 import org.openrdf.model.vocabulary.RDFS;
 import org.openrdf.query.BindingSet;
@@ -70,8 +71,7 @@ import com.bigdata.rdf.vocab.NoVocabulary;
  */
 public class TestMillisecondPrecisionForInlineDateTimes extends QuadsTestCase {
 
-    private static final Logger log = Logger
-            .getLogger(TestMillisecondPrecisionForInlineDateTimes.class);
+    private static final Logger log = LogManager.getLogger(TestMillisecondPrecisionForInlineDateTimes.class);
 
     /**
      * Please set your database properties here, except for your journal file,

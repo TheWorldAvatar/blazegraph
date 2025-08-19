@@ -23,7 +23,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 package com.bigdata.rdf.internal;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.URI;
 import org.openrdf.model.impl.URIImpl;
 
@@ -41,7 +42,7 @@ import com.bigdata.rdf.vocab.Vocabulary;
  */
 public abstract class InlineURIHandler {
 
-	private static final Logger log = Logger.getLogger(InlineURIHandler.class);
+	private static final Logger log = LogManager.getLogger(InlineURIHandler.class);
 	
     /**
      * The namespace prefix.

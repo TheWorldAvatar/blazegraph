@@ -38,7 +38,7 @@ import com.bigdata.rdf.sail.remote.BigdataSailFactory;
  */
 public class BigdataGraphFactory  {
 
-//    private static final transient Logger log = Logger.getLogger(BigdataGraphFactory.class);
+//    private static final transient Logger log = LogManager.getLogger(BigdataGraphFactory.class);
 
    /**
     * Connect to a remote bigdata instance.

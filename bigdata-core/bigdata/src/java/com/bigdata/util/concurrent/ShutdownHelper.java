@@ -31,7 +31,8 @@ package com.bigdata.util.concurrent;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Helper class for normal shutdown of an {@link ExecutorService}. 
@@ -41,7 +42,7 @@ import org.apache.log4j.Logger;
  */
 public class ShutdownHelper {
     
-    static protected final Logger log = Logger.getLogger(ShutdownHelper.class);
+    static protected final Logger log = LogManager.getLogger(ShutdownHelper.class);
 
     /**
      * Elapsed nanos (updated each time in the loop until terminated).

@@ -32,7 +32,7 @@ import com.bigdata.service.IBigdataFederation;
  */
 public class BigdataBaseContext {
 
-//	static private final Logger log = Logger.getLogger(BigdataBaseContext.class); 
+//	static private final Logger log = LogManager.getLogger(BigdataBaseContext.class); 
 
 	private final IIndexManager m_indexManager;
 	

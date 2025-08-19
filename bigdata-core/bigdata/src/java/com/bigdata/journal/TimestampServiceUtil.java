@@ -30,7 +30,8 @@ package com.bigdata.journal;
 
 import java.io.IOException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Robust request for a timestamp from an {@link ITimestampService}.
@@ -40,7 +41,7 @@ import org.apache.log4j.Logger;
  */
 public class TimestampServiceUtil {
 
-    protected static Logger log = Logger.getLogger(TimestampServiceUtil.class);
+    protected static Logger log = LogManager.getLogger(TimestampServiceUtil.class);
     
     /**
      * Utility method retries several times if there is a problem before

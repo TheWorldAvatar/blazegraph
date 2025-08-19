@@ -26,7 +26,8 @@ import java.util.Collection;
 import java.util.Properties;
 import java.util.UUID;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.rdf.sail.BigdataSailRepositoryConnection;
 import com.bigdata.rdf.sail.model.RunningQuery;
@@ -56,7 +57,7 @@ import com.tinkerpop.blueprints.Features;
  */
 public class BigdataGraphClient extends BigdataGraph {
 	
-    private static final transient Logger log = Logger.getLogger(BigdataGraphClient.class);
+    private static final transient Logger log = LogManager.getLogger(BigdataGraphClient.class);
 
     private static final Properties props = new Properties();
 

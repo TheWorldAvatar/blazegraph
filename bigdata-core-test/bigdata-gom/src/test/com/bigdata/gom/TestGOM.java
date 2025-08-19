@@ -34,7 +34,8 @@ import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Resource;
 import org.openrdf.model.URI;
 import org.openrdf.model.ValueFactory;
@@ -56,7 +57,7 @@ import com.bigdata.gom.skin.GenericSkinRegistry;
  */
 public class TestGOM extends ProxyGOMTest {
 
-    private static final Logger log = Logger.getLogger(TestGOM.class);
+    private static final Logger log = LogManager.getLogger(TestGOM.class);
 
     /**
 	 * Simple test loads data from a file and navigates around

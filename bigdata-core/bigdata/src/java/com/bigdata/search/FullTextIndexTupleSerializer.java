@@ -31,7 +31,8 @@ import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.lucene.search.similarities.DefaultSimilarity;
 import org.apache.lucene.search.similarities.Similarity;
 
@@ -58,8 +59,7 @@ import com.bigdata.util.BytesUtil;
 public class FullTextIndexTupleSerializer<V extends Comparable<V>> extends
         DefaultTupleSerializer<ITermDocKey<V>, ITermDocVal> {
 
-    final private static transient Logger log = Logger
-            .getLogger(FullTextIndexTupleSerializer.class);
+    final private static transient Logger log = LogManager.getLogger(FullTextIndexTupleSerializer.class);
 
     private boolean fieldsEnabled;
 //    private boolean doublePrecision;

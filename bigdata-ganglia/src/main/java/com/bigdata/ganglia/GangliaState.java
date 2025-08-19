@@ -19,7 +19,8 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * The metadata and metric state for a ganglia service, including the metadata
@@ -28,7 +29,7 @@ import org.apache.log4j.Logger;
  */
 public class GangliaState implements IGangliaState {
 	
-	private static final Logger log = Logger.getLogger(GangliaState.class);
+	private static final Logger log = LogManager.getLogger(GangliaState.class);
 
 	/**
 	 * The name of this host.

@@ -3,7 +3,8 @@ package com.bigdata.rdf.sparql.ast.cache;
 import java.util.Arrays;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Graph;
 import org.openrdf.query.GraphQueryResult;
 
@@ -30,8 +31,7 @@ import com.bigdata.rdf.store.AbstractTripleStore;
  */
 public class DescribeCache implements IDescribeCache {
 
-    static private transient final Logger log = Logger
-            .getLogger(CacheConnectionImpl.class);
+    static private transient final Logger log = LogManager.getLogger(CacheConnectionImpl.class);
 
     /**
      * The cache. The keys are {@link IV}s. The values are the {@link Graph} s

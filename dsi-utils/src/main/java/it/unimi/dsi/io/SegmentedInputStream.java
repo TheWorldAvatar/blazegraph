@@ -31,7 +31,8 @@ import java.io.InputStream;
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /** Exhibits a single {@link InputStream} as a number of streams divided into {@link java.io.InputStream#reset() reset()}-separated
  * segments.
@@ -53,7 +54,7 @@ import org.apache.log4j.Logger;
  */
 public class SegmentedInputStream extends MeasurableInputStream {
 	private static final boolean DEBUG = false;
-	private static final Logger LOGGER = Util.getLogger( SegmentedInputStream.class );
+	private static final Logger LOGGER = LogManager.getLogger( SegmentedInputStream.class );
 	
 	/** Underlying input stream. */
 	private InputStream in;

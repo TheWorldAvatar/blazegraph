@@ -27,7 +27,8 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.counters.AbstractStatisticsCollector;
 import com.bigdata.counters.CounterSet;
@@ -41,7 +42,7 @@ import com.bigdata.counters.httpd.CounterSetHTTPD;
 @SuppressWarnings("deprecation")
 public class HttpPlugin implements IPlugIn<Journal, CounterSetHTTPD> {
 
-    private static final Logger log = Logger.getLogger(HttpPlugin.class);
+    private static final Logger log = LogManager.getLogger(HttpPlugin.class);
 
     public interface Options {
         

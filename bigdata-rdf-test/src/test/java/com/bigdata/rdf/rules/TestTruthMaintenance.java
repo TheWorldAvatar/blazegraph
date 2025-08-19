@@ -35,7 +35,7 @@ import java.util.Properties;
 import java.util.Random;
 import java.util.Set;
 
-import org.apache.log4j.MDC;
+import org.apache.logging.log4j.ThreadContext;
 import org.openrdf.model.URI;
 import org.openrdf.model.impl.URIImpl;
 import org.openrdf.model.vocabulary.OWL;
@@ -1086,7 +1086,7 @@ public class TestTruthMaintenance extends AbstractInferenceEngineTestCase {
              * Do recursion.
              */
 
-            MDC.put("trial", "trial="+trial);
+            ThreadContext.put("trial", "trial="+trial);
 
             retractAndAssert(inf,store,0/*depth*/,D,N);
 
@@ -1097,7 +1097,7 @@ public class TestTruthMaintenance extends AbstractInferenceEngineTestCase {
 
             assertSameGraphs(tmp, store);
 
-            MDC.remove("trial");
+            ThreadContext.remove("trial");
             
         }
         

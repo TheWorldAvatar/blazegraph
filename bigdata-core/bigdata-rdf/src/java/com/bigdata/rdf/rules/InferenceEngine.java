@@ -25,7 +25,8 @@ package com.bigdata.rdf.rules;
 
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.joinGraph.fast.DefaultEvaluationPlanFactory2;
 import com.bigdata.rdf.axioms.Axioms;
@@ -68,7 +69,7 @@ import com.bigdata.relation.rule.eval.IJoinNexusFactory;
  */
 public class InferenceEngine {
 
-    final static protected Logger log = Logger.getLogger(InferenceEngine.class);
+    final static protected Logger log = LogManager.getLogger(InferenceEngine.class);
 
     /**
      * True iff the {@link #log} level is INFO or less.

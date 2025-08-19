@@ -39,7 +39,8 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.IBindingSet;
 import com.bigdata.bop.IPredicate;
@@ -251,7 +252,7 @@ import com.bigdata.util.concurrent.ExecutionExceptions;
  */
 abstract public class JoinMasterTask implements IStepTask, IJoinMaster {
 
-    protected static final Logger log = Logger.getLogger(JoinMasterTask.class);
+    protected static final Logger log = LogManager.getLogger(JoinMasterTask.class);
 
     /**
      * True iff the {@link #log} level is DEBUG or less.

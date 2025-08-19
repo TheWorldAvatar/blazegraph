@@ -34,7 +34,8 @@ import java.util.Properties;
 import java.util.Set;
 import java.util.UUID;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.OpenRDFException;
 import org.openrdf.model.Literal;
 import org.openrdf.model.Statement;
@@ -94,9 +95,9 @@ import cutthecrap.utils.striterators.Striterator;
  */
 public abstract class BigdataGraph implements Graph {
 
-    private static final transient Logger log = Logger.getLogger(BigdataGraph.class);
+    private static final transient Logger log = LogManager.getLogger(BigdataGraph.class);
     
-    private static final transient Logger sparqlLog = Logger.getLogger(
+    private static final transient Logger sparqlLog = LogManager.getLogger(
             BigdataGraph.class.getName() + ".SparqlLogger");
 
     /**

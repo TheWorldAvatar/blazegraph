@@ -30,7 +30,8 @@ import info.aduna.xml.XMLWriter;
 import java.io.StringWriter;
 import java.util.Collection;
 import java.util.LinkedList;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.BNode;
 import org.openrdf.model.URI;
 import org.openrdf.model.impl.BNodeImpl;
@@ -52,7 +53,7 @@ import org.openrdf.query.resultio.sparqlxml.SPARQLResultsXMLWriter;
  */
 public class TestUnions extends QuadsTestCase {
 
-    protected static final Logger log = Logger.getLogger(TestUnions.class);
+    protected static final Logger log = LogManager.getLogger(TestUnions.class);
     
     /**
      * 

@@ -29,7 +29,7 @@ package com.bigdata.btree;
 
 import java.util.Arrays;
 
-import org.apache.log4j.Level;
+import org.apache.logging.log4j.Level;
 
 import com.bigdata.btree.keys.NoSuccessorException;
 import com.bigdata.btree.keys.TestKeyBuilder;

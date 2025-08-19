@@ -26,7 +26,8 @@ package com.bigdata.rdf.internal.constraints;
 
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.BOpBase;
@@ -50,8 +51,7 @@ public class TryBeforeMaterializationConstraint extends BOpBase implements
 	 */
     private static final long serialVersionUID = -761919593813838105L;
 
-    private static final transient Logger log = Logger
-            .getLogger(TryBeforeMaterializationConstraint.class);
+    private static final transient Logger log = LogManager.getLogger(TryBeforeMaterializationConstraint.class);
 	
 	public TryBeforeMaterializationConstraint(final IConstraint x) {
 		

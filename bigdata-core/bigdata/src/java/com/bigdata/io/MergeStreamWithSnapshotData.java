@@ -29,7 +29,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Iterator;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.journal.AbstractJournal.ISnapshotData;
 import com.bigdata.journal.AbstractJournal.ISnapshotEntry;
@@ -47,8 +48,7 @@ import com.bigdata.journal.AbstractJournal.ISnapshotEntry;
  */
 public class MergeStreamWithSnapshotData {
 
-    private static final transient Logger log = Logger
-            .getLogger(MergeStreamWithSnapshotData.class);
+    private static final transient Logger log = LogManager.getLogger(MergeStreamWithSnapshotData.class);
     
 
     static public void process(final InputStream in, final ISnapshotData snapshotData, final OutputStream out) throws IOException {

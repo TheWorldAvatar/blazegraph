@@ -68,7 +68,8 @@ import java.util.concurrent.locks.ReentrantLock;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.ZipInputStream;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.BNode;
 import org.openrdf.model.Resource;
 import org.openrdf.model.URI;
@@ -321,8 +322,7 @@ import cutthecrap.utils.striterators.Striterator;
 public class AsynchronousStatementBufferFactory<S extends BigdataStatement, R>
         implements IAsynchronousWriteStatementBufferFactory<S> {
 
-    final private transient static Logger log = Logger
-            .getLogger(AsynchronousStatementBufferFactory.class);
+    final private transient static Logger log = LogManager.getLogger(AsynchronousStatementBufferFactory.class);
 
     /**
      * The database into which the statements will be written.
@@ -3022,8 +3022,7 @@ public class AsynchronousStatementBufferFactory<S extends BigdataStatement, R>
      */
     static class AsyncTerm2IdIndexWriteTask implements Callable<Void> {
 
-        final protected transient static Logger log = Logger
-                .getLogger(AsyncTerm2IdIndexWriteTask.class);
+        final protected transient static Logger log = LogManager.getLogger(AsyncTerm2IdIndexWriteTask.class);
 
         private final KVOLatch latch;
 
@@ -3244,8 +3243,7 @@ public class AsynchronousStatementBufferFactory<S extends BigdataStatement, R>
      */
     static class AsyncId2TermIndexWriteTask implements Callable<Void> {
 
-        final protected transient static Logger log = Logger
-                .getLogger(AsyncId2TermIndexWriteTask.class);
+        final protected transient static Logger log = LogManager.getLogger(AsyncId2TermIndexWriteTask.class);
 
         private final KVOLatch latch;
 
@@ -3391,8 +3389,7 @@ public class AsynchronousStatementBufferFactory<S extends BigdataStatement, R>
      */
     static class AsyncTextIndexWriteTask implements Callable<Void> {
 
-        final protected transient static Logger log = Logger
-                .getLogger(AsyncTextIndexWriteTask.class);
+        final protected transient static Logger log = LogManager.getLogger(AsyncTextIndexWriteTask.class);
 
         private final KVOLatch latch;
 
@@ -3485,8 +3482,7 @@ public class AsynchronousStatementBufferFactory<S extends BigdataStatement, R>
      */
     static class AsyncSPOIndexWriteTask implements Callable<Void> {
 
-        final protected transient static Logger log = Logger
-                .getLogger(AsyncSPOIndexWriteTask.class);
+        final protected transient static Logger log = LogManager.getLogger(AsyncSPOIndexWriteTask.class);
 
         private final KVOLatch latch;
 

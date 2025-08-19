@@ -49,7 +49,7 @@ public class LangBOp extends IVValueExpression<IV>
 	 */
 	private static final long serialVersionUID = 7391999162162545704L;
 	
-//	private static final transient Logger log = Logger.getLogger(LangBOp.class);
+//	private static final transient Logger log = LogManager.getLogger(LangBOp.class);
 
     public LangBOp(final IValueExpression<? extends IV> x,
             final GlobalAnnotations globals) {

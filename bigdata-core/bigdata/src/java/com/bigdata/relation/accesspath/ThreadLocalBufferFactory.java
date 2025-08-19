@@ -30,7 +30,8 @@ package com.bigdata.relation.accesspath;
 import java.util.LinkedList;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.relation.rule.eval.pipeline.JoinTask;
 import com.bigdata.util.concurrent.Haltable;
@@ -55,8 +56,7 @@ import com.bigdata.util.concurrent.Haltable;
  */
 abstract public class ThreadLocalBufferFactory<T extends IBuffer<E>, E> {
 
-    static private final Logger log = Logger
-            .getLogger(ThreadLocalBufferFactory.class);
+    static private final Logger log = LogManager.getLogger(ThreadLocalBufferFactory.class);
     
     /**
      * The thread-local queues.

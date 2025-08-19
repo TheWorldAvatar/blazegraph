@@ -39,7 +39,8 @@ import java.util.concurrent.Future;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.BTree;
 import com.bigdata.btree.Checkpoint;
@@ -103,7 +104,7 @@ abstract public class OverflowManager extends IndexManager {
     /**
      * Logger.
      */
-    protected static final Logger log = Logger.getLogger(OverflowManager.class);
+    protected static final Logger log = LogManager.getLogger(OverflowManager.class);
 
     /**
      * FIXME This is a temporary flag used to (dis|en)able the logic for
@@ -1721,7 +1722,7 @@ abstract public class OverflowManager extends IndexManager {
                             + "overflowService"));
          
             /*
-             * Note: The core thread is pre-started so that the MDC logging
+             * Note: The core thread is pre-started so that the ThreadContext logging
              * information does not get inherited from whatever thread was
              * running the AbstractTask that wound up doing the groupCommit
              * during which overflow processing was initiated - this just cleans

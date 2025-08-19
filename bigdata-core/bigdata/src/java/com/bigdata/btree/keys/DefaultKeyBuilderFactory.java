@@ -32,7 +32,8 @@ import java.io.Serializable;
 import java.util.Locale;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.keys.KeyBuilder.Options;
 
@@ -51,7 +52,7 @@ import com.bigdata.btree.keys.KeyBuilder.Options;
  */
 public class DefaultKeyBuilderFactory implements IKeyBuilderFactory, Serializable {
 
-    protected static final transient Logger log = Logger.getLogger(DefaultKeyBuilderFactory.class);
+    protected static final transient Logger log = LogManager.getLogger(DefaultKeyBuilderFactory.class);
     
 //    protected static final transient boolean INFO = log.isInfoEnabled();
 //

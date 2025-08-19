@@ -32,7 +32,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.util.httpd.NanoHTTPD.Response;
 
@@ -47,7 +48,7 @@ import com.bigdata.util.httpd.NanoHTTPD.Response;
  */
 public abstract class AbstractHTTPD extends NanoHTTPD implements HTTPGetHandler {
 
-    final static private Logger log = Logger.getLogger(AbstractHTTPD.class);
+    final static private Logger log = LogManager.getLogger(AbstractHTTPD.class);
 
     public AbstractHTTPD(final int port) throws IOException {
         

@@ -34,7 +34,8 @@ import junit.extensions.proxy.IProxyTest;
 import junit.framework.Test;
 import junit.framework.TestCase;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.URI;
 import org.openrdf.model.vocabulary.OWL;
 import org.openrdf.model.vocabulary.RDF;
@@ -57,7 +58,7 @@ import com.bigdata.gom.gpo.IGPO;
  */
 public class TestOwlGOM extends ProxyGOMTest {
 
-    private static final Logger log = Logger.getLogger(TestOwlGOM.class);
+    private static final Logger log = LogManager.getLogger(TestOwlGOM.class);
 
 	final static String OWL_NAMESPACE = "http://www.w3.org/2002/07/owl#";
 	final static String RDFS_NAMESPACE = "http://www.w3.org/2000/01/rdf-schema#";

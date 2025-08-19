@@ -8,7 +8,8 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Future;
 import java.util.concurrent.FutureTask;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.Constant;
 import com.bigdata.bop.IPredicate;
@@ -43,7 +44,7 @@ import cutthecrap.utils.striterators.Striterator;
  */
 public class DGExpander implements IAccessPathExpander<ISPO> {
 
-    protected static final Logger log = Logger.getLogger(DGExpander.class);
+    protected static final Logger log = LogManager.getLogger(DGExpander.class);
 
     private static final long serialVersionUID = 1L;
 

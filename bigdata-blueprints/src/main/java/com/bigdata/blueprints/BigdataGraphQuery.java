@@ -27,7 +27,8 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Literal;
 import org.openrdf.model.URI;
 
@@ -45,7 +46,7 @@ import com.tinkerpop.blueprints.Vertex;
  */
 public class BigdataGraphQuery implements GraphQuery {
 
-    protected final static transient Logger log = Logger.getLogger(BigdataGraphQuery.class);
+    protected final static transient Logger log = LogManager.getLogger(BigdataGraphQuery.class);
     
     /**
      * These are the only Predicate implementations we handle currently.

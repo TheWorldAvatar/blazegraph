@@ -59,7 +59,8 @@ import java.util.concurrent.locks.ReentrantLock;
 import java.util.zip.Adler32;
 import java.util.zip.CheckedInputStream;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.IndexSegmentStore;
 import com.bigdata.counters.CAT;
@@ -138,7 +139,7 @@ import com.bigdata.util.concurrent.ShutdownHelper;
  */
 public abstract class ResourceService {
 
-    protected static final Logger log = Logger.getLogger(ResourceService.class);
+    protected static final Logger log = LogManager.getLogger(ResourceService.class);
 
     /**
      * The Internet socket address at which the service is accepting
@@ -1410,7 +1411,7 @@ public abstract class ResourceService {
      */
     public static class ReadResourceTask extends FetchResourceTask<UUID,File> {
 
-        protected static final Logger log = Logger.getLogger(ReadResourceTask.class);
+        protected static final Logger log = LogManager.getLogger(ReadResourceTask.class);
 
         final UUID uuid;
 
@@ -1535,8 +1536,7 @@ public abstract class ResourceService {
     public static class ReadBufferTask extends
             FetchResourceTask<UUID, ByteBuffer> {
 
-        protected static final Logger log = Logger
-                .getLogger(ReadResourceTask.class);
+        protected static final Logger log = LogManager.getLogger(ReadResourceTask.class);
 
         final UUID id;
 

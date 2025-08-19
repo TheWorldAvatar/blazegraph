@@ -29,7 +29,8 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.Callable;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.Constant;
 import com.bigdata.bop.IBindingSet;
@@ -519,7 +520,7 @@ public abstract class AbstractRuleFastClosure_3_5_6_7_9 extends Rule {
      */
     public static class SubPropertyClosureTask implements Callable<Set<IV>> {
         
-        final static protected Logger log = Logger.getLogger(SubPropertyClosureTask.class);
+        final static protected Logger log = LogManager.getLogger(SubPropertyClosureTask.class);
 
         private final IRelation<ISPO> view; // Note: Not serializable.
         private final IConstant<IV> rdfsSubPropertyOf;
@@ -672,7 +673,7 @@ public abstract class AbstractRuleFastClosure_3_5_6_7_9 extends Rule {
      */
     public static class SubPropertiesOfClosureTask implements Callable<Set<IV>> {
 
-        final static protected Logger log = Logger.getLogger(SubPropertyClosureTask.class);
+        final static protected Logger log = LogManager.getLogger(SubPropertyClosureTask.class);
 
         private final IRelation<ISPO> view; // Note: Not serializable.
         private final IConstant<IV> rdfsSubPropertyOf;

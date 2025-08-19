@@ -50,7 +50,7 @@ import cutthecrap.utils.striterators.ICloseableIterator;
  */
 public class WrappedAsynchronousIterator<E,F> implements IAsynchronousIterator<E> {
 
-//    private static final Logger log = Logger.getLogger(WrappedAsynchronousIterator.class);
+//    private static final Logger log = LogManager.getLogger(WrappedAsynchronousIterator.class);
     
     private transient volatile boolean open = true;
 

@@ -28,7 +28,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 package com.bigdata.service;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.IRangeQuery;
 import com.bigdata.btree.ITuple;
@@ -53,8 +54,7 @@ import cutthecrap.utils.striterators.IFilter;
  */
 public class CacheOnceMetadataIndex implements IMetadataIndex {
 
-    protected static final Logger log = Logger
-            .getLogger(CacheOnceMetadataIndex.class);
+    protected static final Logger log = LogManager.getLogger(CacheOnceMetadataIndex.class);
 
     /**
      * The federation.

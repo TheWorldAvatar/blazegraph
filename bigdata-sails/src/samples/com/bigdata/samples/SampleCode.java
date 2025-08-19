@@ -18,7 +18,8 @@ import java.util.Set;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Resource;
 import org.openrdf.model.Statement;
 import org.openrdf.model.URI;
@@ -70,7 +71,7 @@ public class SampleCode {
      * statements from bigdata - if you are, then this will severely impact
      * performance.
      */
-    protected static final Logger log = Logger.getLogger(SampleCode.class);
+    protected static final Logger log = LogManager.getLogger(SampleCode.class);
 
     /**
      * Load a Properties object from a file.

@@ -28,7 +28,8 @@ import java.util.Properties;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.eclipse.jetty.client.HttpClient;
 import org.openrdf.model.URI;
 import org.openrdf.model.impl.URIImpl;
@@ -68,8 +69,7 @@ import com.bigdata.rdf.vocab.NoVocabulary;
  */
 public class TestServiceRegistry extends AbstractBigdataExprBuilderTestCase {
 
-    private static final Logger log = Logger
-            .getLogger(TestServiceRegistry.class);
+    private static final Logger log = LogManager.getLogger(TestServiceRegistry.class);
 
     public TestServiceRegistry() {
         

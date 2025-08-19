@@ -30,7 +30,8 @@ import info.aduna.iteration.CloseableIteration;
 
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.query.Binding;
 import org.openrdf.query.BindingSet;
 import org.openrdf.query.QueryEvaluationException;
@@ -46,8 +47,7 @@ import com.bigdata.rdf.model.BigdataValue;
 public class DescribeBindingsCollector implements
         CloseableIteration<BindingSet, QueryEvaluationException> {
 
-    private static final transient Logger log = Logger
-            .getLogger(DescribeBindingsCollector.class);
+    private static final transient Logger log = LogManager.getLogger(DescribeBindingsCollector.class);
     
     private final IVariable<?>[] originalVars;
     private final Set<BigdataValue> describedResources;

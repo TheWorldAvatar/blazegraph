@@ -30,7 +30,8 @@ package com.bigdata.concurrent;
 import java.util.Arrays;
 import java.util.concurrent.Callable;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 
 /**
@@ -52,7 +53,7 @@ import org.apache.log4j.Logger;
 public class LockManagerTask<R extends Comparable<R>,T> implements
         Callable<T> {
 
-    protected static final Logger log = Logger.getLogger(LockManagerTask.class);
+    protected static final Logger log = LogManager.getLogger(LockManagerTask.class);
     
     protected static final boolean INFO = log.isInfoEnabled();
     

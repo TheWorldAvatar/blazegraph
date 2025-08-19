@@ -26,7 +26,8 @@ package com.bigdata.rdf.internal.constraints;
 
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Literal;
 import org.openrdf.model.URI;
 import org.openrdf.model.Value;
@@ -53,7 +54,7 @@ public class DatatypeBOp extends IVValueExpression<IV>
 	 */
 	private static final long serialVersionUID = 7391999162162545704L;
 
-	private static final transient Logger log = Logger.getLogger(DatatypeBOp.class);
+	private static final transient Logger log = LogManager.getLogger(DatatypeBOp.class);
 
     public DatatypeBOp(final IValueExpression<? extends IV> x, final GlobalAnnotations globals) {
 

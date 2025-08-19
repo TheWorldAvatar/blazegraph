@@ -15,7 +15,7 @@ import com.bigdata.util.Bytes;
 
 public class HASendState implements IHASendState, Externalizable {
 
-//    private static final Logger log = Logger.getLogger(HASendState.class);
+//    private static final Logger log = LogManager.getLogger(HASendState.class);
 
     private static final long serialVersionUID = 1;
 

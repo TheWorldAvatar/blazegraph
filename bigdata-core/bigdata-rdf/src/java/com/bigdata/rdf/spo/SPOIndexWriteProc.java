@@ -30,7 +30,8 @@ import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.IIndex;
 import com.bigdata.btree.proc.AbstractKeyArrayIndexProcedure;
@@ -68,8 +69,7 @@ import com.bigdata.util.BytesUtil;
 public class SPOIndexWriteProc extends AbstractKeyArrayIndexProcedure<Object> implements
         IParallelizableIndexProcedure<Object>, IMutableRelationIndexWriteProcedure<Object> {
 
-    private transient static final Logger log = Logger
-            .getLogger(SPOIndexWriteProc.class);
+    private transient static final Logger log = LogManager.getLogger(SPOIndexWriteProc.class);
 
     final transient private boolean INFO = log.isInfoEnabled();
     final transient private boolean DEBUG = log.isDebugEnabled();

@@ -86,7 +86,7 @@ import com.bigdata.rdf.vocab.decls.DCTermsVocabularyDecl;
  */
 public class TestReificationDoneRightEval extends AbstractDataDrivenSPARQLTestCase {
 
-//    private static final Logger log = Logger.getLogger(TestReificationDoneRight.class);
+//    private static final Logger log = LogManager.getLogger(TestReificationDoneRight.class);
 	
 	public static final String TEST_RESOURCE_PREFIX = "/com/bigdata/rdf/sparql/ast/eval/reif/";
     

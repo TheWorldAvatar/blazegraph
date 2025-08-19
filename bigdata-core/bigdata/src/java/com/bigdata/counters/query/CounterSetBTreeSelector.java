@@ -44,7 +44,7 @@ import com.bigdata.counters.store.CounterSetBTree;
  */
 public class CounterSetBTreeSelector implements ICounterSelector {
 
-//    private static final Logger log = Logger.getLogger(CounterSetBTreeSelector.class);
+//    private static final Logger log = LogManager.getLogger(CounterSetBTreeSelector.class);
     
     private final CounterSetBTree btree;
     

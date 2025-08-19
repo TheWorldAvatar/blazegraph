@@ -5,7 +5,8 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.counters.CounterSet;
 import com.bigdata.counters.Instrument;
@@ -29,7 +30,7 @@ import com.bigdata.util.concurrent.IQueueCounters.IWriteServiceExecutorCounters;
  */
 public class ThreadPoolExecutorStatisticsTask implements Runnable {
 
-    private static final Logger log = Logger.getLogger(ThreadPoolExecutorStatisticsTask.class);
+    private static final Logger log = LogManager.getLogger(ThreadPoolExecutorStatisticsTask.class);
     
     /**
      * The label for the executor service (used in log messages).

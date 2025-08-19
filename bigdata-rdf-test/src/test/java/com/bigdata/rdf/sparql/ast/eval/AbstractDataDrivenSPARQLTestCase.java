@@ -72,7 +72,8 @@ import java.util.Set;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.ZipInputStream;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Statement;
 import org.openrdf.query.GraphQueryResult;
 import org.openrdf.query.QueryEvaluationException;
@@ -111,8 +112,7 @@ import info.aduna.iteration.Iterations;
 abstract public class AbstractDataDrivenSPARQLTestCase extends
         AbstractDataAndSPARQLTestCase {
 
-    private static final Logger log = Logger
-            .getLogger(AbstractDataDrivenSPARQLTestCase.class);
+    private static final Logger log = LogManager.getLogger(AbstractDataDrivenSPARQLTestCase.class);
     
     /**
      * 

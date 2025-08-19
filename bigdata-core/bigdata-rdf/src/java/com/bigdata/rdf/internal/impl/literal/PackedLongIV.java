@@ -50,7 +50,7 @@ public class PackedLongIV<V extends BigdataLiteral>
 
     private static final long serialVersionUID = 925868533758851987L;
 
-//  private static final transient Logger log = Logger.getLogger(CompressedTimestampIV.class);
+//  private static final transient Logger log = LogManager.getLogger(CompressedTimestampIV.class);
 
     public static final URI PACKED_LONG = new URIImpl("http://www.bigdata.com/rdf/datatype#packedLong");
 

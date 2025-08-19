@@ -44,7 +44,8 @@ import java.util.Random;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.system.SystemUtil;
 
 import com.bigdata.io.FileChannelUtility.AsyncTransfer;
@@ -70,7 +71,7 @@ import junit.framework.TestCase;
  */
 public class TestFileChannelUtility extends TestCase {
 
-	private static final Logger log = Logger.getLogger(TestFileChannelUtility.class);
+	private static final Logger log = LogManager.getLogger(TestFileChannelUtility.class);
 
     /**
      * 

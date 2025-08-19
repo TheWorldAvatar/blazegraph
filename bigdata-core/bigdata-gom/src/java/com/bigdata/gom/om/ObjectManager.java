@@ -28,7 +28,8 @@ package com.bigdata.gom.om;
 
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Graph;
 import org.openrdf.model.Statement;
 import org.openrdf.query.BindingSet;
@@ -68,7 +69,7 @@ import cutthecrap.utils.striterators.ICloseableIterator;
  */
 public class ObjectManager extends ObjectMgrModel {
     
-	private static final Logger log = Logger.getLogger(ObjectManager.class);
+	private static final Logger log = LogManager.getLogger(ObjectManager.class);
 	
 	final private BigdataSailRepository m_repo;
 	final private boolean readOnly;

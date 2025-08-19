@@ -26,7 +26,8 @@ package com.bigdata.rdf.sparql.ast.optimizers;
 
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.IBindingSet;
 import com.bigdata.rdf.sparql.ast.ArbitraryLengthPathNode;
@@ -50,7 +51,7 @@ import com.bigdata.rdf.sparql.ast.optimizers.ASTStaticJoinOptimizer.Annotations;
 public class ASTCardinalityOptimizer extends AbstractJoinGroupOptimizer
 		implements IASTOptimizer {
 
-    private static final transient Logger log = Logger.getLogger(ASTCardinalityOptimizer.class);
+    private static final transient Logger log = LogManager.getLogger(ASTCardinalityOptimizer.class);
     
 	public ASTCardinalityOptimizer() {
 		/*

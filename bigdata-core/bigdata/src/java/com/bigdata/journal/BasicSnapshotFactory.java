@@ -26,7 +26,8 @@ package com.bigdata.journal;
 import java.io.File;
 import java.io.IOException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Provides a basic implementation of a {@link ISnapshotFactory} to be used 
@@ -42,7 +43,7 @@ public class BasicSnapshotFactory implements ISnapshotFactory {
 	 /**
      * Logger.
      */
-    private static final Logger log = Logger.getLogger(BasicSnapshotFactory.class);
+    private static final Logger log = LogManager.getLogger(BasicSnapshotFactory.class);
     
     private static final boolean debug = log.isDebugEnabled();
     private static final boolean info = log.isDebugEnabled();

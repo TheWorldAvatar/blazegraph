@@ -26,7 +26,7 @@ package com.bigdata.btree;
 import java.io.File;
 import java.io.IOException;
 
-import org.apache.log4j.Level;
+import org.apache.logging.log4j.Level;
 
 import com.bigdata.btree.IndexSegment.ImmutableLeafCursor;
 import com.bigdata.btree.IndexSegment.ImmutableNodeFactory.ImmutableLeaf;

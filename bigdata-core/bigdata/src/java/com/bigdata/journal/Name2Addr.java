@@ -50,7 +50,8 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.BTree;
 import com.bigdata.btree.Checkpoint;
@@ -137,7 +138,7 @@ import cutthecrap.utils.striterators.Striterator;
  */
 public class Name2Addr extends BTree {
 
-    private static final Logger log = Logger.getLogger(Name2Addr.class);
+    private static final Logger log = LogManager.getLogger(Name2Addr.class);
 
     /**
      * Cache of added/retrieved btrees by _name_. This cache is ONLY used by the

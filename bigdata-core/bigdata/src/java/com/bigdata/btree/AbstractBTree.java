@@ -50,8 +50,9 @@ import java.util.concurrent.FutureTask;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.Banner;
 import com.bigdata.BigdataStatics;
@@ -186,7 +187,7 @@ abstract public class AbstractBTree implements IIndex, IAutoboxBTree,
     /**
      * Log for btree opeations.
      */
-    protected static final Logger log = Logger.getLogger(AbstractBTree.class);
+    protected static final Logger log = LogManager.getLogger(AbstractBTree.class);
 
     /**
      * True iff the {@link #log} level is INFO or less.
@@ -201,7 +202,7 @@ abstract public class AbstractBTree implements IIndex, IAutoboxBTree,
     /**
      * Log for {@link BTree#dump(PrintStream)} and friends.
      */
-    public static final Logger dumpLog = Logger.getLogger(BTree.class
+    public static final Logger dumpLog = LogManager.getLogger(BTree.class
             .getName()
             + "#dump");
 
@@ -3376,14 +3377,14 @@ abstract public class AbstractBTree implements IIndex, IAutoboxBTree,
      */
     public boolean dump(final PrintStream out) {
 
-        return dump(BTree.dumpLog.getEffectiveLevel(), out);
+        return dump(BTree.dumpLog.getLevel(), out);
 
     }
 
     public boolean dump(final Level level, final PrintStream out) {
 
         // True iff we will write out the node structure.
-        final boolean info = level.toInt() <= Level.INFO.toInt();
+        final boolean info = level.isMoreSpecificThan(Level.INFO);
 
         final IBTreeUtilizationReport utils = getUtilization();
 

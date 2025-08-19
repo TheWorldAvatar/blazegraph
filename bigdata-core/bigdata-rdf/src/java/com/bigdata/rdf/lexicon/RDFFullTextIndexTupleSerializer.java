@@ -32,7 +32,8 @@ import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.lucene.search.similarities.DefaultSimilarity;
 
 import com.bigdata.btree.DefaultTupleSerializer;
@@ -72,8 +73,7 @@ import com.bigdata.util.BytesUtil;
 public class RDFFullTextIndexTupleSerializer extends
         DefaultTupleSerializer<ITermDocKey, ITermDocVal> {
 
-    final private static transient Logger log = Logger
-            .getLogger(RDFFullTextIndexTupleSerializer.class);
+    final private static transient Logger log = LogManager.getLogger(RDFFullTextIndexTupleSerializer.class);
 
 //    private boolean doublePrecision;
     

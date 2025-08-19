@@ -29,8 +29,9 @@ import java.io.ObjectInput;
 import java.io.ObjectOutput;
 import java.nio.ByteBuffer;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.AbstractBTree;
 import com.bigdata.btree.IIndex;
@@ -51,20 +52,19 @@ public class AtomicBlockWriteProc implements ISimpleIndexProcedure<Object>,
 
     private static final long serialVersionUID = 4982851251684333327L;
 
-    protected static transient Logger log = Logger
-            .getLogger(AtomicBlockWriteProc.class);
+    protected static transient Logger log = LogManager.getLogger(AtomicBlockWriteProc.class);
 
     /**
      * True iff the {@link #log} level is INFO or less.
      */
-    final public static transient boolean INFO = log.getEffectiveLevel()
-            .toInt() <= Level.INFO.toInt();
+    final public static transient boolean INFO = log.getLevel()
+            .isMoreSpecificThan(Level.INFO);
 
     /**
      * True iff the {@link #log} level is DEBUG or less.
      */
-    final public static transient boolean DEBUG = log.getEffectiveLevel()
-            .toInt() <= Level.DEBUG.toInt();
+    final public static transient boolean DEBUG = log.getLevel()
+            .isMoreSpecificThan(Level.DEBUG);
 
     private String id;
     private int version;

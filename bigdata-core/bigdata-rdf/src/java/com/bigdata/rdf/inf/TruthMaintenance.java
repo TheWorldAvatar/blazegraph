@@ -50,8 +50,9 @@ package com.bigdata.rdf.inf;
 import java.util.Map;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
-import org.apache.log4j.MDC;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.ThreadContext;
 
 import com.bigdata.journal.TemporaryStore;
 import com.bigdata.rdf.changesets.IChangeLog;
@@ -112,7 +113,7 @@ public class TruthMaintenance {
     /**
      * Logger.
      */
-    final static protected Logger log = Logger.getLogger(TruthMaintenance.class);
+    final static protected Logger log = LogManager.getLogger(TruthMaintenance.class);
     
     /**
      * True iff the {@link #log} level is INFO or less.
@@ -611,7 +612,7 @@ public class TruthMaintenance {
         // do truth maintenance.
         retractAll(stats, tempStore, 0, changeLog);
         
-        MDC.remove("depth");
+        ThreadContext.remove("depth");
         
         assert ! tempStore.isOpen();
        
@@ -693,7 +694,7 @@ public class TruthMaintenance {
             final TempTripleStore tempStore, final int depth,
             final IChangeLog changeLog) {
 
-        MDC.put("depth", "depth=" + depth);
+        ThreadContext.put("depth", "depth=" + depth);
         
         final long tempStoreCount = tempStore.getStatementCount();
 

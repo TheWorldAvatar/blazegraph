@@ -3,7 +3,8 @@ package com.bigdata.search;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.IRangeQuery;
 import com.bigdata.btree.ISimpleSplitHandler;
@@ -34,7 +35,7 @@ import com.bigdata.util.BytesUtil;
 public class ReadIndexTask<V extends Comparable<V>> extends AbstractIndexTask<V> 
 	implements Callable<Object> {
 
-    final private static Logger log = Logger.getLogger(ReadIndexTask.class);
+    final private static Logger log = LogManager.getLogger(ReadIndexTask.class);
 
     private final IHitCollector<V> hits;
     private final ITupleIterator<?> itr;

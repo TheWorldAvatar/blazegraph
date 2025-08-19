@@ -29,7 +29,8 @@ import java.util.LinkedList;
 import java.util.UUID;
 import java.util.concurrent.Future;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.engine.IRunningQuery;
 import com.bigdata.bop.engine.QueryEngine;
@@ -45,8 +46,7 @@ import com.bigdata.rdf.sail.model.RunningQuery;
  */
 public class QueryCancellationHelper {
 	
-	static private final transient Logger log = Logger
-            .getLogger(QueryCancellationHelper.class);
+	static private final transient Logger log = LogManager.getLogger(QueryCancellationHelper.class);
 	
 	public static void cancelQuery(final UUID queryId,
 			final QueryEngine queryEngine) {

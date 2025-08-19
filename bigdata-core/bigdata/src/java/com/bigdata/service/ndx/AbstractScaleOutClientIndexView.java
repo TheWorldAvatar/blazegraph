@@ -37,8 +37,9 @@ import java.util.concurrent.FutureTask;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.AsynchronousIndexWriteConfiguration;
 import com.bigdata.btree.ICounter;
@@ -126,14 +127,12 @@ abstract public class AbstractScaleOutClientIndexView implements IScaleOutClient
      * Note: Invocations of the non-batch API are logged at the WARN level since
      * they result in an application that can not scale-out efficiently.
      */
-    protected static final transient Logger log = Logger
-            .getLogger(AbstractScaleOutClientIndexView.class);
+    protected static final transient Logger log = LogManager.getLogger(AbstractScaleOutClientIndexView.class);
     
     /**
      * True iff the {@link #log} level is WARN or less.
      */
-    final protected boolean WARN = log.getEffectiveLevel().toInt() <= Level.WARN
-            .toInt();
+    final protected boolean WARN = log.getLevel().isMoreSpecificThan(Level.WARN);
 
     /**
      * Error message used if we were unable to start a new transaction in order

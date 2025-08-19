@@ -3,7 +3,8 @@ package com.bigdata.rdf.load;
 import java.beans.Statement;
 import java.util.concurrent.atomic.AtomicLong;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Literal;
 import org.openrdf.model.URI;
 import org.openrdf.model.Value;
@@ -35,7 +36,7 @@ import com.bigdata.striterator.IChunkedOrderedIterator;
  */
 public class VerifyStatementBuffer extends StatementBuffer {
 
-    final private static Logger log = Logger.getLogger(VerifyStatementBuffer.class);
+    final private static Logger log = LogManager.getLogger(VerifyStatementBuffer.class);
     
     final AtomicLong nterms, ntermsNotFound, ntriples, ntriplesNotFound;
     

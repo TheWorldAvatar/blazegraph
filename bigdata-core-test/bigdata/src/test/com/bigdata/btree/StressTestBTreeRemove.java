@@ -31,7 +31,7 @@ import java.util.UUID;
 
 import junit.framework.TestCase2;
 
-import org.apache.log4j.Level;
+import org.apache.logging.log4j.Level;
 
 import com.bigdata.Banner;
 import com.bigdata.btree.keys.TestKeyBuilder;

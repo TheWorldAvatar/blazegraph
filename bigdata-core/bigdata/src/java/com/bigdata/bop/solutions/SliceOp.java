@@ -32,7 +32,8 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.atomic.AtomicLong;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.BOpContext;
@@ -67,7 +68,7 @@ import cutthecrap.utils.striterators.ICloseableIterator;
  */
 public class SliceOp extends PipelineOp {
 
-    private final static transient Logger log = Logger.getLogger(SliceOp.class);
+    private final static transient Logger log = LogManager.getLogger(SliceOp.class);
     
     /**
      * 

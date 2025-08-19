@@ -75,7 +75,7 @@ import cutthecrap.utils.striterators.ICloseableIterator;
  */
 public class BOpContext<E> extends BOpContextBase {
 
-//    static private final transient Logger log = Logger.getLogger(BOpContext.class);
+//    static private final transient Logger log = LogManager.getLogger(BOpContext.class);
 
     private final IRunningQuery runningQuery;
     

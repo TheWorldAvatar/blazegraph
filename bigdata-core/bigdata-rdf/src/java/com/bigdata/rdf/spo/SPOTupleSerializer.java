@@ -69,7 +69,7 @@ public class SPOTupleSerializer extends DefaultTupleSerializer<SPO,SPO> {
 
     private static final long serialVersionUID = 2893830958762265104L;
     
-//    private static final transient Logger log = Logger.getLogger(SPOTupleSerializer.class);
+//    private static final transient Logger log = LogManager.getLogger(SPOTupleSerializer.class);
     
     /**
      * The natural order for the index.

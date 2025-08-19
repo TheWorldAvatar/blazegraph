@@ -38,7 +38,8 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.BaseIndexStats;
 import com.bigdata.btree.ICheckpointProtocol;
@@ -66,7 +67,7 @@ import com.bigdata.util.concurrent.LatchedExecutor;
  */
 public class WarmUpTask implements Callable<Map<String,BaseIndexStats>> {
 
-   private static final Logger log = Logger.getLogger(WarmUpTask.class);
+   private static final Logger log = LogManager.getLogger(WarmUpTask.class);
    
    /**
     * The journal.

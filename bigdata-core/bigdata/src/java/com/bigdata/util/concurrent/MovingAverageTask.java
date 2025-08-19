@@ -2,7 +2,8 @@ package com.bigdata.util.concurrent;
 
 import java.util.concurrent.Callable;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Class tracks a the moving average of some sampled datum.
@@ -12,8 +13,7 @@ import org.apache.log4j.Logger;
  */
 public class MovingAverageTask implements Runnable {
 
-    protected static final Logger log = Logger
-            .getLogger(MovingAverageTask.class);
+    protected static final Logger log = LogManager.getLogger(MovingAverageTask.class);
 
     /**
      * The label used in log messages.

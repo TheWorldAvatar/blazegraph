@@ -15,7 +15,8 @@
 */
 package com.bigdata.rdf.graph.impl.util;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * A view on a mutable int[] that may be extended.
@@ -34,8 +35,7 @@ import org.apache.log4j.Logger;
  */
 public class ManagedIntArray implements IManagedIntArray {
 
-    private static final transient Logger log = Logger
-            .getLogger(ManagedIntArray.class);
+    private static final transient Logger log = LogManager.getLogger(ManagedIntArray.class);
 
     /**
      * The default capacity of the buffer.

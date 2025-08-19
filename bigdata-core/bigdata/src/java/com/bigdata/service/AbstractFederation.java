@@ -56,7 +56,8 @@ import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bfs.BigdataFileSystem;
 import com.bigdata.bfs.GlobalFileSystemHelper;
@@ -112,7 +113,7 @@ import com.bigdata.util.httpd.AbstractHTTPD;
  */
 abstract public class AbstractFederation<T> implements IBigdataFederation<T> {
 
-    protected static final Logger log = Logger.getLogger(IBigdataFederation.class);
+    protected static final Logger log = LogManager.getLogger(IBigdataFederation.class);
 
     /**
      * The client (if connected).
@@ -1321,7 +1322,7 @@ abstract public class AbstractFederation<T> implements IBigdataFederation<T> {
          * class the name uses a "$" delimiter (vs a ".") between the outer and
          * the inner class names.
          */
-        final private Logger log = Logger.getLogger(StartDeferredTasksTask.class);
+        final private Logger log = LogManager.getLogger(StartDeferredTasksTask.class);
         
         /**
          * The timestamp when we started running this task.
@@ -1848,7 +1849,7 @@ abstract public class AbstractFederation<T> implements IBigdataFederation<T> {
          * class the name uses a "$" delimiter (vs a ".") between the outer and
          * the inner class names.
          */
-        final protected Logger log = Logger.getLogger(ReportTask.class);
+        final protected Logger log = LogManager.getLogger(ReportTask.class);
 
         private final AbstractFederation<?> fed;
         

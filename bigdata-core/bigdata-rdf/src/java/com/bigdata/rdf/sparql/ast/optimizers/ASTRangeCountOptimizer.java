@@ -31,7 +31,8 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.IBindingSet;
 import com.bigdata.bop.IConstant;
@@ -60,8 +61,7 @@ import com.bigdata.util.concurrent.ExecutionExceptions;
 public class ASTRangeCountOptimizer extends AbstractJoinGroupOptimizer
 		implements IASTOptimizer {
 
-    private static final transient Logger log = Logger
-            .getLogger(ASTRangeCountOptimizer.class);
+    private static final transient Logger log = LogManager.getLogger(ASTRangeCountOptimizer.class);
 	
     /**
      * Optimize the join group.

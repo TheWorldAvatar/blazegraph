@@ -32,8 +32,10 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.config.Configurator;
 
 import com.bigdata.btree.IndexSegment.ImmutableNodeFactory.ImmutableLeaf;
 import com.bigdata.io.DirectBufferPool;
@@ -48,8 +50,8 @@ import com.bigdata.util.InnerCause;
  */
 public class DumpIndexSegment {
 
-    protected static Logger log = Logger.getLogger(DumpIndexSegment.class);
-    
+    protected static Logger log = LogManager.getLogger(DumpIndexSegment.class);
+
     public static void usage() {
      
         System.err.println("usage: " + DumpIndexSegment.class.getSimpleName()
@@ -124,7 +126,7 @@ public class DumpIndexSegment {
                     
                     // turn up the dumpLog level so that we can see the output.
                     try {
-                        AbstractBTree.dumpLog.setLevel(level);
+                        Configurator.setAllLevels(AbstractBTree.dumpLog.getName(), level);
                     } catch (Throwable t) {
                         /*
                          * Note: The SLF4J logging bridge can cause a

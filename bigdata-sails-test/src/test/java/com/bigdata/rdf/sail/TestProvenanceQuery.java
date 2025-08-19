@@ -31,7 +31,8 @@ import java.io.Writer;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Literal;
 import org.openrdf.model.URI;
 import org.openrdf.model.Value;
@@ -64,7 +65,7 @@ import com.bigdata.rdf.store.DataLoader;
  */
 public class TestProvenanceQuery extends ProxyBigdataSailTestCase {
 
-	private final transient static Logger log = Logger.getLogger(TestProvenanceQuery.class);
+	private final transient static Logger log = LogManager.getLogger(TestProvenanceQuery.class);
 	
     public TestProvenanceQuery() {
         

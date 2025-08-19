@@ -6,7 +6,8 @@ import java.io.ObjectInput;
 import java.io.ObjectOutput;
 import java.io.Serializable;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.util.Bytes;
 import com.bigdata.util.BytesUtil;
@@ -18,8 +19,7 @@ import com.bigdata.util.BytesUtil;
 public class FixedLengthPrefixSplits implements
         ISimpleSplitHandler, Serializable, Externalizable {
     
-    protected static transient final Logger log = Logger
-            .getLogger(FixedLengthPrefixSplits.class);
+    protected static transient final Logger log = LogManager.getLogger(FixedLengthPrefixSplits.class);
 
     /**
      * 

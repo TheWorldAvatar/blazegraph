@@ -40,7 +40,8 @@ import java.util.Map;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.ZipInputStream;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Statement;
 import org.openrdf.model.URI;
 import org.openrdf.model.Value;
@@ -69,7 +70,7 @@ import com.bigdata.rdf.vocab.VocabularyDecl;
  */
 public class VocabBuilder {
 
-	private static final Logger log = Logger.getLogger(VocabBuilder.class);
+	private static final Logger log = LogManager.getLogger(VocabBuilder.class);
 	
     private final IRDFParserOptions parserOptions;
 	

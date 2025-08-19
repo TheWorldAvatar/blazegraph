@@ -33,7 +33,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.Future;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.BTree;
 import com.bigdata.btree.IIndex;
@@ -58,7 +59,7 @@ import com.bigdata.util.concurrent.ExecutionExceptions;
  */
 public class SplitUtility {
 
-    private static final Logger log = Logger.getLogger(SplitUtility.class);
+    private static final Logger log = LogManager.getLogger(SplitUtility.class);
 
 	/**
 	 * Dynamic sharding operations are not currently supported for indices with

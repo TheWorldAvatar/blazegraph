@@ -32,7 +32,8 @@ import java.util.Iterator;
 import java.util.Properties;
 import java.util.UUID;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Literal;
 
 import com.bigdata.btree.DefaultTupleSerializer;
@@ -60,8 +61,7 @@ import com.bigdata.search.TokenBuffer;
 public class BigdataSubjectCentricFullTextIndex extends FullTextIndex implements
         ISubjectCentricTextIndexer<Hit> {
 
-    final private static transient Logger log = Logger
-            .getLogger(BigdataSubjectCentricFullTextIndex.class);
+    final private static transient Logger log = LogManager.getLogger(BigdataSubjectCentricFullTextIndex.class);
     
     /**
      * The basename of the search index.

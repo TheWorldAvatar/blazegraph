@@ -7,7 +7,8 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.BigdataStatics;
 
@@ -48,7 +49,7 @@ import com.bigdata.BigdataStatics;
 public class ConcurrentWeakValueCacheWithBatchedUpdates<K, V> implements
         IConcurrentWeakValueCache<K, V> {
 
-    private static transient final Logger log = Logger.getLogger(ConcurrentWeakValueCacheWithBatchedUpdates.class);
+    private static transient final Logger log = LogManager.getLogger(ConcurrentWeakValueCacheWithBatchedUpdates.class);
     
 //    private static transient final boolean INFO = log.isInfoEnabled();
 

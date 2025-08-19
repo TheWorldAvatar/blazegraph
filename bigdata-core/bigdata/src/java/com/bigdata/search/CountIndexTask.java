@@ -1,6 +1,7 @@
 package com.bigdata.search;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.IRangeQuery;
 import com.bigdata.btree.ISimpleSplitHandler;
@@ -30,7 +31,7 @@ import com.bigdata.util.BytesUtil;
  */
 public class CountIndexTask<V extends Comparable<V>> extends AbstractIndexTask<V> {
 
-    final private static Logger log = Logger.getLogger(CountIndexTask.class);
+    final private static Logger log = LogManager.getLogger(CountIndexTask.class);
 
     private final long rangeCount;
     

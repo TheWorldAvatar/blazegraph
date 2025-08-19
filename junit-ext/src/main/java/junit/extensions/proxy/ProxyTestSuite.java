@@ -23,7 +23,8 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * <p>
@@ -66,7 +67,7 @@ public class ProxyTestSuite
      * The {@link Logger} is named for this class.
      */
 
-    protected static final Logger log = Logger.getLogger
+    protected static final Logger log = LogManager.getLogger
 	( ProxyTestSuite.class
 	  );
 
