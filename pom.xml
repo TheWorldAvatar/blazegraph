@@ -224,7 +224,7 @@ Copyright 2010 by TalkingTrends (Amsterdam, The Netherlands)
     <highscalelib.version>1.1.4</highscalelib.version>
     <log4j.version>2.25.1</log4j.version>
     <colt.version>${project.version}</colt.version>
-    <fastutil.version>6.5.16</fastutil.version>
+    <fastutil.version>6.6.5</fastutil.version>
     <!-- Note, that jackson version no higher than 2.6.x should be used
         for sesame 2.8.11 compatibility (which specifies 2.4.4 jackson dependency)
 		Ref: https://fasterxml.github.io/jackson-core/javadoc/2.6/deprecated-list.html
