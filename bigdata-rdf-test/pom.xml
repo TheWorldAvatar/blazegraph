@@ -71,7 +71,7 @@ Copyright 2010 by TalkingTrends (Amsterdam, The Netherlands)
           <reuseForks>true</reuseForks>
           <printSummary>false</printSummary>
           <disableXmlReport>false</disableXmlReport>
-          <argLine>-server -ea -Xms512m -Xmx4g -Dlog4j.configuration=file:src/test/resources/log4j.properties</argLine>
+          <argLine>-server -ea -Xms512m -Xmx4g -Dlog4j.configuration=file:src/test/resources/log4j2.xml</argLine>
           <rerunFailingTestsCount>2</rerunFailingTestsCount>
         </configuration>
       </plugin>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<Configuration name="Log4j1">
+    <Appenders>
+        <File name="A2" fileName="ResourceManager.log" append="true">
+            <PatternLayout pattern="%5v1Level [%t] %l %d - %m%n" />
+        </File>
+        <Console name="solutionsLog" target="SYSTEM_OUT">
+            <PatternLayout pattern="SOLUTION:	%m" />
+        </Console>
+        <Console name="sparqlLog" target="SYSTEM_OUT">
+            <PatternLayout pattern="#----------%d-----------tx=%X{tx}%n%m" />
+        </Console>
+        <Console name="dest1" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d %t %-5level: %c: %m%n" />
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Root level="WARN">
+            <AppenderRef ref="dest1" />
+        </Root>
+        <Logger name="com.bigdata.rdf.sail.tck.DavidsBigdataSparqlTest" level="INFO" />
+        <Logger name="com.bigdata.rdf.sparql.ast.eval.ASTEvalHelper" level="WARN" />
+    </Loggers>
+</Configuration>

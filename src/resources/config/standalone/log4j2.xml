@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<Configuration name="Log4j1">
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout
+                pattern="%-5level: %r %properties{clientname} %properties{serviceName} %t %l: %m%n" />
+        </Console>
+        <File name="detailLog" fileName="detail.log" append="true" bufferedIo="false">
+            <PatternLayout pattern="%-5level: %r %t %l: %m%n" />
+        </File>
+        <File name="eventLog" fileName="eventLog" append="true" bufferedIo="false">
+            <PatternLayout pattern="%m" />
+        </File>
+        <File name="errorLog" fileName="error.log" append="true" bufferedIo="false">
+            <PatternLayout pattern="%-5level: %r %t %l: %m%n" />
+        </File>
+    </Appenders>
+    <Loggers>
+        <Root level="WARN">
+            <AppenderRef ref="console" />
+            <AppenderRef ref="detailLog" />
+            <AppenderRef ref="errorLog" />
+        </Root>
+        <Logger name="com.bigdata.service.EventReceiver" level="INFO">
+            <AppenderRef ref="eventLog" />
+        </Logger>
+        <Logger name="com.bigdata.jini.start.process" level="INFO" />
+        <Logger name="com.bigdata.rdf.load" level="INFO" />
+        <Logger name="com.bigdata.jini.start.ServiceConfigurationZNodeMonitorTask" level="WARN" />
+        <Logger name="com.bigdata.jini.start.MonitorConfigZNodeTask" level="WARN" />
+        <Logger name="com.bigdata.jini.start.config" level="WARN" />
+        <Logger name="com.bigdata.jini.start.MonitorCreatePhysicalServiceLocksTask" level="WARN" />
+        <Logger name="com.bigdata.service.jini.master" level="INFO" />
+        <Logger name="com.bigdata.resources.AbstractResourceManagerTask" level="INFO" />
+        <Logger name="edu.lehigh.swat.bench.ubt.bigdata" level="INFO" />
+        <Logger name="com.bigdata.service.AbstractServer" level="INFO" />
+        <Logger name="com.bigdata.relation.rule.eval.RuleLog" level="INFO" />
+        <Logger name="com.bigdata.btree" level="WARN" />
+        <Logger name="com.bigdata.rdf.load.MappedRDFDataLoadMaster" level="INFO" />
+        <Logger name="com.bigdata.resources.AsynchronousOverflowTask" level="INFO" />
+        <Logger name="com.bigdata.zookeeper" level="WARN" />
+        <Logger name="org.apache.zookeeper.ClientCnxn" level="ERROR" />
+        <Logger name="com.bigdata.rdf.load.MappedRDFFileLoadTask" level="INFO" />
+        <Logger name="com.bigdata.jini.start" level="INFO" />
+        <Logger name="com.bigdata.relation.rule.eval.pipeline.JoinMasterTask" level="INFO" />
+        <Logger name="com.bigdata" level="WARN" />
+    </Loggers>
+</Configuration>
