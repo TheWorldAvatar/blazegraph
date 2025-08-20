@@ -211,6 +211,7 @@ public class BigdataGraphClient extends BigdataGraph {
         FEATURES.supportsVertexProperties = BigdataGraph.FEATURES.supportsVertexProperties;
         FEATURES.supportsEdgeProperties = BigdataGraph.FEATURES.supportsEdgeProperties;
         FEATURES.supportsThreadedTransactions = BigdataGraph.FEATURES.supportsThreadedTransactions;
+        FEATURES.supportsThreadIsolatedTransactions = BigdataGraph.FEATURES.supportsThreadIsolatedTransactions;
         
         // override
         FEATURES.supportsTransactions = false; //BigdataGraph.FEATURES.supportsTransactions;

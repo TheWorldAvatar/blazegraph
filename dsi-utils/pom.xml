@@ -143,7 +143,7 @@ Copyright 2010 by TalkingTrends (Amsterdam, The Netherlands)
     <dependency>
       <groupId>commons-configuration</groupId>
       <artifactId>commons-configuration</artifactId>
-      <version>1.6</version>
+      <version>${apache.commons_configuration.version}</version>
     </dependency>
     <dependency>
       <groupId>com.martiansoftware</groupId>
@@ -167,6 +167,11 @@ Copyright 2010 by TalkingTrends (Amsterdam, The Netherlands)
       <version>${log4j.version}</version>
       <scope>runtime</scope>
     </dependency>
-
+  
+    <dependency>
+      <groupId>commons-collections</groupId>
+      <artifactId>commons-collections</artifactId>
+      <version>3.2.2</version>
+    </dependency>
   </dependencies>
 </project>

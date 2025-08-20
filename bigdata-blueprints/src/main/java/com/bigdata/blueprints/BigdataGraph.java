@@ -1881,6 +1881,7 @@ public abstract class BigdataGraph implements Graph {
         FEATURES.supportsVertexProperties = true;
         FEATURES.supportsEdgeProperties = true;
         FEATURES.supportsThreadedTransactions = false;
+        FEATURES.supportsThreadIsolatedTransactions = false;
         
     }
     
