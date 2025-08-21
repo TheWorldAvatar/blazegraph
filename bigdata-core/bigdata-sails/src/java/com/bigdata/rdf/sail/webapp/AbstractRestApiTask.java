@@ -338,7 +338,7 @@ public abstract class AbstractRestApiTask<T> extends AbstractApiTask<T> {
        
        for (NV nv : headers) {
   
-          resp.setHeader(nv.getName(), nv.getValue());
+          resp.setHeader(resp.encodeURL(nv.getName()), resp.encodeURL(nv.getValue()));
       
        }
 
