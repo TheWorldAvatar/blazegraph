@@ -197,7 +197,7 @@ public class IndexSegmentPlan {
          */
         long nchildren = nleaves;
 
-        int nnodes = 0;
+        long nnodes = 0;
         
         for (int h = height - 1; h >= 0; h--) {
 

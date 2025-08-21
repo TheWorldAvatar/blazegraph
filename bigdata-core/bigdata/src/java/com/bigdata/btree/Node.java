@@ -3447,7 +3447,7 @@ public class Node extends AbstractNode<Node> implements INodeData {
                 }
             }
             {
-                int nentries = 0;
+                long nentries = 0;
                 for (int i = 0; i <= nkeys; i++) {
                     nentries += getChildEntryCount(i);
                     if (nentries <= 0) {
