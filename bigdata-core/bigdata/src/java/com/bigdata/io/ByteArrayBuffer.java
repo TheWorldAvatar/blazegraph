@@ -366,10 +366,10 @@ public class ByteArrayBuffer extends OutputStream implements IByteArrayBuffer,
     final public short getShort(int pos) {
 
         short v = 0;
-        short mask = 0xff;
+
         // big-endian.
-        v += (mask & buf[pos++]) <<  8;
-        v += (mask & buf[pos  ]) <<  0;
+        v += (short)((0xff & array()[pos++]) <<  8);
+        v += (short)((0xff & array()[pos  ]) <<  0);
 
         return v;
 

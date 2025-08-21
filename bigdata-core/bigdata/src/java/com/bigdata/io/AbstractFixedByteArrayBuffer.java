@@ -222,10 +222,10 @@ abstract public class AbstractFixedByteArrayBuffer implements IFixedDataRecord {
         pos += off;
         
         short v = 0;
-        short mask = 0xff;
+
         // big-endian.
-        v += (mask & array()[pos++]) <<  8;
-        v += (mask & array()[pos  ]) <<  0;
+        v += (short)((0xff & array()[pos++]) <<  8);
+        v += (short)((0xff & array()[pos  ]) <<  0);
 
         return v;
 
