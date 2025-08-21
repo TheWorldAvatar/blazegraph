@@ -242,8 +242,8 @@ public class TxServlet extends BigdataRDFServlet {
 
          // TODO This URL is correct IFF we only allow CREATE-TX at the correct
          // path.
-         final String txURL = req.getRequestURL().append('/')
-               .append(Long.valueOf(txId)).toString();
+         final String txURL = resp.encodeURL(req.getRequestURL().append('/')
+               .append(txId).toString());
 
          final long elapsedMillis = TimeUnit.NANOSECONDS.toMillis(System
                .nanoTime() - beginNanos);
