@@ -1429,10 +1429,10 @@ public class KeyBuilder implements IKeyBuilder, LongPacker.IByteBuffer {
         int v = 0;
         
         // big-endian.
-        v += (int)((0xffL & buf[off++]) << 24);
-        v += (int)((0xffL & buf[off++]) << 16);
-        v += (int)((0xffL & buf[off++]) <<  8);
-        v += (int)((0xffL & buf[off++]) <<  0);
+        v += (0xff & buf[off++]) << 24;
+        v += (0xff & buf[off++]) << 16;
+        v += (0xff & buf[off++]) <<  8;
+        v += (0xff & buf[off++]) <<  0;
 
         if (v < 0) {
             
@@ -1463,8 +1463,8 @@ public class KeyBuilder implements IKeyBuilder, LongPacker.IByteBuffer {
         int v = 0;
         
         // big-endian.
-        v += (int)((0xffL & buf[off++]) <<  8);
-        v += (int)((0xffL & buf[off++]) <<  0);
+        v += (0xff & buf[off++]) <<  8;
+        v += (0xff & buf[off++]) <<  0;
 
         if (v < 0) {
             
