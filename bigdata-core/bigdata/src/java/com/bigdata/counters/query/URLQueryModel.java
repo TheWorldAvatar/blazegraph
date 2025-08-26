@@ -51,6 +51,7 @@ import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -480,6 +481,10 @@ public class URLQueryModel {
             final HttpServletResponse resp
             ) throws UnsupportedEncodingException {
         
+        // Set session timeout to mitigate ReDOS attacks.
+        HttpSession session = req.getSession();
+        session.setMaxInactiveInterval(60);
+
         final String uri = URLDecoder.decode(req.getRequestURI(), "UTF-8");
         
         final LinkedHashMap<String, Vector<String>> params = new LinkedHashMap<String, Vector<String>>();

@@ -32,7 +32,6 @@ import java.io.OutputStreamWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -90,10 +89,6 @@ public class CountersServlet extends BigdataServlet {
             final HttpServletResponse resp) throws IOException {
 
         try {
-
-        // Set session timeout to mitigate ReDOS attacks.
-        HttpSession session = req.getSession();
-        session.setMaxInactiveInterval(60);
         
         // TODO Hook this how? (NSS does not define an IService right now)
         final IService service = null;
