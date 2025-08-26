@@ -246,8 +246,8 @@ public class SegmentedInputStream extends MeasurableInputStream {
 	public long skip( final long n ) throws IOException {
 		ensureNotClosed();
 		if ( eofInBlock() ) return 0;
-		long effectiveskip = Math.max( Math.min( segmentLen - relativePos, n ), 0 );
-		effectiveskip = in.skip( effectiveskip );
+		int effectiveskip = Math.max( Math.min( segmentLen - relativePos, Math.toIntExact(n) ), 0 );
+		effectiveskip = Math.toIntExact(in.skip( effectiveskip ));
 		relativePos += effectiveskip;
 		return effectiveskip;
 	}
