@@ -23,6 +23,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 package com.bigdata.rdf.sail.webapp;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
@@ -142,7 +144,17 @@ public class BackupServlet extends BigdataRDFServlet {
 			param = req.getParameter(FILE);
 
 			if (param != null) {
-				if (!"".equals(param)) {
+				if (!param.isEmpty()) {
+					if(!param.endsWith(".jnl")) {
+						throw new IllegalArgumentException("The 'file' parameter must have the extension '.jnl', '" + param + "' was passed." );
+					}
+					Path path = Path.of(param);
+					if(!path.isAbsolute()) {
+						throw new IllegalArgumentException("The 'file' parameter needs to be absloute, '" + param + "' was passed." );
+					}
+					if(!Files.exists(path.getParent())) {
+						throw new IllegalArgumentException("The 'file' parameter's parent directory must exist, '" + param + "' was passed." );
+					}
 					file = param;
 				} // Default is set at initialization
 			}
