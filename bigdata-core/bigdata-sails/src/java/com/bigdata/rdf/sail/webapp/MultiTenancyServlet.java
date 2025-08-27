@@ -837,9 +837,10 @@ public class MultiTenancyServlet extends BigdataRDFServlet {
 			
 		} catch (UnsupportedOperationException e) {
 			
-			writer.append(e.getMessage());
+            log.error("Text index rebuild not supported: {}",  e.getMessage());
+			writer.append("Text index rebuild not supported");
 			
-			resp.sendError(HTTP_INTERNALERROR, e.getMessage());
+			resp.sendError(HTTP_INTERNALERROR, "Text index rebuild not supported");
 			
 		}
 		
