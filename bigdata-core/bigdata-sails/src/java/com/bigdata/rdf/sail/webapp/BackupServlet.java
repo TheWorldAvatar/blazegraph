@@ -150,7 +150,7 @@ public class BackupServlet extends BigdataRDFServlet {
 						throw new IllegalArgumentException("The 'file' parameter must have the extension '.jnl', '" + param + "' was passed." );
 					}
 					String escapeParam = StringEscapeUtils.escapeHtml(param);
-					if(escapeParam != param) {
+					if(!escapeParam.equals(param)) {
 						throw new IllegalArgumentException("The 'file' parameter must not contain HTML escapable characters, '" + param + "' was passed." );
 					}
 					Path path = Path.of(escapeParam);
