@@ -31,6 +31,7 @@ import java.util.concurrent.Future;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -148,7 +149,11 @@ public class BackupServlet extends BigdataRDFServlet {
 					if(!param.endsWith(".jnl")) {
 						throw new IllegalArgumentException("The 'file' parameter must have the extension '.jnl', '" + param + "' was passed." );
 					}
-					Path path = Path.of(param);
+					String escapeParam = StringEscapeUtils.escapeHtml(param);
+					if(escapeParam != param) {
+						throw new IllegalArgumentException("The 'file' parameter must not contain HTML escapable characters, '" + param + "' was passed." );
+					}
+					Path path = Path.of(escapeParam);
 					if(!path.isAbsolute()) {
 						throw new IllegalArgumentException("The 'file' parameter needs to be absloute, '" + param + "' was passed." );
 					}
