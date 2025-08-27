@@ -38,6 +38,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Resource;
@@ -565,7 +566,7 @@ abstract public class BigdataServlet extends HttpServlet implements IMimeTypes {
       final Writer w = resp.getWriter();
 
       if (content != null)
-         w.write(content);
+         w.write(StringEscapeUtils.escapeHtml(content));
 
       /*
        * Note: This commits the response! This method MUST NOT be used within an
