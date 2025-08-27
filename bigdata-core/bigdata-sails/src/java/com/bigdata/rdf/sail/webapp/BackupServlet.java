@@ -152,7 +152,7 @@ public class BackupServlet extends BigdataRDFServlet {
 					if(!path.isAbsolute()) {
 						throw new IllegalArgumentException("The 'file' parameter needs to be absloute, '" + param + "' was passed." );
 					}
-					if(!Files.exists(path.getParent())) {
+					if(!Files.isDirectory(path.getParent())) {
 						throw new IllegalArgumentException("The 'file' parameter's parent directory must exist, '" + param + "' was passed." );
 					}
 					file = path.toString();
