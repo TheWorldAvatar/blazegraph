@@ -155,7 +155,7 @@ public class BackupServlet extends BigdataRDFServlet {
 					if(!Files.exists(path.getParent())) {
 						throw new IllegalArgumentException("The 'file' parameter's parent directory must exist, '" + param + "' was passed." );
 					}
-					file = param;
+					file = path.toString();
 				} // Default is set at initialization
 			}
 
