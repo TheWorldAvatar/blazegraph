@@ -493,7 +493,9 @@ public class DumpJournal {
 
                 store.showAllocators(sb);
 
-                out.println(sb);
+                log.info(sb);
+
+                out.println("Allocator details output to log");
 
             }
 
