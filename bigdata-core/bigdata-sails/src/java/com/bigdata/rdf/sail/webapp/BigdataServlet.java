@@ -565,8 +565,21 @@ abstract public class BigdataServlet extends HttpServlet implements IMimeTypes {
 
         final Writer w = resp.getWriter();
 
-        if (content != null)
-            w.write(StringEscapeUtils.escapeHtml(content));
+        if (content != null) {
+            // If status indicates a server/client error, log detailed content and return
+            // generic message
+            if (status >= 500) {
+                // Log detailed error, including content
+                log.error("Internal server error response: {}", content);
+                w.write("An internal server error occurred."); // generic message
+            } else if (status >= 400) {
+                log.warn("Client error response: {}", content);
+                w.write("A client error occurred."); // generic message
+            } else {
+                // Only write content for successful responses
+                w.write(StringEscapeUtils.escapeHtml(content));
+            }
+        }
 
         /*
          * Note: This commits the response! This method MUST NOT be used within an
