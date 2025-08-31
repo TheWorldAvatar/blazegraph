@@ -206,7 +206,7 @@ public class BackupServlet extends BigdataRDFServlet {
 		if(hasError) {
 			buildAndCommitResponse(res, HTTP_INTERNALERROR, MIME_TEXT_PLAIN, errorMessage.toString() + "\n");
 		} else {
-			buildAndCommitResponse(res, HTTP_OK, MIME_TEXT_PLAIN, "Backup created at " + file + ".\n");
+			buildAndCommitResponse(res, HTTP_OK, MIME_TEXT_PLAIN, "Backup created at " + StringEscapeUtils.escapeHtml(file) + ".\n");
 		}
 
 	}
