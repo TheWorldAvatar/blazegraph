@@ -577,7 +577,13 @@ abstract public class BigdataServlet extends HttpServlet implements IMimeTypes {
                 w.write("A client error occurred."); // generic message
             } else {
                 // Only write content for successful responses
-                w.write(StringEscapeUtils.escapeHtml(content));
+                if (content != null) {
+                    if (mimeType != null && mimeType.toLowerCase().startsWith("text/html")) {
+                        w.write(StringEscapeUtils.escapeHtml(content));
+                    } else {
+                        w.write(content);
+                    }
+                }
             }
         }
 
