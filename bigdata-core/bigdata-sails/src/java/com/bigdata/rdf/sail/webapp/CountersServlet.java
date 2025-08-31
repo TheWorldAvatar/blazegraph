@@ -69,8 +69,8 @@ public class CountersServlet extends BigdataServlet {
      * 
      */
     private static final long serialVersionUID = 1L;
-    
-    static private final transient Logger log = LogManager.getLogger(CountersServlet.class); 
+
+    static private final transient Logger log = LogManager.getLogger(CountersServlet.class);
 
     /**
      * 
