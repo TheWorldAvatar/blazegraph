@@ -681,7 +681,7 @@ public class URLQueryModel {
                  * Note: Throws PatternSyntaxException if the pattern can
                  * not be compiled.
                  */
-                final Pattern pattern = Pattern.compile(QueryUtil.checkRegex(patterns.firstElement()));
+                final Pattern pattern = Pattern.compile(patterns.firstElement());
 
                 eventFilters.put(fld, pattern);
 

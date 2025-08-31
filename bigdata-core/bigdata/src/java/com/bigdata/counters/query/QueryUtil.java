@@ -237,7 +237,7 @@ public class QueryUtil {
             if (log.isInfoEnabled())
                 log.info("effective regex filter=" + s);
 
-            pattern = Pattern.compile(checkRegex(s));
+            pattern = Pattern.compile(s);
 
         } else {
 
@@ -247,19 +247,6 @@ public class QueryUtil {
 
         return pattern;
         
-    }
-
-    private static final Pattern regexCheckPattern = Pattern
-            .compile("(\\([^\\)]*([+*?])\\)[+*?])|(\\.[*+]{2,})|(\\([^\\)]*\\.\\*[^\\)]*\\)[+*?])");
-
-    public static String checkRegex(String pattern) {
-        if (pattern == null) {
-            throw new IllegalArgumentException("Invalid 'null' regex specified");
-        }
-        if (regexCheckPattern.matcher(pattern).find()) {
-            throw new IllegalArgumentException("Unsafe regex: " + pattern);
-        }
-        return pattern;
     }
 
     /**
@@ -298,7 +285,7 @@ public class QueryUtil {
         if (log.isInfoEnabled())
             log.info("effective regex filter=" + s);
 
-        return Pattern.compile(checkRegex(s));
+        return Pattern.compile(s);
 
     }
 
