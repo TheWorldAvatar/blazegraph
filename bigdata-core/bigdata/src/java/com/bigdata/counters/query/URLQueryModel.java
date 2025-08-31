@@ -51,7 +51,6 @@ import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -478,12 +477,7 @@ public class URLQueryModel {
     public static URLQueryModel getInstance(//
             final IService service,
             final HttpServletRequest req,
-            final HttpServletResponse resp
-            ) throws UnsupportedEncodingException {
-        
-        // Set session timeout to mitigate ReDOS attacks.
-        HttpSession session = req.getSession();
-        session.setMaxInactiveInterval(60);
+            final HttpServletResponse resp) throws UnsupportedEncodingException {
 
         final String uri = URLDecoder.decode(req.getRequestURI(), "UTF-8");
 
@@ -687,7 +681,7 @@ public class URLQueryModel {
                  * Note: Throws PatternSyntaxException if the pattern can
                  * not be compiled.
                  */
-                final Pattern pattern = Pattern.compile(patterns.firstElement());
+                final Pattern pattern = Pattern.compile(QueryUtil.checkRegex(patterns.firstElement()));
 
                 eventFilters.put(fld, pattern);
 

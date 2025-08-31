@@ -111,53 +111,54 @@ public class QueryUtil {
 
         }
 
-        
-        final Matcher m = pattern.matcher(counter.getPath());
-        
-        // #of capturing groups in the pattern.
-        final int groupCount = m.groupCount();
-    
-        if(groupCount == 0) {
-            
-            // No capturing groups.
-            return null;
-    
-        }
-    
-        if (!m.matches()) {
-    
-            throw new IllegalArgumentException("No match? counter=" + counter
-                    + ", regex=" + pattern);
-    
-        }
-    
-        /*
-         * Pattern is matched w/ at least one capturing group so assemble a
-         * label from the matched capturing groups.
-         */
-    
-        if (log.isDebugEnabled()) {
-            log.debug("input  : " + counter.getPath());
-            log.debug("pattern: " + pattern);
-            log.debug("matcher: " + m);
-            log.debug("result : " + m.toMatchResult());
-        }
-    
-        final String[] groups = new String[groupCount];
-    
-        for (int i = 1; i <= groupCount; i++) {
-    
-            final String s = m.group(i);
-    
-            if (log.isDebugEnabled())
-                log.debug("group[" + i + "]: " + m.group(i));
-    
-            groups[i - 1] = s;
-    
-        }
-    
-        return groups;
-    
+        return TimeoutEnforcer.call(() -> {
+            final Matcher m = pattern.matcher(counter.getPath());
+
+            // #of capturing groups in the pattern.
+            final int groupCount = m.groupCount();
+
+            if (groupCount == 0) {
+
+                // No capturing groups.
+                return null;
+
+            }
+
+            if (!m.matches()) {
+
+                throw new IllegalArgumentException("No match? counter=" + counter
+                        + ", regex=" + pattern);
+
+            }
+
+            /*
+             * Pattern is matched w/ at least one capturing group so assemble a
+             * label from the matched capturing groups.
+             */
+
+            if (log.isDebugEnabled()) {
+                log.debug("input  : " + counter.getPath());
+                log.debug("pattern: " + pattern);
+                log.debug("matcher: " + m);
+                log.debug("result : " + m.toMatchResult());
+            }
+
+            final String[] groups = new String[groupCount];
+
+            for (int i = 1; i <= groupCount; i++) {
+
+                final String s = m.group(i);
+
+                if (log.isDebugEnabled())
+                    log.debug("group[" + i + "]: " + m.group(i));
+
+                groups[i - 1] = s;
+
+            }
+
+            return groups;
+        });
+
     }
 
     /**
@@ -236,7 +237,7 @@ public class QueryUtil {
             if (log.isInfoEnabled())
                 log.info("effective regex filter=" + s);
 
-            pattern = Pattern.compile(s);
+            pattern = Pattern.compile(checkRegex(s));
 
         } else {
 
@@ -246,6 +247,19 @@ public class QueryUtil {
 
         return pattern;
         
+    }
+
+    private static final Pattern regexCheckPattern = Pattern
+            .compile("(\\([^\\)]*([+*?])\\)[+*?])|(\\.[*+]{2,})|(\\([^\\)]*\\.\\*[^\\)]*\\)[+*?])");
+
+    public static String checkRegex(String pattern) {
+        if (pattern == null) {
+            throw new IllegalArgumentException("Invalid 'null' regex specified");
+        }
+        if (regexCheckPattern.matcher(pattern).find()) {
+            throw new IllegalArgumentException("Unsafe regex: " + pattern);
+        }
+        return pattern;
     }
 
     /**
@@ -284,7 +298,7 @@ public class QueryUtil {
         if (log.isInfoEnabled())
             log.info("effective regex filter=" + s);
 
-        return Pattern.compile(s);
+        return Pattern.compile(checkRegex(s));
 
     }
 
