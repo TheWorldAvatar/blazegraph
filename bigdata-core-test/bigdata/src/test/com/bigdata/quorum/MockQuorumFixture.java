@@ -53,7 +53,8 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.ha.HAPipelineGlue;
 import com.bigdata.ha.IHAPipelineResetRequest;
@@ -91,8 +92,7 @@ import com.bigdata.util.InnerCause;
  */
 public class MockQuorumFixture {
 
-    protected static final transient Logger log = Logger
-            .getLogger(MockQuorumFixture.class);
+    protected static final transient Logger log = LogManager.getLogger(MockQuorumFixture.class);
 
     /**
      * Single threaded executor used to dispatch events to the {@link MockQuorumWatcher}s.

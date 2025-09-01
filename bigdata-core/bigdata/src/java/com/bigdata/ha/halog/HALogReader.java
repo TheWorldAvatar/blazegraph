@@ -35,7 +35,8 @@ import java.security.DigestException;
 import java.security.MessageDigest;
 import java.util.Arrays;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.ha.msg.IHAMessage;
 import com.bigdata.ha.msg.IHAWriteMessage;
@@ -63,7 +64,7 @@ import com.bigdata.util.InnerCause;
  */
 public class HALogReader implements IHALogReader {
 
-	private static final Logger log = Logger.getLogger(HALogReader.class);
+	private static final Logger log = LogManager.getLogger(HALogReader.class);
 
 	private final File m_file;
 	private final RandomAccessFile m_raf;

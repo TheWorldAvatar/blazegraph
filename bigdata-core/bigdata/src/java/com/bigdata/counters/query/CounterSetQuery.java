@@ -51,7 +51,8 @@ import java.util.regex.Pattern;
 
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.xml.sax.SAXException;
 
 import com.bigdata.Banner;
@@ -108,7 +109,7 @@ import com.bigdata.util.httpd.NanoHTTPD;
  */
 public class CounterSetQuery {
 
-    static private final Logger log = Logger.getLogger(CounterSetQuery.class);
+    static private final Logger log = LogManager.getLogger(CounterSetQuery.class);
 
     /**
      * Reads a list of {@link URL}s from a file. Blank lines and comment lines

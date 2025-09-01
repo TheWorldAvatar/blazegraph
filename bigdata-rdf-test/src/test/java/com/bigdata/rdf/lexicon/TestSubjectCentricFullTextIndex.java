@@ -34,7 +34,8 @@ import java.util.concurrent.TimeUnit;
 
 import junit.framework.AssertionFailedError;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.impl.LiteralImpl;
 import org.openrdf.model.vocabulary.RDF;
 import org.openrdf.model.vocabulary.RDFS;
@@ -69,7 +70,7 @@ import cutthecrap.utils.striterators.ICloseableIterator;
 @Deprecated
 public class TestSubjectCentricFullTextIndex extends AbstractTripleStoreTestCase {
 
-	private static final transient Logger log = Logger.getLogger(TestSubjectCentricFullTextIndex.class);
+	private static final transient Logger log = LogManager.getLogger(TestSubjectCentricFullTextIndex.class);
 	
     /**
      * 

@@ -4,7 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.IIndex;
 import com.bigdata.btree.IRangeQuery;
@@ -40,8 +41,7 @@ import com.bigdata.relation.AbstractRelation;
  */
 public class HistoryServiceFactory extends CustomServiceFactoryBase {
 
-    static private transient final Logger log = Logger
-            .getLogger(HistoryServiceFactory.class);
+    static private transient final Logger log = LogManager.getLogger(HistoryServiceFactory.class);
 
     private final BigdataNativeServiceOptions serviceOptions;
 

@@ -26,7 +26,8 @@ package com.bigdata.rdf.internal.constraints;
 
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.IBindingSet;
@@ -46,7 +47,7 @@ public class IfBOp extends IVValueExpression<IV> implements IPassesMaterializati
 	 */
 	private static final long serialVersionUID = 7391999162162545704L;
 
-	private static final transient Logger log = Logger.getLogger(IfBOp.class);
+	private static final transient Logger log = LogManager.getLogger(IfBOp.class);
 
     @Override
     protected boolean areGlobalsRequired() {

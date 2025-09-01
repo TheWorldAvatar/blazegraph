@@ -18,7 +18,8 @@
  */
 package org.apache.system;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * A set of utility operations that provide necessary information about the
@@ -42,7 +43,7 @@ public final class SystemUtil
     private static final boolean m_linux;
     private static final boolean m_osx;
 
-    private static final Logger log = Logger.getLogger(SystemUtil.class);
+    private static final Logger log = LogManager.getLogger(SystemUtil.class);
     
     static
     {

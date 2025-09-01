@@ -23,7 +23,8 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.ganglia.util.BytesUtil;
 import com.bigdata.ganglia.util.DaemonThreadFactory;
@@ -42,7 +43,7 @@ import com.bigdata.ganglia.util.DaemonThreadFactory;
  */
 public class GangliaListener implements Callable<Void>, IGangliaDefaults {
 
-	static private final Logger log = Logger.getLogger(GangliaListener.class);
+	static private final Logger log = LogManager.getLogger(GangliaListener.class);
 
 	/** The address used by ganglia for hosts to join. */
 	private final InetAddress group;

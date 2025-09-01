@@ -23,7 +23,8 @@ package junit.extensions.proxy;
 
 import java.util.Enumeration;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -49,7 +50,7 @@ public class TestProxySetup extends TestCase {
      * The {@link Logger} is named for this class.
      */
 
-    protected static final Logger log = Logger.getLogger
+    protected static final Logger log = LogManager.getLogger
 	( TestProxySetup.class
 	  );
 

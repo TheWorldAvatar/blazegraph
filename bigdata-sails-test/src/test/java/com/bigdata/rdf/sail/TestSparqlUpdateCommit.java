@@ -26,7 +26,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 package com.bigdata.rdf.sail;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.query.QueryLanguage;
 
 import com.bigdata.rdf.changesets.IChangeLog;
@@ -36,7 +37,7 @@ import com.bigdata.rdf.changesets.IChangeRecord;
  */
 public class TestSparqlUpdateCommit extends ProxyBigdataSailTestCase {
 
-    private static final Logger log = Logger.getLogger(TestSparqlUpdateCommit.class);
+    private static final Logger log = LogManager.getLogger(TestSparqlUpdateCommit.class);
     
     /**
      * 

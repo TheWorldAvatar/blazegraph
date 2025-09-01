@@ -32,7 +32,8 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import junit.framework.TestCase;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Resource;
 import org.openrdf.model.Statement;
 import org.openrdf.model.URI;
@@ -71,7 +72,7 @@ import com.bigdata.service.AbstractTransactionService;
  */
 public class TestTicket473 extends TestCase {
 
-    private static final Logger log = Logger.getLogger(TestTicket473.class);
+    private static final Logger log = LogManager.getLogger(TestTicket473.class);
     
     /**
      * 

@@ -30,8 +30,9 @@ package com.bigdata.service;
 
 import java.util.UUID;
 
-import org.apache.log4j.Logger;
-import org.apache.log4j.MDC;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.ThreadContext;
 
 import com.bigdata.Banner;
 import com.bigdata.counters.AbstractStatisticsCollector;
@@ -46,7 +47,7 @@ import com.bigdata.counters.CounterSet;
  */
 abstract public class AbstractService implements IService {
 
-    private static final Logger log = Logger.getLogger(AbstractService.class);
+    private static final Logger log = LogManager.getLogger(AbstractService.class);
     
     private String serviceName;
     private UUID serviceUUID;
@@ -198,12 +199,12 @@ abstract public class AbstractService implements IService {
     }
     
     /**
-     * Sets up the {@link MDC} logging context. You should do this on every
+     * Sets up the {@link ThreadContext} logging context. You should do this on every
      * client facing point of entry and then call {@link #clearLoggingContext()}
      * in a <code>finally</code> clause. You can extend this method to add
      * additional context.
      * <p>
-     * This implementation adds the following parameters to the {@link MDC}.
+     * This implementation adds the following parameters to the {@link ThreadContext}.
      * <dl>
      * <dt>serviceName</dt>
      * <dd> The serviceName is typically a configuration property for the
@@ -212,7 +213,7 @@ abstract public class AbstractService implements IService {
      * <dt>serviceUUID</dt>
      * <dd>The serviceUUID is, in general, assigned asynchronously by the
      * service registrar. Once the serviceUUID becomes available it will be
-     * added to the {@link MDC}. This datum can be injected into log messages
+     * added to the {@link ThreadContext}. This datum can be injected into log messages
      * using <em>%X{serviceUUID}</em> in your log4j pattern layout.</dd>
      * <dt>hostname</dt>
      * <dd>The hostname statically determined. This datum can be injected into
@@ -231,13 +232,13 @@ abstract public class AbstractService implements IService {
 
             if (serviceUUID != null) {
 
-                MDC.put("serviceUUID", serviceUUID);
+                ThreadContext.put("serviceUUID", serviceUUID.toString());
 
             } 
             
-            MDC.put("serviceName", getServiceName());
+            ThreadContext.put("serviceName", getServiceName());
             
-            MDC.put("hostname", getHostname());
+            ThreadContext.put("hostname", getHostname());
 
         } catch(Throwable t) {
 
@@ -254,11 +255,11 @@ abstract public class AbstractService implements IService {
      */
     protected void clearLoggingContext() {
         
-        MDC.remove("serviceName");
+        ThreadContext.remove("serviceName");
 
-        MDC.remove("serviceUUID");
+        ThreadContext.remove("serviceUUID");
 
-        MDC.remove("hostname");
+        ThreadContext.remove("hostname");
         
     }
 

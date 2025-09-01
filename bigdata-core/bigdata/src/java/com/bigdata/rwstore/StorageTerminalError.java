@@ -24,7 +24,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 package com.bigdata.rwstore;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class StorageTerminalError extends Error {
 	
@@ -35,7 +36,7 @@ public class StorageTerminalError extends Error {
 	
 	private final Throwable m_cause;
 
-	private static final transient Logger cat = Logger.getLogger(StorageTerminalError.class);
+	private static final transient Logger cat = LogManager.getLogger(StorageTerminalError.class);
 	
 	public StorageTerminalError(final String message, final Throwable cause) {
 		super(message);

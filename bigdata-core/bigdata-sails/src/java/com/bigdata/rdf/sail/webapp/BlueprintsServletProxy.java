@@ -36,13 +36,14 @@ import java.lang.reflect.InvocationTargetException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class BlueprintsServletProxy extends BigdataRDFServlet {
 	
 	private static final String DEFAULT_PROVIDER = "com.bigdata.blueprints.webapp.BlueprintsServlet";
 	
-    static private final transient Logger log = Logger.getLogger(BlueprintsServletProxy.class);
+    static private final transient Logger log = LogManager.getLogger(BlueprintsServletProxy.class);
 
 	/**
 	 * Flag to signify a blueprints operation.

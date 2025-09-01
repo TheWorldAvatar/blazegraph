@@ -28,7 +28,8 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.UUID;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.eclipse.jetty.client.HttpClient;
 import org.eclipse.jetty.server.Server;
 
@@ -56,7 +57,7 @@ import com.tinkerpop.blueprints.Vertex;
  */
 public abstract class AbstractTestNSSBlueprintsClient extends AbstractTestBigdataGraphFactory {
 
-    private static final transient Logger log = Logger.getLogger(AbstractTestNSSBlueprintsClient.class);
+    private static final transient Logger log = LogManager.getLogger(AbstractTestNSSBlueprintsClient.class);
 
     private Server m_fixture;
 	protected String namespace;

@@ -141,7 +141,7 @@ import com.bigdata.rdf.sparql.ast.VarNode;
  */
 public class ValueExprBuilder extends BigdataASTVisitorBase {
 
-//    private static final Logger log = Logger.getLogger(ValueExprBuilder.class);
+//    private static final Logger log = LogManager.getLogger(ValueExprBuilder.class);
 
     /**
      * Used to manage collection and nesting of graph patterns. This is mostly

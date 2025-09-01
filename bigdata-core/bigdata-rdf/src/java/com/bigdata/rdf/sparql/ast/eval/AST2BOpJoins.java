@@ -35,7 +35,8 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.query.algebra.StatementPattern.Scope;
 
 import com.bigdata.bop.BOp;
@@ -89,7 +90,7 @@ import com.bigdata.relation.rule.EmptyAccessPathExpander;
  */
 public class AST2BOpJoins extends AST2BOpFilters {
 
-    private static final Logger log = Logger.getLogger(AST2BOpFilters.class);
+    private static final Logger log = LogManager.getLogger(AST2BOpFilters.class);
 
     /**
      * 

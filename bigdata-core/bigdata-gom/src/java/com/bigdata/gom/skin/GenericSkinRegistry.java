@@ -31,7 +31,8 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.Vector;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.gom.gpo.IGPO;
 import com.bigdata.gom.gpo.IGenericSkin;
@@ -63,7 +64,7 @@ public class GenericSkinRegistry
      * The {@link Logger} for the {@link GenericSkinRegistry}.
      */
 
-    public static final Logger log = Logger.getLogger
+    public static final Logger log = LogManager.getLogger
     	( GenericSkinRegistry.class
 	  );
 

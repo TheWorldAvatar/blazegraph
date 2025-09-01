@@ -36,7 +36,8 @@ import java.util.UUID;
 import java.util.concurrent.Future;
 import java.util.concurrent.locks.Lock;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.cache.ConcurrentWeakValueCache;
 import com.bigdata.counters.CounterSet;
@@ -94,7 +95,7 @@ import com.bigdata.util.ChecksumError;
 public class RWStrategy extends AbstractRawStore implements IBufferStrategy,
         IHABufferStrategy, IRWStrategy {
 
-    private static final transient Logger log = Logger.getLogger(RWStrategy.class);
+    private static final transient Logger log = LogManager.getLogger(RWStrategy.class);
 
     private final IAddressManager m_am;
 

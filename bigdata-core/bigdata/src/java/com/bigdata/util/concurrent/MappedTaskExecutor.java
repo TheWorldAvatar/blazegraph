@@ -12,7 +12,8 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * A fly weight helper class that runs tasks either sequentially or with limited
@@ -30,8 +31,7 @@ import org.apache.log4j.Logger;
  */
 public class MappedTaskExecutor {
 
-    protected static final transient Logger log = Logger
-            .getLogger(MappedTaskExecutor.class);
+    protected static final transient Logger log = LogManager.getLogger(MappedTaskExecutor.class);
 
     private final ExecutorService service;
 

@@ -32,7 +32,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.rawstore.IAllocationContext;
 import com.bigdata.rawstore.IPSOutputStream;
@@ -84,7 +85,7 @@ import com.bigdata.rawstore.IPSOutputStream;
  **/
 public class PSOutputStream extends IPSOutputStream {
     
-    private static final Logger log = Logger.getLogger(FixedAllocator.class);
+    private static final Logger log = LogManager.getLogger(FixedAllocator.class);
 
 	private static final transient String ERR_NO_STORE = "PSOutputStream with unitilialized store";
 

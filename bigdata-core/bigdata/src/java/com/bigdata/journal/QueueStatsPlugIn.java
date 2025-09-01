@@ -28,7 +28,8 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.util.concurrent.ThreadPoolExecutorBaseStatisticsTask;
 
@@ -41,7 +42,7 @@ import com.bigdata.util.concurrent.ThreadPoolExecutorBaseStatisticsTask;
 public class QueueStatsPlugIn implements
         IPlugIn<Journal, ThreadPoolExecutorBaseStatisticsTask> {
 
-    private static final Logger log = Logger.getLogger(QueueStatsPlugIn.class);
+    private static final Logger log = LogManager.getLogger(QueueStatsPlugIn.class);
 
     /**
      * Performance counters options.

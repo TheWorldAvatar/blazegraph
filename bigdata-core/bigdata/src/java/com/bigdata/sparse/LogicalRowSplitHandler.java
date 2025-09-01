@@ -32,7 +32,8 @@ import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.ISimpleSplitHandler;
 import com.bigdata.btree.IndexSegment;
@@ -56,8 +57,7 @@ public class LogicalRowSplitHandler implements ISimpleSplitHandler, Externalizab
      */
     private static final long serialVersionUID = 9180840621078374197L;
     
-    protected static transient final Logger log = Logger
-            .getLogger(LogicalRowSplitHandler.class);
+    protected static transient final Logger log = LogManager.getLogger(LogicalRowSplitHandler.class);
 
     public static transient final ISimpleSplitHandler INSTANCE = new LogicalRowSplitHandler();
     

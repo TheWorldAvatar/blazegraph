@@ -47,27 +47,28 @@ import java.util.regex.Pattern;
 
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.xml.sax.SAXException;
 
 import com.bigdata.counters.CounterSet;
 import com.bigdata.counters.DefaultInstrumentFactory;
 import com.bigdata.counters.History;
+import com.bigdata.counters.History.SampleIterator;
 import com.bigdata.counters.HistoryInstrument;
 import com.bigdata.counters.ICounter;
 import com.bigdata.counters.ICounterNode;
 import com.bigdata.counters.ICounterSet;
+import com.bigdata.counters.ICounterSet.IInstrumentFactory;
 import com.bigdata.counters.IHostCounters;
 import com.bigdata.counters.IRequiredHostCounters;
 import com.bigdata.counters.PeriodEnum;
-import com.bigdata.counters.History.SampleIterator;
-import com.bigdata.counters.ICounterSet.IInstrumentFactory;
 import com.bigdata.counters.httpd.DummyEventReportingService;
 import com.bigdata.journal.ConcurrencyManager.IConcurrencyManagerCounters;
 import com.bigdata.resources.ResourceManager.IResourceManagerCounters;
 import com.bigdata.resources.StoreManager.IStoreManagerCounters;
-import com.bigdata.service.Event;
 import com.bigdata.service.DataService.IDataServiceCounters;
+import com.bigdata.service.Event;
 import com.bigdata.util.Bytes;
 import com.bigdata.util.concurrent.IQueueCounters.IThreadPoolExecutorTaskCounters;
 
@@ -79,7 +80,7 @@ import com.bigdata.util.concurrent.IQueueCounters.IThreadPoolExecutorTaskCounter
  */
 public class QueryUtil {
 
-    protected static final Logger log = Logger.getLogger(QueryUtil.class);
+    protected static final Logger log = LogManager.getLogger(QueryUtil.class);
 
     /**
      * Return the data captured by {@link Pattern} from the path of the
@@ -99,63 +100,65 @@ public class QueryUtil {
      */
     static public String[] getCapturedGroups(final Pattern pattern,
             final ICounter counter) {
-    
+
         if (counter == null)
             throw new IllegalArgumentException();
-        
+
         if (pattern == null) {
-    
+
             // no pattern, so no captured groups.
             return null;
-            
+
         }
-        
-        final Matcher m = pattern.matcher(counter.getPath());
-        
-        // #of capturing groups in the pattern.
-        final int groupCount = m.groupCount();
-    
-        if(groupCount == 0) {
-            
-            // No capturing groups.
-            return null;
-    
-        }
-    
-        if (!m.matches()) {
-    
-            throw new IllegalArgumentException("No match? counter=" + counter
-                    + ", regex=" + pattern);
-    
-        }
-    
-        /*
-         * Pattern is matched w/ at least one capturing group so assemble a
-         * label from the matched capturing groups.
-         */
-    
-        if (log.isDebugEnabled()) {
-            log.debug("input  : " + counter.getPath());
-            log.debug("pattern: " + pattern);
-            log.debug("matcher: " + m);
-            log.debug("result : " + m.toMatchResult());
-        }
-    
-        final String[] groups = new String[groupCount];
-    
-        for (int i = 1; i <= groupCount; i++) {
-    
-            final String s = m.group(i);
-    
-            if (log.isDebugEnabled())
-                log.debug("group[" + i + "]: " + m.group(i));
-    
-            groups[i - 1] = s;
-    
-        }
-    
-        return groups;
-    
+
+        return TimeoutEnforcer.call(() -> {
+            final Matcher m = pattern.matcher(counter.getPath());
+
+            // #of capturing groups in the pattern.
+            final int groupCount = m.groupCount();
+
+            if (groupCount == 0) {
+
+                // No capturing groups.
+                return null;
+
+            }
+
+            if (!m.matches()) {
+
+                throw new IllegalArgumentException("No match? counter=" + counter
+                        + ", regex=" + pattern);
+
+            }
+
+            /*
+             * Pattern is matched w/ at least one capturing group so assemble a
+             * label from the matched capturing groups.
+             */
+
+            if (log.isDebugEnabled()) {
+                log.debug("input  : " + counter.getPath());
+                log.debug("pattern: " + pattern);
+                log.debug("matcher: " + m);
+                log.debug("result : " + m.toMatchResult());
+            }
+
+            final String[] groups = new String[groupCount];
+
+            for (int i = 1; i <= groupCount; i++) {
+
+                final String s = m.group(i);
+
+                if (log.isDebugEnabled())
+                    log.debug("group[" + i + "]: " + m.group(i));
+
+                groups[i - 1] = s;
+
+            }
+
+            return groups;
+        });
+
     }
 
     /**
@@ -163,10 +166,10 @@ public class QueryUtil {
      * be matched and zero or more regular expressions which must be matched.
      * 
      * @param filter
-     *            A list of strings to be matched (may be null).
+     *               A list of strings to be matched (may be null).
      * @param regex
-     *            A list of regular expressions to be matched (may be null).
-     *            
+     *               A list of regular expressions to be matched (may be null).
+     * 
      * @return The {@link Pattern} -or- <code>null</code> if both collects are
      *         empty.
      */
@@ -276,14 +279,14 @@ public class QueryUtil {
             sb.append("(?:" + val + ")");
 
         }
-    
+
         final String s = sb.toString();
 
         if (log.isInfoEnabled())
             log.info("effective regex filter=" + s);
 
         return Pattern.compile(s);
-        
+
     }
 
     /**
@@ -291,18 +294,18 @@ public class QueryUtil {
      * {@link CounterSet}.
      * 
      * @param file
-     *            The file.
+     *                   The file.
      * @param counterSet
-     *            The {@link CounterSet}.
+     *                   The {@link CounterSet}.
      * @param filter
-     *            An optional filter.
+     *                   An optional filter.
      * @param nslots
-     *            The #of periods worth of data to be retained. This is used
-     *            when a counter not already present in <i>counterSet</i> is
-     *            encountered and controls the #of slots to be retained by
-     *            {@link History} allocated for that counter.
+     *                   The #of periods worth of data to be retained. This is used
+     *                   when a counter not already present in <i>counterSet</i> is
+     *                   encountered and controls the #of slots to be retained by
+     *                   {@link History} allocated for that counter.
      * @param unit
-     *            The unit in which the #of slots was expressed.
+     *                   The unit in which the #of slots was expressed.
      * 
      * @throws IOException
      * @throws SAXException
@@ -323,13 +326,13 @@ public class QueryUtil {
          */
         final IInstrumentFactory instrumentFactory = new DefaultInstrumentFactory(
                 nslots, unit, false/* overwrite */);
-        
+
         readCountersFromFile(
                 file,
                 counterSet,
                 filter,
                 instrumentFactory);
-        
+
     }
 
     /**
@@ -337,11 +340,11 @@ public class QueryUtil {
      * {@link CounterSet}.
      * 
      * @param file
-     *            The file.
+     *                          The file.
      * @param counterSet
-     *            The {@link CounterSet}.
+     *                          The {@link CounterSet}.
      * @param filter
-     *            An optional filter.
+     *                          An optional filter.
      * @param instrumentFactory
      * 
      * @throws IOException
@@ -352,22 +355,22 @@ public class QueryUtil {
             final CounterSet counterSet, final Pattern filter,
             final IInstrumentFactory instrumentFactory) throws IOException,
             SAXException, ParserConfigurationException {
-        
+
         if (log.isInfoEnabled())
             log.info("reading file: " + file);
-        
+
         InputStream is = null;
 
         try {
 
-            // use large buffers.  these files are 200-300M each!
+            // use large buffers. these files are 200-300M each!
             is = new BufferedInputStream(new FileInputStream(file),
                     Bytes.megabyte32 * 1);
 
             counterSet.readXML(is, instrumentFactory, filter);
 
-            if(log.isInfoEnabled()) {
-             
+            if (log.isInfoEnabled()) {
+
                 int n = 0;
                 long firstTimestamp = 0;
                 long lastTimestamp = 0;
@@ -382,13 +385,13 @@ public class QueryUtil {
                     n++;
 
                     System.err.println("Retained: " + c);
-                    
-                    if(!(c.getInstrument() instanceof HistoryInstrument)) {
-                        
+
+                    if (!(c.getInstrument() instanceof HistoryInstrument)) {
+
                         continue;
-                        
+
                     }
-                    
+
                     final History h = ((HistoryInstrument) c.getInstrument())
                             .getHistory();
 
@@ -410,7 +413,7 @@ public class QueryUtil {
                         lastTimestamp = lastSampleTime;
 
                     }
-                    
+
                 }
 
                 log.info("There are now " + n + " counters covering "
@@ -426,7 +429,7 @@ public class QueryUtil {
                 is.close();
 
             }
-            
+
         }
 
     }
@@ -440,7 +443,7 @@ public class QueryUtil {
      * @version $Id$
      */
     public static class ReadCounterSetXMLFileTask implements Callable<Void> {
-        
+
         final File file;
 
         final CounterSet counterSet;
@@ -448,7 +451,7 @@ public class QueryUtil {
         final int nsamples;
 
         final PeriodEnum period;
-        
+
         final Pattern regex;
 
         /**
@@ -480,26 +483,26 @@ public class QueryUtil {
                     period);
 
             return null;
-            
+
         }
 
         public String toString() {
 
             return getClass() + "{ file=" + file + ", nsamples=" + nsamples
                     + ", period=" + period + ", regex=" + regex + "}";
-            
+
         }
-        
+
     }
-    
+
     /**
      * Read in {@link Event}s logged on a file in a tab-delimited format.
      * 
      * @param service
-     *            The events will be added to this service.
+     *                The events will be added to this service.
      * 
      * @param file
-     *            The file from which the events will be read.
+     *                The file from which the events will be read.
      * 
      * @throws IOException
      * 
@@ -539,15 +542,15 @@ public class QueryUtil {
      * given file is a directory.
      * 
      * @param in
-     *            A collection of zero or more files.
+     *               A collection of zero or more files.
      * @param filter
-     *            A filter which will select the files to be accepted.
-     *            
+     *               A filter which will select the files to be accepted.
+     * 
      * @return A collection of the accepted files.
      */
     public static Collection<File> collectFiles(final Collection<File> in,
             final FileFilter filter) {
-        
+
         if (in == null)
             throw new IllegalArgumentException();
 
@@ -573,92 +576,92 @@ public class QueryUtil {
             } else {
 
                 // the file is not a directory.
-                if(filter.accept(file)) {
+                if (filter.accept(file)) {
 
                     out.add(file);
-                    
+
                 }
 
             }
 
         }
-        
+
         return out;
-        
+
     }
 
-	/**
-	 * Return a {@link Pattern} which will match the minimum set of performance
-	 * counters required by the load balancer to perform its function.
-	 */
-	public static Pattern getRequiredPerformanceCountersFilter() {
+    /**
+     * Return a {@link Pattern} which will match the minimum set of performance
+     * counters required by the load balancer to perform its function.
+     */
+    public static Pattern getRequiredPerformanceCountersFilter() {
 
-		return requiredPerformanceCountersFilter;
+        return requiredPerformanceCountersFilter;
 
-	}
+    }
 
-	private static final String[] requiredPerformanceCounterPaths = new String[] {
+    private static final String[] requiredPerformanceCounterPaths = new String[] {
 
-			IRequiredHostCounters.Memory_majorFaultsPerSecond,
+            IRequiredHostCounters.Memory_majorFaultsPerSecond,
 
-			IRequiredHostCounters.LogicalDisk_PercentFreeSpace,
+            IRequiredHostCounters.LogicalDisk_PercentFreeSpace,
 
-			IRequiredHostCounters.CPU_PercentProcessorTime,
+            IRequiredHostCounters.CPU_PercentProcessorTime,
 
-			IHostCounters.CPU_PercentIOWait,
+            IHostCounters.CPU_PercentIOWait,
 
-			IDataServiceCounters.concurrencyManager + ICounterSet.pathSeparator
-					+ IConcurrencyManagerCounters.writeService
-					+ ICounterSet.pathSeparator
-					+ IThreadPoolExecutorTaskCounters.AverageQueuingTime,
+            IDataServiceCounters.concurrencyManager + ICounterSet.pathSeparator
+                    + IConcurrencyManagerCounters.writeService
+                    + ICounterSet.pathSeparator
+                    + IThreadPoolExecutorTaskCounters.AverageQueuingTime,
 
-			IDataServiceCounters.resourceManager + ICounterSet.pathSeparator
-					+ IResourceManagerCounters.StoreManager
-					+ ICounterSet.pathSeparator
-					+ IStoreManagerCounters.DataDirBytesAvailable,
+            IDataServiceCounters.resourceManager + ICounterSet.pathSeparator
+                    + IResourceManagerCounters.StoreManager
+                    + ICounterSet.pathSeparator
+                    + IStoreManagerCounters.DataDirBytesAvailable,
 
-			IDataServiceCounters.resourceManager + ICounterSet.pathSeparator
-					+ IResourceManagerCounters.StoreManager
-					+ ICounterSet.pathSeparator
-					+ IStoreManagerCounters.TmpDirBytesAvailable, };
+            IDataServiceCounters.resourceManager + ICounterSet.pathSeparator
+                    + IResourceManagerCounters.StoreManager
+                    + ICounterSet.pathSeparator
+                    + IStoreManagerCounters.TmpDirBytesAvailable, };
 
-	private static final Pattern requiredPerformanceCountersFilter = QueryUtil
-			.getPattern(
-					Arrays.asList(requiredPerformanceCounterPaths)/* strings */,
-					null/* regex */);
+    private static final Pattern requiredPerformanceCountersFilter = QueryUtil
+            .getPattern(
+                    Arrays.asList(requiredPerformanceCounterPaths)/* strings */,
+                    null/* regex */);
 
-	/**
-	 * Utility may be used to read the required performance counters for the
-	 * load balancer from zero or more files specified on the command line. The
-	 * results are written using the XML interchange format on stdout.
-	 * 
-	 * @param args The file(s).
-	 * 
-	 * @throws IOException
-	 * @throws SAXException
-	 * @throws ParserConfigurationException
-	 */
-	public static void main(String[] args) throws IOException, SAXException,
-			ParserConfigurationException {
+    /**
+     * Utility may be used to read the required performance counters for the
+     * load balancer from zero or more files specified on the command line. The
+     * results are written using the XML interchange format on stdout.
+     * 
+     * @param args The file(s).
+     * 
+     * @throws IOException
+     * @throws SAXException
+     * @throws ParserConfigurationException
+     */
+    public static void main(String[] args) throws IOException, SAXException,
+            ParserConfigurationException {
 
-		final Pattern filter = getRequiredPerformanceCountersFilter();
+        final Pattern filter = getRequiredPerformanceCountersFilter();
 
-		System.err.println("required counter pattern: " + filter);
+        System.err.println("required counter pattern: " + filter);
 
-		final CounterSet counterSet = new CounterSet();
+        final CounterSet counterSet = new CounterSet();
 
-		for (String s : args) {
+        for (String s : args) {
 
-			final File file = new File(s);
+            final File file = new File(s);
 
-			readCountersFromFile(file, counterSet, filter,
-					new DefaultInstrumentFactory(60/* slots */,
-							PeriodEnum.Minutes, false/* overwrite */));
+            readCountersFromFile(file, counterSet, filter,
+                    new DefaultInstrumentFactory(60/* slots */,
+                            PeriodEnum.Minutes, false/* overwrite */));
 
-		}
+        }
 
-		System.out.println("counters: " + counterSet.asXML(null/* filter */));
+        System.out.println("counters: " + counterSet.asXML(null/* filter */));
 
-	}
+    }
 
 }

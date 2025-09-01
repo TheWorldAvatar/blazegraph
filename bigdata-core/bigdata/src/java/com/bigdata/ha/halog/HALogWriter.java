@@ -35,7 +35,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.ha.msg.HAWriteMessage;
 import com.bigdata.ha.msg.IHAWriteMessage;
@@ -66,7 +67,7 @@ public class HALogWriter implements IHALogWriter {
 	/**
 	 * Logger for HA events.
 	 */
-	private static final Logger haLog = Logger.getLogger("com.bigdata.haLog");
+	private static final Logger haLog = LogManager.getLogger("com.bigdata.haLog");
 
 	/*
 	 * Note: All of this stuff is to be more or less compatible with the magic

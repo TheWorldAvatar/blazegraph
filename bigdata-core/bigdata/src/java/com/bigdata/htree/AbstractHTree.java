@@ -17,8 +17,9 @@ import java.util.concurrent.FutureTask;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.Banner;
 import com.bigdata.BigdataStatics;
@@ -124,8 +125,7 @@ abstract public class AbstractHTree implements ICounterSetAccess,
      */
 	final public int MAX_ADDRESS_BITS = 16;
 	
-	protected static final transient Logger log = Logger
-			.getLogger(AbstractHTree.class);
+	protected static final transient Logger log = LogManager.getLogger(AbstractHTree.class);
 
     /**
      * True iff the {@link #log} level is INFO or less.
@@ -140,7 +140,7 @@ abstract public class AbstractHTree implements ICounterSetAccess,
 	/**
 	 * Log for {@link AbstractHTree#dump(PrintStream)} and friends.
 	 */
-	public static final Logger dumpLog = Logger.getLogger(AbstractHTree.class
+	public static final Logger dumpLog = LogManager.getLogger(AbstractHTree.class
 			.getName() + "#dump");
 
     /**
@@ -1368,7 +1368,7 @@ abstract public class AbstractHTree implements ICounterSetAccess,
 	 */
 	public boolean dump(final PrintStream out) {
 
-		return dump(HTree.dumpLog.getEffectiveLevel(), out, false/* materialize */);
+		return dump(HTree.dumpLog.getLevel(), out, false/* materialize */);
 
     }
 
@@ -1376,7 +1376,7 @@ abstract public class AbstractHTree implements ICounterSetAccess,
 			final boolean materialize) {
 
         // True iff we will write out the node structure.
-        final boolean info = level.toInt() <= Level.INFO.toInt();
+        final boolean info = level.isMoreSpecificThan(Level.INFO);
 
 //        final IBTreeUtilizationReport utils = getUtilization();
 

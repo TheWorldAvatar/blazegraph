@@ -30,7 +30,8 @@ package com.bigdata.rdf.internal.constraints;
 import java.math.BigInteger;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Literal;
 import org.openrdf.model.Value;
 
@@ -56,7 +57,7 @@ public class XsdUnsignedLongBOp extends IVValueExpression<IV>
 
     private static final long serialVersionUID = -8564789336767221003L;
     
-    private static final transient Logger log = Logger.getLogger(XsdUnsignedLongBOp.class);
+    private static final transient Logger log = LogManager.getLogger(XsdUnsignedLongBOp.class);
 
     private static BigInteger MIN_UNSIGNED_LONG = new BigInteger("0");
     private static BigInteger MAX_UNSIGNED_LONG = new BigInteger("18446744073709551615");

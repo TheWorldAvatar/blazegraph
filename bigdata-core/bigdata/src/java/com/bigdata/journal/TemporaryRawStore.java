@@ -34,7 +34,8 @@ import java.nio.ByteBuffer;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.counters.CounterSet;
 import com.bigdata.io.DirectBufferPool;
@@ -59,7 +60,7 @@ import com.bigdata.relation.locator.ILocatableResource;
  */
 public class TemporaryRawStore extends AbstractRawWormStore implements IMRMW {
 
-    private static final Logger log = Logger.getLogger(TemporaryRawStore.class);
+    private static final Logger log = LogManager.getLogger(TemporaryRawStore.class);
 
     /**
      * Note: various things must be synchronized on {@link #buf} in order to

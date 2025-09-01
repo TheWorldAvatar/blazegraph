@@ -36,7 +36,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.BOpContext;
 import com.bigdata.bop.Constant;
@@ -119,8 +120,7 @@ import cutthecrap.utils.striterators.Visitor;
  */
 public class HTreeHashJoinUtility implements IHashJoinUtility {
 
-    static private final transient Logger log = Logger
-            .getLogger(HTreeHashJoinUtility.class);
+    static private final transient Logger log = LogManager.getLogger(HTreeHashJoinUtility.class);
 
     /**
      * Singleton {@link IHashJoinUtilityFactory} that can be used to create a 

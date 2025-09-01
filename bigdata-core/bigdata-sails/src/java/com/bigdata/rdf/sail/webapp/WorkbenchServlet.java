@@ -27,7 +27,8 @@ import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Graph;
 import org.openrdf.model.impl.LinkedHashModel;
 import org.openrdf.model.impl.ValueFactoryImpl;
@@ -49,7 +50,7 @@ public class WorkbenchServlet extends BigdataRDFServlet {
      */
     private static final long serialVersionUID = 1L;
     
-    static private final transient Logger log = Logger.getLogger(WorkbenchServlet.class); 
+    static private final transient Logger log = LogManager.getLogger(WorkbenchServlet.class); 
 
     /**
      * Flag to signify a workbench operation.

@@ -32,7 +32,8 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Graph;
 import org.openrdf.model.Statement;
 import org.openrdf.model.URI;
@@ -109,8 +110,7 @@ import com.bigdata.rdf.store.AbstractTripleStore;
  */
 public class DescribeCacheServlet extends BigdataRDFServlet {
 
-    static private final transient Logger log = Logger
-            .getLogger(DescribeCacheServlet.class);
+    static private final transient Logger log = LogManager.getLogger(DescribeCacheServlet.class);
     
     /**
      * 

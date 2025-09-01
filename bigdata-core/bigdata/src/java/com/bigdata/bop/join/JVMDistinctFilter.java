@@ -29,7 +29,8 @@ package com.bigdata.bop.join;
 import java.util.Arrays;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.IBindingSet;
 import com.bigdata.bop.IConstant;
@@ -48,7 +49,7 @@ import cutthecrap.utils.striterators.ICloseableIterator;
  */
 public class JVMDistinctFilter implements IDistinctFilter {
     
-    private static final Logger log = Logger.getLogger(JVMDistinctFilter.class);
+    private static final Logger log = LogManager.getLogger(JVMDistinctFilter.class);
 
     /**
      * Wrapper used for the as bound solutions in the {@link ConcurrentHashMap}.

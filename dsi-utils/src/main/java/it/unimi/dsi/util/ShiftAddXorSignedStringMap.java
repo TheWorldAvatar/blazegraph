@@ -42,7 +42,8 @@ import java.nio.charset.Charset;
 import java.util.Iterator;
 import java.util.zip.GZIPInputStream;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.martiansoftware.jsap.FlaggedOption;
 import com.martiansoftware.jsap.JSAP;
@@ -73,7 +74,7 @@ import com.martiansoftware.jsap.stringparsers.ForNameStringParser;
 
 public class ShiftAddXorSignedStringMap extends AbstractObject2LongFunction<CharSequence> implements StringMap<CharSequence>, Serializable {
 	private static final long serialVersionUID = 0L;
-	private static final Logger LOGGER = Util.getLogger( ShiftAddXorSignedStringMap.class );
+	private static final Logger LOGGER = LogManager.getLogger( ShiftAddXorSignedStringMap.class );
 
 	/** The underlying map. */
 	protected final Object2LongFunction<? extends CharSequence> function;

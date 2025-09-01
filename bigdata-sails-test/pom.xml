@@ -27,12 +27,12 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
   <parent>
     <groupId>com.blazegraph</groupId>
     <artifactId>blazegraph-parent</artifactId>
-    <version>2.3.0</version>
+    <version>2.5.0</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
   <groupId>com.blazegraph</groupId>
   <artifactId>bigdata-sails-test</artifactId>
-  <version>2.3.0</version>
+  <version>2.5.0</version>
   <packaging>jar</packaging>
   <name>Blazegraph Sail Tests</name>
   <description>Blazegraph(TM) SAIL Test Suites</description>
@@ -70,7 +70,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
           <reuseForks>true</reuseForks>
           <printSummary>false</printSummary>
           <disableXmlReport>false</disableXmlReport>
-          <argLine>-server -ea -Xms512m -Xmx8g -Dlog4j.configuration=file:src/test/resources/log4j.properties</argLine>
+          <argLine>-server -ea -Xms512m -Xmx8g -Dlog4j.configuration=file:src/test/resources/log4j2.xml</argLine>
           <rerunFailingTestsCount>2</rerunFailingTestsCount>
         </configuration>
       </plugin>
@@ -180,30 +180,22 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
       <artifactId>icu4j</artifactId>
       <version>${icu.version}</version>
     </dependency>
-    <dependency>
+        <dependency>
       <!-- log4j is the primary logger for bigdata. -->
-      <groupId>log4j</groupId>
-      <artifactId>log4j</artifactId>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
       <version>${log4j.version}</version>
-      <!-- There is a bug with log4j 1.2.15 where it has a lot  -->
-      <!-- of dependencies that we do not need in its POM. The  -->
-      <!-- exclusions are only necessary with that version.     -->
-      <!-- 
-           <exclusions>
-             <exclusion>
-               <groupId>javax.jms</groupId>
-               <artifactId>jms</artifactId>
-             </exclusion>
-             <exclusion>
-               <groupId>com.sun.jdmk</groupId>
-               <artifactId>jmxtools</artifactId>
-             </exclusion>
-             <exclusion>
-               <groupId>com.sun.jmx</groupId>
-               <artifactId>jmxri</artifactId>
-             </exclusion>
-           </exclusions>
-           -->
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-api</artifactId>
+      <version>${log4j.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-jul</artifactId>
+      <version>${log4j.version}</version>
+      <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>

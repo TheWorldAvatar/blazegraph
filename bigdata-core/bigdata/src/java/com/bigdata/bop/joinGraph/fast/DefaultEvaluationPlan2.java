@@ -32,7 +32,8 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.BOpUtility;
 import com.bigdata.bop.IPredicate;
@@ -60,7 +61,7 @@ import com.bigdata.relation.rule.eval.IJoinNexus;
  */
 public class DefaultEvaluationPlan2 implements IEvaluationPlan {
 
-    protected static final transient Logger log = Logger.getLogger(DefaultEvaluationPlan2.class);
+    protected static final transient Logger log = LogManager.getLogger(DefaultEvaluationPlan2.class);
     
     protected static final transient boolean DEBUG = log.isDebugEnabled();
     

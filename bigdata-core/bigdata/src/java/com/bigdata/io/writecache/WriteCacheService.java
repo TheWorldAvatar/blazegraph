@@ -57,7 +57,8 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock.ReadLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock.WriteLock;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.counters.CounterSet;
 import com.bigdata.ha.HAPipelineGlue;
@@ -199,12 +200,12 @@ import com.bigdata.util.concurrent.Memoizer;
  */
 abstract public class WriteCacheService implements IWriteCache {
 
-    protected static final Logger log = Logger.getLogger(WriteCacheService.class);
+    protected static final Logger log = LogManager.getLogger(WriteCacheService.class);
 
     /**
      * Logger for HA events.
      */
-    private static final Logger haLog = Logger.getLogger("com.bigdata.ha");
+    private static final Logger haLog = LogManager.getLogger("com.bigdata.ha");
 
     /**
      * <code>true</code> until the service is {@link #close() closed}.

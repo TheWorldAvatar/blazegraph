@@ -33,7 +33,8 @@ import java.util.Properties;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
-import org.apache.log4j.Level;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.core.config.Configurator;
 
 import com.bigdata.btree.BTree;
 import com.bigdata.btree.IRangeQuery;
@@ -291,7 +292,7 @@ public class TestMove extends AbstractEmbeddedFederationTestCase {
                 log.info("Setting up LBS for move.");
 
             // explicitly set the log level for the load balancer.
-            LoadBalancerService.log.setLevel(Level.INFO);
+            Configurator.setAllLevels(LoadBalancerService.log.getName(), Level.INFO);
             
             final AbstractEmbeddedLoadBalancerService lbs = ((AbstractEmbeddedLoadBalancerService) ((EmbeddedFederation) fed)
                     .getLoadBalancerService());

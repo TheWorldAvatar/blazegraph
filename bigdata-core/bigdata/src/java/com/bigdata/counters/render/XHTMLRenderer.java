@@ -16,7 +16,8 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.counters.CounterSet;
 import com.bigdata.counters.HistoryInstrument;
@@ -51,7 +52,7 @@ import com.bigdata.util.HTMLUtility;
  */
 public class XHTMLRenderer implements IRenderer {
     
-    final static private Logger log = Logger.getLogger(XHTMLRenderer.class);
+    final static private Logger log = LogManager.getLogger(XHTMLRenderer.class);
     
     final public static String ps = ICounterSet.pathSeparator;
 

@@ -68,7 +68,7 @@ public abstract class ProxyBigdataSailTestCase
     implements IProxyTest
 {
 
-//	protected final transient static Logger log = Logger.getLogger(ProxyBigdataSailTestCase.class);
+//	protected final transient static Logger log = LogManager.getLogger(ProxyBigdataSailTestCase.class);
 	
     public ProxyBigdataSailTestCase() {}
     public ProxyBigdataSailTestCase(String name){super(name);}

@@ -33,7 +33,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.URI;
 
 import com.bigdata.bop.IBindingSet;
@@ -60,8 +61,7 @@ import com.bigdata.service.geospatial.impl.GeoSpatialUtility.PointLatLon;
  */
 public class GeoSpatialQuery implements IGeoSpatialQuery {
 
-    private static final Logger log = Logger
-            .getLogger(GeoSpatialQuery.class);
+    private static final Logger log = LogManager.getLogger(GeoSpatialQuery.class);
 
     
     // passed in as parameters

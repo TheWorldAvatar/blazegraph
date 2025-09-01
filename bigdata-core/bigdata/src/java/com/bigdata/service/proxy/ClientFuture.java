@@ -7,8 +7,9 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * {@link Serializable} class wraps a {@link RemoteFuture} delegating
@@ -22,8 +23,7 @@ import org.apache.log4j.Logger;
  */
 public class ClientFuture<T> implements Future<T>, Serializable {
     
-    protected static final transient Logger log = Logger
-            .getLogger(ClientFuture.class);
+    protected static final transient Logger log = LogManager.getLogger(ClientFuture.class);
     
     /**
      * 
@@ -154,11 +154,7 @@ public class ClientFuture<T> implements Future<T>, Serializable {
             /*
              * Log a warning.
              */
-            if (log.isEnabledFor(Level.WARN)) {
-
-                log.warn(ex.getLocalizedMessage());
-
-            }
+            log.warn(() -> ex.getLocalizedMessage());
             
             /*
              * Return false since not provably cancelled in response to this
@@ -172,12 +168,8 @@ public class ClientFuture<T> implements Future<T>, Serializable {
             /*
              * Log a warning.
              */
-            if (log.isEnabledFor(Level.WARN)) {
+            log.warn(() -> ex.getLocalizedMessage());
 
-                log.warn(ex.getLocalizedMessage());
-
-            }
-            
             /*
              * Return false since not provably cancelled in response to this
              * request.

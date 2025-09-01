@@ -30,7 +30,8 @@ import java.util.UUID;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.query.Dataset;
 import org.openrdf.query.parser.sparql.manifest.ManifestTest;
 import org.openrdf.query.parser.sparql.manifest.SPARQL11ManifestTest;
@@ -367,7 +368,7 @@ extends SPARQLQueryTest
 	 */
 	public static final String CONFIG_PROPERTY = "bigdata.configuration";
 	
-    private static final Logger _logger = Logger.getLogger ( BigdataFederationSparqlTest.class ) ;
+    private static final Logger _logger = LogManager.getLogger ( BigdataFederationSparqlTest.class ) ;
 
     /*
      * Instance fields for the current test.

@@ -31,16 +31,18 @@ import java.nio.ByteBuffer;
 import java.util.Random;
 import java.util.UUID;
 
-import junit.framework.TestCase2;
-
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.config.Configurator;
 
 import com.bigdata.io.ChecksumUtility;
 import com.bigdata.quorum.Quorum;
 import com.bigdata.rawstore.TestWormAddressManager;
 import com.bigdata.rawstore.WormAddressManager;
 import com.bigdata.util.MillisecondTimestampFactory;
+
+import junit.framework.TestCase2;
 
 /**
  * Test suite for {@link RootBlockView}.
@@ -53,8 +55,7 @@ import com.bigdata.util.MillisecondTimestampFactory;
  */
 public class TestRootBlockView extends TestCase2 {
 
-    private static final transient Logger log = Logger
-            .getLogger(TestRootBlockView.class);
+    private static final transient Logger log = LogManager.getLogger(TestRootBlockView.class);
 
     /**
      * 
@@ -106,10 +107,10 @@ public class TestRootBlockView extends TestCase2 {
          * otherwise generated when we do not compute the checksum of the root
          * block. Those messages completely clutter the CI log.
          */
-        final Logger log2 = Logger.getLogger(RootBlockView.class);
+        final Logger log2 = LogManager.getLogger(RootBlockView.class);
         final Level c = log2.getLevel();
         try {
-        log2.setLevel(Level.ERROR);
+        Configurator.setAllLevels(log2.getName(), Level.ERROR);
         
         final Random r = new Random();
         
@@ -323,7 +324,7 @@ public class TestRootBlockView extends TestCase2 {
             
         }
     } finally {
-        log2.setLevel(c);
+        Configurator.setAllLevels(log2.getName(), c);
     }
     }
 

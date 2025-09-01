@@ -40,7 +40,7 @@ import com.bigdata.cache.IHardReferenceQueue;
 public class DefaultEvictionListener implements
         IEvictionListener {
 
-//	private static final Logger log = Logger.getLogger(DefaultEvictionListener.class);
+//	private static final Logger log = LogManager.getLogger(DefaultEvictionListener.class);
 
 	@Override
     public void evicted(final IHardReferenceQueue<PO> cache, final PO ref) {

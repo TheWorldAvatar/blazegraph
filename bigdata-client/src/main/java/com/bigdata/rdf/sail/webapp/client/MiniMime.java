@@ -30,7 +30,8 @@ package com.bigdata.rdf.sail.webapp.client;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.util.NV;
 
@@ -51,7 +52,7 @@ import com.bigdata.util.NV;
  */
 public class MiniMime {
 
-	static private final Logger log = Logger.getLogger(MiniMime.class);
+	static private final Logger log = LogManager.getLogger(MiniMime.class);
 
 	/**
 	 * The extracted quality score for the MIME Type (<code>q=...</code>).

@@ -29,7 +29,8 @@ package com.bigdata.rdf.sail.webapp.client;
 
 import junit.framework.TestCase2;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Resource;
 import org.openrdf.model.URI;
 import org.openrdf.model.Value;
@@ -49,7 +50,7 @@ import org.openrdf.model.vocabulary.RDF;
  */
 public class TestEncodeDecodeValue extends TestCase2 {
 
-   private static final Logger log = Logger.getLogger(TestEncodeDecodeValue.class);
+   private static final Logger log = LogManager.getLogger(TestEncodeDecodeValue.class);
    
     /**
      * 

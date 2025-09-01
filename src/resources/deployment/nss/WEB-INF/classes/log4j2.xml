@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<Configuration name="Log4j1">
+    <Appenders>
+        <Console name="dest2" target="SYSTEM_OUT">
+            <PatternLayout
+                pattern="%-5level: %r %properties{hostname} %properties{serviceUUID} %properties{taskname} %properties{timestamp} %properties{resources} %t %l: %m%n" />
+        </Console>
+        <RollingFile name="file" fileName="&lt;%= BD_HOME %&gt;/var/log/bigdata.log"
+            filePattern="&lt;%= BD_HOME %&gt;/var/log/bigdata.log.%i">
+            <PatternLayout pattern="%d{MMM dd, yyyy HH:mm:ss} %-5level: %F:%L: %m%n" />
+            <Policies>
+                <SizeBasedTriggeringPolicy size="4MB" />
+            </Policies>
+            <DefaultRolloverStrategy max="10" fileIndex="min" />
+        </RollingFile>
+        <File name="queryRunStateLog" fileName="&lt;%= BD_HOME %&gt;/var/log/queryRunState.log"
+            append="true" bufferedIo="false">
+            <PatternLayout pattern="%m" />
+        </File>
+        <File name="ruleLog" fileName="&lt;%= BD_HOME %&gt;/var/log/rules.log" append="true"
+            bufferedIo="false">
+            <PatternLayout pattern="%m" />
+        </File>
+        <File name="queryLog" fileName="&lt;%= BD_HOME %&gt;var/log/queryLog.csv" append="true"
+            bufferedIo="false">
+            <PatternLayout pattern="%m" />
+        </File>
+        <Console name="dest1" target="SYSTEM_OUT">
+            <PatternLayout pattern="%-5level: %F:%L: %m%n" />
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Root level="WARN">
+            <AppenderRef ref="file" />
+        </Root>
+        <Logger name="com.bigdata.btree" level="WARN" />
+        <Logger name="com.bigdata.counters.History" level="ERROR" />
+        <Logger name="com.bigdata.resources.AsynchronousOverflowTask" level="INFO" />
+        <Logger name="com.bigdata.rdf.load" level="INFO" />
+        <Logger name="com.bigdata.journal.CompactTask" level="INFO" />
+        <Logger name="com.bigdata.relation.accesspath.BlockingBuffer" level="ERROR" />
+        <Logger name="com.bigdata.counters.XMLUtility$MyHandler" level="ERROR" />
+        <Logger name="com.bigdata" level="WARN" />
+        <Logger name="com.bigdata.rdf.store.DataLoader" level="INFO" />
+        <Logger name="com.bigdata.counters.query.CounterSetQuery" level="INFO" />
+    </Loggers>
+</Configuration>

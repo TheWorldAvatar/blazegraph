@@ -14,7 +14,8 @@ import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.URI;
 
 import com.bigdata.bop.BOp;
@@ -192,8 +193,7 @@ import cutthecrap.utils.striterators.NOPFilter;
  */
 public class AST2BOpUtility extends AST2BOpRTO {
 
-    private static final transient Logger log = Logger
-            .getLogger(AST2BOpUtility.class);
+    private static final transient Logger log = LogManager.getLogger(AST2BOpUtility.class);
 
     /**
      * Top-level entry point converts an AST query model into an executable

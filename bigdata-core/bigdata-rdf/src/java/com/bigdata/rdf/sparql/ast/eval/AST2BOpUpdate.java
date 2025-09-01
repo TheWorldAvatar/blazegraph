@@ -43,7 +43,8 @@ import java.util.UUID;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.zip.GZIPInputStream;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Resource;
 import org.openrdf.model.Statement;
 import org.openrdf.model.URI;
@@ -144,7 +145,7 @@ import info.aduna.iteration.CloseableIteration;
  */
 public class AST2BOpUpdate extends AST2BOpUtility {
 
-    private static final Logger log = Logger.getLogger(AST2BOpUpdate.class);
+    private static final Logger log = LogManager.getLogger(AST2BOpUpdate.class);
 
     /**
      * When <code>true</code>, convert the SPARQL UPDATE into a physical

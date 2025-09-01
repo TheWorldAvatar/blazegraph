@@ -44,7 +44,8 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.journal.TemporaryRawStore;
 import com.bigdata.util.InnerCause;
@@ -56,7 +57,7 @@ import com.bigdata.util.InnerCause;
  */
 public class FileChannelUtility {
 
-    private static final Logger log = Logger.getLogger(FileChannelUtility.class);
+    private static final Logger log = LogManager.getLogger(FileChannelUtility.class);
 
     private static final boolean INFO = log.isInfoEnabled();
 

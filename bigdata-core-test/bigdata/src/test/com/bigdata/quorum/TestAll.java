@@ -37,7 +37,8 @@ import junit.framework.TestResult;
 import junit.framework.TestSuite;
 import junit.textui.ResultPrinter;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Aggregates test suites in increasing dependency order.
@@ -47,7 +48,7 @@ import org.apache.log4j.Logger;
  */
 public class TestAll extends TestCase {
 
-    private final static Logger log = Logger.getLogger(TestAll.class);
+    private final static Logger log = LogManager.getLogger(TestAll.class);
 
     /**
      * 

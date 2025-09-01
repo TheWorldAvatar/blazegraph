@@ -46,7 +46,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Graph;
 import org.openrdf.model.Resource;
 import org.openrdf.model.Statement;
@@ -110,7 +111,7 @@ public class QueryServlet extends BigdataRDFServlet {
      */
     private static final long serialVersionUID = 1L;
     
-    static private final transient Logger log = Logger.getLogger(QueryServlet.class); 
+    static private final transient Logger log = LogManager.getLogger(QueryServlet.class); 
 
     /**
      * The name of the parameter/attribute that contains the SPARQL query.

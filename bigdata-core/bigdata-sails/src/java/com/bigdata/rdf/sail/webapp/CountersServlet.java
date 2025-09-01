@@ -33,12 +33,14 @@ import java.io.OutputStreamWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.counters.CounterSet;
 import com.bigdata.counters.ICounterSetAccess;
 import com.bigdata.counters.format.CounterSetFormat;
 import com.bigdata.counters.query.CounterSetSelector;
+import com.bigdata.counters.query.TimeoutEnforcer;
 import com.bigdata.counters.query.URLQueryModel;
 import com.bigdata.counters.render.IRenderer;
 import com.bigdata.counters.render.RendererFactory;
@@ -68,8 +70,8 @@ public class CountersServlet extends BigdataServlet {
      * 
      */
     private static final long serialVersionUID = 1L;
-    
-    static private final transient Logger log = Logger.getLogger(CountersServlet.class); 
+
+    static private final transient Logger log = LogManager.getLogger(CountersServlet.class);
 
     /**
      * 
@@ -86,114 +88,114 @@ public class CountersServlet extends BigdataServlet {
     @Override
     protected void doGet(final HttpServletRequest req,
             final HttpServletResponse resp) throws IOException {
+        TimeoutEnforcer.call(() -> {
+            try {
 
-        try {
-        
-        // TODO Hook this how? (NSS does not define an IService right now)
-        final IService service = null;
-        
-        final IIndexManager indexManager = getIndexManager();
+                // TODO Hook this how? (NSS does not define an IService right now)
+                final IService service = null;
 
-        if (indexManager instanceof IBigdataFederation) {
+                final IIndexManager indexManager = getIndexManager();
 
-            ((IBigdataFederation<?>) indexManager).reattachDynamicCounters();
+                if (indexManager instanceof IBigdataFederation) {
 
-        }
+                    ((IBigdataFederation<?>) indexManager).reattachDynamicCounters();
 
-        final CounterSet counterSet = ((ICounterSetAccess) indexManager)
-                .getCounters();
+                }
 
-        final CounterSetSelector counterSelector = new CounterSetSelector(
-                counterSet);
+                final CounterSet counterSet = ((ICounterSetAccess) indexManager)
+                        .getCounters();
 
-        /*
-         * Obtain a renderer.
-         * 
-         * @todo if controller state error then send HTTP_BAD_REQUEST
-         * 
-         * @todo Write XSL and stylesheet for interactive browsing of the
-         * CounterSet XML?
-         */
+                final CounterSetSelector counterSelector = new CounterSetSelector(
+                        counterSet);
 
-        // Do conneg.
-        final String acceptStr = req.getHeader("Accept");
+                /*
+                 * Obtain a renderer.
+                 * 
+                 * @todo if controller state error then send HTTP_BAD_REQUEST
+                 * 
+                 * @todo Write XSL and stylesheet for interactive browsing of the
+                 * CounterSet XML?
+                 */
 
-        final ConnegUtil util = new ConnegUtil(acceptStr);
+                // Do conneg.
+                final String acceptStr = req.getHeader("Accept");
 
-        final CounterSetFormat format = util
-                .getCounterSetFormat(CounterSetFormat.HTML/* fallback */);
+                final ConnegUtil util = new ConnegUtil(acceptStr);
+
+                final CounterSetFormat format = util
+                        .getCounterSetFormat(CounterSetFormat.HTML/* fallback */);
 
 //         final String mimeType = MIME_TEXT_HTML;
-        final String mimeType = format.getDefaultMIMEType();
+                final String mimeType = format.getDefaultMIMEType();
 
-        if (log.isDebugEnabled())
-            log.debug("\nAccept=" + acceptStr + ",\nformat=" + format
-                    + ", mimeType=" + mimeType);
+                if (log.isDebugEnabled())
+                    log.debug("\nAccept=" + acceptStr + ",\nformat=" + format
+                            + ", mimeType=" + mimeType);
 
-        final IRenderer renderer;
-        {
+                final IRenderer renderer;
+                {
 
-            // build model of the controller state.
-            final URLQueryModel model = URLQueryModel.getInstance(service,
-                    req, resp);
+                    // build model of the controller state.
+                    final URLQueryModel model = URLQueryModel.getInstance(service,
+                            req, resp);
 
-            if (log.isDebugEnabled())
-                log.debug("\nmodel=" + model);
+                    if (log.isDebugEnabled())
+                        log.debug("\nmodel=" + model);
 
-            renderer = RendererFactory.get(model, counterSelector, mimeType);
+                    renderer = RendererFactory.get(model, counterSelector, mimeType);
 
-            if (log.isDebugEnabled())
-                log.debug("\nrenderer=" + renderer);
+                    if (log.isDebugEnabled())
+                        log.debug("\nrenderer=" + renderer);
 
-        }
+                }
 
-        resp.setStatus(HTTP_OK);
+                resp.setStatus(HTTP_OK);
 
-        resp.setContentType(mimeType);
+                resp.setContentType(mimeType);
 
-        if (format.hasCharset()) {
+                if (format.hasCharset()) {
 
-            // Note: Binary encodings do not specify charset.
-            resp.setCharacterEncoding(format.getCharset().name());
+                    // Note: Binary encodings do not specify charset.
+                    resp.setCharacterEncoding(format.getCharset().name());
 
-        }
+                }
 
-        /*
-         * Sets the cache behavior -- the data should be good for up to 60
-         * seconds unless you change the query parameters. These cache control
-         * parameters SHOULD indicate that the response is valid for 60 seconds,
-         * that the client must revalidate, and that the response is cachable
-         * even if the client was authenticated.
-         */
-        resp.addHeader("Cache-Control", "max-age=60, must-revalidate, public");
-        // to disable caching.
-        // r.addHeader("Cache-Control", "no-cache");
+                /*
+                 * Sets the cache behavior -- the data should be good for up to 60
+                 * seconds unless you change the query parameters. These cache control
+                 * parameters SHOULD indicate that the response is valid for 60 seconds,
+                 * that the client must revalidate, and that the response is cachable
+                 * even if the client was authenticated.
+                 */
+                resp.addHeader("Cache-Control", "max-age=60, must-revalidate, public");
+                // to disable caching.
+                // r.addHeader("Cache-Control", "no-cache");
 
-        /*
-         * Render the counters as specified by the query for the negotiated MIME
-         * type.
-         */
-        {
+                /*
+                 * Render the counters as specified by the query for the negotiated MIME
+                 * type.
+                 */
+                {
 
-            final OutputStreamWriter w = new OutputStreamWriter(
-                    resp.getOutputStream(), charset);
+                    final OutputStreamWriter w = new OutputStreamWriter(
+                            resp.getOutputStream(), charset);
 
-            // render the view.
-            renderer.render(w);
+                    // render the view.
+                    renderer.render(w);
 
-            w.flush();
+                    w.flush();
 
-        }
+                }
 
-        if (log.isTraceEnabled())
-            log.trace("done");
-        
-        } catch (Throwable t) {
-            
-            BigdataRDFServlet.launderThrowable(t, resp, "");
-            
-        }
+                if (log.isTraceEnabled())
+                    log.trace("done");
 
+            } catch (Throwable t) {
+
+                BigdataRDFServlet.launderThrowable(t, resp, "");
+
+            }
+        });
     }
-    
+
 }

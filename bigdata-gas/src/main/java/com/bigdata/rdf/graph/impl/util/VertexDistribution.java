@@ -21,8 +21,8 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
-import org.apache.log4j.spi.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Resource;
 
 import com.bigdata.rdf.graph.EdgesEnum;
@@ -47,7 +47,7 @@ import com.bigdata.rdf.graph.EdgesEnum;
  */
 public class VertexDistribution {
 
-    private static final Logger log = Logger.getLogger(VertexDistribution.class);
+    private static final Logger log = LogManager.getLogger(VertexDistribution.class);
 
     /**
      * A sample.

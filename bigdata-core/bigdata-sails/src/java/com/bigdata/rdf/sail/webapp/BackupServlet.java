@@ -23,13 +23,17 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 package com.bigdata.rdf.sail.webapp;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.journal.BasicSnapshotFactory;
 import com.bigdata.journal.ISnapshotResult;
@@ -63,7 +67,7 @@ public class BackupServlet extends BigdataRDFServlet {
 	 /**
      * Logger.
      */
-    private static final Logger log = Logger.getLogger(BackupServlet.class);
+    private static final Logger log = LogManager.getLogger(BackupServlet.class);
     
     private static final boolean debug = log.isDebugEnabled();
     
@@ -141,8 +145,22 @@ public class BackupServlet extends BigdataRDFServlet {
 			param = req.getParameter(FILE);
 
 			if (param != null) {
-				if (!"".equals(param)) {
-					file = param;
+				if (!param.isEmpty()) {
+					if(!param.endsWith(".jnl")) {
+						throw new IllegalArgumentException("The 'file' parameter must have the extension '.jnl', '" + param + "' was passed." );
+					}
+					String escapeParam = StringEscapeUtils.escapeHtml(param);
+					if(!escapeParam.equals(param)) {
+						throw new IllegalArgumentException("The 'file' parameter must not contain HTML escapable characters, '" + param + "' was passed." );
+					}
+					Path path = Path.of(escapeParam);
+					if(!path.isAbsolute()) {
+						throw new IllegalArgumentException("The 'file' parameter needs to be absloute, '" + param + "' was passed." );
+					}
+					if(!Files.isDirectory(path.getParent())) {
+						throw new IllegalArgumentException("The 'file' parameter's parent directory must exist, '" + param + "' was passed." );
+					}
+					file = path.toString();
 				} // Default is set at initialization
 			}
 
@@ -188,7 +206,7 @@ public class BackupServlet extends BigdataRDFServlet {
 		if(hasError) {
 			buildAndCommitResponse(res, HTTP_INTERNALERROR, MIME_TEXT_PLAIN, errorMessage.toString() + "\n");
 		} else {
-			buildAndCommitResponse(res, HTTP_OK, MIME_TEXT_PLAIN, "Backup created at " + file + ".\n");
+			buildAndCommitResponse(res, HTTP_OK, MIME_TEXT_PLAIN, "Backup created at " + StringEscapeUtils.escapeHtml(file) + ".\n");
 		}
 
 	}

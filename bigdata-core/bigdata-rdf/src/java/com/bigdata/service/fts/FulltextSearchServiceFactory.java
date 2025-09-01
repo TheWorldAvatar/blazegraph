@@ -37,7 +37,8 @@ import java.util.NoSuchElementException;
 import java.util.Properties;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Literal;
 import org.openrdf.model.URI;
 
@@ -89,8 +90,7 @@ import cutthecrap.utils.striterators.ICloseableIterator;
  */
 public class FulltextSearchServiceFactory extends AbstractServiceFactoryBase {
 
-   private static final Logger log = Logger
-         .getLogger(FulltextSearchServiceFactory.class);
+   private static final Logger log = LogManager.getLogger(FulltextSearchServiceFactory.class);
 
    /*
     * Note: This could extend the base class to allow for search service

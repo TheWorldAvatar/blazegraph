@@ -28,7 +28,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 package com.bigdata.relation.rule.eval;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.IPredicate;
 import com.bigdata.relation.rule.IRule;
@@ -44,8 +45,7 @@ import com.bigdata.relation.rule.eval.pipeline.JoinStats;
  */
 public class RuleLog {
 
-    protected static final transient Logger log = Logger
-            .getLogger(RuleLog.class);
+    protected static final transient Logger log = LogManager.getLogger(RuleLog.class);
 
     /**
      * Log rule execution statistics.

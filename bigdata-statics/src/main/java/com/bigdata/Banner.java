@@ -30,7 +30,6 @@ package com.bigdata;
 
 import java.lang.Thread.UncaughtExceptionHandler;
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.net.InetAddress;
 import java.util.Collections;
@@ -41,14 +40,14 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.config.Configurator;
 import org.apache.system.SystemUtil;
 
-import com.bigdata.util.Depends;
-import com.bigdata.util.InnerCause;
 import com.bigdata.util.Depends.Dependency;
-import com.bigdata.util.config.LogUtil;
+import com.bigdata.util.InnerCause;
 import com.bigdata.util.config.NicUtil;
 
 /**
@@ -63,7 +62,7 @@ public class Banner {
     /**
      * The logger for <em>this</em> class.
      */
-    private static final Logger log = Logger.getLogger("com.bigdata.Banner");
+    private static final Logger log = LogManager.getLogger("com.bigdata.Banner");
 
     private final static AtomicBoolean didBanner = new AtomicBoolean(false);
     
@@ -97,12 +96,6 @@ public class Banner {
          * {@link UncaughtExceptionHandler}.
          */
         String NOCATCH = "com.bigdata.Banner.nocatch";
-
-        /**
-         * This may be used to disable JMX MBeans which self-report on the log4j
-         * properties.
-         */
-        String LOG4J_MBEANS_DISABLE = "com.bigdata.jmx.log4j.disable";
 
     }
     
@@ -208,37 +201,7 @@ public class Banner {
                 System.out.println(sb);
                 
             }
-
-            /*
-             * Note: I have modified this to test for disabled registration and
-             * to use reflection in order to decouple the JMX dependency for
-             * anzo.
-             */
-            if (!Boolean.getBoolean(Options.LOG4J_MBEANS_DISABLE)) {
-
-                try {
-
-                    final Class<?> cls = Class
-                            .forName("com.bigdata.jmx.JMXLog4jMBeanUtil");
-
-                    final Method m = cls.getMethod("registerLog4jMBeans",
-                            new Class[] {});
-
-                    // Optionally register a log4j MBean.
-                    m.invoke(null/* obj */);
-
-                    // JMXLog4jMBeanUtil.registerLog4jMBeans();
-
-                } catch (Throwable t) {
-
-                    log.info("Problem registering log4j mbean?", t);
-
-                }
-
-            }
-            
         }
-        
     }
     
     /**
@@ -248,8 +211,8 @@ public class Banner {
     private static void setDefaultLogLevel(final boolean quiet) {
 
         final Logger defaultLog = 
-                LogUtil.getLog4jLogger("com.bigdata");
-//                Logger.getLogger("com.bigdata");
+                LogManager.getLogger("com.bigdata");
+//                LogManager.getLogger("com.bigdata");
 
         if (defaultLog.getLevel() == null) {
 
@@ -258,7 +221,7 @@ public class Banner {
              */
             try {
 
-                defaultLog.setLevel(Level.WARN);
+                Configurator.setAllLevels(defaultLog.getName(), Level.WARN);
 
                 if (!quiet)
                     log.warn("Defaulting log level to WARN: "

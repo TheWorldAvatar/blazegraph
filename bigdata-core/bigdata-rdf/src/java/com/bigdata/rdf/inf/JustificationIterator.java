@@ -33,7 +33,8 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.IIndex;
 import com.bigdata.btree.IRangeQuery;
@@ -55,8 +56,7 @@ import com.bigdata.util.Bytes;
  */
 public class JustificationIterator implements IJustificationIterator {
 
-    private static final transient Logger log = Logger
-            .getLogger(JustificationIterator.class);
+    private static final transient Logger log = LogManager.getLogger(JustificationIterator.class);
 
     /**
      * The maximum #of statements that will be buffered by the iterator.

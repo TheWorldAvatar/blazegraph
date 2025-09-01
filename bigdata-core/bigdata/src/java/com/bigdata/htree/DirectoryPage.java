@@ -31,8 +31,7 @@ import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.concurrent.FutureTask;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Level;
 
 import com.bigdata.btree.ITuple;
 import com.bigdata.btree.ITupleIterator;
@@ -1415,7 +1414,7 @@ class DirectoryPage extends AbstractPage implements IDirectoryData {
 			final boolean recursive, final boolean materialize) {
 
 		// True iff we will write out the node structure.
-		final boolean debug = level.toInt() <= Level.DEBUG.toInt();
+		final boolean debug = level.isMoreSpecificThan(Level.DEBUG);
 
 		// Set true iff an inconsistency is detected.
 		boolean ok = true;

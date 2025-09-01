@@ -27,7 +27,8 @@ package com.bigdata.concurrent;
 import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 
 /**
@@ -39,8 +40,7 @@ import org.apache.log4j.Logger;
  */
 public class FutureTaskMon<T> extends FutureTask<T> {
 
-	static private final transient Logger log = Logger
-	.getLogger(FutureTaskMon.class);
+	static private final transient Logger log = LogManager.getLogger(FutureTaskMon.class);
 
 	private volatile boolean didStart = false;
 	

@@ -33,7 +33,8 @@ import java.io.ObjectOutput;
 import java.nio.ByteBuffer;
 import java.util.UUID;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.io.compression.CompressorRegistry;
 import com.bigdata.io.compression.IRecordCompressor;
@@ -49,7 +50,7 @@ import com.bigdata.journal.StoreTypeEnum;
 public class HAWriteMessage extends HAWriteMessageBase implements
         IHAWriteMessage {
 
-    protected static final Logger log = Logger.getLogger(HAWriteMessage.class);
+    protected static final Logger log = LogManager.getLogger(HAWriteMessage.class);
 
     /**
      * 

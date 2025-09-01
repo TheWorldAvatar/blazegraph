@@ -4,7 +4,8 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.util.concurrent.atomic.AtomicLong;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Statement;
 import org.openrdf.rio.RDFFormat;
 
@@ -23,8 +24,7 @@ import com.bigdata.rdf.store.AbstractTripleStore;
 public class AbstractRDFTaskFactory<S extends Statement,T extends Runnable> implements
         ITaskFactory<T> {
 
-    protected static final Logger log = Logger
-            .getLogger(RDFLoadTaskFactory.class);
+    protected static final Logger log = LogManager.getLogger(RDFLoadTaskFactory.class);
 
     /**
      * The database on which the data will be written.

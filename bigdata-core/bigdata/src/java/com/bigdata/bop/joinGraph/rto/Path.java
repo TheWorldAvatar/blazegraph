@@ -85,7 +85,7 @@ import com.bigdata.rdf.sparql.ast.eval.AST2BOpRTO;
  */
 public class Path {
 
-//    private static final transient Logger log = Logger.getLogger(Path.class);
+//    private static final transient Logger log = LogManager.getLogger(Path.class);
 
     /**
      * An ordered list of the vertices in the {@link Path}.

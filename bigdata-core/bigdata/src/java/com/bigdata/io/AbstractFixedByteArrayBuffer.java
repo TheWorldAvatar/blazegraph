@@ -51,7 +51,7 @@ import com.bigdata.util.BytesUtil;
  */
 abstract public class AbstractFixedByteArrayBuffer implements IFixedDataRecord {
 
-//    protected static final Logger log = Logger.getLogger(AbstractFixedByteArrayBuffer.class);
+//    protected static final Logger log = LogManager.getLogger(AbstractFixedByteArrayBuffer.class);
 //    
 //    protected static final boolean INFO = log.isInfoEnabled();
 
@@ -222,10 +222,10 @@ abstract public class AbstractFixedByteArrayBuffer implements IFixedDataRecord {
         pos += off;
         
         short v = 0;
-        
+
         // big-endian.
-        v += (0xff & array()[pos++]) <<  8;
-        v += (0xff & array()[pos  ]) <<  0;
+        v += (short)((0xff & array()[pos++]) <<  8);
+        v += (short)((0xff & array()[pos  ]) <<  0);
 
         return v;
 

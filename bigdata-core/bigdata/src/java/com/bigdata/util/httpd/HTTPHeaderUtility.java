@@ -31,7 +31,8 @@ import java.util.Enumeration;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * This class provides set of utilities for encoding and decoding HTTP
@@ -49,7 +50,7 @@ public class HTTPHeaderUtility
      * this class.  It should be used by all derived classes.
      */
 
-    protected static final Logger log = Logger.getLogger
+    protected static final Logger log = LogManager.getLogger
 	( HTTPHeaderUtility.class
 	  );
 

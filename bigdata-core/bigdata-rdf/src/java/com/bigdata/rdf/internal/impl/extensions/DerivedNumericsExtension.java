@@ -30,7 +30,8 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Literal;
 import org.openrdf.model.URI;
 import org.openrdf.model.Value;
@@ -59,7 +60,7 @@ import com.bigdata.rdf.model.BigdataValueFactory;
  */
 public class DerivedNumericsExtension<V extends BigdataValue> implements IExtension<V> {
 
-	private static final transient Logger log = Logger.getLogger(DerivedNumericsExtension.class);
+	private static final transient Logger log = LogManager.getLogger(DerivedNumericsExtension.class);
 	
 	
     private final Map<IV,BigdataURI> datatypes;

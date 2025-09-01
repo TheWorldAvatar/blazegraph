@@ -38,7 +38,8 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Resource;
 import org.openrdf.model.Value;
 import org.openrdf.query.MalformedQueryException;
@@ -72,8 +73,7 @@ public class UpdateServlet extends BigdataRDFServlet {
      */
     private static final long serialVersionUID = 1L;
 
-    static private final transient Logger log = Logger
-            .getLogger(UpdateServlet.class);
+    static private final transient Logger log = LogManager.getLogger(UpdateServlet.class);
 
     /*
      * Note: includedInferred is false because inferences can

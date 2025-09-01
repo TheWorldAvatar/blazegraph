@@ -31,7 +31,8 @@ import java.util.concurrent.atomic.AtomicReference;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.ganglia.GangliaListener;
 import com.bigdata.ganglia.GangliaService;
@@ -81,7 +82,7 @@ import com.bigdata.rdf.sail.webapp.lbs.ServiceScore;
 public class GangliaLBSPolicy extends AbstractHostLBSPolicy {
 
     @SuppressWarnings("unused")
-    private static final Logger log = Logger.getLogger(GangliaLBSPolicy.class);
+    private static final Logger log = LogManager.getLogger(GangliaLBSPolicy.class);
 
     /**
      * 

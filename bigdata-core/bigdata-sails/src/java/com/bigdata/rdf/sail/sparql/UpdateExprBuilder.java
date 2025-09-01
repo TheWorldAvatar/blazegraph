@@ -118,7 +118,7 @@ import com.bigdata.rdf.spo.SPO;
  */
 public class UpdateExprBuilder extends BigdataExprBuilder {
 
-//    private static final Logger log = Logger.getLogger(UpdateExprBuilder.class);
+//    private static final Logger log = LogManager.getLogger(UpdateExprBuilder.class);
 
     public UpdateExprBuilder(final BigdataASTContext context) {
         

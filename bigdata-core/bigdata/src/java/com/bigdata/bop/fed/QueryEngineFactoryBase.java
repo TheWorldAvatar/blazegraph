@@ -6,7 +6,8 @@ import java.net.InetSocketAddress;
 import java.util.Properties;
 import java.util.UUID;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.engine.QueryEngine;
 import com.bigdata.cache.ConcurrentWeakValueCache;
@@ -28,7 +29,7 @@ import com.bigdata.util.config.NicUtil;
  */
 public class QueryEngineFactoryBase implements IQueryEngineFactory {
 
-	private static final Logger log = Logger.getLogger(QueryEngineFactoryBase.class);
+	private static final Logger log = LogManager.getLogger(QueryEngineFactoryBase.class);
 
 	// Note: needs to be public for the ClassPathUtil indirection mechanism.  However
 	// callers MUST use QueryEngineFactory.getInstance() rather than directly using

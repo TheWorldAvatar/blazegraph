@@ -27,7 +27,8 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Literal;
 import org.openrdf.model.URI;
 import org.openrdf.model.ValueFactory;
@@ -49,7 +50,7 @@ import com.bigdata.rdf.vocab.NoVocabulary;
 
 public class TestLexJoinOps extends QuadsTestCase {
 
-    private static final Logger log = Logger.getLogger(TestLexJoinOps.class);
+    private static final Logger log = LogManager.getLogger(TestLexJoinOps.class);
 
     @Override
     public Properties getProperties() {

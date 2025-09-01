@@ -35,8 +35,6 @@ import java.util.NoSuchElementException;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.locks.Lock;
 
-import org.apache.log4j.Logger;
-
 import com.bigdata.BigdataStatics;
 import com.bigdata.btree.AbstractBTree;
 import com.bigdata.btree.AbstractNode;
@@ -103,7 +101,7 @@ public class HTree extends AbstractHTree
 //  IRangeQuery
 {
 
-//    private static final transient Logger log = Logger.getLogger(HTree.class);
+//    private static final transient Logger log = LogManager.getLogger(HTree.class);
 
     /**
      * The #of bits of distinction to be made each time we split a directory

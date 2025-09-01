@@ -32,7 +32,8 @@ import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.locks.ReentrantLock;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import cutthecrap.utils.striterators.ICloseableIterator;
 
@@ -47,7 +48,7 @@ import cutthecrap.utils.striterators.ICloseableIterator;
 public class MultiSourceSequentialCloseableIterator<E> implements
         IMultiSourceCloseableIterator<E> {
 
-    private final static Logger log = Logger.getLogger(MultiSourceSequentialCloseableIterator.class);
+    private final static Logger log = LogManager.getLogger(MultiSourceSequentialCloseableIterator.class);
     
     private final static boolean INFO = log.isInfoEnabled();
     

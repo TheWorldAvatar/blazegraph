@@ -26,7 +26,8 @@ package com.bigdata.rdf.sail.contrib;
 import java.io.StringReader;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.sail.BigdataSail;
@@ -56,7 +57,7 @@ import com.bigdata.rdf.sail.ProxyBigdataSailTestCase;
  */
 public class TestOOMBug extends ProxyBigdataSailTestCase {
 
-	private static final transient Logger log = Logger.getLogger(TestOOMBug.class);
+	private static final transient Logger log = LogManager.getLogger(TestOOMBug.class);
 	
 	
 	public TestOOMBug() {

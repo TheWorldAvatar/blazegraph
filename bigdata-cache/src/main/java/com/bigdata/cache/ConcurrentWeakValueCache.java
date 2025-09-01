@@ -7,7 +7,8 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * A low-contention/high concurrency weak value cache. This class can offer
@@ -34,7 +35,7 @@ import org.apache.log4j.Logger;
 public class ConcurrentWeakValueCache<K, V> implements
         IConcurrentWeakValueCache<K, V> {
 
-    protected static transient final Logger log = Logger.getLogger(ConcurrentWeakValueCache.class);
+    protected static transient final Logger log = LogManager.getLogger(ConcurrentWeakValueCache.class);
     
     protected static transient final boolean INFO = log.isInfoEnabled();
 

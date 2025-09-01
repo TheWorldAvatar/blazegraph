@@ -27,7 +27,8 @@ import java.net.UnknownHostException;
 
 import junit.framework.TestCase;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
 import com.bigdata.rdf.internal.impl.literal.IPv4AddrIV;
@@ -35,8 +36,7 @@ import com.bigdata.rdf.model.BigdataLiteral;
 
 public class IPv4AddrIVTest extends TestCase {
 
-	private final static transient Logger log = Logger
-			.getLogger(IPv4AddrIVTest.class);
+	private final static transient Logger log = LogManager.getLogger(IPv4AddrIVTest.class);
 
 	@Test
 	public void testIPAddress() {

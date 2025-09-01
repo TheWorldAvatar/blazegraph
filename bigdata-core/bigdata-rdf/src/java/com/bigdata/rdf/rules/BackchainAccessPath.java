@@ -27,7 +27,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 package com.bigdata.rdf.rules;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.vocabulary.OWL;
 import org.openrdf.model.vocabulary.RDF;
 import org.openrdf.model.vocabulary.RDFS;
@@ -63,8 +64,7 @@ import com.bigdata.striterator.IKeyOrder;
  */
 public class BackchainAccessPath implements IAccessPath<ISPO> {
 
-    protected static transient final Logger log = Logger
-            .getLogger(BackchainAccessPath.class);
+    protected static transient final Logger log = LogManager.getLogger(BackchainAccessPath.class);
 
     protected final static boolean INFO = log.isInfoEnabled();
 

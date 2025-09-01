@@ -38,7 +38,7 @@ package com.bigdata.relation.accesspath;
  */
 abstract public class AbstractArrayBuffer<E> implements IBuffer<E> {
 
-//    protected static final Logger log = Logger.getLogger(AbstractArrayBuffer.class);
+//    protected static final Logger log = LogManager.getLogger(AbstractArrayBuffer.class);
 //    
 //    protected static final boolean INFO = log.isInfoEnabled();
 //

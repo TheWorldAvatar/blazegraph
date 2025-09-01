@@ -33,7 +33,8 @@ import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.cache.ConcurrentWeakValueCache;
 import com.bigdata.counters.CounterSet;
@@ -70,8 +71,7 @@ import com.bigdata.rwstore.PSOutputStream;
  */
 public class AllocationContext implements IAllocationContext, IMemoryManager {//, IStore {
 	
-	private static final transient Logger log = Logger
-			.getLogger(AllocationContext.class);
+	private static final transient Logger log = LogManager.getLogger(AllocationContext.class);
 	
 	/**
 	 * The top-level {@link MemoryManager}.

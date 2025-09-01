@@ -38,7 +38,8 @@ import java.util.concurrent.FutureTask;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.eclipse.jetty.client.HttpClient;
 import org.openrdf.query.BindingSet;
 
@@ -104,7 +105,7 @@ import cutthecrap.utils.striterators.SingleValueIterator;
  */
 public class ServiceCallJoin extends PipelineOp {
 
-    private static final Logger log = Logger.getLogger(ServiceCallJoin.class);
+    private static final Logger log = LogManager.getLogger(ServiceCallJoin.class);
     
     /**
      * 

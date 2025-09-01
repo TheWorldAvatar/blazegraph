@@ -34,7 +34,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.BNode;
 import org.openrdf.model.Value;
 import org.openrdf.model.impl.BNodeImpl;
@@ -85,8 +86,7 @@ import com.bigdata.rdf.sparql.ast.service.ServiceNode;
 public class TestRemoteSparql11QueryBuilder extends
         AbstractBigdataExprBuilderTestCase {
 
-    private static final Logger log = Logger
-            .getLogger(TestRemoteSparql11QueryBuilder.class);
+    private static final Logger log = LogManager.getLogger(TestRemoteSparql11QueryBuilder.class);
     
     /**
      * 

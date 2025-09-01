@@ -38,7 +38,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Level;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Utility class that provides a set of static convenience methods
@@ -52,8 +53,8 @@ import org.apache.log4j.Level;
  */
 public class NicUtil {
 
-    private static final org.apache.log4j.Logger utilLogger = 
-                                     LogUtil.getLog4jLogger( NicUtil.class );
+    private static final org.apache.logging.log4j.Logger utilLogger = 
+                                     LogManager.getLogger( NicUtil.class );
 
     private static final java.util.logging.Logger jiniConfigLogger = 
                        java.util.logging.Logger.getLogger("net.jini.config");

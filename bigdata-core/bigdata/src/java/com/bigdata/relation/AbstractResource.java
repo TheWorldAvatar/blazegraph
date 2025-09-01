@@ -36,7 +36,8 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.SynchronousQueue;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.engine.QueryEngine;
@@ -81,7 +82,7 @@ import com.bigdata.sparse.GlobalRowStoreUtil;
  */
 abstract public class AbstractResource<E> implements IMutableResource<E> {
 
-    protected final transient static Logger log = Logger.getLogger(AbstractResource.class);
+    protected final transient static Logger log = LogManager.getLogger(AbstractResource.class);
 
     protected final IIndexManager indexManager;
     

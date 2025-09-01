@@ -3,7 +3,8 @@ package com.bigdata.relation.accesspath;
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.striterator.IChunkedOrderedIterator;
 import com.bigdata.striterator.IKeyOrder;
@@ -24,7 +25,7 @@ import cutthecrap.utils.striterators.ICloseableIterator;
  */
 public class ChunkConsumerIterator<E> implements IChunkedOrderedIterator<E> {
 
-    final protected static Logger log = Logger.getLogger(ChunkConsumerIterator.class);
+    final protected static Logger log = LogManager.getLogger(ChunkConsumerIterator.class);
 
     /**
      * True iff the {@link #log} level is INFO or less.

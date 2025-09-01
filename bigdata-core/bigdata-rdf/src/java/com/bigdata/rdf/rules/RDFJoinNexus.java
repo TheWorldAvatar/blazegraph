@@ -35,7 +35,8 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.Constant;
 import com.bigdata.bop.IBindingSet;
@@ -125,7 +126,7 @@ import com.bigdata.striterator.IKeyOrder;
  */
 public class RDFJoinNexus extends AbstractJoinNexus implements IJoinNexus {
 
-    protected final static transient Logger log = Logger.getLogger(RDFJoinNexus.class);
+    protected final static transient Logger log = LogManager.getLogger(RDFJoinNexus.class);
     
     private final RDFJoinNexusFactory joinNexusFactory;
 

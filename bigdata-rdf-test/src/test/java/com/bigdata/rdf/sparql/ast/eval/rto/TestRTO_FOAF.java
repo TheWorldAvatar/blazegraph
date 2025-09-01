@@ -44,7 +44,7 @@ import com.bigdata.rdf.sail.BigdataSail;
  */
 public class TestRTO_FOAF extends AbstractRTOTestCase {
 
-//    private final static Logger log = Logger.getLogger(TestRTO_LUBM.class);
+//    private final static Logger log = LogManager.getLogger(TestRTO_LUBM.class);
     
     /**
      * 

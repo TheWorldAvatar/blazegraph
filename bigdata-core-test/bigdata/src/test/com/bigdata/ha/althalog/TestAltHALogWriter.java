@@ -32,7 +32,8 @@ import java.util.Random;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.ha.msg.HAWriteMessage;
 import com.bigdata.ha.msg.IHAWriteMessage;
@@ -45,8 +46,7 @@ import junit.framework.TestCase;
 
 public class TestAltHALogWriter extends TestCase {
 
-	private static final Logger log = Logger
-			.getLogger(TestAltHALogWriter.class);
+	private static final Logger log = LogManager.getLogger(TestAltHALogWriter.class);
 
 	final File m_logdir = new File("/tmp/halogdir");
 	// final File m_logdir = new File("/Volumes/SSDData/tmp/halogdir");

@@ -96,7 +96,7 @@ extends SPARQLQueryTest // Sesame TupleExpr based evaluation
 //extends SPARQLASTQueryTest // Bigdata native AST based evaluation
 {
 
-//    static private final Logger log = Logger.getLogger(BigdataSparqlTest.class);
+//    static private final Logger log = LogManager.getLogger(BigdataSparqlTest.class);
     
     /**
      * We cannot use inlining for these test because we do normalization on

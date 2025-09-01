@@ -22,7 +22,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Literal;
 import org.openrdf.model.Resource;
 import org.openrdf.model.Statement;
@@ -43,7 +44,7 @@ import com.bigdata.rdf.graph.util.GASUtil;
 
 public class GASState<VS, ES, ST> implements IGASState<VS, ES, ST> {
 
-    private static final Logger log = Logger.getLogger(GASState.class);
+    private static final Logger log = LogManager.getLogger(GASState.class);
 
     // /**
     // * The {@link GASEngine} on which the {@link IGASProgram} will be run.

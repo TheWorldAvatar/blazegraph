@@ -42,7 +42,8 @@ import java.util.Properties;
 import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Resource;
 import org.openrdf.model.Statement;
 import org.openrdf.model.URI;
@@ -156,7 +157,7 @@ import com.bigdata.util.Bytes;
  */
 public class ParseOp extends PipelineOp {
 
-    private static final transient Logger log = Logger.getLogger(ParseOp.class);
+    private static final transient Logger log = LogManager.getLogger(ParseOp.class);
 
     /**
      * 

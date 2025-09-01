@@ -30,8 +30,9 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 import java.util.concurrent.locks.Lock;
 
-import org.apache.log4j.Logger;
-import org.apache.log4j.MDC;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.ThreadContext;
 
 import com.bigdata.btree.BTree;
 import com.bigdata.btree.IIndex;
@@ -151,7 +152,7 @@ import com.bigdata.util.concurrent.LatchedExecutor;
  */
 public class AsynchronousOverflowTask implements Callable<Object> {
 
-    protected static final Logger log = Logger.getLogger(AsynchronousOverflowTask.class);
+    protected static final Logger log = LogManager.getLogger(AsynchronousOverflowTask.class);
 
     /**
      * 
@@ -2864,7 +2865,7 @@ public class AsynchronousOverflowTask implements Callable<Object> {
          * Mark the purpose of the thread using the same variable name as the
          * AbstractTask.
          */
-        MDC.put("taskname", "overflowService");
+        ThreadContext.put("taskname", "overflowService");
         
         if (resourceManager.overflowAllowed.get()) {
 

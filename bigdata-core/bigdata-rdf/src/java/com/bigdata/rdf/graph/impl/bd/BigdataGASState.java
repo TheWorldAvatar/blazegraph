@@ -5,7 +5,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.BNode;
 import org.openrdf.model.Literal;
 import org.openrdf.model.Statement;
@@ -28,7 +29,7 @@ import com.bigdata.rdf.store.AbstractTripleStore;
 
 public class BigdataGASState<VS, ES, ST> extends GASState<VS, ES, ST> {
 
-    static private final Logger log = Logger.getLogger(BigdataGASState.class);
+    static private final Logger log = LogManager.getLogger(BigdataGASState.class);
 
     @Override
     protected BigdataGraphAccessor getGraphAccessor() {

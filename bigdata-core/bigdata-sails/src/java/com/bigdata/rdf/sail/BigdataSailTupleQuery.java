@@ -19,7 +19,7 @@ import com.bigdata.rdf.store.AbstractTripleStore;
 public class BigdataSailTupleQuery extends SailTupleQuery 
         implements BigdataSailQuery {
 
-//    private static final Logger log = Logger.getLogger(BigdataSailTupleQuery.class);
+//    private static final Logger log = LogManager.getLogger(BigdataSailTupleQuery.class);
     
     private final ASTContainer astContainer;
     

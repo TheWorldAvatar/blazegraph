@@ -25,7 +25,8 @@ package com.bigdata.rdf.internal;
 
 import java.math.BigInteger;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.rdf.internal.impl.literal.AbstractLiteralIV;
 import com.bigdata.rdf.internal.impl.literal.XSDIntegerIV;
@@ -36,8 +37,7 @@ import com.bigdata.rdf.internal.impl.literal.XSDNumericIV;
  * appropriately sized signed integer.
  */
 public class InlineSignedIntegerURIHandler extends InlineURIHandler {
-	private static final Logger log = Logger
-			.getLogger(InlineSignedIntegerURIHandler.class);
+	private static final Logger log = LogManager.getLogger(InlineSignedIntegerURIHandler.class);
 	private static final BigInteger MIN_LONG_AS_BIGINT = BigInteger
 			.valueOf(Long.MIN_VALUE);
 	private static final BigInteger MAX_LONG_AS_BIGINT = BigInteger

@@ -37,7 +37,8 @@ import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Graph;
 import org.openrdf.model.Literal;
 import org.openrdf.model.Statement;
@@ -78,7 +79,7 @@ import com.bigdata.search.TestSearch;
  */
 public class TestSearchQuery extends ProxyBigdataSailTestCase {
 
-    private static final Logger log = Logger.getLogger(TestSearchQuery.class);
+    private static final Logger log = LogManager.getLogger(TestSearchQuery.class);
 	
     public TestSearchQuery() {
         

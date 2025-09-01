@@ -52,7 +52,8 @@ import java.util.regex.Pattern;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.counters.History;
 import com.bigdata.counters.ICounterSet;
@@ -72,8 +73,8 @@ import com.bigdata.util.httpd.NanoHTTPD;
  */
 public class URLQueryModel {
 
-    private static transient final Logger log = Logger.getLogger(URLQueryModel.class);
-    
+    private static transient final Logger log = LogManager.getLogger(URLQueryModel.class);
+
     /**
      * Name of the URL query parameter specifying the starting path for the page
      * view.
@@ -85,12 +86,12 @@ public class URLQueryModel {
      * all levels.
      */
     public static final String DEPTH = "depth";
-    
+
     /**
      * @see BLZG-1318
      */
     public static final String DEFAULT_DEPTH = "0";
-    
+
     /**
      * URL query parameter whose value is the type of report to generate.
      * The default is {@link ReportEnum#hierarchy}.
@@ -98,7 +99,7 @@ public class URLQueryModel {
      * @see ReportEnum
      */
     public static final String REPORT = "report";
-    
+
     /**
      * The ordered labels to be assigned to the category columns in a
      * {@link ReportEnum#pivot} report. The order of the names in the URL
@@ -106,7 +107,7 @@ public class URLQueryModel {
      * groups in the {@link #REGEX}.
      */
     public static final String CATEGORY = "category";
-    
+
     /**
      * Name of the URL query parameter specifying whether the optional
      * correlated view for counter histories will be displayed.
@@ -115,7 +116,7 @@ public class URLQueryModel {
      * {@value ReportEnum#correlated}.
      */
     public static final String CORRELATED = "correlated";
-    
+
     /**
      * Name of the URL query parameter specifying one or more strings for
      * the filter to be applied to the counter paths.
@@ -163,7 +164,7 @@ public class URLQueryModel {
      * command line, not by the httpd interface).
      */
     public static final String FILE = "file";
-    
+
     /**
      * A collection of event filters. Each filter is a regular expression.
      * The key is the {@link Event} {@link Field} to which the filter will
@@ -183,7 +184,7 @@ public class URLQueryModel {
      * 
      * would select events reported for blade12.
      */
-    public final HashMap<Field,Pattern> eventFilters = new HashMap<Field, Pattern>();
+    public final HashMap<Field, Pattern> eventFilters = new HashMap<Field, Pattern>();
 
     /**
      * The <code>eventOrderBy=fld</code> URL query parameters specifies
@@ -203,14 +204,14 @@ public class URLQueryModel {
      * default is as if {@link Event#hostname} was specified.
      */
     static final String EVENT_ORDER_BY = "eventOrderBy";
-    
+
     /**
      * The order in which the events will be grouped.
      * 
      * @see #EVENT_ORDER_BY
      */
     public final Field[] eventOrderBy;
-    
+
     /**
      * The URI from the request.
      */
@@ -219,28 +220,28 @@ public class URLQueryModel {
     /**
      * The parameters from the request (as parsed from URL query parameters).
      */
-    final public LinkedHashMap<String,Vector<String>> params;
-    
-//    /**
-//     * The request headers.
-//     */
-//    final public Map<String,String> headers;
-    
+    final public LinkedHashMap<String, Vector<String>> params;
+
+    // /**
+    // * The request headers.
+    // */
+    // final public Map<String,String> headers;
+
     /**
      * The reconstructed request URL.
      */
     private final String requestURL;
-    
+
     /**
-     * The value of the {@link #PATH} query parameter. 
+     * The value of the {@link #PATH} query parameter.
      */
     final public String path;
-    
+
     /**
      * The value of the {@link #DEPTH} query parameter.
      */
     final public int depth;
-    
+
     /**
      * The kind of report to generate.
      * 
@@ -248,7 +249,7 @@ public class URLQueryModel {
      * @see ReportEnum
      */
     final public ReportEnum reportType;
-    
+
     /**
      * @see #TIMESTAMP_FORMAT
      * @see TimestampFormatEnum
@@ -264,7 +265,7 @@ public class URLQueryModel {
      * @see #CATEGORY
      */
     final public String[] category;
-    
+
     /**
      * The inclusive lower bound in milliseconds of the timestamp for the
      * counters or events to be selected.
@@ -276,13 +277,13 @@ public class URLQueryModel {
      * counters or events to be selected.
      */
     final public long toTime;
-    
+
     /**
      * The reporting period to be used. When <code>null</code> all periods
      * will be reported. When specified, only that period is reported.
      */
     final public PeriodEnum period;
-    
+
     /**
      * The {@link Pattern} compiled from the {@link #FILTER} query
      * parameters and <code>null</code> iff there are no {@link #FILTER}
@@ -296,28 +297,28 @@ public class URLQueryModel {
      * @see IEventReportingService
      */
     final public IEventReportingService eventReportingService;
-    
+
     /**
      * <code>true</code> iff we need to output the scripts to support
      * <code>flot</code>.
      */
     final public boolean flot;
-    
+
     /**
      * Used to format double and float counter values.
      */
     public final DecimalFormat decimalFormat;
-    
+
     /**
      * Used to format counter values that can be inferred to be a percentage.
      */
     public final NumberFormat percentFormat;
-    
+
     /**
      * Used to format integer and long counter values.
      */
     public final NumberFormat integerFormat;
-    
+
     /**
      * Used to format the units of time when expressed as elapsed units since
      * the first sample of a {@link History}.
@@ -338,7 +339,7 @@ public class URLQueryModel {
      * @see MIMETYPE
      */
     public final String mimeType;
-    
+
     /**
      * The name of a local file on which to write the data (this option is
      * supported only by local utility classes, not by the httpd interface).
@@ -346,35 +347,35 @@ public class URLQueryModel {
      * @see #FILE
      */
     final public File file;
-    
+
     @Override
     public String toString() {
-        
+
         final StringBuilder sb = new StringBuilder();
-        
+
         sb.append(URLQueryModel.class.getName());
 
         sb.append("{uri=" + uri);
-        
+
         sb.append(",params=" + params);
-        
+
         sb.append(",path=" + path);
-        
+
         sb.append(",depth=" + depth);
-        
+
         sb.append(",reportType=" + reportType);
 
         sb.append(",mimeType=" + mimeType);
 
         sb.append(",pattern=" + pattern);
-        
+
         sb.append(",category="
                 + (category == null ? "N/A" : Arrays.toString(category)));
-        
+
         sb.append(",period=" + period);
-        
+
         sb.append(",[fromTime=" + fromTime);
-        
+
         sb.append(",toTime=" + toTime + "]");
 
         sb.append(",flot=" + flot);
@@ -408,34 +409,34 @@ public class URLQueryModel {
         sb.append("}");
 
         return sb.toString();
-        
+
     }
-    
+
     /**
      * Factory for performance counter integration.
      * 
      * @param service
-     *            The service object IFF one was specified when
-     *            {@link CounterSetHTTPD} was started.
+     *                The service object IFF one was specified when
+     *                {@link CounterSetHTTPD} was started.
      * @param uri
-     *            Percent-decoded URI without parameters, for example
-     *            "/index.cgi"
+     *                Percent-decoded URI without parameters, for example
+     *                "/index.cgi"
      * @param parms
-     *            Parsed, percent decoded parameters from URI and, in case of
-     *            POST, data. The keys are the parameter names. Each value is a
-     *            {@link Vector} of {@link String}s containing the bindings for
-     *            the named parameter. The order of the URL parameters is
-     *            preserved by the insertion order of the {@link LinkedHashMap}
-     *            and the elements of the {@link Vector} values.
+     *                Parsed, percent decoded parameters from URI and, in case of
+     *                POST, data. The keys are the parameter names. Each value is a
+     *                {@link Vector} of {@link String}s containing the bindings for
+     *                the named parameter. The order of the URL parameters is
+     *                preserved by the insertion order of the {@link LinkedHashMap}
+     *                and the elements of the {@link Vector} values.
      * @param header
-     *            Header entries, percent decoded
+     *                Header entries, percent decoded
      */
     public static URLQueryModel getInstance(//
-            final IService service,//
-            final String uri,//
-            final LinkedHashMap<String, Vector<String>> params,//
+            final IService service, //
+            final String uri, //
+            final LinkedHashMap<String, Vector<String>> params, //
             final Map<String, String> headers//
-            ) {
+    ) {
 
         /*
          * Re-create the request URL, including the protocol, host, port, and
@@ -452,7 +453,7 @@ public class URLQueryModel {
 
         // path (including the leading '/')
         sb.append(uri);
-        
+
         final String requestURL = sb.toString();
 
         return new URLQueryModel(service, uri, params, requestURL);
@@ -463,27 +464,26 @@ public class URLQueryModel {
      * Factory for Servlet API integration.
      * 
      * @param service
-     *            The service object IFF one was specified when
-     *            {@link CounterSetHTTPD} was started. If this implements the
-     *            {@link IEventReportingService} interface, then events can also
-     *            be requested.
+     *                The service object IFF one was specified when
+     *                {@link CounterSetHTTPD} was started. If this implements the
+     *                {@link IEventReportingService} interface, then events can also
+     *                be requested.
      * 
      * @param req
-     *            The request.
+     *                The request.
      * @param resp
-     *            The response.
+     *                The response.
      */
     public static URLQueryModel getInstance(//
             final IService service,
             final HttpServletRequest req,
-            final HttpServletResponse resp
-            ) throws UnsupportedEncodingException {
-        
+            final HttpServletResponse resp) throws UnsupportedEncodingException {
+
         final String uri = URLDecoder.decode(req.getRequestURI(), "UTF-8");
-        
+
         final LinkedHashMap<String, Vector<String>> params = new LinkedHashMap<String, Vector<String>>();
 
-//        @SuppressWarnings("unchecked")
+        // @SuppressWarnings("unchecked")
         final Enumeration<String> enames = req.getParameterNames();
 
         while (enames.hasMoreElements()) {
@@ -501,15 +501,15 @@ public class URLQueryModel {
             }
 
             params.put(name, value);
-            
+
         }
-        
+
         final String requestURL = req.getRequestURL().toString();
-        
+
         return new URLQueryModel(service, uri, params, requestURL);
-        
+
     }
-    
+
     /**
      * Create a {@link URLQueryModel} from a URL. This is useful when serving
      * historical performance counter data out of a file.
@@ -556,21 +556,21 @@ public class URLQueryModel {
         this.uri = uri;
 
         this.params = params;
-        
-//        this.headers = headers;
+
+        // this.headers = headers;
 
         this.requestURL = requestURL;
-        
+
         this.path = getProperty(params, PATH, ICounterSet.pathSeparator);
 
         if (log.isInfoEnabled())
             log.info(PATH + "=" + path);
 
         this.depth = Integer.parseInt(getProperty(params, DEPTH, DEFAULT_DEPTH));
-        
+
         if (log.isInfoEnabled())
             log.info(DEPTH + "=" + depth);
-        
+
         if (depth < 0)
             throw new IllegalArgumentException("depth must be GTE ZERO(0)");
 
@@ -585,9 +585,9 @@ public class URLQueryModel {
 
         // assemble the optional filter.
         this.pattern = QueryUtil.getPattern(//
-                params.get(FILTER),//
+                params.get(FILTER), //
                 params.get(REGEX)//
-                );
+        );
 
         if (service != null && service instanceof IEventReportingService) {
 
@@ -598,29 +598,29 @@ public class URLQueryModel {
 
             // events are not available.
             eventReportingService = null;
-            
+
         }
-        
+
         if (params.containsKey(REPORT) && params.containsKey(CORRELATED)) {
 
             throw new IllegalArgumentException("Please use either '"
                     + CORRELATED + "' or '" + REPORT + "'");
-            
+
         }
 
-        if(params.containsKey(REPORT)) {
-        
+        if (params.containsKey(REPORT)) {
+
             this.reportType = ReportEnum.valueOf(getProperty(
-                params, REPORT, ReportEnum.hierarchy.toString()));
+                    params, REPORT, ReportEnum.hierarchy.toString()));
 
             if (log.isInfoEnabled())
                 log.info(REPORT + "=" + reportType);
-            
+
         } else {
-        
+
             final boolean correlated = Boolean.parseBoolean(getProperty(
                     params, CORRELATED, "false"));
-        
+
             if (log.isInfoEnabled())
                 log.info(CORRELATED + "=" + correlated);
 
@@ -630,51 +630,51 @@ public class URLQueryModel {
         }
 
         if (eventReportingService != null) {
-            
+
             final Iterator<Map.Entry<String, Vector<String>>> itr = params
                     .entrySet().iterator();
-            
-            while(itr.hasNext()) {
-                
+
+            while (itr.hasNext()) {
+
                 final Map.Entry<String, Vector<String>> entry = itr.next();
-                
+
                 final String name = entry.getKey();
-                
+
                 if (!name.startsWith("events."))
                     continue;
-                
+
                 final int pos = name.indexOf('.');
 
                 if (pos == -1) {
 
                     throw new IllegalArgumentException(
                             "Missing event column name: " + name);
-                    
+
                 }
-                
+
                 // the name of the event column.
                 final String col = name.substring(pos + 1, name.length());
-                
+
                 final Field fld;
                 try {
-                    
-                    fld = Event.class.getField(col);
-                    
-                } catch(NoSuchFieldException ex) {
 
-                    throw new IllegalArgumentException("Unknown event field: "+col);
-                    
+                    fld = Event.class.getField(col);
+
+                } catch (NoSuchFieldException ex) {
+
+                    throw new IllegalArgumentException("Unknown event field: " + col);
+
                 }
 
                 final Vector<String> patterns = entry.getValue();
-                
+
                 if (patterns.size() == 0)
                     continue;
 
                 if (patterns.size() > 1)
                     throw new IllegalArgumentException(
                             "Only one pattern per field: " + name);
-                
+
                 /*
                  * compile the pattern
                  * 
@@ -682,9 +682,9 @@ public class URLQueryModel {
                  * not be compiled.
                  */
                 final Pattern pattern = Pattern.compile(patterns.firstElement());
-                
+
                 eventFilters.put(fld, pattern);
-                
+
             }
 
             if (log.isInfoEnabled()) {
@@ -694,12 +694,12 @@ public class URLQueryModel {
                 }
                 log.info("eventFilters={" + sb + "}");
             }
-            
+
         }
-        
+
         // eventOrderBy
         {
-            
+
             final Vector<String> v = params.get(EVENT_ORDER_BY);
 
             if (v == null) {
@@ -740,32 +740,32 @@ public class URLQueryModel {
                 eventOrderBy = fields.toArray(new Field[0]);
 
             }
-           
+
             if (log.isInfoEnabled())
                 log.info(EVENT_ORDER_BY + "="
                         + Arrays.toString(eventOrderBy));
 
         }
-        
+
         switch (reportType) {
-        case events:
-            if (eventReportingService == null) {
+            case events:
+                if (eventReportingService == null) {
 
-                /*
-                 * Throw exception since the report type requires events but
-                 * they are not available.
-                 */
+                    /*
+                     * Throw exception since the report type requires events but
+                     * they are not available.
+                     */
 
-                throw new IllegalStateException("Events are not available.");
+                    throw new IllegalStateException("Events are not available.");
 
-            }
-            flot = true;
-            break;
-        default:
-            flot = false;
-            break;
+                }
+                flot = true;
+                break;
+            default:
+                flot = false;
+                break;
         }
-        
+
         this.category = params.containsKey(CATEGORY) ? params.get(CATEGORY)
                 .toArray(new String[0]) : null;
 
@@ -774,7 +774,7 @@ public class URLQueryModel {
 
         this.timestampFormat = TimestampFormatEnum.valueOf(getProperty(
                 params, TIMESTAMP_FORMAT, TimestampFormatEnum.dateTime.toString()));
-        
+
         if (log.isInfoEnabled())
             log.info(TIMESTAMP_FORMAT + "=" + timestampFormat);
 
@@ -788,62 +788,62 @@ public class URLQueryModel {
          * @todo this should be specified by a URL query parameter and
          * passed into the IRenderer instances.
          */
-//        this.decimalFormat = new DecimalFormat("0.###E0");
+        // this.decimalFormat = new DecimalFormat("0.###E0");
         this.decimalFormat = new DecimalFormat("##0.#####E0");
-        
-//        decimalFormat.setGroupingUsed(true);
-//
-//        decimalFormat.setMinimumFractionDigits(3);
-//        
-//        decimalFormat.setMaximumFractionDigits(6);
-//        
-//        decimalFormat.setDecimalSeparatorAlwaysShown(true);
-        
+
+        // decimalFormat.setGroupingUsed(true);
+        //
+        // decimalFormat.setMinimumFractionDigits(3);
+        //
+        // decimalFormat.setMaximumFractionDigits(6);
+        //
+        // decimalFormat.setDecimalSeparatorAlwaysShown(true);
+
         this.percentFormat = NumberFormat.getPercentInstance();
-        
+
         this.integerFormat = NumberFormat.getIntegerInstance();
-        
+
         integerFormat.setGroupingUsed(true);
-        
+
         this.unitsFormat = new DecimalFormat("0.#");
-        
+
         /*
          * Figure out how we will format the timestamp (From:, To:, and the last
          * column).
          */
-        switch(timestampFormat) {
-        case dateTime:
-            /*
-             * Note: I have decided to go with the long format (date + time)
-             * since runs often span days and the time along is not enough
-             * information.
-             */
-          dateFormat = DateFormat.getDateTimeInstance(
-                    DateFormat.MEDIUM/* date */, DateFormat.MEDIUM/* time */);
-//            switch (period) {
-//            case Minutes:
-//                dateFormat = DateFormat.getTimeInstance(DateFormat.SHORT);
-//                break;
-//            case Hours:
-//                dateFormat = DateFormat.getTimeInstance(DateFormat.MEDIUM);
-//                break;
-//            case Days:
-//                dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM);
-//                break;
-//            default:
-//                throw new UnsupportedOperationException(period.toString());
-//            }
-            break;
-        case epoch: {
-            // milliseconds since the epoch
-            final NumberFormat f = NumberFormat.getIntegerInstance();
-            f.setGroupingUsed(false);
-            f.setMinimumFractionDigits(0);
-            dateFormat = f;
-            break;
-        }
-        default:
-            throw new UnsupportedOperationException(timestampFormat.toString());
+        switch (timestampFormat) {
+            case dateTime:
+                /*
+                 * Note: I have decided to go with the long format (date + time)
+                 * since runs often span days and the time along is not enough
+                 * information.
+                 */
+                dateFormat = DateFormat.getDateTimeInstance(
+                        DateFormat.MEDIUM/* date */, DateFormat.MEDIUM/* time */);
+                // switch (period) {
+                // case Minutes:
+                // dateFormat = DateFormat.getTimeInstance(DateFormat.SHORT);
+                // break;
+                // case Hours:
+                // dateFormat = DateFormat.getTimeInstance(DateFormat.MEDIUM);
+                // break;
+                // case Days:
+                // dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM);
+                // break;
+                // default:
+                // throw new UnsupportedOperationException(period.toString());
+                // }
+                break;
+            case epoch: {
+                // milliseconds since the epoch
+                final NumberFormat f = NumberFormat.getIntegerInstance();
+                f.setGroupingUsed(false);
+                f.setMinimumFractionDigits(0);
+                dateFormat = f;
+                break;
+            }
+            default:
+                throw new UnsupportedOperationException(timestampFormat.toString());
         }
 
         this.mimeType = (params.containsKey(MIMETYPE) ? getProperty(params,
@@ -861,11 +861,11 @@ public class URLQueryModel {
      * Return the first value for the named property.
      * 
      * @param params
-     *            The request parameters.
+     *                     The request parameters.
      * @param property
-     *            The name of the property
+     *                     The name of the property
      * @param defaultValue
-     *            The default value (optional).
+     *                     The default value (optional).
      * 
      * @return The first value for the named property and the defaultValue
      *         if there named property was not present in the request.
@@ -875,7 +875,7 @@ public class URLQueryModel {
     static protected String getProperty(
             final Map<String, Vector<String>> params, final String property,
             final String defaultValue) {
-        
+
         if (params == null)
             throw new IllegalArgumentException();
 
@@ -888,7 +888,7 @@ public class URLQueryModel {
             return defaultValue;
 
         return vals.get(0);
-        
+
     }
 
     /**
@@ -896,7 +896,7 @@ public class URLQueryModel {
      * path but not any query parameters.
      */
     public StringBuilder getRequestURL() {
-        
+
         return new StringBuilder(requestURL);
 
     }
@@ -905,41 +905,41 @@ public class URLQueryModel {
      * Re-create the request URL.
      * 
      * @param override
-     *            Overridden query parameters (optional).
-     *            
+     *                 Overridden query parameters (optional).
+     * 
      * @todo move to request object?
      */
     public String getRequestURL(final URLQueryParam[] override) {
-    
+
         // Note: Used throughput to preserve the parameter order.
-        final LinkedHashMap<String,Vector<String>> p;
-        
-        if(override == null) {
-            
+        final LinkedHashMap<String, Vector<String>> p;
+
+        if (override == null) {
+
             p = params;
-            
+
         } else {
-            
-            p = new LinkedHashMap<String,Vector<String>>(params);
-            
-            for(URLQueryParam x : override) {
-                                        
+
+            p = new LinkedHashMap<String, Vector<String>>(params);
+
+            for (URLQueryParam x : override) {
+
                 p.put(x.name, x.values);
-                
+
             }
-            
+
         }
 
         final StringBuilder sb = getRequestURL();
-        
+
         sb.append("?path="
                 + encodeURL(getProperty(p, PATH, ICounterSet.pathSeparator)));
-        
+
         final Iterator<Map.Entry<String, Vector<String>>> itr = p
                 .entrySet().iterator();
-        
-        while(itr.hasNext()) {
-            
+
+        while (itr.hasNext()) {
+
             final Map.Entry<String, Vector<String>> entry = itr.next();
 
             final String name = entry.getKey();
@@ -958,9 +958,9 @@ public class URLQueryModel {
                 sb.append("&" + encodeURL(name) + "=" + encodeURL(s));
 
             }
-            
+
         }
-        
+
         return sb.toString();
 
     }
@@ -981,8 +981,7 @@ public class URLQueryModel {
             return url;
 
         }
-        
-    }
-    
-}
 
+    }
+
+}

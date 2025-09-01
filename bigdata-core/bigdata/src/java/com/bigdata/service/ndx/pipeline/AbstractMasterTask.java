@@ -41,7 +41,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.keys.KVO;
 import com.bigdata.mdi.PartitionLocator;
@@ -185,8 +186,7 @@ S extends AbstractSubtask,//
 L>//
         extends AbstractHaltableProcess implements Callable<H>, IMasterTask<E,H> {
 
-    static protected transient final Logger log = Logger
-            .getLogger(AbstractMasterTask.class);
+    static protected transient final Logger log = LogManager.getLogger(AbstractMasterTask.class);
 
     /**
      * The top-level buffer on which the application is writing.

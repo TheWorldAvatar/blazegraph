@@ -41,7 +41,8 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.BOpEvaluationContext;
@@ -59,7 +60,7 @@ import com.bigdata.bop.join.PipelineJoinStats;
  */
 class RunState {
 
-    static private final Logger log = Logger.getLogger(RunState.class);
+    static private final Logger log = LogManager.getLogger(RunState.class);
 
     /**
      * True iff the {@link #log} level is INFO or less.
@@ -81,7 +82,7 @@ class RunState {
      */
     static private class TableLog {
 
-        static private final Logger tableLog = Logger.getLogger(TableLog.class);
+        static private final Logger tableLog = LogManager.getLogger(TableLog.class);
 
         final static private boolean INFO = tableLog.isInfoEnabled();
 

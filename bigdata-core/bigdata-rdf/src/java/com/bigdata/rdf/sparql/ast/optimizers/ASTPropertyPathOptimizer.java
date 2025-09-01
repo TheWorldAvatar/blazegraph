@@ -65,7 +65,7 @@ import com.bigdata.rdf.sparql.ast.eval.AST2BOpContext;
 public class ASTPropertyPathOptimizer extends AbstractJoinGroupOptimizer
 		implements IASTOptimizer {
 
-//	private static final transient Logger log = Logger.getLogger(ASTPropertyPathOptimizer.class);
+//	private static final transient Logger log = LogManager.getLogger(ASTPropertyPathOptimizer.class);
 	
     /**
      * Optimize the join group.

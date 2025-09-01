@@ -34,7 +34,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.BOpContext;
 import com.bigdata.bop.Constant;
@@ -68,7 +69,7 @@ import cutthecrap.utils.striterators.ICloseableIterator;
  */
 public class JVMPipelinedHashJoinUtility extends JVMHashJoinUtility implements PipelinedHashJoinUtility {
 
-   private static final Logger log = Logger.getLogger(JVMPipelinedHashJoinUtility.class);
+   private static final Logger log = LogManager.getLogger(JVMPipelinedHashJoinUtility.class);
 
    /**
     * The #of distinct projections from the given input bindings

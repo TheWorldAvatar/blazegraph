@@ -36,7 +36,8 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.BOpEvaluationContext;
@@ -78,7 +79,7 @@ import com.bigdata.rdf.sparql.ast.StaticAnalysis;
  */
 public class AST2BOpFilters extends AST2BOpBase {
 
-    private static final Logger log = Logger.getLogger(AST2BOpFilters.class);
+    private static final Logger log = LogManager.getLogger(AST2BOpFilters.class);
 
     /**
      * 

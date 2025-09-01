@@ -9,7 +9,8 @@ import java.io.InputStreamReader;
 import java.io.LineNumberReader;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.query.BindingSet;
 import org.openrdf.query.QueryLanguage;
 import org.openrdf.query.TupleQueryResult;
@@ -29,7 +30,7 @@ import com.bigdata.rdf.sail.BigdataSailRepositoryConnection;
  */
 public class RunQuery {
 
-	private static final transient Logger log = Logger.getLogger(RunQuery.class);
+	private static final transient Logger log = LogManager.getLogger(RunQuery.class);
 
 	private static void usage() {
 

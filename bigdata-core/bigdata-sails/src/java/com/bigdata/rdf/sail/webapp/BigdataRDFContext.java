@@ -54,7 +54,8 @@ import java.util.concurrent.atomic.AtomicLong;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Value;
 import org.openrdf.model.impl.URIImpl;
 import org.openrdf.query.Dataset;
@@ -129,8 +130,7 @@ import info.aduna.xml.XMLWriter;
  */
 public class BigdataRDFContext extends BigdataBaseContext {
 
-    static private final transient Logger log = Logger
-            .getLogger(BigdataRDFContext.class);
+    static private final transient Logger log = LogManager.getLogger(BigdataRDFContext.class);
 
     /**
      * URL Query parameter used to request the explanation of a query rather

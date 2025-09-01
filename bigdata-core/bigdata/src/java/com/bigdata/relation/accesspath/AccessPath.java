@@ -34,7 +34,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.RejectedExecutionException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.BOpContext;
 import com.bigdata.bop.BufferAnnotations;
@@ -112,7 +113,7 @@ import cutthecrap.utils.striterators.Striterator;
  */
 public class AccessPath<R> implements IAccessPath<R>, IBindingSetAccessPath<R> {
 
-    static final protected Logger log = Logger.getLogger(IAccessPath.class);
+    static final protected Logger log = LogManager.getLogger(IAccessPath.class);
     
     private static final boolean DEBUG = log.isDebugEnabled();
     
@@ -1243,7 +1244,7 @@ public class AccessPath<R> implements IAccessPath<R>, IBindingSetAccessPath<R> {
      */
     static private class ChunkConsumerTask<R> implements Callable<Void> {
 
-        static protected final Logger log = Logger.getLogger(ChunkConsumerTask.class);
+        static protected final Logger log = LogManager.getLogger(ChunkConsumerTask.class);
         
         private final AccessPath<R> accessPath;
 

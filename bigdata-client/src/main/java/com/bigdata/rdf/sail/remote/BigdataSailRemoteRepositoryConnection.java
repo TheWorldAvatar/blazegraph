@@ -36,7 +36,8 @@ import java.util.Iterator;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.IsolationLevel;
 import org.openrdf.model.Graph;
 import org.openrdf.model.Namespace;
@@ -106,8 +107,7 @@ import com.bigdata.rdf.sail.webapp.client.RemoteTransactionNotFoundException;
  */
 public class BigdataSailRemoteRepositoryConnection implements RepositoryConnection {
 
-   private static final transient Logger log = Logger
-         .getLogger(BigdataSailRemoteRepositoryConnection.class);
+   private static final transient Logger log = LogManager.getLogger(BigdataSailRemoteRepositoryConnection.class);
 
     private final BigdataSailRemoteRepository repo;
 

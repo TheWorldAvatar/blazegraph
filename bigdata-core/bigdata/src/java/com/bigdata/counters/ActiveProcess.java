@@ -29,7 +29,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 package com.bigdata.counters;
 
 import com.bigdata.util.DaemonThreadFactory;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -47,7 +48,7 @@ import java.util.concurrent.Future;
  */
 public class ActiveProcess {
     
-    static protected final Logger log = Logger.getLogger(ActiveProcess.class);
+    static protected final Logger log = LogManager.getLogger(ActiveProcess.class);
 
     /**
      * Used to read {@link #is} and aggregate the performance data reported

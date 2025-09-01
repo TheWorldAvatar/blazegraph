@@ -28,7 +28,8 @@ import java.io.Reader;
 import java.util.Iterator;
 import java.util.Vector;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Statement;
 import org.openrdf.model.ValueFactory;
 import org.openrdf.rio.RDFFormat;
@@ -51,8 +52,7 @@ public class BasicRioLoader implements IRioLoader {
      * Note: This logger was historically associated with the {@link IRioLoader}
      * interface and it is still named for that interface.
      */
-    protected static final transient Logger log = Logger
-            .getLogger(IRioLoader.class);
+    protected static final transient Logger log = LogManager.getLogger(IRioLoader.class);
 
     /**
      * Force the load of the NxParser integration class.

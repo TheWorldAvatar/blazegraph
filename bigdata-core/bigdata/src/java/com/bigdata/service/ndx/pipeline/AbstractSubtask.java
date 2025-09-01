@@ -35,7 +35,8 @@ import java.util.NoSuchElementException;
 import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.relation.accesspath.BlockingBuffer;
 import com.bigdata.relation.accesspath.ChunkMergeSortHelper;
@@ -70,8 +71,7 @@ E,//
 L>//
         implements Callable<HS> {
 
-    protected static transient final Logger log = Logger
-            .getLogger(AbstractSubtask.class);
+    protected static transient final Logger log = LogManager.getLogger(AbstractSubtask.class);
 
     /**
      * The master.

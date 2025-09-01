@@ -2,7 +2,8 @@ package com.bigdata.htree;
 
 import java.util.Arrays;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.keys.IKeyBuilder;
 import com.bigdata.btree.keys.KeyBuilder;
@@ -26,7 +27,7 @@ import com.bigdata.util.BytesUtil;
  */
 public class TestHTree_stressInsert extends AbstractHTreeTestCase {
 
-	private final static Logger log = Logger.getLogger(TestHTree_stressInsert.class);
+	private final static Logger log = LogManager.getLogger(TestHTree_stressInsert.class);
 	
 	public TestHTree_stressInsert() {
 	}

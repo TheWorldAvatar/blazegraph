@@ -52,7 +52,7 @@ import com.bigdata.rdf.model.BigdataValue;
  */
 public class SUM extends AggregateBase<IV> implements INeedsMaterialization {
 
-//    private static final transient Logger log = Logger.getLogger(SUM.class);
+//    private static final transient Logger log = LogManager.getLogger(SUM.class);
 
     /**
 	 * 

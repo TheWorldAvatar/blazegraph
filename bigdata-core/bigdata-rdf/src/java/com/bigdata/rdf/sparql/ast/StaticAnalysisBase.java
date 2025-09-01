@@ -49,7 +49,7 @@ import com.bigdata.rdf.sparql.ast.ssets.ISolutionSetManager;
  */
 public class StaticAnalysisBase {
 
-//    private static final Logger log = Logger.getLogger(StaticAnalysisBase.class);
+//    private static final Logger log = LogManager.getLogger(StaticAnalysisBase.class);
     
     protected final QueryRoot queryRoot;
     

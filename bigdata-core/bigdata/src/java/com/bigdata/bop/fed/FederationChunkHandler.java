@@ -34,7 +34,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.BOpEvaluationContext;
@@ -80,8 +81,7 @@ import com.bigdata.relation.rule.eval.pipeline.DistributedJoinTask;
  */
 public class FederationChunkHandler<E> extends StandaloneChunkHandler {
 
-    private final static Logger log = Logger
-            .getLogger(FederationChunkHandler.class); 
+    private final static Logger log = LogManager.getLogger(FederationChunkHandler.class); 
     
     /**
      * FIXME Debug the NIO chunk message materialization logic (it is currently

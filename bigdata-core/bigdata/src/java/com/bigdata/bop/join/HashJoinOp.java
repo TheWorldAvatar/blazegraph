@@ -31,7 +31,8 @@ import java.util.Map;
 import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.BOpContext;
@@ -69,8 +70,7 @@ import cutthecrap.utils.striterators.ICloseableIterator;
 abstract public class HashJoinOp<E> extends PipelineOp implements
         IShardwisePipelineOp<E> {
 
-    static private final transient Logger log = Logger
-            .getLogger(HashJoinOp.class);
+    static private final transient Logger log = LogManager.getLogger(HashJoinOp.class);
 
     private static final long serialVersionUID = 1L;
 

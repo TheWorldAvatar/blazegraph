@@ -32,7 +32,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.query.resultio.BooleanQueryResultFormat;
 import org.openrdf.query.resultio.TupleQueryResultFormat;
 import org.openrdf.rio.RDFFormat;
@@ -49,8 +50,7 @@ import com.bigdata.rdf.sail.webapp.client.MiniMime;
  */
 public class ConnegUtil {
 
-	static private final transient Logger log = Logger
-			.getLogger(ConnegUtil.class);
+	static private final transient Logger log = LogManager.getLogger(ConnegUtil.class);
 
 	private static final Pattern pattern;
 	static {

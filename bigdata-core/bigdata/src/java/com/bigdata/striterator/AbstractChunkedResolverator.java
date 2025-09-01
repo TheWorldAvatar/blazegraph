@@ -31,7 +31,8 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.FutureTask;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.relation.accesspath.BlockingBuffer;
 import com.bigdata.relation.accesspath.IAsynchronousIterator;
@@ -55,8 +56,7 @@ import cutthecrap.utils.striterators.ICloseableIterator;
  */
 abstract public class AbstractChunkedResolverator<E,F,S> implements ICloseableIterator<F> {
 
-    final private static Logger log = Logger
-            .getLogger(AbstractChunkedResolverator.class);
+    final private static Logger log = LogManager.getLogger(AbstractChunkedResolverator.class);
 
 //    /**
 //     * True iff the {@link #log} level is DEBUG or less.

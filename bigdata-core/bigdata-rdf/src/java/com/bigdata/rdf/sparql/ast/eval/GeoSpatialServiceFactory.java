@@ -43,7 +43,8 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.Executor;
 import java.util.concurrent.FutureTask;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Literal;
 import org.openrdf.model.URI;
 import org.openrdf.query.algebra.evaluation.util.QueryEvaluationUtil;
@@ -134,8 +135,7 @@ import cutthecrap.utils.striterators.Striterator;
  */
 public class GeoSpatialServiceFactory extends AbstractServiceFactoryBase {
 
-   private static final Logger log = Logger
-         .getLogger(GeoSpatialServiceFactory.class);
+   private static final Logger log = LogManager.getLogger(GeoSpatialServiceFactory.class);
 
    final protected static boolean INFO = log.isInfoEnabled();
    final protected static boolean DEBUG = log.isDebugEnabled();

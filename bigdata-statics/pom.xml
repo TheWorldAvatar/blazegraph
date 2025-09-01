@@ -28,12 +28,12 @@ Copyright 2010 by TalkingTrends (Amsterdam, The Netherlands)
   <parent>
     <groupId>com.blazegraph</groupId>
     <artifactId>blazegraph-parent</artifactId>
-    <version>2.3.0</version>
+    <version>2.5.0</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
   <groupId>com.blazegraph</groupId>
   <artifactId>bigdata-statics</artifactId>
-  <version>2.3.0</version>
+  <version>2.5.0</version>
   <name>Blazegraph Statics</name>
   <description>Blazegraph Static Utility Classes</description>
   <build>
@@ -87,9 +87,21 @@ ga('send', 'pageview');
   </reporting>
   <dependencies>
     <dependency>
-      <groupId>log4j</groupId>
-      <artifactId>log4j</artifactId>
+      <!-- log4j is the primary logger for bigdata. -->
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
       <version>${log4j.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-api</artifactId>
+      <version>${log4j.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-jul</artifactId>
+      <version>${log4j.version}</version>
+      <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.blazegraph</groupId>

@@ -35,7 +35,8 @@ import java.util.zip.GZIPInputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Resource;
 import org.openrdf.model.Statement;
 import org.openrdf.model.impl.URIImpl;
@@ -65,7 +66,7 @@ public class InsertServlet extends BigdataRDFServlet {
      */
     private static final long serialVersionUID = 1L;
     
-    static private final transient Logger log = Logger.getLogger(InsertServlet.class); 
+    static private final transient Logger log = LogManager.getLogger(InsertServlet.class); 
 
     public InsertServlet() {
         

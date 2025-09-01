@@ -4,7 +4,8 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.journal.AbstractJournal;
 
@@ -31,8 +32,7 @@ public class ListIndicesTask extends DataServiceCallable<String[]> {
      */
     private static final long serialVersionUID = -831267313813825903L;
 
-    transient protected static final Logger log = Logger
-            .getLogger(ListIndicesTask.class);
+    transient protected static final Logger log = LogManager.getLogger(ListIndicesTask.class);
 
     transient protected static final boolean INFO = log.isInfoEnabled();
 

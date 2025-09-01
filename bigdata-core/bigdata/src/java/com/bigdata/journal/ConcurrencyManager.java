@@ -46,7 +46,8 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.BigdataStatics;
 import com.bigdata.btree.BTree;
@@ -115,7 +116,7 @@ import com.bigdata.util.concurrent.WriteTaskCounters;
  */
 public class ConcurrencyManager implements IConcurrencyManager {
 
-    static final private Logger log = Logger.getLogger(ConcurrencyManager.class);
+    static final private Logger log = LogManager.getLogger(ConcurrencyManager.class);
     
 //    /**
 //     * True iff the {@link #log} level is INFO or less.

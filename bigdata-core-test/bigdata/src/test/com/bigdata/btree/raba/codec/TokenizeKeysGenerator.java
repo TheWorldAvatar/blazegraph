@@ -40,7 +40,8 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.util.BytesUtil;
 
@@ -53,8 +54,7 @@ import com.bigdata.util.BytesUtil;
  */
 public class TokenizeKeysGenerator implements IRabaGenerator {
 
-    protected static final Logger log = Logger
-            .getLogger(TokenizeKeysGenerator.class);
+    protected static final Logger log = LogManager.getLogger(TokenizeKeysGenerator.class);
     
     /**
      * The encoding used to serialize the term (the value of each tuple).

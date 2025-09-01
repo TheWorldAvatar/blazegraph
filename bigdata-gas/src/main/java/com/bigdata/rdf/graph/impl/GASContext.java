@@ -26,7 +26,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Statement;
 import org.openrdf.model.URI;
 import org.openrdf.model.Value;
@@ -48,7 +49,7 @@ import cutthecrap.utils.striterators.IFilter;
 
 public class GASContext<VS, ES, ST> implements IGASContext<VS, ES, ST> {
 
-    private static final Logger log = Logger.getLogger(GASContext.class);
+    private static final Logger log = LogManager.getLogger(GASContext.class);
 
     private final GASEngine gasEngine;
 

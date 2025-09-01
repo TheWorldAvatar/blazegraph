@@ -36,7 +36,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.eclipse.jetty.client.api.Response;
 import org.eclipse.jetty.proxy.ProxyServlet;
 
@@ -82,8 +83,7 @@ import com.bigdata.util.StackInfoReport;
  */
 public class HALoadBalancerServlet extends ProxyServlet {
 
-    private static final Logger log = Logger
-            .getLogger(HALoadBalancerServlet.class);
+    private static final Logger log = LogManager.getLogger(HALoadBalancerServlet.class);
     
     /**
      * 

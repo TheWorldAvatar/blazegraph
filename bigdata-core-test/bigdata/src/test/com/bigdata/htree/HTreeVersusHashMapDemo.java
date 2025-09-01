@@ -35,7 +35,8 @@ import java.util.Random;
 import java.util.Set;
 import java.util.UUID;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.BTreeCounters;
 import com.bigdata.btree.DefaultTupleSerializer;
@@ -81,8 +82,7 @@ import com.bigdata.util.PseudoRandom;
  */
 public class HTreeVersusHashMapDemo {
 
-    private static final Logger log = Logger
-            .getLogger(HTreeVersusHashMapDemo.class);
+    private static final Logger log = LogManager.getLogger(HTreeVersusHashMapDemo.class);
 
     /**
      * Provision and return an {@link HTree} instance.

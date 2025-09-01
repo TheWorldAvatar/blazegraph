@@ -31,7 +31,8 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.URI;
 import org.openrdf.model.Value;
 import org.openrdf.query.Binding;
@@ -62,8 +63,7 @@ import com.bigdata.rdf.store.BigdataOpenRDFBindingSetsResolverator;
  */
 public class BigdataValueReplacer {
 
-    private final static Logger log = Logger
-            .getLogger(BigdataValueReplacer.class);
+    private final static Logger log = LogManager.getLogger(BigdataValueReplacer.class);
     
     private final AbstractTripleStore database;
     

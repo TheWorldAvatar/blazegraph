@@ -6,7 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Graph;
 import org.openrdf.model.Resource;
 import org.openrdf.model.Value;
@@ -32,8 +33,7 @@ import com.bigdata.rdf.store.TempTripleStore;
 public class DescribeCacheUpdater implements
         CloseableIteration<BigdataStatement, QueryEvaluationException> {
 
-    static private transient final Logger log = Logger
-            .getLogger(DescribeCacheUpdater.class);
+    static private transient final Logger log = LogManager.getLogger(DescribeCacheUpdater.class);
 
     /**
      * The cache to be updated.

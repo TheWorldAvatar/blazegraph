@@ -33,7 +33,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.IVariable;
@@ -53,7 +54,7 @@ import com.bigdata.rdf.sparql.ast.ssets.ISolutionSetManager;
  */
 public abstract class StaticAnalysis_CanJoin extends StaticAnalysisBase {
 
-    private static final Logger log = Logger.getLogger(StaticAnalysis.class);
+    private static final Logger log = LogManager.getLogger(StaticAnalysis.class);
 
     /**
      * 

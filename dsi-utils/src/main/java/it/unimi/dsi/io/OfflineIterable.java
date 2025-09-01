@@ -35,7 +35,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.NoSuchElementException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /** An iterable that offers elements that were previously stored offline using specialized
  *  serialization methods. At construction, you provide a {@linkplain #OfflineIterable(it.unimi.dsi.io.OfflineIterable.Serializer, Object) serializer}
@@ -60,7 +61,7 @@ import org.apache.log4j.Logger;
  */
 public class OfflineIterable<T,U extends T> implements Iterable<U>,SafelyCloseable {
     public static final long serialVersionUID = 1L;
-    private static final Logger LOGGER = Util.getLogger( OfflineIterable.class );
+    private static final Logger LOGGER = LogManager.getLogger( OfflineIterable.class );
 	
     /** An iterator returned by an {@link OfflineIterable}. */
 	public final static class OfflineIterator<A, B extends A> extends AbstractObjectIterator<B> implements SafelyCloseable {

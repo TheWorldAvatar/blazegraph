@@ -46,7 +46,8 @@ import java.util.Properties;
 
 import junit.framework.TestCase2;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.query.MalformedQueryException;
 import org.openrdf.query.QueryEvaluationException;
 import org.openrdf.query.QueryLanguage;
@@ -88,8 +89,7 @@ import com.bigdata.rdf.store.AbstractTripleStore;
  */
 public class BigdataSPARQLUpdateTest2 extends TestCase2 {
 
-    static private final Logger log = Logger
-            .getLogger(BigdataSPARQLUpdateTest2.class);
+    static private final Logger log = LogManager.getLogger(BigdataSPARQLUpdateTest2.class);
 
     public BigdataSPARQLUpdateTest2() {
     }

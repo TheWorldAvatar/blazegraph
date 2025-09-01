@@ -42,7 +42,8 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.IIndex;
 import com.bigdata.btree.ITuple;
@@ -79,9 +80,9 @@ import com.bigdata.service.AbstractTransactionService;
 public class MemoryManager implements IMemoryManager, ISectorManager {
 		// , ICounterSetAccess, IStore {
 
-	private static final Logger log = Logger.getLogger(MemoryManager.class);
+	private static final Logger log = LogManager.getLogger(MemoryManager.class);
 
-    private static final Logger txLog = Logger.getLogger("com.bigdata.txLog");
+    private static final Logger txLog = LogManager.getLogger("com.bigdata.txLog");
 
     /**
      * Debug array. Should be [null] unless actively debugging this code.

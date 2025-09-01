@@ -41,7 +41,8 @@ import java.util.regex.Pattern;
 
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.xml.sax.SAXException;
 
 import com.bigdata.util.StackInfoReport;
@@ -89,7 +90,7 @@ import cutthecrap.utils.striterators.Striterator;
  */
 public class CounterSet extends AbstractCounterSet implements ICounterSet {
 
-    static private final Logger log = Logger.getLogger(CounterSet.class);
+    static private final Logger log = LogManager.getLogger(CounterSet.class);
 
 //    private String pathx;
     private final Map<String,ICounterNode> children = new ConcurrentHashMap<String,ICounterNode>();

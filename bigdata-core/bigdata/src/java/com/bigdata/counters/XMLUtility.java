@@ -38,7 +38,8 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -55,7 +56,7 @@ import com.bigdata.util.HTMLUtility;
  */
 public class XMLUtility {
 
-    static protected final Logger log = Logger.getLogger(XMLUtility.class);
+    static protected final Logger log = LogManager.getLogger(XMLUtility.class);
 
     public static final XMLUtility INSTANCE = new XMLUtility();
 
@@ -283,7 +284,7 @@ public class XMLUtility {
     static private class MyHandler extends DefaultHandler {
         
         /** Note: inner class so named with '$' vs '.' */
-        protected static final Logger log = Logger.getLogger(MyHandler.class);
+        protected static final Logger log = LogManager.getLogger(MyHandler.class);
         
         private final AbstractCounterSet root;
         

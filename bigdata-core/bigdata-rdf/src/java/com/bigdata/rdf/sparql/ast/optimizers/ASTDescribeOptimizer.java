@@ -99,7 +99,7 @@ import com.bigdata.rdf.store.AbstractTripleStore;
  */
 public class ASTDescribeOptimizer implements IASTOptimizer {
 
-//    private static final Logger log = Logger.getLogger(DescribeOptimizer.class); 
+//    private static final Logger log = LogManager.getLogger(DescribeOptimizer.class); 
     
 	@SuppressWarnings("unchecked")
     @Override

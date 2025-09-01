@@ -30,7 +30,7 @@ package com.bigdata.btree;
 
 import java.util.UUID;
 
-import org.apache.log4j.Level;
+import org.apache.logging.log4j.Level;
 
 import junit.framework.TestCase2;
 

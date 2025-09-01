@@ -43,7 +43,7 @@ import com.bigdata.rdf.sail.BigdataSail;
  */
 public class TestRTO_BAR extends AbstractRTOTestCase {
 
-//    private final static Logger log = Logger.getLogger(TestRTO_BAR.class);
+//    private final static Logger log = LogManager.getLogger(TestRTO_BAR.class);
     
     /**
      * 

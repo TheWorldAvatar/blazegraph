@@ -87,7 +87,7 @@ public class SidIV<V extends BigdataBNode> extends AbstractInlineIV<V, ISPO>
 	 */
 	private static final long serialVersionUID = 685148537376856907L;
 	
-//	private static final transient Logger log = Logger.getLogger(SidIV.class);
+//	private static final transient Logger log = LogManager.getLogger(SidIV.class);
 
 	/**
 	 * The inline spo.

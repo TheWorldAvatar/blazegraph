@@ -29,7 +29,8 @@ package com.bigdata.service.geospatial;
 
 import java.util.NoSuchElementException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.ITuple;
 import com.bigdata.btree.KeyOutOfRangeException;
@@ -55,8 +56,7 @@ public class ZOrderIndexBigMinAdvancer extends Advancer<SPO> {
 
    private static final long serialVersionUID = -6438977707376228799L;
 
-   private static final transient Logger log = Logger
-         .getLogger(ZOrderIndexBigMinAdvancer.class);
+   private static final transient Logger log = LogManager.getLogger(ZOrderIndexBigMinAdvancer.class);
    
    final protected static boolean DEBUG = log.isDebugEnabled();
    

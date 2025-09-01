@@ -27,7 +27,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 package com.bigdata.bop.solutions;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.IValueExpression;
 import com.bigdata.bop.engine.BOpStats;
@@ -40,8 +41,7 @@ import com.bigdata.bop.engine.BOpStats;
  */
 public class TypeErrorLog {
 
-    private final static transient Logger log = Logger
-            .getLogger(TypeErrorLog.class);
+    private final static transient Logger log = LogManager.getLogger(TypeErrorLog.class);
 
     /**
      * Logs a type error.

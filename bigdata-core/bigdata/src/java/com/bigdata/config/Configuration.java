@@ -32,7 +32,8 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.UUID;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.BTree;
 import com.bigdata.btree.IndexMetadata;
@@ -74,7 +75,7 @@ public class Configuration {
     /**
      * Property values are logged at INFO.
      */
-    protected static final transient Logger log = Logger.getLogger(Configuration.class);
+    protected static final transient Logger log = LogManager.getLogger(Configuration.class);
     
     /**
      * The prefix for namespace specific property value overrides.

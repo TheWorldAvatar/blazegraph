@@ -39,7 +39,8 @@ import java.nio.channels.FileChannel;
 import java.nio.channels.FileLock;
 import java.util.UUID;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.journal.AbstractJournal;
 import com.bigdata.journal.FileMetadata;
@@ -59,7 +60,7 @@ import com.bigdata.resources.StoreManager;
  */
 public class FileLockUtility {
 
-    protected static final Logger log = Logger.getLogger(FileLockUtility.class);
+    protected static final Logger log = LogManager.getLogger(FileLockUtility.class);
     protected static final boolean INFO = log.isInfoEnabled();
     protected static final boolean DEBUG = log.isDebugEnabled();
 

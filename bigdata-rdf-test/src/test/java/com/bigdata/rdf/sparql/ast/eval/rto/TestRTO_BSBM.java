@@ -88,7 +88,7 @@ import com.bigdata.rdf.sparql.ast.QueryHints;
  */
 public class TestRTO_BSBM extends AbstractRTOTestCase {
 
-//    private final static Logger log = Logger.getLogger(TestRTO_LUBM.class);
+//    private final static Logger log = LogManager.getLogger(TestRTO_LUBM.class);
     
     /**
      * 

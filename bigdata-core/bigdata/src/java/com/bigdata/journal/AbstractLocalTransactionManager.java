@@ -3,7 +3,8 @@ package com.bigdata.journal;
 import java.io.IOException;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.counters.CounterSet;
 import com.bigdata.counters.Instrument;
@@ -25,8 +26,7 @@ abstract public class AbstractLocalTransactionManager implements
     /**
      * Logger.
      */
-	private static final Logger log = Logger
-			.getLogger(AbstractLocalTransactionManager.class);
+	private static final Logger log = LogManager.getLogger(AbstractLocalTransactionManager.class);
 
     public AbstractLocalTransactionManager() {
 

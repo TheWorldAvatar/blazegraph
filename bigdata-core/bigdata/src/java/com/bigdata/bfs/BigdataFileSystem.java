@@ -19,7 +19,8 @@ import java.util.Properties;
 import java.util.UUID;
 import java.util.Vector;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.IIndex;
 import com.bigdata.btree.IRangeQuery;
@@ -208,7 +209,7 @@ public class BigdataFileSystem extends
         AbstractResource<IDatabase<BigdataFileSystem>> implements
         IContentRepository, IRowStoreConstants {
 
-    final protected static Logger log = Logger.getLogger(BigdataFileSystem.class);
+    final protected static Logger log = LogManager.getLogger(BigdataFileSystem.class);
     
     /**
      * True iff the {@link #log} level is INFO or less.

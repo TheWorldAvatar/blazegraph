@@ -33,7 +33,8 @@ import java.util.Properties;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.query.Dataset;
 import org.openrdf.query.parser.sparql.manifest.ManifestTest;
 import org.openrdf.query.parser.sparql.manifest.SPARQL11ManifestTest;
@@ -66,8 +67,7 @@ import com.bigdata.service.IBigdataFederation;
  */
 public class BigdataEmbeddedFederationSparqlTest extends BigdataSparqlTest {
 
-    private static final Logger log = Logger
-            .getLogger(BigdataEmbeddedFederationSparqlTest.class);
+    private static final Logger log = LogManager.getLogger(BigdataEmbeddedFederationSparqlTest.class);
 
     public BigdataEmbeddedFederationSparqlTest(String testURI, String name,
             String queryFileURL, String resultFileURL, Dataset dataSet,

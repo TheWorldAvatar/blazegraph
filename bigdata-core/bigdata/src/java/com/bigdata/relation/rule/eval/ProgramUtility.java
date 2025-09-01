@@ -41,7 +41,7 @@ import com.bigdata.relation.rule.IStep;
  */
 public class ProgramUtility {
     
-//    final protected static Logger log = Logger.getLogger(ProgramUtility.class);
+//    final protected static Logger log = LogManager.getLogger(ProgramUtility.class);
 
 //    private final IResourceLocator resourceLocator;
 //    private final long readTimestamp;

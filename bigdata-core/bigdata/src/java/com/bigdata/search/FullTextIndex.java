@@ -46,7 +46,8 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.analysis.core.LowerCaseFilter;
@@ -239,8 +240,7 @@ import com.bigdata.util.concurrent.ExecutionHelper;
  */
 public class FullTextIndex<V extends Comparable<V>> extends AbstractRelation {
 
-    final private static transient Logger log = Logger
-            .getLogger(FullTextIndex.class);
+    final private static transient Logger log = LogManager.getLogger(FullTextIndex.class);
 
     /**
      * The backing index.

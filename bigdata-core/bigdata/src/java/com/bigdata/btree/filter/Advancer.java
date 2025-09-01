@@ -3,7 +3,8 @@ package com.bigdata.btree.filter;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.IIndex;
 import com.bigdata.btree.ITuple;
@@ -35,7 +36,7 @@ abstract public class Advancer<E> extends FilterBase implements ITupleFilter<E> 
      */
     private static final long serialVersionUID = 1L;
 
-    protected transient static final Logger log = Logger.getLogger(Advancer.class);
+    protected transient static final Logger log = LogManager.getLogger(Advancer.class);
 
     /**
      * Set by {@link #filter(ITupleCursor)}.

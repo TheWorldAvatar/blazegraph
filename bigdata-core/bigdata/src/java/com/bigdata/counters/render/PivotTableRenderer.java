@@ -2,7 +2,8 @@ package com.bigdata.counters.render;
 
 import java.util.regex.Pattern;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.counters.HistoryInstrument;
 import com.bigdata.counters.ICounter;
@@ -132,7 +133,7 @@ import com.bigdata.counters.query.URLQueryModel;
  */
 abstract public class PivotTableRenderer implements IRenderer {
     
-    protected static final Logger log = Logger.getLogger(PivotTableRenderer.class);
+    protected static final Logger log = LogManager.getLogger(PivotTableRenderer.class);
     
     protected final PivotTable pt;
     

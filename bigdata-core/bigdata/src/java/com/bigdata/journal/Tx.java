@@ -40,7 +40,8 @@ import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.AbstractBTree;
 import com.bigdata.btree.BTree;
@@ -117,7 +118,7 @@ import com.bigdata.service.IDataService;
  */
 public class Tx implements ITx {
 
-    private static final Logger log = Logger.getLogger(Tx.class);
+    private static final Logger log = LogManager.getLogger(Tx.class);
     
 //    protected static final boolean INFO = log.isInfoEnabled();
     

@@ -32,7 +32,8 @@ import java.lang.ref.WeakReference;
 import java.util.Arrays;
 import java.util.Iterator;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.AbstractBTree;
 import com.bigdata.btree.BTree;
@@ -94,7 +95,7 @@ import cutthecrap.utils.striterators.IFilter;
  */
 public class FusedView implements IIndex, ILocalBTreeView {//, IValueAge {
 
-    protected static final Logger log = Logger.getLogger(FusedView.class);
+    protected static final Logger log = LogManager.getLogger(FusedView.class);
 
     /**
      * Error message if the view has more than {@link Long#MAX_VALUE} elements

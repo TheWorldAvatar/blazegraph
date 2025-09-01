@@ -35,7 +35,8 @@ import java.util.concurrent.locks.ReentrantLock;
 import java.util.zip.Deflater;
 import java.util.zip.GZIPInputStream;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.BNode;
 import org.openrdf.model.Literal;
 import org.openrdf.model.Statement;
@@ -432,8 +433,7 @@ import com.bigdata.util.concurrent.Latch;
  */
 public class HashCollisionUtility {
 
-	private final static Logger log = Logger
-			.getLogger(HashCollisionUtility.class);
+	private final static Logger log = LogManager.getLogger(HashCollisionUtility.class);
 
 	/**
 	 * An index mapping <code>hashCode(Value)+counter : Value</code>. This

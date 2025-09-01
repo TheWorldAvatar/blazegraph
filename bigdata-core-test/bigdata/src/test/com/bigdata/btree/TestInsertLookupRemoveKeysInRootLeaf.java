@@ -32,7 +32,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
 
-import org.apache.log4j.Level;
+import org.apache.logging.log4j.Level;
 
 import com.bigdata.btree.keys.TestKeyBuilder;
 import com.bigdata.io.SerializerUtil;

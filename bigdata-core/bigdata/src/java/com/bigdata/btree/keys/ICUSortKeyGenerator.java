@@ -28,7 +28,8 @@ package com.bigdata.btree.keys;
 
 import java.util.Locale;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.ibm.icu.text.Collator;
 import com.ibm.icu.text.RawCollationKey;
@@ -69,7 +70,7 @@ import com.ibm.icu.text.RuleBasedCollator;
  */
 class ICUSortKeyGenerator implements UnicodeSortKeyGenerator {
 
-    private static final Logger log = Logger.getLogger(ICUSortKeyGenerator.class);
+    private static final Logger log = LogManager.getLogger(ICUSortKeyGenerator.class);
     
     /**
      * Used to encode unicode strings into compact byte[]s that have the same

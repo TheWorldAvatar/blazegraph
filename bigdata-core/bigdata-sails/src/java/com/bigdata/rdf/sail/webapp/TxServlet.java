@@ -30,7 +30,8 @@ import java.util.concurrent.atomic.AtomicLong;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.journal.ITx;
 import com.bigdata.journal.Journal;
@@ -75,8 +76,7 @@ public class TxServlet extends BigdataRDFServlet {
      */
    private static final long serialVersionUID = 1L;
 
-   static private final transient Logger log = Logger
-         .getLogger(TxServlet.class);
+   static private final transient Logger log = LogManager.getLogger(TxServlet.class);
 
    /**
     * The URL query parameter for a PREPARE message.
@@ -242,8 +242,8 @@ public class TxServlet extends BigdataRDFServlet {
 
          // TODO This URL is correct IFF we only allow CREATE-TX at the correct
          // path.
-         final String txURL = req.getRequestURL().append('/')
-               .append(Long.valueOf(txId)).toString();
+         final String txURL = resp.encodeURL(req.getRequestURL().append('/')
+               .append(txId).toString());
 
          final long elapsedMillis = TimeUnit.NANOSECONDS.toMillis(System
                .nanoTime() - beginNanos);

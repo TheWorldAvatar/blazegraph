@@ -46,7 +46,7 @@ import com.bigdata.journal.ICommitter;
  */
 public class ReadWriteLockManager implements IReadWriteLockManager {
 
-//    private static final Logger log = Logger.getLogger(ReadWriteLockManager.class);
+//    private static final Logger log = LogManager.getLogger(ReadWriteLockManager.class);
 
     /**
      * The #of milliseconds that the class will wait for a read or write lock. A

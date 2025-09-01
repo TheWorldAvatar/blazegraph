@@ -10,7 +10,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.counters.CounterSet;
 import com.bigdata.counters.Instrument;
@@ -100,7 +101,7 @@ public class AbstractRunnableMasterStats<L, HS extends AbstractSubtaskStats> ext
      */
     protected class StatisticsTask implements Runnable {
 
-        protected final transient Logger log = Logger.getLogger(StatisticsTask.class);
+        protected final transient Logger log = LogManager.getLogger(StatisticsTask.class);
 
         /**
          * The moving average of the #of elements on the master queues. This

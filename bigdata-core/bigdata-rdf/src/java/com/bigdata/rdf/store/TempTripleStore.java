@@ -32,7 +32,8 @@ import java.util.Enumeration;
 import java.util.Properties;
 import java.util.UUID;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.io.DirectBufferPool;
 import com.bigdata.journal.BufferMode;
@@ -86,7 +87,7 @@ import com.bigdata.util.PropertyUtil;
  */
 public class TempTripleStore extends AbstractLocalTripleStore {
     
-    final static private Logger log = Logger.getLogger(TempTripleStore.class);
+    final static private Logger log = LogManager.getLogger(TempTripleStore.class);
 
     private final TemporaryStore store;
     

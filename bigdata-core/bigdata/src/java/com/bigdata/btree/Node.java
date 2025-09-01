@@ -36,7 +36,7 @@ import java.util.concurrent.FutureTask;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.atomic.AtomicReferenceArray;
 
-import org.apache.log4j.Level;
+import org.apache.logging.log4j.Level;
 
 import com.bigdata.BigdataStatics;
 import com.bigdata.btree.AbstractBTree.ChildMemoizer;
@@ -3409,7 +3409,7 @@ public class Node extends AbstractNode<Node> implements INodeData {
             final int height, final boolean recursive) {
 
         // True iff we will write out the node structure.
-        final boolean debug = level.toInt() <= Level.DEBUG.toInt();
+        final boolean debug = level.isMoreSpecificThan(Level.DEBUG);
 
         // Set true iff an inconsistency is detected.
         boolean ok = true;
@@ -3447,7 +3447,7 @@ public class Node extends AbstractNode<Node> implements INodeData {
                 }
             }
             {
-                int nentries = 0;
+                long nentries = 0;
                 for (int i = 0; i <= nkeys; i++) {
                     nentries += getChildEntryCount(i);
                     if (nentries <= 0) {

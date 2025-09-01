@@ -49,7 +49,7 @@ import com.bigdata.rdf.internal.constraints.INeedsMaterialization;
  */
 public class MAX extends AggregateBase<IV> implements INeedsMaterialization{
 
-//    private static final transient Logger log = Logger.getLogger(MAX.class);
+//    private static final transient Logger log = LogManager.getLogger(MAX.class);
 
     /**
 	 *

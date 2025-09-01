@@ -33,7 +33,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Resource;
 import org.openrdf.model.URI;
 import org.openrdf.model.Value;
@@ -92,8 +93,7 @@ import cutthecrap.utils.striterators.ICloseableIterator;
 public class SampleServiceFactory extends AbstractServiceFactory 
 		implements ServiceFactory {
 
-    private static final Logger log = Logger
-            .getLogger(SampleServiceFactory.class);
+    private static final Logger log = LogManager.getLogger(SampleServiceFactory.class);
 
     /**
      * The URI service key.

@@ -26,7 +26,8 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import com.bigdata.rdf.model.BigdataStatement;
 import com.bigdata.rdf.spo.ISPO;
 import com.bigdata.rdf.store.AbstractTripleStore;
@@ -48,7 +49,7 @@ import com.bigdata.striterator.ChunkedArrayIterator;
  */
 public class InMemChangeLog implements IChangeLog {
 
-    private static final Logger log = Logger.getLogger(InMemChangeLog.class);
+    private static final Logger log = LogManager.getLogger(InMemChangeLog.class);
     
     /**
      * Running tally of new changes since the last commit notification.

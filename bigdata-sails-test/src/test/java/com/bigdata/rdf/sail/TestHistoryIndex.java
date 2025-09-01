@@ -79,7 +79,7 @@ import cutthecrap.utils.striterators.Striterator;
  */
 public class TestHistoryIndex extends ProxyBigdataSailTestCase  {
 
-//    private static final Logger log = Logger.getLogger(TestHistoryIndex.class);
+//    private static final Logger log = LogManager.getLogger(TestHistoryIndex.class);
     
     /**
      * 

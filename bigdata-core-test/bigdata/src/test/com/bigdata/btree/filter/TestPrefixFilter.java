@@ -33,7 +33,7 @@ import java.util.UUID;
 
 import junit.framework.TestCase2;
 
-import org.apache.log4j.Level;
+import org.apache.logging.log4j.Level;
 
 import com.bigdata.btree.AbstractTupleCursorTestCase;
 import com.bigdata.btree.BTree;

@@ -47,7 +47,8 @@ import java.util.concurrent.TimeUnit;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.Banner;
 import com.bigdata.BigdataStatics;
@@ -106,8 +107,7 @@ public class StatusServlet extends BigdataRDFServlet {
      */
     private static final long serialVersionUID = 1L;
 
-    static private final transient Logger log = Logger
-            .getLogger(StatusServlet.class);
+    static private final transient Logger log = LogManager.getLogger(StatusServlet.class);
 
     /**
      * The name of a request parameter used to request a list of the namespaces

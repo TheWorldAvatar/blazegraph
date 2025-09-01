@@ -31,7 +31,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Resource;
 import org.openrdf.query.MalformedQueryException;
 import org.openrdf.query.algebra.StatementPattern.Scope;
@@ -78,8 +79,7 @@ import com.bigdata.rdf.vocab.NoVocabulary;
 public class TestReificationDoneRightParser extends
         AbstractBigdataExprBuilderTestCase {
 
-	private static final Logger log = Logger
-			.getLogger(TestReificationDoneRightParser.class);
+	private static final Logger log = LogManager.getLogger(TestReificationDoneRightParser.class);
 	
     /**
      * 

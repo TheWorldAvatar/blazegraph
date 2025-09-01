@@ -76,7 +76,8 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.IsolationLevel;
 import org.openrdf.IsolationLevels;
 import org.openrdf.OpenRDFUtil;
@@ -456,7 +457,7 @@ public class BigdataSail extends SailBase implements Sail {
     /**
      * Logger.
      */
-    final private static Logger log = Logger.getLogger(BigdataSail.class);
+    final private static Logger log = LogManager.getLogger(BigdataSail.class);
 
 //    final protected static boolean INFO = log.isInfoEnabled();
 
@@ -466,7 +467,7 @@ public class BigdataSail extends SailBase implements Sail {
      * @see http://sourceforge.net/apps/trac/bigdata/ticket/443 (Logger for
      *      RWStore transaction service and recycler)
      */
-    private static final Logger txLog = Logger.getLogger("com.bigdata.txLog");
+    private static final Logger txLog = LogManager.getLogger("com.bigdata.txLog");
 
     /**
     * Sesame has the notion of a "null" graph which we use for the quad store

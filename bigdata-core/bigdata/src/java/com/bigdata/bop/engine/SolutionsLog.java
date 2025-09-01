@@ -30,7 +30,8 @@ package com.bigdata.bop.engine;
 import java.util.Iterator;
 import java.util.UUID;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.IBindingSet;
@@ -53,7 +54,7 @@ public class SolutionsLog {
      * Logging for this class should be performed when this logger has a detail
      * level of at least INFO.
      */
-    public static final Logger solutionsLog = Logger.getLogger(SolutionsLog.class);
+    public static final Logger solutionsLog = LogManager.getLogger(SolutionsLog.class);
 
     public static final boolean INFO = solutionsLog.isInfoEnabled();
     

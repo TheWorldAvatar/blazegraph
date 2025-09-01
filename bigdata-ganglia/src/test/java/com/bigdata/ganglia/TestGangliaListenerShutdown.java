@@ -26,7 +26,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.FutureTask;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import junit.framework.TestCase;
 
@@ -37,7 +38,7 @@ import junit.framework.TestCase;
  */
 public class TestGangliaListenerShutdown extends TestCase {
 
-   static private final Logger log = Logger.getLogger(TestGangliaListenerShutdown.class);
+   static private final Logger log = LogManager.getLogger(TestGangliaListenerShutdown.class);
 
     /**
      * 

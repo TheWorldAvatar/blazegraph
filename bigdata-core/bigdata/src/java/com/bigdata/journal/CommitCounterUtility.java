@@ -30,7 +30,8 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Formatter;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.ha.halog.IHALogReader;
 
@@ -52,8 +53,7 @@ import com.bigdata.ha.halog.IHALogReader;
  */
 public class CommitCounterUtility {
 
-    private static final Logger log = Logger
-            .getLogger(CommitCounterUtility.class);
+    private static final Logger log = LogManager.getLogger(CommitCounterUtility.class);
     
     /**
      * The number of base-10 digits per directory level. This allows children

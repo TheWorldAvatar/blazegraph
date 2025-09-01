@@ -30,7 +30,8 @@ package com.bigdata.io;
 import junit.extensions.proxy.IProxyTest;
 import junit.framework.TestCase;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Some helper methods for CI.
@@ -40,7 +41,7 @@ import org.apache.log4j.Logger;
  */
 public class DirectBufferPoolTestHelper {
 
-    private final static Logger log = Logger.getLogger(DirectBufferPoolTestHelper.class);
+    private final static Logger log = LogManager.getLogger(DirectBufferPoolTestHelper.class);
 
     /**
      * Verify that any buffers acquired by the test have been released.

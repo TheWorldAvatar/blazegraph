@@ -35,7 +35,8 @@ import junit.extensions.proxy.ProxyTestSuite;
 import junit.framework.Test;
 import junit.framework.TestCase;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.ValueFactory;
 import org.openrdf.repository.RepositoryException;
 import org.openrdf.rio.RDFFormat;
@@ -53,7 +54,7 @@ import com.bigdata.rdf.store.AbstractTripleStore;
 
 public class LocalGOMTestCase extends TestCase implements IGOMProxy {
 
-    private static final Logger log = Logger.getLogger(LocalGOMTestCase.class);
+    private static final Logger log = LogManager.getLogger(LocalGOMTestCase.class);
 
     protected BigdataSailRepository m_repo;
     protected BigdataSail m_sail;

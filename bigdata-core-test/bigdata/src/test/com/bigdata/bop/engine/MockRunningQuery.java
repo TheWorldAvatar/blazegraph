@@ -33,7 +33,8 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.IBindingSet;
@@ -52,7 +53,7 @@ import com.bigdata.service.IBigdataFederation;
  */
 public class MockRunningQuery implements IRunningQuery {
 
-    private static final Logger log = Logger.getLogger(MockRunningQuery.class);
+    private static final Logger log = LogManager.getLogger(MockRunningQuery.class);
     
     private final IBigdataFederation<?> fed;
 

@@ -44,7 +44,7 @@ public class Constraint<X> extends BOpBase implements
 	 */
 	private static final long serialVersionUID = -9144690224260823279L;
 
-//	protected static final Logger log = Logger.getLogger(Constraint.class);
+//	protected static final Logger log = LogManager.getLogger(Constraint.class);
 	
 	/**
 	 * Convenience method to generate a constraint from a value expression.

@@ -25,7 +25,8 @@ package com.bigdata.rdf.internal.constraints;
 
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Literal;
 import org.openrdf.model.URI;
 import org.openrdf.model.vocabulary.XMLSchema;
@@ -47,7 +48,7 @@ public class NumericBOp extends IVValueExpression<IV> implements INeedsMateriali
 
     private static final long serialVersionUID = 9136864442064392445L;
     
-    private static final transient Logger log = Logger.getLogger(NumericBOp.class);
+    private static final transient Logger log = LogManager.getLogger(NumericBOp.class);
     
 
     public interface Annotations extends ImmutableBOp.Annotations {

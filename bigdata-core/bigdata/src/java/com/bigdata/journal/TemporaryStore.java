@@ -37,7 +37,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bfs.BigdataFileSystem;
 import com.bigdata.bfs.GlobalFileSystemHelper;
@@ -73,7 +74,7 @@ import com.bigdata.util.DaemonThreadFactory;
 //* then you can restore any checkpoint with {@link #restoreCheckpoint(long)}
 public class TemporaryStore extends TemporaryRawStore implements IBTreeManager {
 
-    private static final Logger log = Logger.getLogger(TemporaryStore.class);
+    private static final Logger log = LogManager.getLogger(TemporaryStore.class);
 
     /**
      * The size of the live index cache for the {@link Name2Addr} instance.

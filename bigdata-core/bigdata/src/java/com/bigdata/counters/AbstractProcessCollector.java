@@ -28,7 +28,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 package com.bigdata.counters;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 import java.util.Map;
@@ -42,7 +43,7 @@ import java.util.Map;
  */
 abstract public class AbstractProcessCollector implements IStatisticsCollector {
 
-    protected static final Logger log = Logger.getLogger(AbstractProcessCollector.class);
+    protected static final Logger log = LogManager.getLogger(AbstractProcessCollector.class);
     
     final private int interval;
 

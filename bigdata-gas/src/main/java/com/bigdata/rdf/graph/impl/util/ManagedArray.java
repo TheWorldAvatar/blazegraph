@@ -17,7 +17,8 @@ package com.bigdata.rdf.graph.impl.util;
 
 import java.util.Iterator;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import cutthecrap.utils.striterators.ArrayIterator;
 
@@ -40,8 +41,7 @@ import cutthecrap.utils.striterators.ArrayIterator;
  */
 public class ManagedArray<T> implements IManagedArray<T> {
 
-    private static final transient Logger log = Logger
-            .getLogger(ManagedArray.class);
+    private static final transient Logger log = LogManager.getLogger(ManagedArray.class);
 
     /**
      * The default capacity of the buffer.

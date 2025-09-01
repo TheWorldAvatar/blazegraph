@@ -3,7 +3,8 @@ package com.bigdata.rwstore.sector;
 import java.io.*;
 import java.nio.ByteBuffer;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /************************************************************************
  * PSInputStream
@@ -17,7 +18,7 @@ public class PSInputStream extends InputStream {
 	/**
      * Logger.
      */
-    final private static Logger log = Logger.getLogger(PSInputStream.class);
+    final private static Logger log = LogManager.getLogger(PSInputStream.class);
 	
 	final ByteBuffer[] m_buffers;
 	

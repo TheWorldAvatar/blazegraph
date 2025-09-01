@@ -41,7 +41,8 @@ import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.vocabulary.RDFS;
 import org.openrdf.query.QueryInterruptedException;
 import org.openrdf.query.QueryLanguage;
@@ -106,7 +107,7 @@ public class BigdataConnectionTest extends RepositoryConnectionTest {
 //			super.testExclusiveNullContext();
 //	}
 //
-    private static final Logger log = Logger.getLogger(BigdataConnectionTest.class);
+    private static final Logger log = LogManager.getLogger(BigdataConnectionTest.class);
     
 	public BigdataConnectionTest(String name) {
 		super(name);

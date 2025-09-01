@@ -27,7 +27,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 package com.bigdata.util;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * A timestamp factory based on {@link System#currentTimeMillis()}. Timestamps
@@ -58,8 +59,7 @@ import org.apache.log4j.Logger;
  */
 public class MillisecondTimestampFactory {
 
-    private static final Logger log = Logger
-            .getLogger(MillisecondTimestampFactory.class);
+    private static final Logger log = LogManager.getLogger(MillisecondTimestampFactory.class);
 
     /**
      * The initial lower bound for the assigned timestamps.

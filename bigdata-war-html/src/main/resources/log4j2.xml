@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<Configuration name="Log4j1">
+    <Appenders>
+        <Console name="dest2" target="SYSTEM_OUT">
+            <PatternLayout
+                pattern="%-5level: %r ${hostName} %X{serviceUUID} %X{taskname} %X{timestamp} %X{resources} %t %l: %m%n" />
+        </Console>
+        <File name="queryRunStateLog" fileName="queryRunState.log" append="true" bufferedIo="false">
+            <PatternLayout pattern="%m" />
+        </File>
+        <Console name="ruleLog" target="SYSTEM_OUT">
+            <PatternLayout pattern="%m" />
+        </Console>
+        <Console name="solutionsLog" target="SYSTEM_OUT">
+            <PatternLayout pattern="SOLUTION:	%m" />
+        </Console>
+        <File name="queryLog" fileName="queryLog.csv" append="true" bufferedIo="false">
+            <PatternLayout pattern="%m" />
+        </File>
+        <Console name="sparqlLog" target="SYSTEM_OUT">
+            <PatternLayout pattern="#----------%d-----------tx=%X{tx}%n%m" />
+        </Console>
+        <Console name="dest1" target="SYSTEM_OUT">
+            <PatternLayout pattern="%-5level: %F:%L: %m%n" />
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Root level="WARN">
+            <AppenderRef ref="dest1" />
+        </Root>
+        <Logger name="com.bigdata.rdf.sparql.ast.eval.ASTEvalHelper" level="WARN" />
+        <Logger name="com.bigdata.btree" level="WARN" />
+        <Logger name="com.bigdata" level="WARN" />
+    </Loggers>
+</Configuration>

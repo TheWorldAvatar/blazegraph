@@ -29,8 +29,9 @@ import java.io.IOException;
 
 import net.jini.url.httpmd.HttpmdUtil;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Utility class that provides a set of static convenience methods
@@ -44,7 +45,7 @@ import org.apache.log4j.Logger;
 public class ConfigurationUtil {
 
     private static final Logger logger = 
-        LogUtil.getLog4jLogger( ConfigurationUtil.class );
+        LogManager.getLogger( ConfigurationUtil.class );
 
     /**
      * Concatenates the given <code>String</code> arrays, returning

@@ -35,7 +35,8 @@ import java.util.Locale;
 import java.util.Properties;
 import java.util.UUID;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.ITuple;
 import com.bigdata.btree.ITupleSerializer;
@@ -65,7 +66,7 @@ import com.bigdata.util.BytesUtil;
  */
 public class KeyBuilder implements IKeyBuilder, LongPacker.IByteBuffer {
 
-    private static final transient Logger log = Logger.getLogger(KeyBuilder.class);
+    private static final transient Logger log = LogManager.getLogger(KeyBuilder.class);
     
     /**
      * The default capacity of the key buffer.
@@ -1428,10 +1429,10 @@ public class KeyBuilder implements IKeyBuilder, LongPacker.IByteBuffer {
         int v = 0;
         
         // big-endian.
-        v += (0xffL & buf[off++]) << 24;
-        v += (0xffL & buf[off++]) << 16;
-        v += (0xffL & buf[off++]) <<  8;
-        v += (0xffL & buf[off++]) <<  0;
+        v += (0xff & buf[off++]) << 24;
+        v += (0xff & buf[off++]) << 16;
+        v += (0xff & buf[off++]) <<  8;
+        v += (0xff & buf[off++]) <<  0;
 
         if (v < 0) {
             
@@ -1462,8 +1463,8 @@ public class KeyBuilder implements IKeyBuilder, LongPacker.IByteBuffer {
         int v = 0;
         
         // big-endian.
-        v += (0xffL & buf[off++]) <<  8;
-        v += (0xffL & buf[off++]) <<  0;
+        v += (0xff & buf[off++]) <<  8;
+        v += (0xff & buf[off++]) <<  0;
 
         if (v < 0) {
             

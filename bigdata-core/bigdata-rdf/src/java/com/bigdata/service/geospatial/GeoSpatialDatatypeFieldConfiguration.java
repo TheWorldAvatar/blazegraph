@@ -28,7 +28,8 @@ package com.bigdata.service.geospatial;
 
 import java.io.Serializable;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
@@ -46,7 +47,7 @@ public class GeoSpatialDatatypeFieldConfiguration implements Serializable {
     private static final long serialVersionUID = 1L;
 
     final static private transient Logger log = 
-        Logger.getLogger(GeoSpatialDatatypeFieldConfiguration.class);
+        LogManager.getLogger(GeoSpatialDatatypeFieldConfiguration.class);
     
     private final static String JSON_STR_VALUETYPE = "valueType";
     private final static String JSON_STR_MINVALUE = "minValue";

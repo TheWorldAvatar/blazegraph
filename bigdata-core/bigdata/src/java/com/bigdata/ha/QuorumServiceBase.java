@@ -35,7 +35,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeoutException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.ha.msg.IHASendState;
 import com.bigdata.ha.msg.IHASyncRequest;
@@ -60,8 +61,7 @@ import com.bigdata.util.InnerCause;
 abstract public class QuorumServiceBase<S extends HAGlue, L extends AbstractJournal>
         extends AbstractQuorumMember<S> implements QuorumService<S> {
 
-    static protected transient final Logger log = Logger
-            .getLogger(QuorumServiceBase.class);
+    static protected transient final Logger log = LogManager.getLogger(QuorumServiceBase.class);
 
     private final S service;
 

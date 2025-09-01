@@ -33,7 +33,8 @@ import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.IIndex;
 import com.bigdata.btree.IRangeQuery;
@@ -55,7 +56,7 @@ abstract public class AbstractAtomicRowReadOrWrite extends
         AbstractIndexProcedure<TPS> implements ISimpleIndexProcedure<TPS>,
         IRowStoreConstants, Externalizable {
 
-    private static final Logger log = Logger.getLogger(AbstractAtomicRowReadOrWrite.class);
+    private static final Logger log = LogManager.getLogger(AbstractAtomicRowReadOrWrite.class);
     
 //    /**
 //     * True iff the {@link #log} level is INFO or less.

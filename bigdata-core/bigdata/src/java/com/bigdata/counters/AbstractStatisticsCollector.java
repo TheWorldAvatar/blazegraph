@@ -40,7 +40,8 @@ import java.util.List;
 import java.util.Properties;
 import java.util.UUID;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.system.SystemUtil;
 
 import com.bigdata.Banner;
@@ -74,8 +75,7 @@ abstract public class AbstractStatisticsCollector implements IStatisticsCollecto
 
     protected static final String ps = ICounterSet.pathSeparator;
     
-    final protected static Logger log = Logger
-            .getLogger(AbstractStatisticsCollector.class);
+    final protected static Logger log = LogManager.getLogger(AbstractStatisticsCollector.class);
 
     /** {@link InetAddress#getCanonicalHostName()} for this host. */
     static final public String fullyQualifiedHostName;

@@ -25,7 +25,8 @@ package com.bigdata.rdf.sail;
 
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.query.GraphQueryResult;
 import org.openrdf.query.QueryLanguage;
 import org.openrdf.repository.RepositoryConnection;
@@ -59,7 +60,7 @@ import com.bigdata.rdf.vocab.NoVocabulary;
  */
 public class TestTicket581 extends QuadsTestCase {
 
-    protected static final Logger log = Logger.getLogger(TestTicket581.class);
+    protected static final Logger log = LogManager.getLogger(TestTicket581.class);
 
     /**
      * Please set your database properties here, except for your journal file,

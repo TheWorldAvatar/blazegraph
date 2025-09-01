@@ -17,7 +17,7 @@ import com.bigdata.rdf.store.AbstractTripleStore;
 public class BigdataSailBooleanQuery extends SailBooleanQuery 
         implements BigdataSailQuery {
 
-//    private static Logger log = Logger.getLogger(BigdataSailBooleanQuery.class);
+//    private static Logger log = LogManager.getLogger(BigdataSailBooleanQuery.class);
 
     private final ASTContainer astContainer;
 

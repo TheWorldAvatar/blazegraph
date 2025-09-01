@@ -72,7 +72,7 @@ import com.bigdata.search.IHit;
  */
 public class ASTSearchInSearchOptimizer extends AbstractJoinGroupOptimizer {
 
-//    private static final Logger log = Logger.getLogger(ASTSearchInSearchOptimizer.class);
+//    private static final Logger log = LogManager.getLogger(ASTSearchInSearchOptimizer.class);
     
 //    static private long time = 0;
     

@@ -37,7 +37,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.Callable;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.BOpContext;
 import com.bigdata.bop.ConcurrentHashMapAnnotations;
@@ -113,7 +114,7 @@ import cutthecrap.utils.striterators.ICloseableIterator;
  */
 public class ArbitraryLengthPathTask implements Callable<Void> {
 
-    private static final Logger log = Logger.getLogger(ArbitraryLengthPathOp.class);
+    private static final Logger log = LogManager.getLogger(ArbitraryLengthPathOp.class);
     
     private final BOpContext<IBindingSet> context;
     private final PipelineOp subquery;

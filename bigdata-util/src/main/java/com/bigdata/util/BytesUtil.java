@@ -32,7 +32,8 @@ import java.util.Comparator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Class supporting operations on variable length byte[] keys.
@@ -65,7 +66,7 @@ import org.apache.log4j.Logger;
  */
 public class BytesUtil {
 
-	private static final transient Logger log = Logger.getLogger(BytesUtil.class);
+	private static final transient Logger log = LogManager.getLogger(BytesUtil.class);
 
 	/**
 	 * An empty <code>byte[]</code>.

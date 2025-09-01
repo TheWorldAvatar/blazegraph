@@ -48,7 +48,8 @@ import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.locks.ReentrantLock;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.BOpEvaluationContext;
@@ -135,8 +136,7 @@ abstract public class AbstractRunningQuery implements IRunningQuery {
      */
     protected static final String ERR_DUPLICATE_IDENTIFIER = "Duplicate identifier: id=";
 
-    private final static transient Logger log = Logger
-            .getLogger(AbstractRunningQuery.class);
+    private final static transient Logger log = LogManager.getLogger(AbstractRunningQuery.class);
 
     /**
      * The class executing the query on this node.

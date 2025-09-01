@@ -25,7 +25,8 @@ package com.bigdata.rdf.sail;
 
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Literal;
 import org.openrdf.model.URI;
 import org.openrdf.model.ValueFactory;
@@ -40,7 +41,7 @@ import com.bigdata.rdf.store.BD;
 
 public class TestMaterialization extends ProxyBigdataSailTestCase {
 
-    protected static final Logger log = Logger.getLogger(TestMaterialization.class);
+    protected static final Logger log = LogManager.getLogger(TestMaterialization.class);
 
     protected static final boolean INFO = log.isInfoEnabled();
     

@@ -40,7 +40,8 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeoutException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.ILinearList;
 import com.bigdata.btree.IRangeQuery;
@@ -637,8 +638,7 @@ public abstract class AbstractScaleOutFederation<T> extends AbstractFederation<T
      */
     public static class PurgeResourcesTask implements Callable<Void> {
 
-        protected static final Logger log = Logger
-                .getLogger(PurgeResourcesTask.class);
+        protected static final Logger log = LogManager.getLogger(PurgeResourcesTask.class);
 
         private final IDataService dataService;
 
@@ -683,8 +683,7 @@ public abstract class AbstractScaleOutFederation<T> extends AbstractFederation<T
      */
     public static class ForceOverflowTask implements Callable<Void> {
 
-        protected static final Logger log = Logger
-                .getLogger(ForceOverflowTask.class);
+        protected static final Logger log = LogManager.getLogger(ForceOverflowTask.class);
 
         private final IDataService dataService;
         private final boolean compactingMerge;

@@ -27,7 +27,8 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.DelegateTuple;
 import com.bigdata.btree.IRangeQuery;
@@ -64,8 +65,7 @@ import cutthecrap.utils.striterators.IFilter;
  */
 public class PartitionedTupleIterator<E> implements ITupleIterator<E> {
 
-    private static final transient Logger log = Logger
-            .getLogger(PartitionedTupleIterator.class);
+    private static final transient Logger log = LogManager.getLogger(PartitionedTupleIterator.class);
     
 //    protected static final boolean INFO = log.isInfoEnabled();
     

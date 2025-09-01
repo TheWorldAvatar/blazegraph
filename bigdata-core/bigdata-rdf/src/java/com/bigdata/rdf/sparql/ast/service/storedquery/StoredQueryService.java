@@ -26,7 +26,8 @@ package com.bigdata.rdf.sparql.ast.service.storedquery;
 import java.util.Arrays;
 import java.util.concurrent.Future;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.query.BindingSet;
 import org.openrdf.query.QueryEvaluationException;
 import org.openrdf.query.TupleQueryResult;
@@ -123,8 +124,7 @@ abstract public class StoredQueryService extends AbstractServiceFactoryBase {
 
     }
 
-    static private transient final Logger log = Logger
-            .getLogger(StoredQueryService.class);
+    static private transient final Logger log = LogManager.getLogger(StoredQueryService.class);
 
     private final OpenrdfNativeServiceOptions serviceOptions;
 

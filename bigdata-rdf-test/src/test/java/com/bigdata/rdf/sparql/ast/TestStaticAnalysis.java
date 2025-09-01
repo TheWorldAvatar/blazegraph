@@ -29,7 +29,8 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.impl.LiteralImpl;
 import org.openrdf.model.impl.URIImpl;
 import org.openrdf.model.vocabulary.RDF;
@@ -79,8 +80,7 @@ import com.bigdata.rdf.vocab.decls.FOAFVocabularyDecl;
  */
 public class TestStaticAnalysis extends AbstractASTEvaluationTestCase {
 
-    private final static Logger log = Logger
-            .getLogger(TestStaticAnalysis.class);
+    private final static Logger log = LogManager.getLogger(TestStaticAnalysis.class);
     
     /**
      * 

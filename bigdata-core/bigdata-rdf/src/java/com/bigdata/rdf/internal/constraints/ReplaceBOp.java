@@ -27,7 +27,8 @@ package com.bigdata.rdf.internal.constraints;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Literal;
 import org.openrdf.model.URI;
 import org.openrdf.model.Value;
@@ -50,7 +51,7 @@ import com.bigdata.rdf.sparql.ast.GlobalAnnotations;
  */
 public class ReplaceBOp extends IVValueExpression<IV> implements INeedsMaterialization {
 
-	private static final transient Logger log = Logger.getLogger(ReplaceBOp.class);
+	private static final transient Logger log = LogManager.getLogger(ReplaceBOp.class);
 
     public interface Annotations extends XSDBooleanIVValueExpression.Annotations {
     	

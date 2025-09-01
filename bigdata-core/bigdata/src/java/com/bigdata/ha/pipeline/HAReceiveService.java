@@ -50,7 +50,8 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.zip.Adler32;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.ha.QuorumPipelineImpl;
 import com.bigdata.ha.msg.HAMessageWrapper;
@@ -79,8 +80,7 @@ import com.bigdata.util.ChecksumError;
  */
 public class HAReceiveService<M extends HAMessageWrapper> extends Thread {
 
-    private static final Logger log = Logger
-            .getLogger(HAReceiveService.class);
+    private static final Logger log = LogManager.getLogger(HAReceiveService.class);
 
     /**
      * The timeout (milliseconds) on the client {@link Selector}.

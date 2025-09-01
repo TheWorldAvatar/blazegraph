@@ -3,7 +3,8 @@ package com.bigdata.rdf.spo;
 import java.util.Map;
 import java.util.concurrent.Callable;
 import java.util.concurrent.atomic.AtomicLong;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import com.bigdata.rdf.changesets.ChangeRecord;
 import com.bigdata.rdf.changesets.IChangeLog;
 import com.bigdata.rdf.internal.IV;
@@ -25,7 +26,7 @@ import com.bigdata.striterator.IChunkedOrderedIterator;
  */
 public class StatementWriter implements Callable<Long>{
 
-    protected static final Logger log = Logger.getLogger(StatementWriter.class);
+    protected static final Logger log = LogManager.getLogger(StatementWriter.class);
     
     private final AbstractTripleStore database;
     private final AbstractTripleStore statementStore;

@@ -27,7 +27,8 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Graph;
 import org.openrdf.model.URI;
 import org.openrdf.model.impl.GraphImpl;
@@ -69,7 +70,7 @@ import com.bigdata.rdf.vocab.NoVocabulary;
  */
 public class TestTicket669 extends QuadsTestCase {
 
-    protected static final Logger log = Logger.getLogger(TestTicket669.class);
+    protected static final Logger log = LogManager.getLogger(TestTicket669.class);
 
     /**
      * Please set your database properties here, except for your journal file,

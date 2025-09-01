@@ -32,7 +32,8 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.concurrent.locks.ReentrantLock;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.BigdataStatics;
 import com.bigdata.btree.BigdataMap;
@@ -68,8 +69,7 @@ implements INotifyOutcome<E, L>
      * Log may be used to see just success/error reporting for the master
      * without the log information from the base class.
      */
-    static protected transient final Logger log = Logger
-            .getLogger(AbstractPendingSetMasterTask.class);
+    static protected transient final Logger log = LogManager.getLogger(AbstractPendingSetMasterTask.class);
 
     /**
      * Lock used to serialize operations on the {@link #pendingMap}.

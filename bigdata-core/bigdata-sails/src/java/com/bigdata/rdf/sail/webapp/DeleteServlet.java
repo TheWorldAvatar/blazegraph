@@ -35,7 +35,8 @@ import java.util.concurrent.atomic.AtomicLong;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Resource;
 import org.openrdf.model.Statement;
 import org.openrdf.model.URI;
@@ -70,8 +71,7 @@ public class DeleteServlet extends BigdataRDFServlet {
      */
     private static final long serialVersionUID = 1L;
 
-    static private final transient Logger log = Logger
-            .getLogger(DeleteServlet.class);
+    static private final transient Logger log = LogManager.getLogger(DeleteServlet.class);
 
     /**
      * Note: includedInferred is false because inferences can not be deleted

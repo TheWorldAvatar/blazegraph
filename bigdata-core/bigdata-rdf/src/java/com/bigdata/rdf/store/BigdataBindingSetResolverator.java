@@ -9,7 +9,8 @@ import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Value;
 
 import com.bigdata.bop.Constant;
@@ -42,8 +43,7 @@ public class BigdataBindingSetResolverator
         extends
         AbstractChunkedResolverator<IBindingSet, IBindingSet, AbstractTripleStore> {
 
-    private final static Logger log = Logger
-            .getLogger(BigdataBindingSetResolverator.class);
+    private final static Logger log = LogManager.getLogger(BigdataBindingSetResolverator.class);
 
     private final UUID queryId;
     @SuppressWarnings("rawtypes")

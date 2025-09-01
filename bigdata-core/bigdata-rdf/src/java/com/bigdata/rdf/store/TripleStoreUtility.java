@@ -34,7 +34,8 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Statement;
 
 import com.bigdata.journal.Journal;
@@ -63,7 +64,7 @@ import cutthecrap.utils.striterators.ICloseableIterator;
  */
 public class TripleStoreUtility {
     
-    protected static final Logger log = Logger.getLogger(TripleStoreUtility.class);
+    protected static final Logger log = LogManager.getLogger(TripleStoreUtility.class);
 
     /**
      * Compares two RDF graphs for equality (same statements).

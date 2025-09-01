@@ -30,7 +30,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.rdf.sail.BigdataSail;
 import com.bigdata.rdf.sail.BigdataSailRepository;
@@ -48,7 +49,7 @@ import com.tinkerpop.blueprints.util.io.graphml.GraphMLReader;
  */
 public class TestBigdataGraphEmbeddedTransactional extends AbstractTestBigdataGraph {
 
-    protected static final transient Logger log = Logger.getLogger(TestBigdataGraphEmbeddedTransactional.class);
+    protected static final transient Logger log = LogManager.getLogger(TestBigdataGraphEmbeddedTransactional.class);
     
     /**
      * 

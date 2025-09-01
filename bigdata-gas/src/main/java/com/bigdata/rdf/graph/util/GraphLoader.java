@@ -28,7 +28,8 @@ import java.util.zip.GZIPInputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Resource;
 import org.openrdf.model.Statement;
 import org.openrdf.model.ValueFactory;
@@ -47,7 +48,7 @@ import org.openrdf.rio.helpers.RDFHandlerBase;
  */
 abstract public class GraphLoader {
 
-    private static final Logger log = Logger.getLogger(GASUtil.class);
+    private static final Logger log = LogManager.getLogger(GASUtil.class);
 
     /**
      * Return the best guess at the {@link RDFFormat} for a resource.

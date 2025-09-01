@@ -30,7 +30,7 @@ import cutthecrap.utils.striterators.EmptyIterator;
  */
 public class GASUtil {
 
-//    private static final Logger log = Logger.getLogger(GASUtil.class);
+//    private static final Logger log = LogManager.getLogger(GASUtil.class);
 
     /**
      * The average fan out of the frontier.

@@ -24,7 +24,8 @@
 
 package com.bigdata.rdf.sail;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Resource;
 import org.openrdf.model.URI;
 import org.openrdf.model.Value;
@@ -57,8 +58,7 @@ import com.bigdata.rdf.store.AbstractTripleStore;
  */
 public class BigdataSailRepositoryConnection extends SailRepositoryConnection {
    
-	private static transient final Logger log = Logger
-			.getLogger(BigdataSailRepositoryConnection.class);
+	private static transient final Logger log = LogManager.getLogger(BigdataSailRepositoryConnection.class);
 
 	@Override
 	public String toString() {

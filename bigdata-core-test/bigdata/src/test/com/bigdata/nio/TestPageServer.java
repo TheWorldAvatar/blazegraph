@@ -171,7 +171,7 @@ import junit.framework.TestCase;
 
 public class TestPageServer extends TestCase {
 
-//    public static Logger log = Logger.getLogger(TestPageServer.class);
+//    public static Logger log = LogManager.getLogger(TestPageServer.class);
 //
 //    /**
 //     * Port used for the tests.

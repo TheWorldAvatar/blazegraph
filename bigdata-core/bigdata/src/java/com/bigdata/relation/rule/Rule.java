@@ -29,7 +29,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.IBindingSet;
 import com.bigdata.bop.IConstraint;
@@ -54,7 +55,7 @@ public class Rule<E> implements IRule<E> {
      */
     private static final long serialVersionUID = -3834383670300306143L;
 
-    final static transient protected Logger log = Logger.getLogger(Rule.class);
+    final static transient protected Logger log = LogManager.getLogger(Rule.class);
 
     final static transient protected boolean INFO = log.isInfoEnabled();
 

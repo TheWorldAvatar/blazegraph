@@ -24,7 +24,8 @@ package com.bigdata.rdf.changesets;
 
 import java.util.concurrent.CopyOnWriteArraySet;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * This delegating change log allows change events to be propagated to multiple
@@ -34,8 +35,7 @@ import org.apache.log4j.Logger;
  */
 public class DelegatingChangeLog implements IChangeLog {
 
-    private static transient final Logger log = Logger
-            .getLogger(DelegatingChangeLog.class);
+    private static transient final Logger log = LogManager.getLogger(DelegatingChangeLog.class);
 
     private final CopyOnWriteArraySet<IChangeLog> delegates;
 

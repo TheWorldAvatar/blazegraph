@@ -2,7 +2,8 @@ package com.bigdata.rdf.graph.impl.ram;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.rdf.graph.IGASEngine;
 import com.bigdata.rdf.graph.IGraphAccessor;
@@ -17,7 +18,7 @@ import com.bigdata.rdf.graph.impl.util.GASRunnerBase;
  */
 public class RAMGASRunner<VS, ES, ST> extends GASRunnerBase<VS, ES, ST> {
 
-    private static final Logger log = Logger.getLogger(RAMGASRunner.class);
+    private static final Logger log = LogManager.getLogger(RAMGASRunner.class);
 
     public RAMGASRunner(String[] args) throws ClassNotFoundException {
         super(args);

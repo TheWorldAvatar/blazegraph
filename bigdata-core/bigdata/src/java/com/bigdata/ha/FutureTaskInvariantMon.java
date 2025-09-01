@@ -31,7 +31,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.Future;
 import java.util.concurrent.FutureTask;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.concurrent.FutureTaskMon;
 import com.bigdata.quorum.Quorum;
@@ -60,7 +61,7 @@ import com.bigdata.util.StackInfoReport;
 public abstract class FutureTaskInvariantMon<T> extends FutureTaskMon<T>
         implements QuorumListener {
 
-    private static final Logger log = Logger.getLogger(FutureTaskInvariantMon.class);
+    private static final Logger log = LogManager.getLogger(FutureTaskInvariantMon.class);
 
     private final Quorum<HAGlue, QuorumService<HAGlue>> m_quorum;
     /**

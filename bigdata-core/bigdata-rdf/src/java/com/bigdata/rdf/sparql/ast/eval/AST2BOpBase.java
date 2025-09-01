@@ -31,7 +31,8 @@ import java.io.Serializable;
 import java.util.Enumeration;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.query.Dataset;
 import org.openrdf.query.algebra.StatementPattern.Scope;
 
@@ -51,7 +52,7 @@ import com.bigdata.rdf.sparql.ast.StatementPatternNode;
  */
 public class AST2BOpBase {
 
-    private static final Logger log = Logger.getLogger(AST2BOpBase.class);
+    private static final Logger log = LogManager.getLogger(AST2BOpBase.class);
 
     protected AST2BOpBase() {
         

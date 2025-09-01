@@ -26,7 +26,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Statement;
 import org.openrdf.model.URI;
 
@@ -43,7 +44,7 @@ import com.tinkerpop.blueprints.Vertex;
  */
 public class BigdataEdge extends BigdataElement implements Edge {
 
-    private static final transient Logger log = Logger.getLogger(BigdataEdge.class);
+    private static final transient Logger log = LogManager.getLogger(BigdataEdge.class);
     
 	private static final List<String> blacklist = Arrays.asList(new String[] {
 	        "id", "", "label"

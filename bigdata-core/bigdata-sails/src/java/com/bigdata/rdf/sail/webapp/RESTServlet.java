@@ -30,7 +30,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.URI;
 import org.openrdf.model.impl.URIImpl;
 
@@ -43,8 +44,7 @@ import com.bigdata.rdf.sail.webapp.client.MiniMime;
  */
 public class RESTServlet extends BigdataRDFServlet {
 
-    private static final transient Logger log = Logger
-            .getLogger(RESTServlet.class);
+    private static final transient Logger log = LogManager.getLogger(RESTServlet.class);
 
     static {
 //        // pull a Tinkerpop interface into the class loader

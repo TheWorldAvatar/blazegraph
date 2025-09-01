@@ -48,7 +48,8 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.keys.KeyBuilder;
 import com.bigdata.btree.raba.IRaba;
@@ -205,8 +206,7 @@ import com.bigdata.util.BytesUtil;
  */
 public class CanonicalHuffmanRabaCoder implements IRabaCoder, Externalizable {
 
-    protected static final Logger log = Logger
-            .getLogger(CanonicalHuffmanRabaCoder.class);
+    protected static final Logger log = LogManager.getLogger(CanonicalHuffmanRabaCoder.class);
 
     private static final transient boolean debug = log.isDebugEnabled();
 

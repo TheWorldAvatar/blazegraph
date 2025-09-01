@@ -33,8 +33,9 @@ import java.util.concurrent.CancellationException;
 import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.atomic.AtomicReference;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.relation.accesspath.BufferClosedException;
 import com.bigdata.util.InnerCause;
@@ -47,8 +48,7 @@ import com.bigdata.util.InnerCause;
  */
 public abstract class AbstractHaltableProcess {
 
-    protected final transient static Logger log = Logger
-            .getLogger(AbstractHaltableProcess.class);
+    protected final transient static Logger log = LogManager.getLogger(AbstractHaltableProcess.class);
 
     /**
      * Volatile flag is set <code>true</code> if the process should halt.
@@ -104,7 +104,7 @@ public abstract class AbstractHaltableProcess {
         final boolean isFirstCause = firstCause.compareAndSet(
                 null/* expect */, cause);
 
-        if (log.isEnabledFor(Level.WARN))
+        if (log.isEnabled(Level.WARN))
 
             try {
 

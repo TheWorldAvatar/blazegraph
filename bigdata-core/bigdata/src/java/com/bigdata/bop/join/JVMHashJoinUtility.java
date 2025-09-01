@@ -35,7 +35,8 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.BOpContext;
 import com.bigdata.bop.BOpUtility;
@@ -73,7 +74,7 @@ import cutthecrap.utils.striterators.Visitor;
  */
 public class JVMHashJoinUtility implements IHashJoinUtility {
 
-    private static final Logger log = Logger.getLogger(JVMHashJoinUtility.class);
+    private static final Logger log = LogManager.getLogger(JVMHashJoinUtility.class);
 
     /**
      * Singleton {@link IHashJoinUtilityFactory} that can be used to create a 

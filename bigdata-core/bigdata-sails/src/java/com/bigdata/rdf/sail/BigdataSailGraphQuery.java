@@ -39,7 +39,7 @@ import com.bigdata.rdf.store.AbstractTripleStore;
 public class BigdataSailGraphQuery extends SailGraphQuery implements
         BigdataSailQuery {
 
-    // private static Logger log = Logger.getLogger(BigdataSailGraphQuery.class);
+    // private static Logger log = LogManager.getLogger(BigdataSailGraphQuery.class);
 
     private final ASTContainer astContainer;
 

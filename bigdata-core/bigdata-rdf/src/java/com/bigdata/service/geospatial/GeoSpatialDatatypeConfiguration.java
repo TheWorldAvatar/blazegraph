@@ -35,7 +35,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
@@ -58,7 +59,7 @@ public class GeoSpatialDatatypeConfiguration implements Serializable {
     private static final long serialVersionUID = 1L;
 
     final static private transient Logger log = 
-        Logger.getLogger(GeoSpatialDatatypeConfiguration.class);
+        LogManager.getLogger(GeoSpatialDatatypeConfiguration.class);
 
     // URI of the datatype, e.g. <http://my.custom.geospatial.coordinate>
     private final URI uri;

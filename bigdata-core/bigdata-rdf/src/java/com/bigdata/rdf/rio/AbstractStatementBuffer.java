@@ -5,7 +5,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.BNode;
 import org.openrdf.model.Literal;
 import org.openrdf.model.Resource;
@@ -81,7 +82,7 @@ import com.bigdata.rdf.store.TripleStoreUtility;
 abstract public class AbstractStatementBuffer<F extends Statement, G extends BigdataStatement>
         implements IStatementBuffer<F> {
 
-    protected static final Logger log = Logger.getLogger(AbstractStatementBuffer.class);
+    protected static final Logger log = LogManager.getLogger(AbstractStatementBuffer.class);
 
     protected static final boolean INFO = log.isInfoEnabled();
 

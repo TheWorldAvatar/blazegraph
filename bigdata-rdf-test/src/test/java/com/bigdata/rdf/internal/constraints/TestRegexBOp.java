@@ -43,7 +43,7 @@ import com.bigdata.rdf.store.ProxyTestCase;
  */
 public class TestRegexBOp extends ProxyTestCase {
 
-//	private static final Logger log = Logger.getLogger(TestSubstrBOp.class);
+//	private static final Logger log = LogManager.getLogger(TestSubstrBOp.class);
 	
     /**
      * 

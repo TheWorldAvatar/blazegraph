@@ -37,7 +37,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.system.SystemUtil;
 
 /**
@@ -48,8 +49,7 @@ import org.apache.system.SystemUtil;
  */
 public class PIDUtil {
 
-    static private final Logger log = Logger
-            .getLogger(PIDUtil.class);
+    static private final Logger log = LogManager.getLogger(PIDUtil.class);
 
 //    static protected final boolean INFO = log.isInfoEnabled();
     

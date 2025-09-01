@@ -33,7 +33,8 @@ import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.Semaphore;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * A fly weight helper class that runs tasks either sequentially or with limited
@@ -59,8 +60,7 @@ import org.apache.log4j.Logger;
  */
 public class LatchedExecutor implements Executor {
 
-    private static final transient Logger log = Logger
-            .getLogger(LatchedExecutor.class);
+    private static final transient Logger log = LogManager.getLogger(LatchedExecutor.class);
     
     /**
      * The delegate executor. 

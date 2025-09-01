@@ -49,7 +49,8 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.Banner;
 import com.bigdata.bop.engine.QueryEngine;
@@ -87,8 +88,7 @@ import com.bigdata.util.httpd.AbstractHTTPD;
 public class BigdataRDFServletContextListener implements
         ServletContextListener {
 
-    private static final transient Logger log = Logger
-            .getLogger(BigdataRDFServletContextListener.class);
+    private static final transient Logger log = LogManager.getLogger(BigdataRDFServletContextListener.class);
 
     private Journal jnl = null;
     private AbstractScaleOutClient<?> jiniClient = null;

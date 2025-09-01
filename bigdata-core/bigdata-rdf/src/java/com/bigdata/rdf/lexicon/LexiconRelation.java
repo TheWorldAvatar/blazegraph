@@ -52,7 +52,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 import java.util.concurrent.atomic.AtomicReference;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.omg.CORBA.portable.ValueFactory;
 import org.openrdf.model.BNode;
 import org.openrdf.model.Literal;
@@ -148,7 +149,7 @@ import cutthecrap.utils.striterators.Striterator;
 public class LexiconRelation extends AbstractRelation<BigdataValue> 
         implements IDatatypeURIResolver {
 
-    private final static Logger log = Logger.getLogger(LexiconRelation.class);
+    private final static Logger log = LogManager.getLogger(LexiconRelation.class);
 
     private final Set<String> indexNames;
 

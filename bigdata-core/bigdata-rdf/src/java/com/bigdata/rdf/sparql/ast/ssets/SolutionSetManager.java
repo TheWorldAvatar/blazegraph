@@ -29,7 +29,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.IBindingSet;
 import com.bigdata.bop.IVariable;
@@ -98,8 +99,7 @@ import cutthecrap.utils.striterators.ICloseableIterator;
 //*      sub-groups and sub-selects.
 public class SolutionSetManager implements ISolutionSetManager {
 
-    private static transient final Logger log = Logger
-            .getLogger(SolutionSetManager.class);
+    private static transient final Logger log = LogManager.getLogger(SolutionSetManager.class);
 
     /**
      * The backing store.

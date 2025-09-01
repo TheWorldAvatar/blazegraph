@@ -27,7 +27,8 @@
 
 package com.bigdata.relation.accesspath;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.IPredicate;
@@ -63,7 +64,7 @@ import cutthecrap.utils.striterators.Striterator;
  */
 public class AccessPathFusedView<E> implements IAccessPath<E> {
 
-    protected static final Logger log = Logger.getLogger(IAccessPath.class);
+    protected static final Logger log = LogManager.getLogger(IAccessPath.class);
 
     private final AccessPath<E> path1;
 

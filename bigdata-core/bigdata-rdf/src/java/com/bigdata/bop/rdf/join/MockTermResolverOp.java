@@ -35,7 +35,8 @@ import java.util.Map;
 import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.BOpContext;
@@ -73,7 +74,7 @@ import cutthecrap.utils.striterators.ICloseableIterator;
  **/
 public class MockTermResolverOp extends PipelineOp {
 
-   private final static Logger log = Logger.getLogger(MockTermResolverOp.class);
+   private final static Logger log = LogManager.getLogger(MockTermResolverOp.class);
 
    private static final long serialVersionUID = 1L;
 

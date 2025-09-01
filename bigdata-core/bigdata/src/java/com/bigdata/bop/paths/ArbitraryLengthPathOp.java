@@ -31,7 +31,8 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.FutureTask;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.BOpContext;
@@ -47,7 +48,7 @@ import com.bigdata.rdf.sparql.ast.ArbitraryLengthPathNode.Annotations;
  */
 public class ArbitraryLengthPathOp extends PipelineOp {
 
-    private static final Logger log = Logger.getLogger(ArbitraryLengthPathOp.class);
+    private static final Logger log = LogManager.getLogger(ArbitraryLengthPathOp.class);
     
     /**
      * 

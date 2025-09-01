@@ -39,7 +39,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.locks.Lock;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.bigdata.btree.IIndex;
 import com.bigdata.cache.ConcurrentWeakValueCache;
@@ -123,8 +124,7 @@ import com.bigdata.util.NT;
 public class DefaultResourceLocator<T extends ILocatableResource<T>> //
         implements IResourceLocator<T> {
 
-    protected static final transient Logger log = Logger
-            .getLogger(DefaultResourceLocator.class);
+    protected static final transient Logger log = LogManager.getLogger(DefaultResourceLocator.class);
 
     protected static final boolean INFO = log.isInfoEnabled();
     

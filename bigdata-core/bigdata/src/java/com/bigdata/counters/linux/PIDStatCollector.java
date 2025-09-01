@@ -56,7 +56,7 @@ import java.util.concurrent.atomic.AtomicLong;
 public class PIDStatCollector extends AbstractProcessCollector implements
         ICounterHierarchy, IProcessCounters {
 
-//    static protected final Logger log = Logger.getLogger(PIDStatCollector.class);
+//    static protected final Logger log = LogManager.getLogger(PIDStatCollector.class);
 //
 //    /**
 //     * True iff the {@link #log} level is DEBUG or less.

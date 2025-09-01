@@ -5,7 +5,8 @@ import java.io.InputStream;
 import java.util.Iterator;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Resource;
 import org.openrdf.model.Statement;
 import org.openrdf.model.URI;
@@ -31,7 +32,7 @@ import com.bigdata.rdf.sail.BigdataSailRepository;
 */
 public class LoadPdb {
 
-	private static final Logger LOG = Logger.getLogger(LoadPdb.class);
+	private static final Logger LOG = LogManager.getLogger(LoadPdb.class);
 
 	public static void main(String[] args) throws Exception {
 		File file = new File("tmp-1Y26.jnl");

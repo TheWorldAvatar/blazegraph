@@ -35,7 +35,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openrdf.model.Literal;
 import org.openrdf.model.URI;
 
@@ -92,8 +93,7 @@ import cutthecrap.utils.striterators.Striterator;
  */
 public class SearchServiceFactory extends AbstractServiceFactoryBase {
 
-    private static final Logger log = Logger
-            .getLogger(SearchServiceFactory.class);
+    private static final Logger log = LogManager.getLogger(SearchServiceFactory.class);
 
     /*
      * Note: This could extend the base class to allow for search service

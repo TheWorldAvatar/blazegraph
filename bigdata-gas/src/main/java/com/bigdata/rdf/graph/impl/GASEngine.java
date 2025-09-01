@@ -72,7 +72,7 @@ import com.bigdata.rdf.graph.impl.scheduler.CHMScheduler;
 @SuppressWarnings("rawtypes")
 abstract public class GASEngine implements IGASEngine {
 
-//    private static final Logger log = Logger.getLogger(GASEngine.class);
+//    private static final Logger log = LogManager.getLogger(GASEngine.class);
 
     /**
      * The {@link ExecutorService} used to parallelize tasks (iff
