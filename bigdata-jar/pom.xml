@@ -141,7 +141,7 @@ Copyright 2010 by TalkingTrends (Amsterdam, The Netherlands)
                     <exclude>**/*.rq</exclude>
                     <exclude>**/*.srx</exclude>
                     <exclude>**/*.trig</exclude>
-                    <exclude>**/sesame*testsuite/**</exclude>
+                    <exclude>**/rdf4j*testsuite/**</exclude>
                   </excludes>
                 </filter>
               </filters>
@@ -204,16 +204,16 @@ ga('send', 'pageview');
       <version>${project.version}</version>
       <exclusions>
         <exclusion>
-          <groupId>org.openrdf.sesame</groupId>
-          <artifactId>sesame-rio-testsuite</artifactId>
+          <groupId>org.eclipse.rdf4j</groupId>
+          <artifactId>rdf4j-rio-testsuite</artifactId>
         </exclusion>
         <exclusion>
-          <groupId>org.openrdf.sesame</groupId>
-          <artifactId>sesame-sparql-testsuite</artifactId>
+          <groupId>org.eclipse.rdf4j</groupId>
+          <artifactId>rdf4j-sparql-testsuite</artifactId>
         </exclusion>
         <exclusion>
-          <groupId>org.openrdf.sesame</groupId>
-          <artifactId>sesame-store-testsuite</artifactId>
+          <groupId>org.eclipse.rdf4j</groupId>
+          <artifactId>rdf4j-store-testsuite</artifactId>
         </exclusion>
         <exclusion>
           <groupId>javax.servlet</groupId>
