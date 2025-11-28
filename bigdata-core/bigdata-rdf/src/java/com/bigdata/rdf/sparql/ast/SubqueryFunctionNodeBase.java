@@ -29,7 +29,7 @@ package com.bigdata.rdf.sparql.ast;
 
 import java.util.Map;
 
-import org.openrdf.model.URI;
+import org.eclipse.rdf4j.model.URI;
 
 import com.bigdata.bop.BOp;
 

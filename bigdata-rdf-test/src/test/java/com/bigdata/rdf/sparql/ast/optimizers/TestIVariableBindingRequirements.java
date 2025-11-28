@@ -43,7 +43,7 @@ import com.bigdata.bop.bindingSet.ListBindingSet;
 import com.bigdata.rdf.internal.IV;
 import com.bigdata.rdf.internal.VTE;
 import com.bigdata.rdf.internal.impl.TermId;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.sparql.ast.ASTContainer;
@@ -612,7 +612,7 @@ public class TestIVariableBindingRequirements extends AbstractOptimizerTestCase 
     public void testServiceSparql11Constant() {
        
       final BigdataValueFactory f = store.getValueFactory();
-      final BigdataURI serviceEndpoint = f.createURI("http://custom.endpoint");
+      final BigdataIRI serviceEndpoint = f.createURI("http://custom.endpoint");
       final IV serviceEndpointIV = makeIV(serviceEndpoint);
       
       final BigdataValue[] values = new BigdataValue[] { serviceEndpoint };       
@@ -678,10 +678,10 @@ public class TestIVariableBindingRequirements extends AbstractOptimizerTestCase 
     public void testServiceBDS() {
        
        final BigdataValueFactory f = store.getValueFactory();
-       final BigdataURI bdsSearch = f.createURI(BDS.NAMESPACE + "search");
-       final BigdataURI predSearch = f.createURI(BDS.SEARCH.toString());
-       final BigdataURI predSearchTimeout = f.createURI(BDS.SEARCH_TIMEOUT.toString());
-       final BigdataURI predMatchExact = f.createURI(BDS.MATCH_EXACT.toString());
+       final BigdataIRI bdsSearch = f.createURI(BDS.NAMESPACE + "search");
+       final BigdataIRI predSearch = f.createURI(BDS.SEARCH.toString());
+       final BigdataIRI predSearchTimeout = f.createURI(BDS.SEARCH_TIMEOUT.toString());
+       final BigdataIRI predMatchExact = f.createURI(BDS.MATCH_EXACT.toString());
        
        final BigdataValue[] values = 
           new BigdataValue[] { bdsSearch, predSearch, predSearchTimeout, predMatchExact };       
@@ -718,18 +718,18 @@ public class TestIVariableBindingRequirements extends AbstractOptimizerTestCase 
    public void testServiceFTS() {
        
        final BigdataValueFactory f = store.getValueFactory();
-       final BigdataURI ftsSearch = f.createURI(FTS.NAMESPACE + "search");
-       final BigdataURI predSearch = f.createURI(FTS.SEARCH.toString());
-       final BigdataURI predEndpoint = f.createURI(FTS.ENDPOINT.toString());
-       final BigdataURI predEndpointType = f.createURI(FTS.ENDPOINT_TYPE.toString());
-       final BigdataURI predParams = f.createURI(FTS.PARAMS.toString());
-       final BigdataURI predScore = f.createURI(FTS.SCORE.toString());
-       final BigdataURI predScoreField = f.createURI(FTS.SCORE_FIELD.toString());
-       final BigdataURI predSearchField = f.createURI(FTS.SEARCH_FIELD.toString());
-       final BigdataURI predSnippet = f.createURI(FTS.SNIPPET.toString());
-       final BigdataURI predSnippetField = f.createURI(FTS.SNIPPET_FIELD.toString());
-       final BigdataURI predTimeout = f.createURI(FTS.TIMEOUT.toString());
-       final BigdataURI predSearchResultType = f.createURI(FTS.SEARCH_RESULT_TYPE.toString());
+       final BigdataIRI ftsSearch = f.createURI(FTS.NAMESPACE + "search");
+       final BigdataIRI predSearch = f.createURI(FTS.SEARCH.toString());
+       final BigdataIRI predEndpoint = f.createURI(FTS.ENDPOINT.toString());
+       final BigdataIRI predEndpointType = f.createURI(FTS.ENDPOINT_TYPE.toString());
+       final BigdataIRI predParams = f.createURI(FTS.PARAMS.toString());
+       final BigdataIRI predScore = f.createURI(FTS.SCORE.toString());
+       final BigdataIRI predScoreField = f.createURI(FTS.SCORE_FIELD.toString());
+       final BigdataIRI predSearchField = f.createURI(FTS.SEARCH_FIELD.toString());
+       final BigdataIRI predSnippet = f.createURI(FTS.SNIPPET.toString());
+       final BigdataIRI predSnippetField = f.createURI(FTS.SNIPPET_FIELD.toString());
+       final BigdataIRI predTimeout = f.createURI(FTS.TIMEOUT.toString());
+       final BigdataIRI predSearchResultType = f.createURI(FTS.SEARCH_RESULT_TYPE.toString());
        
        final BigdataValue[] values = 
           new BigdataValue[] { 

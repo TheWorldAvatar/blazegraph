@@ -34,7 +34,7 @@ import com.bigdata.bop.IConstant;
 import com.bigdata.bop.IVariableOrConstant;
 import com.bigdata.bop.Var;
 import com.bigdata.rdf.internal.IV;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.model.BigdataValueFactoryImpl;
 import com.bigdata.test.MockTermIdFactory;
@@ -83,7 +83,7 @@ public class TestLexAccessPatternEnum extends TestCase2 {
         final BigdataValueFactory vf = BigdataValueFactoryImpl
                 .getInstance(getName());
 
-        final IConstant<?> value = new Constant<BigdataURI>(vf
+        final IConstant<?> value = new Constant<BigdataIRI>(vf
                 .createURI("http://www.bigdata.com"));
 
         final IVariableOrConstant<?>[] args = new IVariableOrConstant[] {
@@ -107,7 +107,7 @@ public class TestLexAccessPatternEnum extends TestCase2 {
         final BigdataValueFactory vf = BigdataValueFactoryImpl
                 .getInstance(getName());
 
-        final IConstant<?> value = new Constant<BigdataURI>(vf
+        final IConstant<?> value = new Constant<BigdataIRI>(vf
                 .createURI("http://www.bigdata.com"));
 
         final IVariableOrConstant<?>[] args = new IVariableOrConstant[] {

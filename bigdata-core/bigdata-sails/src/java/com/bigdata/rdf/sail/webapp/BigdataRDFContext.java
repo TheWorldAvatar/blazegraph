@@ -22,7 +22,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 package com.bigdata.rdf.sail.webapp;
 
-import info.aduna.xml.XMLWriter;
+import org.eclipse.rdf4j.common.xml.XMLWriter;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -56,25 +56,25 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.model.Value;
-import org.openrdf.model.impl.URIImpl;
-import org.openrdf.query.Dataset;
-import org.openrdf.query.MalformedQueryException;
-import org.openrdf.query.impl.AbstractOperation;
-import org.openrdf.query.impl.AbstractQuery;
-import org.openrdf.query.impl.DatasetImpl;
-import org.openrdf.query.parser.ParsedQuery;
-import org.openrdf.query.resultio.BooleanQueryResultFormat;
-import org.openrdf.query.resultio.BooleanQueryResultWriter;
-import org.openrdf.query.resultio.BooleanQueryResultWriterRegistry;
-import org.openrdf.query.resultio.TupleQueryResultFormat;
-import org.openrdf.query.resultio.TupleQueryResultWriter;
-import org.openrdf.query.resultio.TupleQueryResultWriterRegistry;
-import org.openrdf.query.resultio.sparqlxml.SPARQLResultsXMLWriter;
-import org.openrdf.repository.sail.SailQuery;
-import org.openrdf.rio.RDFFormat;
-import org.openrdf.rio.RDFWriter;
-import org.openrdf.rio.RDFWriterRegistry;
+import org.eclipse.rdf4j.model.Value;
+import org.eclipse.rdf4j.model.impl.URIImpl;
+import org.eclipse.rdf4j.query.Dataset;
+import org.eclipse.rdf4j.query.MalformedQueryException;
+import org.eclipse.rdf4j.query.impl.AbstractOperation;
+import org.eclipse.rdf4j.query.impl.AbstractQuery;
+import org.eclipse.rdf4j.query.impl.DatasetImpl;
+import org.eclipse.rdf4j.query.parser.ParsedQuery;
+import org.eclipse.rdf4j.query.resultio.BooleanQueryResultFormat;
+import org.eclipse.rdf4j.query.resultio.BooleanQueryResultWriter;
+import org.eclipse.rdf4j.query.resultio.BooleanQueryResultWriterRegistry;
+import org.eclipse.rdf4j.query.resultio.TupleQueryResultFormat;
+import org.eclipse.rdf4j.query.resultio.TupleQueryResultWriter;
+import org.eclipse.rdf4j.query.resultio.TupleQueryResultWriterRegistry;
+import org.eclipse.rdf4j.query.resultio.sparqlxml.SPARQLResultsXMLWriter;
+import org.eclipse.rdf4j.repository.sail.SailQuery;
+import org.eclipse.rdf4j.rio.RDFFormat;
+import org.eclipse.rdf4j.rio.RDFWriter;
+import org.eclipse.rdf4j.rio.RDFWriterRegistry;
 
 import com.bigdata.BigdataStatics;
 import com.bigdata.bop.engine.IRunningQuery;
@@ -119,7 +119,7 @@ import com.bigdata.sparse.SparseRowStore;
 import com.bigdata.util.DaemonThreadFactory;
 import com.bigdata.util.concurrent.ThreadPoolExecutorBaseStatisticsTask;
 
-import info.aduna.xml.XMLWriter;
+import org.eclipse.rdf4j.common.xml.XMLWriter;
 
 /**
  * Class encapsulates state shared by {@link QueryServlet}(s) for the same

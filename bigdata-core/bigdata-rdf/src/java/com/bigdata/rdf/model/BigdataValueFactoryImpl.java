@@ -36,14 +36,14 @@ import java.util.UUID;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 
-import org.openrdf.model.BNode;
-import org.openrdf.model.Literal;
-import org.openrdf.model.Resource;
-import org.openrdf.model.URI;
-import org.openrdf.model.Value;
-import org.openrdf.model.datatypes.XMLDatatypeUtil;
-import org.openrdf.model.impl.BooleanLiteralImpl;
-import org.openrdf.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.BNode;
+import org.eclipse.rdf4j.model.Literal;
+import org.eclipse.rdf4j.model.Resource;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.Value;
+import org.eclipse.rdf4j.model.datatypes.XMLDatatypeUtil;
+import org.eclipse.rdf4j.model.impl.BooleanLiteralImpl;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
 
 import com.bigdata.cache.WeakValueCache;
 import com.bigdata.rdf.internal.IV;
@@ -290,12 +290,12 @@ public class BigdataValueFactoryImpl implements BigdataValueFactory {
     	// Subject, predicate, object and context should be processed to use the target value factory
     	// See https://jira.blazegraph.com/browse/BLZG-1875
     	final BigdataResource originalS = stmt.getSubject();
-    	final BigdataURI originalP = stmt.getPredicate();
+    	final BigdataIRI originalP = stmt.getPredicate();
     	final BigdataValue originalO = stmt.getObject();
     	final BigdataResource originalC = stmt.getContext();
     	
     	final BigdataResource s = asValue(originalS);
-    	final BigdataURI p = asValue(originalP);
+    	final BigdataIRI p = asValue(originalP);
     	final BigdataValue o = asValue(originalO);
     	final BigdataResource c = asValue(originalC);
 
@@ -625,7 +625,7 @@ public class BigdataValueFactoryImpl implements BigdataValueFactory {
         
         return new BigdataStatementImpl(//
                 (BigdataResource) asValue(s),//
-                (BigdataURI)      asValue(p),//
+                (BigdataIRI)      asValue(p),//
                 (BigdataValue)    asValue(o),//
                 (BigdataResource) asValue(c),// optional
                 type, // the statement type (optional).
@@ -692,7 +692,7 @@ public class BigdataValueFactoryImpl implements BigdataValueFactory {
                     this,// Note: Passing in this factory!
                     label,//
                     language,//
-                    (BigdataURI)asValue(datatype)//
+                    (BigdataIRI)asValue(datatype)//
                     );
 
         } else {
@@ -717,12 +717,12 @@ public class BigdataValueFactoryImpl implements BigdataValueFactory {
     }
 
     @Override
-    public BigdataURI getLangStringURI() {
+    public BigdataIRI getLangStringURI() {
         return rdf_langstring;
     }
 
     @Override
-    public BigdataURI getXSDStringURI() {
+    public BigdataIRI getXSDStringURI() {
         return xsd_string;
     }
 
@@ -734,9 +734,9 @@ public class BigdataValueFactoryImpl implements BigdataValueFactory {
     }
 
     @Override
-    public BigdataURI asValue(URI v) {
+    public BigdataIRI asValue(URI v) {
         
-        return (BigdataURI)asValue((Value)v);
+        return (BigdataIRI)asValue((Value)v);
         
     }
 

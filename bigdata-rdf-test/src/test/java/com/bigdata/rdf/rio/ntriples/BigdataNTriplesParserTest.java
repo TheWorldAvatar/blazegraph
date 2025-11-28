@@ -5,7 +5,7 @@
  */
 package com.bigdata.rdf.rio.ntriples;
 
-import org.openrdf.rio.RDFParser;
+import org.eclipse.rdf4j.rio.RDFParser;
 
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.model.BigdataValueFactoryImpl;

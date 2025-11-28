@@ -24,8 +24,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 package com.bigdata.rdf.internal.impl.uri;
 
-import org.openrdf.model.URI;
-import org.openrdf.model.Value;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.Value;
 
 import com.bigdata.rdf.internal.DTE;
 import com.bigdata.rdf.internal.IInlineUnicode;
@@ -34,7 +34,7 @@ import com.bigdata.rdf.internal.IVUnicode;
 import com.bigdata.rdf.internal.VTE;
 import com.bigdata.rdf.internal.impl.AbstractInlineIV;
 import com.bigdata.rdf.lexicon.LexiconRelation;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValueFactory;
 
 /**
@@ -42,7 +42,7 @@ import com.bigdata.rdf.model.BigdataValueFactory;
  * class is mainly targeted at inlining at fully inlining URIs in scale-out
  * (which can be an attractive option).
  */
-public class FullyInlineURIIV<V extends BigdataURI> extends AbstractInlineIV<V, URI>
+public class FullyInlineURIIV<V extends BigdataIRI> extends AbstractInlineIV<V, URI>
         implements IInlineUnicode, URI {
 
     /**

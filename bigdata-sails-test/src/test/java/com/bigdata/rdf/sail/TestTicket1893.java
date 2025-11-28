@@ -29,11 +29,11 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.UUID;
 
-import org.openrdf.model.vocabulary.XMLSchema;
-import org.openrdf.query.QueryLanguage;
-import org.openrdf.repository.RepositoryException;
-import org.openrdf.rio.RDFFormat;
-import org.openrdf.rio.RDFParseException;
+import org.eclipse.rdf4j.model.vocabulary.XMLSchema;
+import org.eclipse.rdf4j.query.QueryLanguage;
+import org.eclipse.rdf4j.repository.RepositoryException;
+import org.eclipse.rdf4j.rio.RDFFormat;
+import org.eclipse.rdf4j.rio.RDFParseException;
 
 import com.bigdata.journal.IJournal;
 import com.bigdata.rdf.internal.XSD;

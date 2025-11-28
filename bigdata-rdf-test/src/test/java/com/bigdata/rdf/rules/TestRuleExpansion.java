@@ -29,10 +29,10 @@ package com.bigdata.rdf.rules;
 
 import java.util.HashMap;
 import java.util.Map;
-import org.openrdf.model.URI;
-import org.openrdf.model.Value;
-import org.openrdf.model.impl.URIImpl;
-import org.openrdf.model.vocabulary.OWL;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.Value;
+import org.eclipse.rdf4j.model.impl.URIImpl;
+import org.eclipse.rdf4j.model.vocabulary.OWL;
 
 import com.bigdata.bop.Constant;
 import com.bigdata.bop.IBindingSet;

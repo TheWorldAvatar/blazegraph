@@ -47,7 +47,7 @@ Modifications:
 
 package com.bigdata.rdf.model;
 
-import org.openrdf.model.BNode;
+import org.eclipse.rdf4j.model.BNode;
 
 /**
  * A {@link BNode} that exposes the internal term identifier.

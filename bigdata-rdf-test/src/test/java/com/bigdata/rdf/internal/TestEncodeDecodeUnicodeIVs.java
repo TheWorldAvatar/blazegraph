@@ -27,11 +27,11 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 package com.bigdata.rdf.internal;
 
-import org.openrdf.model.Literal;
-import org.openrdf.model.URI;
-import org.openrdf.model.impl.LiteralImpl;
-import org.openrdf.model.impl.URIImpl;
-import org.openrdf.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.Literal;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.impl.LiteralImpl;
+import org.eclipse.rdf4j.model.impl.URIImpl;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
 
 import com.bigdata.rdf.internal.impl.bnode.FullyInlineUnicodeBNodeIV;
 import com.bigdata.rdf.internal.impl.extensions.XSDStringExtension;
@@ -44,7 +44,7 @@ import com.bigdata.rdf.internal.impl.uri.VocabURIByteIV;
 import com.bigdata.rdf.internal.impl.uri.VocabURIShortIV;
 import com.bigdata.rdf.model.BigdataBNode;
 import com.bigdata.rdf.model.BigdataLiteral;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.model.BigdataValueFactoryImpl;
@@ -87,8 +87,8 @@ public class TestEncodeDecodeUnicodeIVs extends
         final XSDStringExtension<BigdataValue> ext = 
             new XSDStringExtension<BigdataValue>(
                 new IDatatypeURIResolver() {
-                    public BigdataURI resolve(final URI uri) {
-                        final BigdataURI buri = vf.createURI(uri.stringValue());
+                    public BigdataIRI resolve(final URI uri) {
+                        final BigdataIRI buri = vf.createURI(uri.stringValue());
                         buri.setIV(newTermId(VTE.URI));
                         return buri;
                     }
@@ -124,11 +124,11 @@ public class TestEncodeDecodeUnicodeIVs extends
     public void test_encodeDecode_Inline_URI() {
         
         final IV<?, ?>[] e = {//
-                new FullyInlineURIIV<BigdataURI>(new URIImpl("http://www.bigdata.com")),//
-                new FullyInlineURIIV<BigdataURI>(RDF.TYPE),//
-                new FullyInlineURIIV<BigdataURI>(RDF.SUBJECT),//
-                new FullyInlineURIIV<BigdataURI>(RDF.BAG),//
-                new FullyInlineURIIV<BigdataURI>(RDF.OBJECT),//
+                new FullyInlineURIIV<BigdataIRI>(new URIImpl("http://www.bigdata.com")),//
+                new FullyInlineURIIV<BigdataIRI>(RDF.TYPE),//
+                new FullyInlineURIIV<BigdataIRI>(RDF.SUBJECT),//
+                new FullyInlineURIIV<BigdataIRI>(RDF.BAG),//
+                new FullyInlineURIIV<BigdataIRI>(RDF.OBJECT),//
         };
 
         doEncodeDecodeTest(e);
@@ -146,18 +146,18 @@ public class TestEncodeDecodeUnicodeIVs extends
     public void test_encodeDecode_Inline_Extension_URI() {
 
         final IV<?, ?>[] e = {//
-                new URIExtensionIV<BigdataURI>(
+                new URIExtensionIV<BigdataIRI>(
                         new FullyInlineTypedLiteralIV<BigdataLiteral>(
                                 "http://www.example.com/"),
-                        new VocabURIByteIV<BigdataURI>((byte) 1)),//
-                new URIExtensionIV<BigdataURI>(
+                        new VocabURIByteIV<BigdataIRI>((byte) 1)),//
+                new URIExtensionIV<BigdataIRI>(
                         new FullyInlineTypedLiteralIV<BigdataLiteral>(
                                 "http://www.example.com/foo"),
-                        new VocabURIByteIV<BigdataURI>((byte) 1)),//
-                new URIExtensionIV<BigdataURI>(
+                        new VocabURIByteIV<BigdataIRI>((byte) 1)),//
+                new URIExtensionIV<BigdataIRI>(
                         new FullyInlineTypedLiteralIV<BigdataLiteral>(
                                 "http://www.example.com/foobar"),
-                        new VocabURIByteIV<BigdataURI>((byte) 1)),//
+                        new VocabURIByteIV<BigdataIRI>((byte) 1)),//
         };
 
         doEncodeDecodeTest(e);
@@ -448,15 +448,15 @@ public class TestEncodeDecodeUnicodeIVs extends
         final IV<?,?> namespaceIV = newTermId(VTE.URI);
         
         final IV<?, ?>[] e = {//
-                new PartlyInlineURIIV<BigdataURI>(
+                new PartlyInlineURIIV<BigdataIRI>(
                         new FullyInlineTypedLiteralIV<BigdataLiteral>("bar"), namespaceIV),//
-                new PartlyInlineURIIV<BigdataURI>(
+                new PartlyInlineURIIV<BigdataIRI>(
                         new FullyInlineTypedLiteralIV<BigdataLiteral>("baz"), namespaceIV),//
-                new PartlyInlineURIIV<BigdataURI>(
+                new PartlyInlineURIIV<BigdataIRI>(
                         new FullyInlineTypedLiteralIV<BigdataLiteral>("123"), namespaceIV),//
-                new PartlyInlineURIIV<BigdataURI>(
+                new PartlyInlineURIIV<BigdataIRI>(
                         new FullyInlineTypedLiteralIV<BigdataLiteral>("23"), namespaceIV),//
-                new PartlyInlineURIIV<BigdataURI>(
+                new PartlyInlineURIIV<BigdataIRI>(
                         new FullyInlineTypedLiteralIV<BigdataLiteral>("3"), namespaceIV),//
         };
 
@@ -525,45 +525,45 @@ public class TestEncodeDecodeUnicodeIVs extends
     public void test_encodeDecode_URINamespaceIV() {
 
         final IV<?, ?>[] e = {//
-                new PartlyInlineURIIV<BigdataURI>(
+                new PartlyInlineURIIV<BigdataIRI>(
                         new FullyInlineTypedLiteralIV<BigdataLiteral>("bar"),// localName
-                        new VocabURIShortIV<BigdataURI>((short) 1) // namespace
+                        new VocabURIShortIV<BigdataIRI>((short) 1) // namespace
                 ),//
-                new PartlyInlineURIIV<BigdataURI>(
+                new PartlyInlineURIIV<BigdataIRI>(
                         new FullyInlineTypedLiteralIV<BigdataLiteral>("baz"),// localName
-                        new VocabURIShortIV<BigdataURI>((short) 1) // namespace
+                        new VocabURIShortIV<BigdataIRI>((short) 1) // namespace
                 ),//
-                new PartlyInlineURIIV<BigdataURI>(
+                new PartlyInlineURIIV<BigdataIRI>(
                         new FullyInlineTypedLiteralIV<BigdataLiteral>("bar"),// localName
-                        new VocabURIShortIV<BigdataURI>((short) 2) // namespace
+                        new VocabURIShortIV<BigdataIRI>((short) 2) // namespace
                 ),//
-                new PartlyInlineURIIV<BigdataURI>(
+                new PartlyInlineURIIV<BigdataIRI>(
                         new FullyInlineTypedLiteralIV<BigdataLiteral>("baz"),// localName
-                        new VocabURIShortIV<BigdataURI>((short) 2) // namespace
+                        new VocabURIShortIV<BigdataIRI>((short) 2) // namespace
                 ),//
-                new PartlyInlineURIIV<BigdataURI>(
+                new PartlyInlineURIIV<BigdataIRI>(
                         new FullyInlineTypedLiteralIV<BigdataLiteral>("123"),// localName
-                        new VocabURIShortIV<BigdataURI>((short) 2) // namespace
+                        new VocabURIShortIV<BigdataIRI>((short) 2) // namespace
                 ),//
-                new PartlyInlineURIIV<BigdataURI>(
+                new PartlyInlineURIIV<BigdataIRI>(
                         new FullyInlineTypedLiteralIV<BigdataLiteral>("123"),// localName
-                        new VocabURIShortIV<BigdataURI>((short) 2) // namespace
+                        new VocabURIShortIV<BigdataIRI>((short) 2) // namespace
                 ),//
-                new PartlyInlineURIIV<BigdataURI>(
+                new PartlyInlineURIIV<BigdataIRI>(
                         new FullyInlineTypedLiteralIV<BigdataLiteral>("23"),// localName
-                        new VocabURIShortIV<BigdataURI>((short) 2) // namespace
+                        new VocabURIShortIV<BigdataIRI>((short) 2) // namespace
                 ),//
-                new PartlyInlineURIIV<BigdataURI>(
+                new PartlyInlineURIIV<BigdataIRI>(
                         new FullyInlineTypedLiteralIV<BigdataLiteral>("23"),// localName
-                        new VocabURIShortIV<BigdataURI>((short) 2) // namespace
+                        new VocabURIShortIV<BigdataIRI>((short) 2) // namespace
                 ),//
-                new PartlyInlineURIIV<BigdataURI>(
+                new PartlyInlineURIIV<BigdataIRI>(
                         new FullyInlineTypedLiteralIV<BigdataLiteral>("3"),// localName
-                        new VocabURIShortIV<BigdataURI>((short) 2) // namespace
+                        new VocabURIShortIV<BigdataIRI>((short) 2) // namespace
                 ),//
-                new PartlyInlineURIIV<BigdataURI>(
+                new PartlyInlineURIIV<BigdataIRI>(
                         new FullyInlineTypedLiteralIV<BigdataLiteral>("3"),// localName
-                        new VocabURIShortIV<BigdataURI>((short) 2) // namespace
+                        new VocabURIShortIV<BigdataIRI>((short) 2) // namespace
                 ),//
         };
 
@@ -580,8 +580,8 @@ public class TestEncodeDecodeUnicodeIVs extends
      */
     public void test_encodeDecode_LiteralNamespaceIV() {
 
-        final IV<?,?> datatypeIV = new VocabURIShortIV<BigdataURI>((short) 1);
-        final IV<?,?> datatypeIV2 = new VocabURIShortIV<BigdataURI>((short) 2);
+        final IV<?,?> datatypeIV = new VocabURIShortIV<BigdataIRI>((short) 1);
+        final IV<?,?> datatypeIV2 = new VocabURIShortIV<BigdataIRI>((short) 2);
 
         final IV<?, ?>[] e = {//
                 new PartlyInlineTypedLiteralIV<BigdataLiteral>(

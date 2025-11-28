@@ -39,8 +39,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
 
-import org.openrdf.model.impl.URIImpl;
-import org.openrdf.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.impl.URIImpl;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
 
 import com.bigdata.btree.keys.IKeyBuilder;
 import com.bigdata.btree.keys.KeyBuilder;
@@ -79,7 +79,7 @@ import com.bigdata.rdf.lexicon.ITermIndexCodes;
 import com.bigdata.rdf.lexicon.TermIdEncoder;
 import com.bigdata.rdf.model.BigdataBNode;
 import com.bigdata.rdf.model.BigdataLiteral;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.StatementEnum;
 import com.bigdata.rdf.spo.ISPO;
 import com.bigdata.rdf.spo.SPOKeyOrder;
@@ -367,7 +367,7 @@ public class IVUtility {
                     // TODO Should really be switch((int)extensionByte).
                     switch (AbstractIV.getInternalValueTypeEnum(flags)) {
                     case URI:
-                        return new PartlyInlineURIIV<BigdataURI>(delegate,
+                        return new PartlyInlineURIIV<BigdataIRI>(delegate,
                                 extensionIV);
                     case LITERAL:
                         return new PartlyInlineTypedLiteralIV<BigdataLiteral>(delegate,
@@ -534,7 +534,7 @@ public class IVUtility {
                     (AbstractLiteralIV<BigdataLiteral, ?>) decodeFromOffset(
                             key, o);
             
-            final IV iv = new URIExtensionIV<BigdataURI>(localNameIV,
+            final IV iv = new URIExtensionIV<BigdataIRI>(localNameIV,
                     namespaceIV);
             
             return iv;
@@ -558,11 +558,11 @@ public class IVUtility {
 //        }
         case XSDByte: {
             final byte x = key[o];//KeyBuilder.decodeByte(key[o]);
-            return new VocabURIByteIV<BigdataURI>(x);
+            return new VocabURIByteIV<BigdataIRI>(x);
         }
         case XSDShort: {
             final short x = KeyBuilder.decodeShort(key, o);
-            return new VocabURIShortIV<BigdataURI>(x);
+            return new VocabURIShortIV<BigdataIRI>(x);
         }
         case XSDString: {
             // decode buffer.
@@ -578,7 +578,7 @@ public class IVUtility {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            return new FullyInlineURIIV<BigdataURI>(new URIImpl(str1),
+            return new FullyInlineURIIV<BigdataIRI>(new URIImpl(str1),
                     1/* flags */+ nbytes);
         }
         default:

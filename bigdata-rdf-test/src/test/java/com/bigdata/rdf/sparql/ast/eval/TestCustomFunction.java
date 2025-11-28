@@ -29,10 +29,10 @@ package com.bigdata.rdf.sparql.ast.eval;
 
 import java.util.Map;
 
-import org.openrdf.model.Literal;
-import org.openrdf.model.URI;
-import org.openrdf.model.impl.LiteralImpl;
-import org.openrdf.model.impl.URIImpl;
+import org.eclipse.rdf4j.model.Literal;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.impl.LiteralImpl;
+import org.eclipse.rdf4j.model.impl.URIImpl;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.BOpContextBase;

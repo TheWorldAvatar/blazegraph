@@ -30,6 +30,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Properties;
 import java.util.Set;
 import java.util.regex.Matcher;
@@ -44,10 +45,10 @@ import static org.apache.commons.lang.StringEscapeUtils.escapeHtml;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.model.BNode;
-import org.openrdf.model.Graph;
-import org.openrdf.model.impl.LinkedHashModel;
-import org.openrdf.model.impl.ValueFactoryImpl;
+import org.eclipse.rdf4j.model.BNode;
+import org.eclipse.rdf4j.model.Model;
+import org.eclipse.rdf4j.model.impl.LinkedHashModel;
+import org.eclipse.rdf4j.model.impl.ValueFactoryImpl;
 
 import com.bigdata.btree.IndexMetadata;
 import com.bigdata.journal.IIndexManager;
@@ -341,10 +342,10 @@ public class MultiTenancyServlet extends BigdataRDFServlet {
             if (log.isInfoEnabled())
                 log.info("Format=" + format);
             
-            final PropertiesParserFactory parserFactory = PropertiesParserRegistry
+            final Optional<PropertiesParserFactory> parserFactory = PropertiesParserRegistry
                     .getInstance().get(format);
 
-            if (parserFactory == null) {
+            if (parserFactory.isEmpty()) {
 
                 buildAndCommitResponse(resp, HTTP_INTERNALERROR, MIME_TEXT_PLAIN,
                         "Parser factory not found: Content-Type="
@@ -358,7 +359,7 @@ public class MultiTenancyServlet extends BigdataRDFServlet {
              * There is a request body, so let's try and parse it.
              */
 
-            final PropertiesParser parser = parserFactory.getParser();
+            final PropertiesParser parser = parserFactory.get().getParser();
 
             // The given Properties.
             given = parser.parse(req.getInputStream());
@@ -552,10 +553,10 @@ public class MultiTenancyServlet extends BigdataRDFServlet {
             if (log.isInfoEnabled())
                 log.info("Format=" + format);
             
-            final PropertiesParserFactory parserFactory = PropertiesParserRegistry
+            final Optional<PropertiesParserFactory> parserFactory = PropertiesParserRegistry
                     .getInstance().get(format);
 
-            if (parserFactory == null) {
+            if (parserFactory.isEmpty()) {
 
                 buildAndCommitResponse(resp, HTTP_INTERNALERROR, MIME_TEXT_PLAIN,
                         "Parser factory not found: Content-Type="
@@ -569,7 +570,7 @@ public class MultiTenancyServlet extends BigdataRDFServlet {
              * There is a request body, so let's try and parse it.
              */
 
-            final PropertiesParser parser = parserFactory.getParser();
+            final PropertiesParser parser = parserFactory.get().getParser();
 
             // The given Properties.
             props = parser.parse(req.getInputStream());
@@ -744,7 +745,7 @@ public class MultiTenancyServlet extends BigdataRDFServlet {
 
         try {
             
-            final Graph g = new LinkedHashModel();
+            final Model g = new LinkedHashModel();
 
             if (describeDefaultNamespace) {
 
@@ -787,10 +788,10 @@ public class MultiTenancyServlet extends BigdataRDFServlet {
     }
     
     /**
-     * Describe a namespace into the supplied Graph object.
+     * Describe a namespace into the supplied Model object.
      */
     private void describeNamespaceTx(final HttpServletRequest req,
-            final Graph g, final String namespace,
+            final Model g, final String namespace,
             final boolean describeEachNamedGraph, final long tx) 
                     throws IOException {
         

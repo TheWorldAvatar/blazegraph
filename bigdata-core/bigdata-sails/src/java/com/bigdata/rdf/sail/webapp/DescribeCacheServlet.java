@@ -34,18 +34,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.model.Graph;
-import org.openrdf.model.Statement;
-import org.openrdf.model.URI;
-import org.openrdf.model.impl.GraphImpl;
-import org.openrdf.rio.RDFFormat;
-import org.openrdf.rio.RDFWriter;
-import org.openrdf.rio.RDFWriterRegistry;
+import org.eclipse.rdf4j.model.Model;
+import org.eclipse.rdf4j.model.Statement;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.impl.LinkedHashModel;
+import org.eclipse.rdf4j.rio.RDFFormat;
+import org.eclipse.rdf4j.rio.RDFWriter;
+import org.eclipse.rdf4j.rio.RDFWriterRegistry;
 
 import com.bigdata.bop.engine.QueryEngine;
 import com.bigdata.bop.fed.QueryEngineFactory;
 import com.bigdata.rdf.internal.IV;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.sparql.ast.cache.CacheConnectionFactory;
@@ -87,7 +87,7 @@ import com.bigdata.rdf.store.AbstractTripleStore;
  * 
  * TODO Take advantage of the known materialization performed by a DESCRIBE
  * query when running queries (materialized star-join). Also, store IVs in the
- * Graph as well as Values. We need both to do efficient star-joins (enter by IV
+ * Model as well as Values. We need both to do efficient star-joins (enter by IV
  * and have IV on output).
  * 
  * TODO Hash partitioned DESCRIBE fabric. The partitioned map is easy enough and
@@ -144,8 +144,8 @@ public class DescribeCacheServlet extends BigdataRDFServlet {
          * 
          * 2. Else, if the request is a SPARQL DESCRIBE, then extract the URIs
          * to be described and attach them as request attributes (on a set).
-         * A single Graph will be returned in this case. The client will have
-         * to inspect the Graph to decide which URIs were found and which were
+         * A single Model will be returned in this case. The client will have
+         * to inspect the Model to decide which URIs were found and which were
          * not.
          * 
          * 3. Check the request attribute for a set of URIs to be DESCRIBEd.
@@ -222,7 +222,7 @@ public class DescribeCacheServlet extends BigdataRDFServlet {
         /*
          * Ensure that URIs are BigdatURIs for this namespace.
          */
-        final Set<BigdataURI> internalURIs = new LinkedHashSet<BigdataURI>();
+        final Set<BigdataIRI> internalURIs = new LinkedHashSet<BigdataIRI>();
         {
 
             final BigdataValueFactory valueFactory = tripleStore
@@ -262,14 +262,14 @@ public class DescribeCacheServlet extends BigdataRDFServlet {
          * 
          * TODO Support SKETCH (VoID request) option here.
          */
-        Graph g = null;
+        Model g = null;
         {
 
-            for (BigdataURI uri : internalURIs) {
+            for (BigdataIRI uri : internalURIs) {
 
                 final IV<?, ?> iv = uri.getIV();
 
-                final Graph x = describeCache.lookup(iv);
+                final Model x = describeCache.lookup(iv);
 
                 if (x != null && g == null) {
 
@@ -281,7 +281,7 @@ public class DescribeCacheServlet extends BigdataRDFServlet {
                     } else {
 
                         // Collect the DESCRIBE of all graphs.
-                        g = new GraphImpl();
+                        g = new LinkedHashModel();
 
                         // Combine the resource descriptions together.
                         g.addAll(x);
@@ -362,7 +362,7 @@ public class DescribeCacheServlet extends BigdataRDFServlet {
             final OutputStream os = resp.getOutputStream();
 
             final RDFWriter w = RDFWriterRegistry.getInstance().get(format)
-                    .getWriter(os);
+                    .get().getWriter(os);
 
             w.startRDF();
 

@@ -23,10 +23,10 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 package com.bigdata.rdf.spo;
 
-import org.openrdf.model.Resource;
-import org.openrdf.model.Statement;
-import org.openrdf.model.URI;
-import org.openrdf.model.Value;
+import org.eclipse.rdf4j.model.Resource;
+import org.eclipse.rdf4j.model.Statement;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.Value;
 
 import com.bigdata.bop.IConstant;
 import com.bigdata.bop.IPredicate;
@@ -40,7 +40,7 @@ import com.bigdata.rdf.internal.impl.bnode.SidIV;
 import com.bigdata.rdf.model.BigdataResource;
 import com.bigdata.rdf.model.BigdataStatement;
 import com.bigdata.rdf.model.BigdataStatementImpl;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.StatementEnum;
 import com.bigdata.rdf.store.AbstractTripleStore;
@@ -396,7 +396,7 @@ public class SPO implements ISPO, java.io.Serializable {
      * @param o
      * @param type
      */
-    public SPO(final BigdataResource s, final BigdataURI p,
+    public SPO(final BigdataResource s, final BigdataIRI p,
             final BigdataValue o, final StatementEnum type) {
 
         this(s.getIV(), p.getIV(), o.getIV(), type);

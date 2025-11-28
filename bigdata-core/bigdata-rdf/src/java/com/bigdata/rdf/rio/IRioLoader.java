@@ -30,8 +30,8 @@ package com.bigdata.rdf.rio;
 import java.io.InputStream;
 import java.io.Reader;
 
-import org.openrdf.rio.RDFFormat;
-import org.openrdf.rio.RDFParser;
+import org.eclipse.rdf4j.rio.RDFFormat;
+import org.eclipse.rdf4j.rio.RDFParser;
 
 /**
  * Interface for parsing RDF data using the Sesame RIO parser.

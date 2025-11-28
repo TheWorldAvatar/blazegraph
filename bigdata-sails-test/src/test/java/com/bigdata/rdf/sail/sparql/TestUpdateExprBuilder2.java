@@ -25,15 +25,15 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 package com.bigdata.rdf.sail.sparql;
 
-import org.openrdf.query.MalformedQueryException;
-import org.openrdf.query.algebra.StatementPattern.Scope;
+import org.eclipse.rdf4j.query.MalformedQueryException;
+import org.eclipse.rdf4j.query.algebra.StatementPattern.Scope;
 
 import com.bigdata.rdf.internal.IV;
 import com.bigdata.rdf.internal.XSD;
 import com.bigdata.rdf.model.BigdataLiteral;
 import com.bigdata.rdf.model.BigdataResource;
 import com.bigdata.rdf.model.BigdataStatement;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.StatementEnum;
 import com.bigdata.rdf.sail.sparql.ast.ParseException;
@@ -380,22 +380,22 @@ public class TestUpdateExprBuilder2 extends AbstractBigdataExprBuilderTestCase {
 //                    new ConstantNode(hintQuery), new ConstantNode(hintExpireAge),
 //                    new ConstantNode(millis)));
 
-          final BigdataURI hintQuery = valueFactory.createURI(QueryHints.NAMESPACE+QueryHintScope.Query);
-          final BigdataURI hintEngine = valueFactory.createURI(QueryHints.NAMESPACE+"engine");
-          final BigdataURI hintExpireAge = valueFactory.createURI(QueryHints.NAMESPACE+"expireAge");
+          final BigdataIRI hintQuery = valueFactory.createURI(QueryHints.NAMESPACE+QueryHintScope.Query);
+          final BigdataIRI hintEngine = valueFactory.createURI(QueryHints.NAMESPACE+"engine");
+          final BigdataIRI hintExpireAge = valueFactory.createURI(QueryHints.NAMESPACE+"expireAge");
           final BigdataLiteral cache = valueFactory.createLiteral("cache");
           final BigdataLiteral millis = valueFactory.createLiteral("100000",XSD.LONG);
 
             final BigdataStatement[] params = new BigdataStatement[] {
                     valueFactory.createStatement(//
                             (BigdataResource)hintQuery, //
-                            (BigdataURI)hintEngine,//
+                            (BigdataIRI)hintEngine,//
                             (BigdataValue)cache, //
                             null, // c
                             StatementEnum.Explicit),//
                     valueFactory.createStatement(//
                             (BigdataResource)hintQuery,//
-                            (BigdataURI)hintExpireAge,//
+                            (BigdataIRI)hintExpireAge,//
                             (BigdataValue)millis,//
                             null,// c 
                             StatementEnum.Explicit),//

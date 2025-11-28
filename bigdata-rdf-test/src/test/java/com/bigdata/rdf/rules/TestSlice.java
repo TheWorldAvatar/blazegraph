@@ -37,7 +37,7 @@ import com.bigdata.bop.Var;
 import com.bigdata.bop.bindingSet.ListBindingSet;
 import com.bigdata.rdf.axioms.NoAxioms;
 import com.bigdata.rdf.internal.IV;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.model.StatementEnum;
@@ -117,20 +117,20 @@ public class TestSlice extends AbstractRuleTestCase {
 
             final BigdataValueFactory f = store.getValueFactory();
             
-            final BigdataURI foo = f.createURI("http://www.bigdata.com/foo");
-            final BigdataURI bar = f.createURI("http://www.bigdata.com/bar");
+            final BigdataIRI foo = f.createURI("http://www.bigdata.com/foo");
+            final BigdataIRI bar = f.createURI("http://www.bigdata.com/bar");
 
-            final BigdataURI x0 = f.createURI("http://www.bigdata.com/x0");
-            final BigdataURI x1 = f.createURI("http://www.bigdata.com/x1");
-            final BigdataURI x2 = f.createURI("http://www.bigdata.com/x2");
+            final BigdataIRI x0 = f.createURI("http://www.bigdata.com/x0");
+            final BigdataIRI x1 = f.createURI("http://www.bigdata.com/x1");
+            final BigdataIRI x2 = f.createURI("http://www.bigdata.com/x2");
 
-            final BigdataURI y0 = f.createURI("http://www.bigdata.com/y0");
-            final BigdataURI y1 = f.createURI("http://www.bigdata.com/y1");
-            final BigdataURI y2 = f.createURI("http://www.bigdata.com/y2");
+            final BigdataIRI y0 = f.createURI("http://www.bigdata.com/y0");
+            final BigdataIRI y1 = f.createURI("http://www.bigdata.com/y1");
+            final BigdataIRI y2 = f.createURI("http://www.bigdata.com/y2");
             
-            final BigdataURI z0 = f.createURI("http://www.bigdata.com/z0");
-            final BigdataURI z1 = f.createURI("http://www.bigdata.com/z1");
-            final BigdataURI z2 = f.createURI("http://www.bigdata.com/z2");
+            final BigdataIRI z0 = f.createURI("http://www.bigdata.com/z0");
+            final BigdataIRI z1 = f.createURI("http://www.bigdata.com/z1");
+            final BigdataIRI z2 = f.createURI("http://www.bigdata.com/z2");
             
             /*
              * Define the terms that we will be using.

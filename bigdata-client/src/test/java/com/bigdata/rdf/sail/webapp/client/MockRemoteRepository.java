@@ -3,6 +3,7 @@ package com.bigdata.rdf.sail.webapp.client;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
@@ -13,8 +14,10 @@ import org.eclipse.jetty.client.api.Response.ResponseListener;
 import org.eclipse.jetty.client.api.Result;
 import org.eclipse.jetty.http.HttpHeader;
 import org.eclipse.jetty.util.Callback;
-import org.openrdf.query.resultio.TupleQueryResultFormat;
-import org.openrdf.rio.RDFFormat;
+import org.eclipse.rdf4j.query.resultio.QueryResultFormat;
+import org.eclipse.rdf4j.query.resultio.TupleQueryResultFormat;
+import org.eclipse.rdf4j.query.resultio.TupleQueryResultParserRegistry;
+import org.eclipse.rdf4j.rio.RDFFormat;
 
 public class MockRemoteRepository extends RemoteRepository {
 
@@ -53,10 +56,10 @@ public class MockRemoteRepository extends RemoteRepository {
 							
 						};
 						String requestMimeType = request.getHeaders().get(HttpHeader.ACCEPT).split(";")[0];
-						TupleQueryResultFormat tupleQueryMimeType = TupleQueryResultFormat.forMIMEType(requestMimeType);
+						Optional<QueryResultFormat> tupleQueryMimeType = TupleQueryResultParserRegistry.getInstance().getFileFormatForMIMEType(requestMimeType);
 						String responseMimeType;
 						String responseContent;
-						if (tupleQueryMimeType!=null) {
+						if (tupleQueryMimeType.isPresent()) {
 							responseMimeType = TupleQueryResultFormat.TSV.getDefaultMIMEType();
 							responseContent = tupleQueryResponse;
 						} else {

@@ -31,9 +31,9 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import org.openrdf.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
 
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.sail.sparql.PrefixDeclProcessor;
@@ -481,17 +481,17 @@ public class TestNegation extends AbstractDataDrivenSPARQLTestCase {
             
             final BigdataValueFactory f = h.getTripleStore().getValueFactory();
             
-            final BigdataURI refEntity = f
+            final BigdataIRI refEntity = f
                     .createURI("os:prop/analysis/refEntity");
 
-            final BigdataURI Kriterion = f.createURI("os:elem/loc/Kriterion");
+            final BigdataIRI Kriterion = f.createURI("os:elem/loc/Kriterion");
             
-            final BigdataURI AnalysisResults = f
+            final BigdataIRI AnalysisResults = f
                     .createURI("os:class/AnalysisResults");
             
-            final BigdataURI Artis = f.createURI("os:elem/loc/Artis");
+            final BigdataIRI Artis = f.createURI("os:elem/loc/Artis");
             
-            final BigdataURI rdfType = f.asValue(RDF.TYPE);
+            final BigdataIRI rdfType = f.asValue(RDF.TYPE);
             
             final BigdataValue[] values = new BigdataValue[] { refEntity,
                     Kriterion, AnalysisResults, Artis, rdfType };

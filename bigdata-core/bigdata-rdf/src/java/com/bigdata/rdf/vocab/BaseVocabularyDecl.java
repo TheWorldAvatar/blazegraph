@@ -28,30 +28,31 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
 
-import org.openrdf.model.URI;
-import org.openrdf.model.impl.URIImpl;
+import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
+import org.eclipse.rdf4j.model.impl.URIImpl;
 
 /**
  * Basic {@link VocabularyDecl} implementation.
  */
 public class BaseVocabularyDecl implements VocabularyDecl {
 
-    private final URI[] uris;
+    private final IRI[] iris;
 
     /**
-     * Construct a decl from an array of URIs or URI Strings.  Any object types
-     * other than URI or String will cause an IllegalArgumentException.
+     * Construct a decl from an array of URIs or IRI Strings.  Any object types
+     * other than IRI or String will cause an IllegalArgumentException.
      */
     public BaseVocabularyDecl(final Object... uris) {
         if (uris == null) {
-            this.uris = new URI[0];
+            this.iris = new IRI[0];
         } else {
-            this.uris = new URI[uris.length];
+            this.iris = new IRI[uris.length];
             for (int i = 0; i < uris.length; i++) {
-                if (uris[i] instanceof URI) {
-                    this.uris[i] = (URI) uris[i];
+                if (uris[i] instanceof IRI) {
+                    this.iris[i] = (IRI) uris[i];
                 } else if (uris[i] instanceof String) {
-                    this.uris[i] = new URIImpl((String) uris[i]);
+                    this.iris[i] = SimpleValueFactory.getInstance().createIRI((String) uris[i]);
                 } else {
                     throw new IllegalArgumentException("URIs or Strings only: " + uris[i]);
                 }
@@ -63,8 +64,8 @@ public class BaseVocabularyDecl implements VocabularyDecl {
      * Return an iterator which will visit the declared values. The iterator
      * must not support removal.
      */
-    public Iterator<URI> values() {
-        return Collections.unmodifiableList(Arrays.asList(uris)).iterator();
+    public Iterator<IRI> values() {
+        return Collections.unmodifiableList(Arrays.asList(iris)).iterator();
     }
 
 }

@@ -39,10 +39,10 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.model.Literal;
-import org.openrdf.model.URI;
-import org.openrdf.model.Value;
-import org.openrdf.model.datatypes.XMLDatatypeUtil;
+import org.eclipse.rdf4j.model.Literal;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.Value;
+import org.eclipse.rdf4j.model.datatypes.XMLDatatypeUtil;
 
 import com.bigdata.rdf.internal.IDatatypeURIResolver;
 import com.bigdata.rdf.internal.IExtension;
@@ -51,7 +51,7 @@ import com.bigdata.rdf.internal.XSD;
 import com.bigdata.rdf.internal.impl.literal.AbstractLiteralIV;
 import com.bigdata.rdf.internal.impl.literal.LiteralExtensionIV;
 import com.bigdata.rdf.internal.impl.literal.XSDNumericIV;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.store.AbstractTripleStore;
@@ -68,7 +68,7 @@ public class DateTimeExtension<V extends BigdataValue> implements IExtension<V> 
 	private static final transient Logger log = LogManager.getLogger(DateTimeExtension.class);
 	
 	
-    private final Map<IV,BigdataURI> datatypes;
+    private final Map<IV,BigdataIRI> datatypes;
     
     private final TimeZone defaultTZ;
     
@@ -76,7 +76,7 @@ public class DateTimeExtension<V extends BigdataValue> implements IExtension<V> 
             final TimeZone defaultTZ) {
 
 //        this.dateTime = resolver.resolve(XSD.DATETIME);
-        this.datatypes = new LinkedHashMap<IV,BigdataURI>();
+        this.datatypes = new LinkedHashMap<IV,BigdataIRI>();
         resolve(resolver, XSD.DATETIME);
         resolve(resolver, XSD.DATE);
         resolve(resolver, XSD.TIME);
@@ -96,15 +96,15 @@ public class DateTimeExtension<V extends BigdataValue> implements IExtension<V> 
             log.debug("resolving: " + uri);
         }
     	
-        final BigdataURI val = resolver.resolve(uri);
+        final BigdataIRI val = resolver.resolve(uri);
         datatypes.put(val.getIV(), val);
         
     }
 
     @Override
-    public Set<BigdataURI> getDatatypes() {
+    public Set<BigdataIRI> getDatatypes() {
         
-        return new LinkedHashSet<BigdataURI>(datatypes.values());
+        return new LinkedHashSet<BigdataIRI>(datatypes.values());
         
     }
     
@@ -183,8 +183,8 @@ public class DateTimeExtension<V extends BigdataValue> implements IExtension<V> 
         if (dt == null)
             throw new IllegalArgumentException();
         
-        BigdataURI resolvedDT = null;
-        for (BigdataURI val : datatypes.values()) {
+        BigdataIRI resolvedDT = null;
+        for (BigdataIRI val : datatypes.values()) {
             // Note: URI.stringValue() is efficient....
             if (val.stringValue().equals(dt.stringValue())) {
                 resolvedDT = val;
@@ -224,7 +224,7 @@ public class DateTimeExtension<V extends BigdataValue> implements IExtension<V> 
         
         try {
             
-            final BigdataURI dt = datatypes.get(iv.getExtensionIV());
+            final BigdataIRI dt = datatypes.get(iv.getExtensionIV());
             
             final DatatypeFactory f = datatypeFactorySingleton;
 

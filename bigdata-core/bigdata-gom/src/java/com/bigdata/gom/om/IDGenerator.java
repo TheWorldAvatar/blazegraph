@@ -29,8 +29,8 @@ package com.bigdata.gom.om;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.openrdf.model.URI;
-import org.openrdf.model.ValueFactory;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.ValueFactory;
 
 /**
  * Generator for globally unique URIs.

@@ -41,7 +41,7 @@ import java.util.concurrent.TimeoutException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.eclipse.jetty.client.HttpClient;
-import org.openrdf.query.BindingSet;
+import org.eclipse.rdf4j.query.BindingSet;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.BOpContext;
@@ -57,7 +57,7 @@ import com.bigdata.bop.join.JoinAnnotations;
 import com.bigdata.bop.join.JoinTypeEnum;
 import com.bigdata.htree.HTree;
 import com.bigdata.rdf.lexicon.LexiconRelation;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.sparql.ast.service.BigdataServiceCall;
 import com.bigdata.rdf.sparql.ast.service.ExternalServiceCall;
 import com.bigdata.rdf.sparql.ast.service.MockIVReturningServiceCall;
@@ -321,7 +321,7 @@ public class ServiceCallJoin extends PipelineOp {
          */
         private void doServiceCallWithConstant() throws Exception {
 
-            final BigdataURI serviceURI = ServiceCallUtility
+            final BigdataIRI serviceURI = ServiceCallUtility
                     .getConstantServiceURI(serviceRef);
 
             if (serviceURI == null)
@@ -401,7 +401,7 @@ public class ServiceCallJoin extends PipelineOp {
 
                 while (sitr.hasNext()) {
 
-                    final Map<BigdataURI, ServiceCallChunk> serviceCallChunks = new HashMap<BigdataURI, ServiceCallChunk>();
+                    final Map<BigdataIRI, ServiceCallChunk> serviceCallChunks = new HashMap<BigdataIRI, ServiceCallChunk>();
 
                     final IBindingSet[] chunk = sitr.next();
 
@@ -409,7 +409,7 @@ public class ServiceCallJoin extends PipelineOp {
 
                         final IBindingSet bset = chunk[i];
 
-                        final BigdataURI serviceURI = ServiceCallUtility
+                        final BigdataIRI serviceURI = ServiceCallUtility
                                 .getServiceURI(serviceRef, bset);
 
                         ServiceCallChunk serviceCallChunk = serviceCallChunks
@@ -538,7 +538,7 @@ public class ServiceCallJoin extends PipelineOp {
          * @return The {@link ServiceCall} and never <code>null</code>.
          */
         private ServiceCall<? extends Object> resolveService(
-                final BigdataURI serviceURI) {
+                final BigdataIRI serviceURI) {
 
             final ServiceCall<?> serviceCall = ServiceRegistry.getInstance()
                     .toServiceCall(db, cm, serviceURI, serviceNode, (BaseJoinStats)context.getStats());
@@ -560,7 +560,7 @@ public class ServiceCallJoin extends PipelineOp {
             private final IBindingSet[] chunk;
 
             /** The service URI. */
-            private final BigdataURI serviceURI;
+            private final BigdataIRI serviceURI;
 
             /** The object used to talk to that service. */
             private final ServiceCall<?> serviceCall;
@@ -871,7 +871,7 @@ public class ServiceCallJoin extends PipelineOp {
             }
             
             /**
-             * Service call against a (non sesame based) external endpoint.
+             * Service call against a (non rdf4j based) external endpoint.
              * 
              * @param serviceCall
              *            The object which will make the service call.
@@ -903,7 +903,7 @@ public class ServiceCallJoin extends PipelineOp {
      */
     private static class ServiceCallChunk {
 
-        public final BigdataURI serviceURI;
+        public final BigdataIRI serviceURI;
 
         public final ServiceCall<?> serviceCall;
 
@@ -911,7 +911,7 @@ public class ServiceCallJoin extends PipelineOp {
         
         private final List<IBindingSet> sourceSolutions;
         
-        public ServiceCallChunk(final BigdataURI serviceURI,
+        public ServiceCallChunk(final BigdataIRI serviceURI,
                 final ServiceCall<?> serviceCall, final IBindingSet[] chunk) {
 
             if(serviceURI == null)
@@ -936,7 +936,7 @@ public class ServiceCallJoin extends PipelineOp {
 
         }
 
-        public ServiceCallChunk(final BigdataURI serviceURI,
+        public ServiceCallChunk(final BigdataIRI serviceURI,
                 final ServiceCall<?> serviceCall) {
     
             if(serviceURI == null)

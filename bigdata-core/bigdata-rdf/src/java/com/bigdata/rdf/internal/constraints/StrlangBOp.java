@@ -25,8 +25,8 @@ package com.bigdata.rdf.internal.constraints;
 
 import java.util.Map;
 
-import org.openrdf.model.Literal;
-import org.openrdf.query.algebra.evaluation.util.QueryEvaluationUtil;
+import org.eclipse.rdf4j.model.Literal;
+import org.eclipse.rdf4j.query.algebra.evaluation.util.QueryEvaluationUtil;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.IBindingSet;

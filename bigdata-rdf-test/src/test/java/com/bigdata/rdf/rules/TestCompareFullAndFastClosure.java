@@ -50,7 +50,7 @@ package com.bigdata.rdf.rules;
 import java.io.IOException;
 import java.util.Properties;
 
-import org.openrdf.rio.RDFFormat;
+import org.eclipse.rdf4j.rio.RDFFormat;
 
 import com.bigdata.rdf.rio.LoadStats;
 import com.bigdata.rdf.store.AbstractTripleStore;

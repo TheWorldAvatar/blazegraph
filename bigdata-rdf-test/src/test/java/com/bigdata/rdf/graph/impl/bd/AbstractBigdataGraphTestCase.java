@@ -25,8 +25,8 @@ package com.bigdata.rdf.graph.impl.bd;
 
 import java.util.Properties;
 
-import org.openrdf.model.ValueFactory;
-import org.openrdf.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.ValueFactory;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
 
 import com.bigdata.journal.BufferMode;
 import com.bigdata.journal.Journal;
@@ -34,7 +34,7 @@ import com.bigdata.rdf.graph.AbstractGraphTestCase;
 import com.bigdata.rdf.graph.util.IGraphFixture;
 import com.bigdata.rdf.graph.util.IGraphFixtureFactory;
 import com.bigdata.rdf.internal.IV;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.sail.BigdataSail;
 import com.bigdata.rdf.sail.BigdataSail.BigdataSailConnection;
@@ -111,7 +111,7 @@ abstract public class AbstractBigdataGraphTestCase extends AbstractGraphTestCase
          */
         static private final String smallGraph = "src/test/resources/graph/data/smallGraph.ttl";
 
-        private final BigdataURI rdfType, foafKnows, foafPerson, mike, bryan,
+        private final BigdataIRI rdfType, foafKnows, foafPerson, mike, bryan,
                 martyn;
 
         public SmallGraphProblem() throws Exception {
@@ -124,19 +124,19 @@ abstract public class AbstractBigdataGraphTestCase extends AbstractGraphTestCase
                     
                 final ValueFactory vf = conn.getBigdataSail().getValueFactory();
     
-            rdfType = (BigdataURI) vf.createURI(RDF.TYPE.stringValue());
+            rdfType = (BigdataIRI) vf.createURI(RDF.TYPE.stringValue());
     
-            foafKnows = (BigdataURI) vf
+            foafKnows = (BigdataIRI) vf
                     .createURI("http://xmlns.com/foaf/0.1/knows");
     
-            foafPerson = (BigdataURI) vf
+            foafPerson = (BigdataIRI) vf
                     .createURI("http://xmlns.com/foaf/0.1/Person");
     
-            mike = (BigdataURI) vf.createURI("http://www.bigdata.com/Mike");
+            mike = (BigdataIRI) vf.createURI("http://www.bigdata.com/Mike");
     
-            bryan = (BigdataURI) vf.createURI("http://www.bigdata.com/Bryan");
+            bryan = (BigdataIRI) vf.createURI("http://www.bigdata.com/Bryan");
     
-            martyn = (BigdataURI) vf.createURI("http://www.bigdata.com/Martyn");
+            martyn = (BigdataIRI) vf.createURI("http://www.bigdata.com/Martyn");
     
             final BigdataValue[] terms = new BigdataValue[] { rdfType,
                     foafKnows, foafPerson, mike, bryan, martyn };
@@ -213,7 +213,7 @@ abstract public class AbstractBigdataGraphTestCase extends AbstractGraphTestCase
          */
         static private final String smallWeightedGraph = "src/test/resources/graph/data/smallWeightedGraph.ttlx";
 
-        private final BigdataURI foafKnows, linkWeight, v1, v2, v3, v4, v5;
+        private final BigdataIRI foafKnows, linkWeight, v1, v2, v3, v4, v5;
 
         public SmallWeightedGraphProblem() throws Exception {
 
@@ -225,17 +225,17 @@ abstract public class AbstractBigdataGraphTestCase extends AbstractGraphTestCase
                     
                 final ValueFactory vf = conn.getBigdataSail().getValueFactory();
     
-            foafKnows = (BigdataURI) vf
+            foafKnows = (BigdataIRI) vf
                     .createURI("http://xmlns.com/foaf/0.1/knows");
             
-            linkWeight = (BigdataURI) vf
+            linkWeight = (BigdataIRI) vf
                     .createURI("http://www.bigdata.com/weight");
     
-            v1 = (BigdataURI) vf.createURI("http://www.bigdata.com/1");
-            v2 = (BigdataURI) vf.createURI("http://www.bigdata.com/2");
-            v3 = (BigdataURI) vf.createURI("http://www.bigdata.com/3");
-            v4 = (BigdataURI) vf.createURI("http://www.bigdata.com/4");
-            v5 = (BigdataURI) vf.createURI("http://www.bigdata.com/5");
+            v1 = (BigdataIRI) vf.createURI("http://www.bigdata.com/1");
+            v2 = (BigdataIRI) vf.createURI("http://www.bigdata.com/2");
+            v3 = (BigdataIRI) vf.createURI("http://www.bigdata.com/3");
+            v4 = (BigdataIRI) vf.createURI("http://www.bigdata.com/4");
+            v5 = (BigdataIRI) vf.createURI("http://www.bigdata.com/5");
     
             final BigdataValue[] terms = new BigdataValue[] { foafKnows,
                     linkWeight, v1, v2, v3, v4, v5 };

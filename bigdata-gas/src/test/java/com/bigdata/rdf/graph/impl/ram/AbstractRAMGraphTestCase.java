@@ -15,10 +15,10 @@
 */
 package com.bigdata.rdf.graph.impl.ram;
 
-import org.openrdf.model.URI;
-import org.openrdf.model.ValueFactory;
-import org.openrdf.model.vocabulary.RDF;
-import org.openrdf.model.vocabulary.RDFS;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.ValueFactory;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.vocabulary.RDFS;
 
 import com.bigdata.rdf.graph.AbstractGraphTestCase;
 import com.bigdata.rdf.graph.impl.ram.RAMGASEngine.RAMGraph;

@@ -29,8 +29,8 @@ package com.bigdata.rdf.sparql.ast.eval;
 
 import java.util.Iterator;
 
-import org.openrdf.model.vocabulary.RDF;
-import org.openrdf.model.vocabulary.RDFS;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.vocabulary.RDFS;
 
 import com.bigdata.bop.BOpUtility;
 import com.bigdata.bop.IPredicate;

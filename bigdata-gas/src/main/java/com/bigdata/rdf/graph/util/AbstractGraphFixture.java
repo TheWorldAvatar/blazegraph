@@ -15,7 +15,7 @@
 */
 package com.bigdata.rdf.graph.util;
 
-import org.openrdf.sail.SailConnection;
+import org.eclipse.rdf4j.sail.SailConnection;
 
 
 abstract public class AbstractGraphFixture implements

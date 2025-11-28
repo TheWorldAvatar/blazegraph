@@ -35,14 +35,14 @@ import java.util.Properties;
 import junit.extensions.proxy.IProxyTest;
 import junit.framework.Test;
 
-import org.openrdf.model.Graph;
-import org.openrdf.model.Resource;
-import org.openrdf.model.Statement;
-import org.openrdf.model.URI;
-import org.openrdf.model.Value;
-import org.openrdf.model.impl.GraphImpl;
-import org.openrdf.query.GraphQueryResult;
-import org.openrdf.repository.RepositoryResult;
+import org.eclipse.rdf4j.model.Graph;
+import org.eclipse.rdf4j.model.Resource;
+import org.eclipse.rdf4j.model.Statement;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.Value;
+import org.eclipse.rdf4j.model.impl.GraphImpl;
+import org.eclipse.rdf4j.query.GraphQueryResult;
+import org.eclipse.rdf4j.repository.RepositoryResult;
 
 import com.bigdata.journal.AbstractJournalTestCase;
 import com.bigdata.journal.IIndexManager;

@@ -25,7 +25,7 @@ package com.bigdata.gom.alchemy.owl;
 
 import java.util.Iterator;
 
-import org.openrdf.model.vocabulary.RDFS;
+import org.eclipse.rdf4j.model.vocabulary.RDFS;
 
 import com.bigdata.gom.gpo.BasicSkin;
 import com.bigdata.gom.gpo.GPO;

@@ -29,7 +29,7 @@ package com.bigdata.rdf.sparql.ast.eval.service;
 
 import java.util.List;
 
-import org.openrdf.query.BindingSet;
+import org.eclipse.rdf4j.query.BindingSet;
 
 import com.bigdata.rdf.sparql.ast.eval.AbstractServiceFactoryBase;
 import com.bigdata.rdf.sparql.ast.service.ExternalServiceCall;

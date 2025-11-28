@@ -5,7 +5,7 @@ import java.util.Properties;
 import com.bigdata.journal.TimestampUtility;
 import com.bigdata.rdf.axioms.NoAxioms;
 import com.bigdata.rdf.model.BigdataStatement;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.StatementEnum;
 import com.bigdata.rdf.rio.StatementBuffer;
 import com.bigdata.rdf.vocab.NoVocabulary;
@@ -67,18 +67,18 @@ public class StressTestCentos extends AbstractTripleStoreTestCase {
                 StatementBuffer<BigdataStatement> sb = new StatementBuffer<BigdataStatement>(
                         store, 20000);
                 
-                BigdataURI g = store.getValueFactory().createURI(
+                BigdataIRI g = store.getValueFactory().createURI(
                         "http://test/g" + k);
 
                 for (int l = 0; l < M; l++) {
 
-                    BigdataURI s = store.getValueFactory().createURI(
+                    BigdataIRI s = store.getValueFactory().createURI(
                             "http://test/s" + (l % 99));
                     
-                    BigdataURI p = store.getValueFactory().createURI(
+                    BigdataIRI p = store.getValueFactory().createURI(
                             "http://test/p" + (l % 37));
                     
-                    BigdataURI o = store.getValueFactory().createURI(
+                    BigdataIRI o = store.getValueFactory().createURI(
                             "http://test/o" + (l % 399));
                     
                     sb.add(store.getValueFactory().createStatement(s, p, o, g,

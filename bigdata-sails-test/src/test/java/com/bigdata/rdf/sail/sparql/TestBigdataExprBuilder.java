@@ -28,13 +28,13 @@ package com.bigdata.rdf.sail.sparql;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import org.openrdf.model.vocabulary.DC;
-import org.openrdf.model.vocabulary.RDF;
-import org.openrdf.query.MalformedQueryException;
-import org.openrdf.query.algebra.StatementPattern.Scope;
-import org.openrdf.query.impl.DatasetImpl;
+import org.eclipse.rdf4j.model.vocabulary.DC;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.query.MalformedQueryException;
+import org.eclipse.rdf4j.query.algebra.StatementPattern.Scope;
+import org.eclipse.rdf4j.query.impl.DatasetImpl;
 
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.sail.sparql.ast.ParseException;
 import com.bigdata.rdf.sail.sparql.ast.TokenMgrError;
@@ -989,13 +989,13 @@ public class TestBigdataExprBuilder extends AbstractBigdataExprBuilderTestCase {
             }
 
             {
-                final BigdataURI uri1 = valueFactory
+                final BigdataIRI uri1 = valueFactory
                         .createURI("http://example.org/dft.ttl");
 
-                final BigdataURI uri2 = valueFactory
+                final BigdataIRI uri2 = valueFactory
                         .createURI("http://example.org/alice");
                 
-                final BigdataURI uri3 = valueFactory
+                final BigdataIRI uri3 = valueFactory
                         .createURI("http://example.org/bob"); 
 
                 final BigdataValue[] values = new BigdataValue[] { uri1, uri2,
@@ -1083,13 +1083,13 @@ public class TestBigdataExprBuilder extends AbstractBigdataExprBuilderTestCase {
             }
 
             {
-                final BigdataURI uri1 = valueFactory
+                final BigdataIRI uri1 = valueFactory
                         .createURI("http://example.org/dft.ttl");
 
-                final BigdataURI uri2 = valueFactory
+                final BigdataIRI uri2 = valueFactory
                         .createURI("http://example.org/alice");
 
-                final BigdataURI uri3 = valueFactory
+                final BigdataIRI uri3 = valueFactory
                         .createURI("http://example.org/bob");
 
                 final BigdataValue[] values = new BigdataValue[] { //

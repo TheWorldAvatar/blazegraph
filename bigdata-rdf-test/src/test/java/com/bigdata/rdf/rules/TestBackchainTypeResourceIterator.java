@@ -28,12 +28,12 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 package com.bigdata.rdf.rules;
 
 import java.util.Properties;
-import org.openrdf.model.vocabulary.RDF;
-import org.openrdf.model.vocabulary.RDFS;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.vocabulary.RDFS;
 import com.bigdata.rdf.axioms.NoAxioms;
 import com.bigdata.rdf.inf.BackchainTypeResourceIterator;
 import com.bigdata.rdf.internal.IV;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.model.StatementEnum;
 import com.bigdata.rdf.rio.IStatementBuffer;
@@ -94,9 +94,9 @@ public class TestBackchainTypeResourceIterator extends AbstractRuleTestCase {
 
             final BigdataValueFactory f = store.getValueFactory();
             
-            final BigdataURI A = f.createURI("http://www.foo.org/A");
-            final BigdataURI B = f.createURI("http://www.foo.org/B");
-            final BigdataURI C = f.createURI("http://www.foo.org/C");
+            final BigdataIRI A = f.createURI("http://www.foo.org/A");
+            final BigdataIRI B = f.createURI("http://www.foo.org/B");
+            final BigdataIRI C = f.createURI("http://www.foo.org/C");
 
             /*
              * add statements to the store.
@@ -181,9 +181,9 @@ public class TestBackchainTypeResourceIterator extends AbstractRuleTestCase {
 
             final BigdataValueFactory f = store.getValueFactory();
             
-            final BigdataURI A = f.createURI("http://www.foo.org/A");
-            final BigdataURI B = f.createURI("http://www.foo.org/B");
-            final BigdataURI C = f.createURI("http://www.foo.org/C");
+            final BigdataIRI A = f.createURI("http://www.foo.org/A");
+            final BigdataIRI B = f.createURI("http://www.foo.org/B");
+            final BigdataIRI C = f.createURI("http://www.foo.org/C");
 
             /*
              * add statements to the store.
@@ -270,9 +270,9 @@ public class TestBackchainTypeResourceIterator extends AbstractRuleTestCase {
 
             final BigdataValueFactory f = store.getValueFactory();
             
-            final BigdataURI A = f.createURI("http://www.foo.org/A");
-            final BigdataURI B = f.createURI("http://www.foo.org/B");
-            final BigdataURI C = f.createURI("http://www.foo.org/C");
+            final BigdataIRI A = f.createURI("http://www.foo.org/A");
+            final BigdataIRI B = f.createURI("http://www.foo.org/B");
+            final BigdataIRI C = f.createURI("http://www.foo.org/C");
 
             /*
              * add statements to the store.
@@ -382,9 +382,9 @@ public class TestBackchainTypeResourceIterator extends AbstractRuleTestCase {
 
             final BigdataValueFactory f = store.getValueFactory();
             
-            final BigdataURI A = f.createURI("http://www.foo.org/A");
-            final BigdataURI B = f.createURI("http://www.foo.org/B");
-            final BigdataURI C = f.createURI("http://www.foo.org/C");
+            final BigdataIRI A = f.createURI("http://www.foo.org/A");
+            final BigdataIRI B = f.createURI("http://www.foo.org/B");
+            final BigdataIRI C = f.createURI("http://www.foo.org/C");
 
             /*
              * add statements to the store.
@@ -466,9 +466,9 @@ public class TestBackchainTypeResourceIterator extends AbstractRuleTestCase {
             
             final BigdataValueFactory f = store.getValueFactory();
             
-            final BigdataURI S = f.createURI("http://www.bigdata.com/s");
-            final BigdataURI P = f.createURI("http://www.bigdata.com/p");
-            final BigdataURI O = f.createURI("http://www.bigdata.com/o");
+            final BigdataIRI S = f.createURI("http://www.bigdata.com/s");
+            final BigdataIRI P = f.createURI("http://www.bigdata.com/p");
+            final BigdataIRI O = f.createURI("http://www.bigdata.com/o");
             
             final IV s = store.addTerm(S);
             final IV p = store.addTerm(P);

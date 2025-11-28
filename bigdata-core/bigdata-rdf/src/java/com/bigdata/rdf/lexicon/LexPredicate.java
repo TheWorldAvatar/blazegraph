@@ -25,7 +25,7 @@ package com.bigdata.rdf.lexicon;
 
 import java.util.Map;
 
-import org.openrdf.model.Value;
+import org.eclipse.rdf4j.model.Value;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.IBindingSet;

@@ -34,7 +34,7 @@ import java.util.Properties;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.query.MalformedQueryException;
+import org.eclipse.rdf4j.query.MalformedQueryException;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.BOpUtility;

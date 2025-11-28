@@ -3,7 +3,7 @@ package com.bigdata.rdf.rio;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
-import org.openrdf.model.Statement;
+import org.eclipse.rdf4j.model.Statement;
 
 import com.bigdata.counters.CounterSet;
 import com.bigdata.rdf.load.IStatementBufferFactory;

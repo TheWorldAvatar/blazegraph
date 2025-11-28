@@ -122,16 +122,16 @@ public class TestOOMBug extends ProxyBigdataSailTestCase {
 			
 				// first add the data
 				for(int index = 0; index < triples.length; index++){
-					org.openrdf.model.URI 	s = vf.createURI(triples[index][0]);
-					org.openrdf.model.URI 	p = vf.createURI(triples[index][1]);
+					org.eclipse.rdf4j.model.URI 	s = vf.createURI(triples[index][0]);
+					org.eclipse.rdf4j.model.URI 	p = vf.createURI(triples[index][1]);
 					if (triples[index][3] != null){
-						org.openrdf.model.Literal 	l = vf.createLiteral(triples[index][2],vf.createURI(triples[index][3]));
+						org.eclipse.rdf4j.model.Literal 	l = vf.createLiteral(triples[index][2],vf.createURI(triples[index][3]));
 						if (log.isInfoEnabled())
 							log.info("Adding("+index+" of "+triples.length+") "+s+" "+p+" "+l);
 						cxn.add(s,p,l);
 					}
 					else {
-						org.openrdf.model.URI 		o = vf.createURI(triples[index][2]);
+						org.eclipse.rdf4j.model.URI 		o = vf.createURI(triples[index][2]);
 						if (log.isInfoEnabled())
 							log.info("Adding("+index+" of "+triples.length+") "+s+" "+p+" "+o);
 						cxn.add(s,p,o);
@@ -146,16 +146,16 @@ public class TestOOMBug extends ProxyBigdataSailTestCase {
 				if (log.isInfoEnabled())
 					log.info("Start data processing...");
 				for(int index = 0; index < triples.length; index++){
-					org.openrdf.model.URI 	s = vf.createURI(triples[index][0]);
-					org.openrdf.model.URI 	p = vf.createURI(triples[index][1]);
+					org.eclipse.rdf4j.model.URI 	s = vf.createURI(triples[index][0]);
+					org.eclipse.rdf4j.model.URI 	p = vf.createURI(triples[index][1]);
 					if (triples[index][3] != null){
-						org.openrdf.model.Literal 	l = vf.createLiteral(triples[index][2],vf.createURI(triples[index][3]));
+						org.eclipse.rdf4j.model.Literal 	l = vf.createLiteral(triples[index][2],vf.createURI(triples[index][3]));
 						if (log.isInfoEnabled())
 							log.info("Processing("+index+" of "+triples.length+") "+s+" "+p+" "+l);
 						cxn.remove(s, p, null);		cxn.add(s,p,l);
 					}
 					else {
-						org.openrdf.model.URI 		o = vf.createURI(triples[index][2]);
+						org.eclipse.rdf4j.model.URI 		o = vf.createURI(triples[index][2]);
 						if (log.isInfoEnabled())
 							log.info("Processing("+index+" of "+triples.length+") "+s+" "+p+" "+o);
 						cxn.remove(s, p, null);		cxn.add(s,p,o);

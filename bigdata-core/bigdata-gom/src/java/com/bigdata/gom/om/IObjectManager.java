@@ -32,11 +32,11 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.UUID;
 
-import org.openrdf.model.Resource;
-import org.openrdf.model.Statement;
-import org.openrdf.model.URI;
-import org.openrdf.model.Value;
-import org.openrdf.query.BindingSet;
+import org.eclipse.rdf4j.model.Resource;
+import org.eclipse.rdf4j.model.Statement;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.Value;
+import org.eclipse.rdf4j.query.BindingSet;
 
 import com.bigdata.gom.gpo.IGPO;
 import com.bigdata.rdf.model.BigdataValueFactory;

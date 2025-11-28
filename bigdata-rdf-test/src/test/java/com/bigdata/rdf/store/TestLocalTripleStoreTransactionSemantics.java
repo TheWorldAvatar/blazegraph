@@ -3,14 +3,14 @@ package com.bigdata.rdf.store;
 import java.io.IOException;
 import java.util.Properties;
 
-import org.openrdf.model.Statement;
+import org.eclipse.rdf4j.model.Statement;
 
 import com.bigdata.journal.IIndexManager;
 import com.bigdata.journal.ITransactionService;
 import com.bigdata.journal.ITx;
 import com.bigdata.journal.Journal;
 import com.bigdata.rdf.axioms.NoAxioms;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.model.StatementEnum;
@@ -306,10 +306,10 @@ public class TestLocalTripleStoreTransactionSemantics extends ProxyTestCase {
             
             final BigdataValueFactory f = unisolatedStore.getValueFactory();
 
-            final BigdataURI john = f.createURI("http://www.bigdata.com/john");
-            final BigdataURI loves = f
+            final BigdataIRI john = f.createURI("http://www.bigdata.com/john");
+            final BigdataIRI loves = f
                     .createURI("http://www.bigdata.com/loves");
-            final BigdataURI mary = f.createURI("http://www.bigdata.com/mary");
+            final BigdataIRI mary = f.createURI("http://www.bigdata.com/mary");
 
             final BigdataValue[] terms = new BigdataValue[] {
 

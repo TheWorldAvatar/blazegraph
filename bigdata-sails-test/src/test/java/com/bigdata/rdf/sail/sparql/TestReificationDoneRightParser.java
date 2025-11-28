@@ -33,9 +33,9 @@ import java.util.Properties;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.model.Resource;
-import org.openrdf.query.MalformedQueryException;
-import org.openrdf.query.algebra.StatementPattern.Scope;
+import org.eclipse.rdf4j.model.Resource;
+import org.eclipse.rdf4j.query.MalformedQueryException;
+import org.eclipse.rdf4j.query.algebra.StatementPattern.Scope;
 
 import com.bigdata.BigdataStatics;
 import com.bigdata.journal.BufferMode;
@@ -45,7 +45,7 @@ import com.bigdata.rdf.model.BigdataBNode;
 import com.bigdata.rdf.model.BigdataLiteral;
 import com.bigdata.rdf.model.BigdataResource;
 import com.bigdata.rdf.model.BigdataStatement;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.StatementEnum;
 import com.bigdata.rdf.sail.sparql.ast.ParseException;
@@ -921,9 +921,9 @@ public class TestReificationDoneRightParser extends
 
             expected.addChild(op);
 
-            final BigdataURI s = valueFactory.createURI("http://example/s");
-            final BigdataURI p = valueFactory.createURI("http://example/p");
-            final BigdataURI order = valueFactory.createURI("http://example/order");
+            final BigdataIRI s = valueFactory.createURI("http://example/s");
+            final BigdataIRI p = valueFactory.createURI("http://example/p");
+            final BigdataIRI order = valueFactory.createURI("http://example/order");
             final BigdataLiteral d = valueFactory.createLiteral("d");
             final BigdataLiteral five = valueFactory.createLiteral(5);
 
@@ -938,14 +938,14 @@ public class TestReificationDoneRightParser extends
             // SP(:s :p d) as ?sid1) .
             final BigdataStatement s1 = valueFactory.createStatement(//
                   (BigdataResource)s,//
-                  (BigdataURI)p,//
+                  (BigdataIRI)p,//
                   (BigdataValue)d);
             final BigdataBNode sid1 = valueFactory.createBNode(s1);
 
             // SP(?sid, :p, 5).
             final BigdataStatement s2 = valueFactory.createStatement(//
                   (Resource)sid1, //
-                  (BigdataURI)order, //
+                  (BigdataIRI)order, //
                   (BigdataValue) five);
             final BigdataStatement[] data = new BigdataStatement[] { //
                   s1, s2

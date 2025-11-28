@@ -27,9 +27,9 @@ package com.bigdata.rdf.internal.impl.extensions;
 import java.util.Collections;
 import java.util.Set;
 
-import org.openrdf.model.Literal;
-import org.openrdf.model.Value;
-import org.openrdf.model.datatypes.XMLDatatypeUtil;
+import org.eclipse.rdf4j.model.Literal;
+import org.eclipse.rdf4j.model.Value;
+import org.eclipse.rdf4j.model.datatypes.XMLDatatypeUtil;
 
 import com.bigdata.rdf.internal.IDatatypeURIResolver;
 import com.bigdata.rdf.internal.IExtension;
@@ -37,7 +37,7 @@ import com.bigdata.rdf.internal.impl.literal.AbstractLiteralIV;
 import com.bigdata.rdf.internal.impl.literal.LiteralExtensionIV;
 import com.bigdata.rdf.internal.impl.literal.XSDNumericIV;
 import com.bigdata.rdf.model.BigdataLiteral;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.vocab.decls.BSBMVocabularyDecl;
@@ -50,7 +50,7 @@ import com.bigdata.rdf.vocab.decls.BSBMVocabularyDecl;
 @SuppressWarnings("rawtypes")
 public class USDFloatExtension<V extends BigdataValue> implements IExtension<V> {
 
-    private final BigdataURI datatype;
+    private final BigdataIRI datatype;
     
     public USDFloatExtension(final IDatatypeURIResolver resolver) {
 
@@ -58,7 +58,7 @@ public class USDFloatExtension<V extends BigdataValue> implements IExtension<V> 
         
     }
     
-    public Set<BigdataURI> getDatatypes() {
+    public Set<BigdataIRI> getDatatypes() {
         
         return Collections.singleton(datatype);
         

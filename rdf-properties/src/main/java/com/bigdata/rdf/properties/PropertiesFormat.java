@@ -57,7 +57,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package com.bigdata.rdf.properties;
 
-import info.aduna.lang.FileFormat;
+import org.eclipse.rdf4j.common.lang.FileFormat;
 
 import java.nio.charset.Charset;
 import java.util.Arrays;
@@ -203,8 +203,7 @@ public class PropertiesFormat extends FileFormat implements Iterable<PropertiesF
     public static PropertiesFormat forMIMEType(String mimeType,
             PropertiesFormat fallback) {
 
-        return matchMIMEType(mimeType, formats/* Iterable<FileFormat> */,
-                fallback);
+        return matchMIMEType(mimeType, formats/* Iterable<FileFormat> */).orElse(fallback);
         
     }
 

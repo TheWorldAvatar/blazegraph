@@ -55,7 +55,7 @@ import com.bigdata.journal.BufferMode;
 import com.bigdata.journal.IBTreeManager;
 import com.bigdata.rdf.internal.impl.literal.XSDNumericIV;
 import com.bigdata.rdf.model.BigdataLiteral;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.sparql.ast.ASTContainer;
@@ -298,9 +298,9 @@ public class TestInclude extends AbstractDataDrivenSPARQLTestCase {
         final IVariable<?> y = Var.var("y");
 
         // Resolve terms pre-loaded into the kb.
-        final BigdataURI Mike = vf.createURI("http://www.bigdata.com/Mike"); 
-        final BigdataURI Bryan = vf.createURI("http://www.bigdata.com/Bryan");
-        final BigdataURI DC = vf.createURI("http://www.bigdata.com/DC");
+        final BigdataIRI Mike = vf.createURI("http://www.bigdata.com/Mike"); 
+        final BigdataIRI Bryan = vf.createURI("http://www.bigdata.com/Bryan");
+        final BigdataIRI DC = vf.createURI("http://www.bigdata.com/DC");
         {
             tripleStore.addTerms(new BigdataValue[] { Mike, Bryan, DC });
             assertNotNull(Mike.getIV());
@@ -447,9 +447,9 @@ public class TestInclude extends AbstractDataDrivenSPARQLTestCase {
         final IVariable<?> y = Var.var("y");
 
         // Resolve terms pre-loaded into the kb.
-        final BigdataURI Mike = vf.createURI("http://www.bigdata.com/Mike"); 
-        final BigdataURI Bryan = vf.createURI("http://www.bigdata.com/Bryan");
-        final BigdataURI DC = vf.createURI("http://www.bigdata.com/DC");
+        final BigdataIRI Mike = vf.createURI("http://www.bigdata.com/Mike"); 
+        final BigdataIRI Bryan = vf.createURI("http://www.bigdata.com/Bryan");
+        final BigdataIRI DC = vf.createURI("http://www.bigdata.com/DC");
 		{
 			tripleStore.addTerms(new BigdataValue[] { Mike, Bryan, DC });
 			assertNotNull(Mike.getIV());

@@ -28,7 +28,7 @@ package com.bigdata.rdf.sail;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.query.QueryLanguage;
+import org.eclipse.rdf4j.query.QueryLanguage;
 
 import com.bigdata.rdf.changesets.IChangeLog;
 import com.bigdata.rdf.changesets.IChangeRecord;

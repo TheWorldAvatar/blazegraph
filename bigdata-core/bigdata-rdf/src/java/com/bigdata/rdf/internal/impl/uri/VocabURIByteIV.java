@@ -26,8 +26,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 package com.bigdata.rdf.internal.impl.uri;
 
-import org.openrdf.model.URI;
-import org.openrdf.model.Value;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.Value;
 
 import com.bigdata.btree.keys.KeyBuilder;
 import com.bigdata.rdf.internal.DTE;
@@ -35,7 +35,7 @@ import com.bigdata.rdf.internal.IV;
 import com.bigdata.rdf.internal.VTE;
 import com.bigdata.rdf.internal.impl.AbstractInlineIV;
 import com.bigdata.rdf.lexicon.LexiconRelation;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.vocab.Vocabulary;
 
@@ -48,7 +48,7 @@ import com.bigdata.rdf.vocab.Vocabulary;
  * 
  * @author thompsonbry
  */
-public class VocabURIByteIV<V extends BigdataURI> extends AbstractInlineIV<V, Byte> 
+public class VocabURIByteIV<V extends BigdataIRI> extends AbstractInlineIV<V, Byte> 
 		implements URI {
 
 	/**
@@ -102,7 +102,7 @@ public class VocabURIByteIV<V extends BigdataURI> extends AbstractInlineIV<V, By
         final byte v = KeyBuilder.decodeByte(value);
 
         final byte v2 = KeyBuilder
-                .decodeByte(((VocabURIByteIV<BigdataURI>) o).value);
+                .decodeByte(((VocabURIByteIV<BigdataIRI>) o).value);
 
         return v == v2 ? 0 : v < v2 ? -1 : 1;
 

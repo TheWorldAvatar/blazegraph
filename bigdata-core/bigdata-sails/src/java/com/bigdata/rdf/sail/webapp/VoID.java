@@ -34,17 +34,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.openrdf.model.BNode;
-import org.openrdf.model.Graph;
-import org.openrdf.model.Resource;
-import org.openrdf.model.URI;
-import org.openrdf.model.ValueFactory;
-import org.openrdf.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.BNode;
+import org.eclipse.rdf4j.model.Model;
+import org.eclipse.rdf4j.model.Resource;
+import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.ValueFactory;
+import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
 
 import com.bigdata.rdf.internal.IV;
 import com.bigdata.rdf.internal.NotMaterializedException;
 import com.bigdata.rdf.model.BigdataResource;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.sail.webapp.client.ConnectOptions;
 import com.bigdata.rdf.spo.SPOKeyOrder;
@@ -70,7 +71,7 @@ public class VoID {
      * The graph in which the service description is accumulated (from the
      * constructor).
      */
-    private final Graph g;
+    private final Model g;
     
     /**
      * The KB instance that is being described (from the constructor).
@@ -80,7 +81,7 @@ public class VoID {
     /**
      * The service end point(s) (from the constructor).
      */
-    private final String[] serviceURI;
+    private final String[] serviceIRI;
 
     /**
      * The value factory used to create values for the service description graph
@@ -109,15 +110,15 @@ public class VoID {
      *            Where to assemble the description.
      * @param tripleStore
      *            The KB instance to be described.
-     * @param serviceURI
+     * @param serviceIRI
      *            The SPARQL service end point.
      * @param aDefaultDataset
      *            The data set identifier that will be used on the description
      *            (the bigdata namespace of the dataset is obtained from the
      *            <i>tripleStore</i>).
      */
-    public VoID(final Graph g, final AbstractTripleStore tripleStore,
-            final String[] serviceURI, final Resource aDataset) {
+    public VoID(final Model g, final AbstractTripleStore tripleStore,
+            final String[] serviceIRI, final Resource aDataset) {
 
         if (g == null)
             throw new IllegalArgumentException();
@@ -125,13 +126,13 @@ public class VoID {
         if (tripleStore == null)
             throw new IllegalArgumentException();
         
-        if (serviceURI == null)
+        if (serviceIRI == null)
             throw new IllegalArgumentException();
 
-        if (serviceURI.length == 0)
+        if (serviceIRI.length == 0)
             throw new IllegalArgumentException();
 
-        for (String s : serviceURI)
+        for (String s : serviceIRI)
             if (s == null)
                 throw new IllegalArgumentException();
         
@@ -142,9 +143,9 @@ public class VoID {
         
         this.tripleStore = tripleStore;
         
-        this.serviceURI = serviceURI;
+        this.serviceIRI = serviceIRI;
         
-        this.f = g.getValueFactory();
+        this.f = SimpleValueFactory.getInstance();
         
         this.aDataset = aDataset;
     
@@ -187,14 +188,14 @@ public class VoID {
          * @see <a href="https://sourceforge.net/apps/trac/bigdata/ticket/689" >
          *      Missing URL encoding in RemoteRepositoryManager </a>
          */
-        for (String uri : serviceURI) {
+        for (String iri : serviceIRI) {
             g.add(aDataset,
                     VoidVocabularyDecl.sparqlEndpoint,
-                    f.createURI(uri + "/" + ConnectOptions.urlEncode(namespace)
+                    f.createIRI(iri + "/" + ConnectOptions.urlEncode(namespace)
                             + "/sparql"));
         }
 
-        // any URI is considered to be an entity.
+        // any IRI is considered to be an entity.
         g.add(aDataset, VoidVocabularyDecl.uriRegexPattern,
                 f.createLiteral("^.*"));
 
@@ -229,7 +230,7 @@ public class VoID {
 
         // sb.append("termCount\t = " + tripleStore.getTermCount() + "\n");
         //
-        // sb.append("uriCount\t = " + tripleStore.getURICount() + "\n");
+        // sb.append("iriCount\t = " + tripleStore.getIRICount() + "\n");
         //
         // sb.append("literalCount\t = " + tripleStore.getLiteralCount() +
         // "\n");
@@ -259,7 +260,7 @@ public class VoID {
             @SuppressWarnings("rawtypes")
             final IChunkedIterator<IV> itr = r.distinctTermScan(keyOrder);
 
-            // resolve IVs to terms efficiently during iteration.
+            // resolve IVs to terms efficiently diring iteration.
             final BigdataValueIterator itr2 = new BigdataValueIteratorImpl(
                     tripleStore/* resolveTerms */, itr);
 
@@ -328,7 +329,7 @@ public class VoID {
             // property partitions.
             for (IVCount tmp : predicatePartitionCounts) {
 
-                final URI p = (URI) tmp.getValue();
+                final IRI p = (IRI) tmp.getValue();
 
                 String namespace = p.getNamespace();
 
@@ -354,7 +355,7 @@ public class VoID {
         for (String namespace : a) {
 
             g.add(aDataset, VoidVocabularyDecl.vocabulary,
-                    f.createURI(namespace));
+                    f.createIRI(namespace));
 
         }
 
@@ -398,7 +399,7 @@ public class VoID {
 
             final BNode propertyPartition = f.createBNode();
 
-            final URI p = (URI) tmp.getValue();
+            final IRI p = (IRI) tmp.getValue();
 
             g.add(graph, VoidVocabularyDecl.propertyPartition,
                     propertyPartition);
@@ -506,7 +507,7 @@ public class VoID {
     /**
      * Return an array of the distinct predicates in the KB ordered by their
      * descending frequency of use. The {@link IV}s in the returned array will
-     * have been resolved to the corresponding {@link BigdataURI}s which can be
+     * have been resolved to the corresponding {@link BigdataIRI}s which can be
      * accessed using {@link IV#getValue()}.
      * 
      * @param kb
@@ -532,7 +533,7 @@ public class VoID {
         @SuppressWarnings("rawtypes")
         final IChunkedIterator<IV> itr = r.distinctTermScan(keyOrder);
 
-        // resolve term identifiers to terms efficiently during iteration.
+        // resolve term identifiers to terms efficiently diring iteration.
         final BigdataValueIterator itr2 = new BigdataValueIteratorImpl(
                 kb/* resolveTerms */, itr);
 
@@ -683,7 +684,7 @@ public class VoID {
         final SPOKeyOrder keyOrder = quads ? SPOKeyOrder.POCS : SPOKeyOrder.POS;
 
         // Resolve IV for rdf:type
-        final BigdataURI rdfType = kb.getValueFactory().asValue(RDF.TYPE);
+        final BigdataIRI rdfType = kb.getValueFactory().asValue(RDF.TYPE);
 
         kb.getLexiconRelation().addTerms(new BigdataValue[] { rdfType },
                 1/* numTerms */, true/* readOnly */);
@@ -700,7 +701,7 @@ public class VoID {
         final IChunkedIterator<IV> itr = r.distinctMultiTermScan(keyOrder,
                 new IV[] { rdfType.getIV() }/* knownTerms */);
 
-        // resolve term identifiers to terms efficiently during iteration.
+        // resolve term identifiers to terms efficiently diring iteration.
         final BigdataValueIterator itr2 = new BigdataValueIteratorImpl(
                 kb/* resolveTerms */, itr);
 
@@ -779,7 +780,7 @@ public class VoID {
         }
 
         // Resolve IV for rdf:type
-        final BigdataURI rdfType = kb.getValueFactory().asValue(RDF.TYPE);
+        final BigdataIRI rdfType = kb.getValueFactory().asValue(RDF.TYPE);
 
         kb.getLexiconRelation().addTerms(new BigdataValue[] { rdfType },
                 1/* numTerms */, true/* readOnly */);

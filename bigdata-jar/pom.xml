@@ -44,7 +44,7 @@ Copyright 2010 by TalkingTrends (Amsterdam, The Netherlands)
         <includes>
           <include>**/*.xml</include>
           <include>**/*.properties</include>
-          <include>**/org.openrdf.rio.*</include>
+          <include>**/org.eclipse.rdf4j.rio.*</include>
           <include>**/com.bigdata.*</include>
         </includes>
       </resource>

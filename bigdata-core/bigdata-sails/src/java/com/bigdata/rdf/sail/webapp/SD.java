@@ -29,12 +29,13 @@ package com.bigdata.rdf.sail.webapp;
 
 import java.util.Properties;
 
-import org.openrdf.model.BNode;
-import org.openrdf.model.Graph;
-import org.openrdf.model.URI;
-import org.openrdf.model.ValueFactory;
-import org.openrdf.model.impl.URIImpl;
-import org.openrdf.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.BNode;
+import org.eclipse.rdf4j.model.Model;
+import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.ValueFactory;
+import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
+import org.eclipse.rdf4j.model.impl.URIImpl;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
 
 import com.bigdata.ha.HAGlue;
 import com.bigdata.ha.QuorumService;
@@ -66,30 +67,31 @@ import com.bigdata.util.ClassPathUtil;
 public class SD {
 
     static public final String NS = "http://www.w3.org/ns/sparql-service-description#";
+    
+    private static final ValueFactory VALUE_FACTORY = SimpleValueFactory.getInstance();
 
-    static public final URI Service = new URIImpl(NS + "Service");
+    static public final IRI Service = VALUE_FACTORY.createIRI(NS, "Service");
 
-    static public final URI endpoint = new URIImpl(NS + "endpoint");
+    static public final IRI endpoint = VALUE_FACTORY.createIRI(NS, "endpoint");
 
     /**
      * <pre>
      * <sd:supportedLanguage rdf:resource="http://www.w3.org/ns/sparql-service-description#SPARQL11Query"/>
      * </pre>
      */
-    static public final URI supportedLanguage = new URIImpl(NS
-            + "supportedLanguage");
+    static public final IRI supportedLanguage = VALUE_FACTORY.createIRI(NS, "supportedLanguage");
 
-    static public final URI SPARQL10Query = new URIImpl(NS + "SPARQL10Query");
+    static public final IRI SPARQL10Query = VALUE_FACTORY.createIRI(NS, "SPARQL10Query");
 
-    static public final URI SPARQL11Query = new URIImpl(NS + "SPARQL11Query");
+    static public final IRI SPARQL11Query = VALUE_FACTORY.createIRI(NS, "SPARQL11Query");
 
-    static public final URI SPARQL11Update = new URIImpl(NS + "SPARQL11Update");
+    static public final IRI SPARQL11Update = VALUE_FACTORY.createIRI(NS, "SPARQL11Update");
 
     /**
      * Relates an instance of {@link #Service} to a format that is supported for
      * serializing query results. URIs for commonly used serialization formats
      * are defined by Unique URIs for File Formats. For formats that do not have
-     * an existing URI, the <a href="http://www.w3.org/ns/formats/media_type">
+     * an existing IRI, the <a href="http://www.w3.org/ns/formats/media_type">
      * media_type </a> and <a
      * href="http://www.w3.org/ns/formats/preferred_suffix"> preferred_suffix
      * </a> properties defined in that document SHOULD be used to describe the
@@ -102,7 +104,7 @@ public class SD {
 //   * <sd:resultFormat rdf:resource="http://www.w3.org/ns/formats/RDF_XML"/>
 //   * <sd:resultFormat rdf:resource="http://www.w3.org/ns/formats/Turtle"/>
 //   * </pre>
-    static public final URI resultFormat = new URIImpl(NS + "resultFormat");
+    static public final IRI resultFormat = VALUE_FACTORY.createIRI(NS, "resultFormat");
 
     /**
      * Relates an instance of sd:Service to a format that is supported for
@@ -111,7 +113,7 @@ public class SD {
      * clauses (see also sd:DereferencesURIs below).
      * <p>
      * URIs for commonly used serialization formats are defined by Unique URIs
-     * for File Formats. For formats that do not have an existing URI, the <a
+     * for File Formats. For formats that do not have an existing IRI, the <a
      * href="http://www.w3.org/ns/formats/media_type"> media_type </a> and <a
      * href="http://www.w3.org/ns/formats/preferred_suffix"> preferred_suffix
      * </a> properties defined in that document SHOULD be used to describe the
@@ -120,19 +122,19 @@ public class SD {
      * @see <a href="http://www.w3.org/ns/formats/"> Unique URIs for File
      *      Formats </a>
      */
-    static public final URI inputFormat = new URIImpl(NS + "inputFormat");
+    static public final IRI inputFormat = VALUE_FACTORY.createIRI(NS, "inputFormat");
 
     /**
      * <pre>
      * <sd:feature rdf:resource="http://www.w3.org/ns/sparql-service-description#DereferencesURIs"/>
      * </pre>
      */
-    static public final URI feature = new URIImpl(NS + "feature");
-    static public final URI DereferencesURIs = new URIImpl(NS + "DereferencesURIs");
-    static public final URI UnionDefaultGraph = new URIImpl(NS + "UnionDefaultGraph");
-    static public final URI RequiresDataset = new URIImpl(NS + "RequiresDataset");
-    static public final URI EmptyGraphs = new URIImpl(NS + "EmptyGraphs");
-    static public final URI BasicFederatedQuery = new URIImpl(NS + "BasicFederatedQuery");
+    static public final IRI feature = VALUE_FACTORY.createIRI(NS, "feature");
+    static public final IRI DereferencesURIs = VALUE_FACTORY.createIRI(NS, "DereferencesURIs");
+    static public final IRI UnionDefaultGraph = VALUE_FACTORY.createIRI(NS, "UnionDefaultGraph");
+    static public final IRI RequiresDataset = VALUE_FACTORY.createIRI(NS, "RequiresDataset");
+    static public final IRI EmptyGraphs = VALUE_FACTORY.createIRI(NS, "EmptyGraphs");
+    static public final IRI BasicFederatedQuery = VALUE_FACTORY.createIRI(NS, "BasicFederatedQuery");
     
     /**
      * The namespace for the bigdata specific features.
@@ -142,27 +144,23 @@ public class SD {
     /*
      * KB modes.
      */
-    static public final URI ModeTriples = new URIImpl(BDFNS + "KB/Mode/Triples");
-    static public final URI ModeQuads = new URIImpl(BDFNS + "KB/Mode/Quads");
-    static public final URI ModeSids = new URIImpl(BDFNS + "KB/Mode/Sids");
+    static public final IRI ModeTriples = VALUE_FACTORY.createIRI(BDFNS, "KB/Mode/Triples");
+    static public final IRI ModeQuads = VALUE_FACTORY.createIRI(BDFNS, "KB/Mode/Quads");
+    static public final IRI ModeSids = VALUE_FACTORY.createIRI(BDFNS, "KB/Mode/Sids");
 
     /*
      * Text Index modes.
      */
-    static public final URI TextIndexValueCentric = new URIImpl(BDFNS
-            + "KB/TextIndex/ValueCentric");
+    static public final IRI TextIndexValueCentric = VALUE_FACTORY.createIRI(BDFNS, "KB/TextIndex/ValueCentric");
     
-    static public final URI TextIndexSubjectCentric = new URIImpl(BDFNS
-            + "KB/TextIndex/SubjectCentric");
+    static public final IRI TextIndexSubjectCentric = VALUE_FACTORY.createIRI(BDFNS, "KB/TextIndex/SubjectCentric");
 
     /*
      * Misc KB features.
      */
-    static public final URI TruthMaintenance = new URIImpl(BDFNS
-            + "KB/TruthMaintenance");
+    static public final IRI TruthMaintenance = VALUE_FACTORY.createIRI(BDFNS, "KB/TruthMaintenance");
     
-    static public final URI IsolatableIndices = new URIImpl(BDFNS
-            + "KB/IsolatableIndices");
+    static public final IRI IsolatableIndices = VALUE_FACTORY.createIRI(BDFNS, "KB/IsolatableIndices");
 
     /**
      * A highly available deployment - this feature refers to the presence of
@@ -173,8 +171,7 @@ public class SD {
      * the actual #of running joined instances to determine whether the database
      * can withstand a failure.
      */
-    static public final URI HighlyAvailable = new URIImpl(BDFNS
-            + "HighlyAvailable");
+    static public final IRI HighlyAvailable = VALUE_FACTORY.createIRI(BDFNS, "HighlyAvailable");
 
     /**
      * The value of this feature is the target replication factor for the
@@ -184,34 +181,31 @@ public class SD {
      * highly available. THREE (3) is the minimum configuration that can
      * withstand a failure.
      */
-    static public final URI ReplicationFactor = new URIImpl(BDFNS
-            + "replicationFactor");
+    static public final IRI ReplicationFactor = VALUE_FACTORY.createIRI(BDFNS, "replicationFactor");
     
     /**
      * An {@link IBigdataFederation}.
      */
-    static public final URI ScaleOut = new URIImpl(BDFNS
-            + "ScaleOut");
+    static public final IRI ScaleOut = VALUE_FACTORY.createIRI(BDFNS, "ScaleOut");
 
     /**
      * This indicates that the namespace is compatible with mapgraph (aka GPU)
      * acceleration, but this does not indicate whether or not the namespace is
      * currently loaded in the mapgraph-runtime.
      */
-    static public final URI MapgraphCompatible = new URIImpl(BDFNS + "MapgraphCompatible");
+    static public final IRI MapgraphCompatible = VALUE_FACTORY.createIRI(BDFNS, "MapgraphCompatible");
 
     /**
      * This indicates that the namespace is currently loaded within the
      * mapgraph-runtime.
      */
-    static public final URI MapgraphAcceleration = new URIImpl(BDFNS + "MapgraphAcceleration");
+    static public final IRI MapgraphAcceleration = VALUE_FACTORY.createIRI(BDFNS, "MapgraphAcceleration");
 
     /**
      * The <code>namespace</code> for this KB instance as configured by the
      * {@link BigdataSail.Options#NAMESPACE} property.
      */
-    static public final URI KB_NAMESPACE = new URIImpl(BDFNS
-            + "KB/Namespace");
+    static public final IRI KB_NAMESPACE = VALUE_FACTORY.createIRI(BDFNS, "KB/Namespace");
     
     /**
      * <pre>
@@ -230,17 +224,13 @@ public class SD {
      *      usable with the properties sd:defaultSupportedEntailmentProfile and
      *      sd:supportedEntailmentProfile) </a>
      */
-    static public final URI defaultEntailmentRegime = new URIImpl(NS
-            + "defaultEntailmentRegime");
+    static public final IRI defaultEntailmentRegime = VALUE_FACTORY.createIRI(NS, "defaultEntailmentRegime");
 
-    static public final URI entailmentRegime = new URIImpl(NS
-            + "entailmentRegime");
+    static public final IRI entailmentRegime = VALUE_FACTORY.createIRI(NS, "entailmentRegime");
 
-    static public final URI supportedEntailmentProfile = new URIImpl(NS
-            + "supportedEntailmentProfile");
+    static public final IRI supportedEntailmentProfile = VALUE_FACTORY.createIRI(NS, "supportedEntailmentProfile");
 
-    static public final URI extensionFunction = new URIImpl(NS
-            + "extensionFunction");
+    static public final IRI extensionFunction = VALUE_FACTORY.createIRI(NS, "extensionFunction");
 
     /*
      * Entailment regimes.
@@ -251,33 +241,30 @@ public class SD {
      * 
      * @see http://www.w3.org/ns/entailment/Simple
      */
-    static public final URI simpleEntailment = new URIImpl(
-            "http://www.w3.org/ns/entailment/Simple");
+    static public final IRI simpleEntailment = VALUE_FACTORY.createIRI("http://www.w3.org/ns/entailment/Simple");
 
     /**
      * RDF Entailment
      * 
      * @see http://www.w3.org/ns/entailment/RDF
      */
-    static public final URI rdfEntailment = new URIImpl(
-            "http://www.w3.org/ns/entailment/RDF");
+    static public final IRI rdfEntailment = VALUE_FACTORY.createIRI("http://www.w3.org/ns/entailment/RDF");
 
     /**
      * RDFS Entailment
      * 
      * @see http://www.w3.org/ns/entailment/RDFS
      */
-    static public final URI rdfsEntailment = new URIImpl(
-            "http://www.w3.org/ns/entailment/RDFS");
+    static public final IRI rdfsEntailment = VALUE_FACTORY.createIRI("http://www.w3.org/ns/entailment/RDFS");
     
-    static public final URI Function = new URIImpl(NS + "Function");
-    static public final URI defaultDataset = new URIImpl(NS + "defaultDataset");
-    static public final URI Dataset = new URIImpl(NS + "Dataset");
-    static public final URI defaultGraph = new URIImpl(NS + "defaultGraph");
-    static public final URI Graph = new URIImpl(NS + "Graph");
-    static public final URI namedGraph = new URIImpl(NS + "namedGraph");
-    static public final URI NamedGraph = new URIImpl(NS + "NamedGraph");
-    static public final URI name = new URIImpl(NS + "name");
+    static public final IRI Function = VALUE_FACTORY.createIRI(NS, "Function");
+    static public final IRI defaultDataset = VALUE_FACTORY.createIRI(NS, "defaultDataset");
+    static public final IRI Dataset = VALUE_FACTORY.createIRI(NS, "Dataset");
+    static public final IRI defaultGraph = VALUE_FACTORY.createIRI(NS, "defaultGraph");
+    static public final IRI Graph = VALUE_FACTORY.createIRI(NS, "Graph");
+    static public final IRI namedGraph = VALUE_FACTORY.createIRI(NS, "namedGraph");
+    static public final IRI NamedGraph = VALUE_FACTORY.createIRI(NS, "NamedGraph");
+    static public final IRI name = VALUE_FACTORY.createIRI(NS, "name");
 
     /*
      * RDF data
@@ -286,39 +273,35 @@ public class SD {
      */
     
     /**
-     * Unique URI for RDF/XML
+     * Unique IRI for RDF/XML
      * 
      * @see http://www.w3.org/ns/formats/
      */
-    static public final URI RDFXML = new URIImpl(
-            "http://www.w3.org/ns/formats/RDF_XML");
+    static public final IRI RDFXML = VALUE_FACTORY.createIRI("http://www.w3.org/ns/formats/RDF_XML");
     
     /**
-     * Unique URI for NTRIPLES
+     * Unique IRI for NTRIPLES
      * 
      * @see http://www.w3.org/ns/formats/
      */
-    static public final URI NTRIPLES = new URIImpl(
-            "http://www.w3.org/ns/formats/N-Triples");
+    static public final IRI NTRIPLES = VALUE_FACTORY.createIRI("http://www.w3.org/ns/formats/N-Triples");
 
     /**
-     * Unique URI for TURTLE
+     * Unique IRI for TURTLE
      * 
      * @see http://www.w3.org/ns/formats/
      */
-    static public final URI TURTLE = new URIImpl(
-            "http://www.w3.org/ns/formats/Turtle");
+    static public final IRI TURTLE = VALUE_FACTORY.createIRI("http://www.w3.org/ns/formats/Turtle");
 
     // RDR specific extension of TURTLE.
-    static public final URI TURTLE_RDR = new URIImpl(
-            "http://www.bigdata.com/ns/formats/Turtle-RDR");
+    static public final IRI TURTLE_RDR = VALUE_FACTORY.createIRI("http://www.bigdata.com/ns/formats/Turtle-RDR");
 
     /**
-     * Unique URI for N3.
+     * Unique IRI for N3.
      * 
      * @see http://www.w3.org/ns/formats/
      */
-    static public final URI N3 = new URIImpl("http://www.w3.org/ns/formats/N3");
+    static public final IRI N3 = new URIImpl("http://www.w3.org/ns/formats/N3");
 
     // /**
     // * TODO The TriX file format.
@@ -332,86 +315,78 @@ public class SD {
      * href="http://www.wiwiss.fu-berlin.de/suhl/bizer/TriG/Spec/">TriG</a> file
      * format.
      */
-    static public final URI TRIG = new URIImpl(
-            "http://www.wiwiss.fu-berlin.de/suhl/bizer/TriG/Spec/");
+    static public final IRI TRIG = VALUE_FACTORY.createIRI("http://www.wiwiss.fu-berlin.de/suhl/bizer/TriG/Spec/");
 
     // /**
     // * TODO A binary RDF format (openrdf)
     // *
     // * @see http://www.openrdf.org/issues/browse/RIO-79 (Request for unique
-    // URI)
+    // IRI)
     // */
     // public static final RDFFormat BINARY = new RDFFormat("BinaryRDF",
     // "application/x-binary-rdf", null,
     // "brf", true, true);
 
     /**
-     * The URI that identifies the N-Quads syntax is
+     * The IRI that identifies the N-Quads syntax is
      * <code>http://sw.deri.org/2008/07/n-quads/#n-quads</code>.
      * 
      * @see http://sw.deri.org/2008/07/n-quads/
      */
-    static public final URI NQUADS = new URIImpl(
-            "http://sw.deri.org/2008/07/n-quads/#n-quads");
+    static public final IRI NQUADS = VALUE_FACTORY.createIRI("http://sw.deri.org/2008/07/n-quads/#n-quads");
 
     // RDR specific extension of N-Triples.
-    static public final URI NTRIPLES_RDR = new URIImpl(
-            "http://www.bigdata.com/ns/formats/N-Triples-RDR");
+    static public final IRI NTRIPLES_RDR = VALUE_FACTORY.createIRI("http://www.bigdata.com/ns/formats/N-Triples-RDR");
 
     /*
      * SPARQL results
      */
 
     /**
-     * Unique URI for SPARQL Results in XML
+     * Unique IRI for SPARQL Results in XML
      * 
      * @see http://www.w3.org/ns/formats/
      */
-    static public final URI SPARQL_RESULTS_XML = new URIImpl(
-            "http://www.w3.org/ns/formats/SPARQL_Results_XML");
+    static public final IRI SPARQL_RESULTS_XML = VALUE_FACTORY.createIRI("http://www.w3.org/ns/formats/SPARQL_Results_XML");
 
     /**
-     * Unique URI for SPARQL Results in JSON
+     * Unique IRI for SPARQL Results in JSON
      * 
      * @see http://www.w3.org/ns/formats/
      * 
      *      TODO Does openrdf support this yet?
      */
-    static public final URI SPARQL_RESULTS_JSON = new URIImpl(
-            "http://www.w3.org/ns/formats/SPARQL_Results_JSON");
+    static public final IRI SPARQL_RESULTS_JSON = VALUE_FACTORY.createIRI("http://www.w3.org/ns/formats/SPARQL_Results_JSON");
 
     /**
-     * Unique URI for SPARQL Results in CSV
+     * Unique IRI for SPARQL Results in CSV
      * 
      * @see http://www.w3.org/ns/formats/
      */
-    static public final URI SPARQL_RESULTS_CSV = new URIImpl(
-            "http://www.w3.org/ns/formats/SPARQL_Results_CSV");
+    static public final IRI SPARQL_RESULTS_CSV = VALUE_FACTORY.createIRI("http://www.w3.org/ns/formats/SPARQL_Results_CSV");
 
     /**
-     * Unique URI for SPARQL Results in TSV
+     * Unique IRI for SPARQL Results in TSV
      * 
      * @see http://www.w3.org/ns/formats/
      */
-    static public final URI SPARQL_RESULTS_TSV = new URIImpl(
-            "http://www.w3.org/ns/formats/SPARQL_Results_TSV");
+    static public final IRI SPARQL_RESULTS_TSV = VALUE_FACTORY.createIRI("http://www.w3.org/ns/formats/SPARQL_Results_TSV");
 
     // TODO openrdf binary format.
 //    /**
-//     * Unique URI for SPARQL Results in TSV
+//     * Unique IRI for SPARQL Results in TSV
 //     * 
 //     * @see TupleQueryResultFormat#BINARY
 //     * 
-//     * @see http://www.openrdf.org/issues/browse/RIO-79 (Request for unique URI) 
+//     * @see http://www.openrdf.org/issues/browse/RIO-79 (Request for unique IRI) 
 //     */
-//    static public final URI SPARQL_RESULTS_OPENRDF_BINARY = new URIImpl(
-//            "http://www.w3.org/ns/formats/SPARQL_Results_TSV");
+//    static public final IRI SPARQL_RESULTS_OPENRDF_BINARY = VALUE_FACTORY.createIRI("http://www.w3.org/ns/formats/SPARQL_Results_TSV");
 
     /**
      * The graph in which the service description is accumulated (from the
      * constructor).
      */
-    protected final Graph g;
+    protected final Model g;
     
     /**
      * The KB instance that is being described (from the constructor).
@@ -456,7 +431,7 @@ public class SD {
      * 
      * @see #describeService()
      */
-    public SD(final Graph g, final AbstractTripleStore tripleStore,
+    public SD(final Model g, final AbstractTripleStore tripleStore,
             final String... serviceURI) {
 
         if (g == null)
@@ -481,7 +456,7 @@ public class SD {
         
         this.serviceURI = serviceURI;
         
-        this.f = g.getValueFactory();
+        this.f = VALUE_FACTORY;
         
         aService = f.createBNode("service");
 
@@ -547,9 +522,9 @@ public class SD {
      */
     protected void describeServiceEndpoints() {
 
-        for (String uri : serviceURI) {
+        for (String iri : serviceURI) {
 
-            g.add(aService, SD.endpoint, g.getValueFactory().createURI(uri));
+            g.add(aService, SD.endpoint, VALUE_FACTORY.createIRI(iri));
 
         }
 
@@ -744,7 +719,7 @@ public class SD {
         if (!tripleStore.isQuads())
             return;
 
-        final URI entailmentRegime;
+        final IRI entailmentRegime;
         final Axioms axioms = tripleStore.getAxioms();
         if (axioms == null || axioms instanceof NoAxioms) {
             entailmentRegime = SD.simpleEntailment;

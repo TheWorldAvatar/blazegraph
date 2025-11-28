@@ -31,7 +31,7 @@ import java.util.UUID;
 
 import junit.framework.TestCase2;
 
-import org.openrdf.model.vocabulary.XMLSchema;
+import org.eclipse.rdf4j.model.vocabulary.XMLSchema;
 
 import com.bigdata.btree.BTree;
 import com.bigdata.btree.IndexMetadata;
@@ -49,7 +49,7 @@ import com.bigdata.rdf.internal.impl.BlobIV;
 import com.bigdata.rdf.lexicon.BlobsWriteTask.BlobsWriteProcResultHandler;
 import com.bigdata.rdf.model.BigdataBNode;
 import com.bigdata.rdf.model.BigdataLiteral;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.model.BigdataValueFactoryImpl;
@@ -90,7 +90,7 @@ public class TestBlobsIndex extends TestCase2 {
 		final BigdataValue[] values;
 		{
 		
-			final BigdataURI uri1 = vf
+			final BigdataIRI uri1 = vf
 					.createURI("http://www.bigdata.com/testTerm");
 
 			final BigdataLiteral lit1 = vf.createLiteral("bigdata");
@@ -369,7 +369,7 @@ public class TestBlobsIndex extends TestCase2 {
 			final BigdataValue[] values;
 			{
 			
-				final BigdataURI uri1 = vf
+				final BigdataIRI uri1 = vf
 						.createURI("http://www.bigdata.com/testTerm");
 
                 // Note: These three literals wind up with the same hash code.
@@ -972,7 +972,7 @@ public class TestBlobsIndex extends TestCase2 {
             final BigdataValue[] values;
             {
 
-                final BigdataURI uri1 = vf
+                final BigdataIRI uri1 = vf
                         .createURI("http://www.bigdata.com/testTerm");
 
                 final BigdataLiteral lit1 = vf.createLiteral("bigdata");

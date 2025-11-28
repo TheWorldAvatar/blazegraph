@@ -30,10 +30,10 @@ package com.bigdata.rdf.sparql.ast.service;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.openrdf.model.BNode;
-import org.openrdf.model.Value;
-import org.openrdf.query.Binding;
-import org.openrdf.query.BindingSet;
+import org.eclipse.rdf4j.model.BNode;
+import org.eclipse.rdf4j.model.Value;
+import org.eclipse.rdf4j.query.Binding;
+import org.eclipse.rdf4j.query.BindingSet;
 
 
 

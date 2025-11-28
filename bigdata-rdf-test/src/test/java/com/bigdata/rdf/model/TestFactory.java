@@ -33,10 +33,10 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import junit.framework.TestCase2;
 
-import org.openrdf.model.URI;
-import org.openrdf.model.Value;
-import org.openrdf.model.ValueFactory;
-import org.openrdf.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.Value;
+import org.eclipse.rdf4j.model.ValueFactory;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
 
 import com.bigdata.rdf.internal.IV;
 import com.bigdata.rdf.internal.VTE;
@@ -98,9 +98,9 @@ public class TestFactory extends TestCase2 {
      */
     public void test_create_xsdInt_canonical() {
         
-		final BigdataURI v1 = vf.createURI(XSD.INT.stringValue());
+		final BigdataIRI v1 = vf.createURI(XSD.INT.stringValue());
 
-		final BigdataURI v2 = vf.createURI(XSD.INT.stringValue());
+		final BigdataIRI v2 = vf.createURI(XSD.INT.stringValue());
 
 		// verify the URI.
 		assertEquals(v1.stringValue(),XSD.INT.stringValue());
@@ -150,7 +150,7 @@ public class TestFactory extends TestCase2 {
 
 	/**
 	 * Unit test verifies that a new {@link BigdataValue} instance is returned
-	 * when {@link BigdataValueFactory#asValue(org.openrdf.model.Value)} is
+	 * when {@link BigdataValueFactory#asValue(org.eclipse.rdf4j.model.Value)} is
 	 * invoked with a {@link BigdataValue} whose {@link IV} is a "dummmy" IV
 	 * (aka a "mock" IV). A "dummy" or "mock" {@link IV} is an {@link IV} which
 	 * stands in for a "null" and is used to hold the place for an RDF

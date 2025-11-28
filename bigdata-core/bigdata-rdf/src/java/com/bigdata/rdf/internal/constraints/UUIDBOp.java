@@ -39,7 +39,7 @@ import com.bigdata.bop.ImmutableBOp;
 import com.bigdata.bop.NV;
 import com.bigdata.rdf.internal.IV;
 import com.bigdata.rdf.model.BigdataLiteral;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.sparql.ast.DummyConstantNode;
 import com.bigdata.rdf.sparql.ast.FilterNode;
@@ -106,7 +106,7 @@ public class UUIDBOp extends IVValueExpression<IV> implements INeedsMaterializat
             
         } else {
             
-            final BigdataURI uri = vf.createURI("urn:uuid:" + uuid.toString());
+            final BigdataIRI uri = vf.createURI("urn:uuid:" + uuid.toString());
             
             return DummyConstantNode.toDummyIV(uri);
             

@@ -38,7 +38,7 @@ import com.bigdata.rdf.internal.impl.bnode.SidIV;
 import com.bigdata.rdf.model.BigdataBNode;
 import com.bigdata.rdf.model.BigdataLiteral;
 import com.bigdata.rdf.model.BigdataStatement;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.model.StatementEnum;
@@ -112,20 +112,20 @@ public class TestReificationDoneRightEval extends AbstractDataDrivenSPARQLTestCa
 
 		final BigdataValueFactory vf = store.getValueFactory();
 
-		final BigdataURI SAP = vf.createURI("http://example.com/SAP");
-		final BigdataURI bought = vf.createURI("http://example.com/bought");
-		final BigdataURI sybase = vf.createURI("http://example.com/sybase");
-		final BigdataURI dcSource = vf.createURI(DCTermsVocabularyDecl.NAMESPACE+"source");
-		final BigdataURI dcCreated = vf.createURI(DCTermsVocabularyDecl.NAMESPACE+"created");
-		final BigdataURI newsSybase = vf.createURI("http://example.com/news/us-sybase");
+		final BigdataIRI SAP = vf.createURI("http://example.com/SAP");
+		final BigdataIRI bought = vf.createURI("http://example.com/bought");
+		final BigdataIRI sybase = vf.createURI("http://example.com/sybase");
+		final BigdataIRI dcSource = vf.createURI(DCTermsVocabularyDecl.NAMESPACE+"source");
+		final BigdataIRI dcCreated = vf.createURI(DCTermsVocabularyDecl.NAMESPACE+"created");
+		final BigdataIRI newsSybase = vf.createURI("http://example.com/news/us-sybase");
 		final BigdataLiteral createdDate = vf.createLiteral("2011-04-05T12:00:00Z",XSD.DATETIME);
-		final BigdataURI g1 = vf.createURI("http://example.com/g1");
+		final BigdataIRI g1 = vf.createURI("http://example.com/g1");
 
 		// Add/resolve the terms against the lexicon.
 		final BigdataValue[] terms = new BigdataValue[] { SAP, bought, sybase,
 				dcSource, dcCreated, newsSybase, createdDate, g1 };
 
-		final BigdataURI context = store.isQuads() ? g1 : null;
+		final BigdataIRI context = store.isQuads() ? g1 : null;
 		
 		store.addTerms(terms);
 		
@@ -191,20 +191,20 @@ public class TestReificationDoneRightEval extends AbstractDataDrivenSPARQLTestCa
 
 		final BigdataValueFactory vf = store.getValueFactory();
 
-		final BigdataURI SAP = vf.createURI("http://example.com/SAP");
-		final BigdataURI bought = vf.createURI("http://example.com/bought");
-		final BigdataURI sybase = vf.createURI("http://example.com/sybase");
-		final BigdataURI dcSource = vf.createURI(DCTermsVocabularyDecl.NAMESPACE+"source");
-		final BigdataURI dcCreated = vf.createURI(DCTermsVocabularyDecl.NAMESPACE+"created");
-		final BigdataURI newsSybase = vf.createURI("http://example.com/news/us-sybase");
+		final BigdataIRI SAP = vf.createURI("http://example.com/SAP");
+		final BigdataIRI bought = vf.createURI("http://example.com/bought");
+		final BigdataIRI sybase = vf.createURI("http://example.com/sybase");
+		final BigdataIRI dcSource = vf.createURI(DCTermsVocabularyDecl.NAMESPACE+"source");
+		final BigdataIRI dcCreated = vf.createURI(DCTermsVocabularyDecl.NAMESPACE+"created");
+		final BigdataIRI newsSybase = vf.createURI("http://example.com/news/us-sybase");
 		final BigdataLiteral createdDate = vf.createLiteral("2011-04-05T12:00:00Z",XSD.DATETIME);
-		final BigdataURI g1 = vf.createURI("http://example.com/g1");
+		final BigdataIRI g1 = vf.createURI("http://example.com/g1");
 
 		// Add/resolve the terms against the lexicon.
 		final BigdataValue[] terms = new BigdataValue[] { SAP, bought, sybase,
 				dcSource, dcCreated, newsSybase, createdDate, g1 };
 
-		final BigdataURI context = store.isQuads() ? g1 : null;
+		final BigdataIRI context = store.isQuads() ? g1 : null;
 		
 		store.addTerms(terms);
 		

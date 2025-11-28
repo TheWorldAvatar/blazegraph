@@ -29,7 +29,7 @@ package com.bigdata.rdf.vocab;
 
 import java.util.Iterator;
 
-import org.openrdf.model.URI;
+import org.eclipse.rdf4j.model.IRI;
 
 import com.bigdata.rdf.internal.impl.uri.VocabURIShortIV;
 import com.bigdata.rdf.store.AbstractTripleStore;
@@ -59,6 +59,6 @@ public interface VocabularyDecl {
      * Return an iterator which will visit the declared values. The iterator
      * must not support removal.
      */
-    public Iterator<URI> values();
+    public Iterator<IRI> values();
 
 }

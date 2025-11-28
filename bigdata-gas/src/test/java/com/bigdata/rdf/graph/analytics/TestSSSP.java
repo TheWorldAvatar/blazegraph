@@ -15,7 +15,7 @@
 */
 package com.bigdata.rdf.graph.analytics;
 
-import org.openrdf.sail.SailConnection;
+import org.eclipse.rdf4j.sail.SailConnection;
 
 import com.bigdata.rdf.graph.IGASContext;
 import com.bigdata.rdf.graph.IGASEngine;

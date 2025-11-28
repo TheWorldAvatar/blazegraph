@@ -1,7 +1,7 @@
 package com.bigdata.rdf.load;
 
-import org.openrdf.model.Statement;
-import org.openrdf.rio.RDFFormat;
+import org.eclipse.rdf4j.model.Statement;
+import org.eclipse.rdf4j.rio.RDFFormat;
 
 import com.bigdata.counters.CounterSet;
 import com.bigdata.counters.Instrument;

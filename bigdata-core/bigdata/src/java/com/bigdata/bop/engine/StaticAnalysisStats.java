@@ -32,7 +32,7 @@ import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import org.openrdf.model.Value;
+import org.eclipse.rdf4j.model.Value;
 
 import com.bigdata.rdf.sparql.ast.ASTContainer;
 import com.bigdata.rdf.sparql.ast.optimizers.ASTOptimizerList;

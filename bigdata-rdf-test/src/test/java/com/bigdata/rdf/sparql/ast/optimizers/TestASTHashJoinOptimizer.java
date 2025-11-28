@@ -27,13 +27,13 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 package com.bigdata.rdf.sparql.ast.optimizers;
 
-import org.openrdf.query.algebra.StatementPattern.Scope;
+import org.eclipse.rdf4j.query.algebra.StatementPattern.Scope;
 
 import com.bigdata.BigdataStatics;
 import com.bigdata.bop.IBindingSet;
 import com.bigdata.rdf.internal.XSD;
 import com.bigdata.rdf.model.BigdataLiteral;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.sparql.ast.ASTContainer;
@@ -125,18 +125,18 @@ public class TestASTHashJoinOptimizer extends AbstractASTEvaluationTestCase {
 
         final String productInstance = "http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/dataFromProducer1/Product22";
         
-        final BigdataURI rdfsLabel = valueFactory.createURI(rdfs + "label");
+        final BigdataIRI rdfsLabel = valueFactory.createURI(rdfs + "label");
 
-        final BigdataURI productFeature = valueFactory.createURI(bsbm
+        final BigdataIRI productFeature = valueFactory.createURI(bsbm
                 + "productFeature");
 
-        final BigdataURI productPropertyNumeric1 = valueFactory.createURI(bsbm
+        final BigdataIRI productPropertyNumeric1 = valueFactory.createURI(bsbm
                 + "productPropertyNumeric1");
 
-        final BigdataURI productPropertyNumeric2 = valueFactory.createURI(bsbm
+        final BigdataIRI productPropertyNumeric2 = valueFactory.createURI(bsbm
                 + "productPropertyNumeric2");
 
-        final BigdataURI product53999 = valueFactory.createURI(productInstance);
+        final BigdataIRI product53999 = valueFactory.createURI(productInstance);
         
         final BigdataLiteral _120 = valueFactory.createLiteral("120",
                 XSD.INTEGER);

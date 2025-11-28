@@ -29,8 +29,8 @@ package com.bigdata.rdf.sparql.ast.optimizers;
 
 import java.util.Collections;
 
-import org.openrdf.model.impl.URIImpl;
-import org.openrdf.query.algebra.StatementPattern.Scope;
+import org.eclipse.rdf4j.model.impl.URIImpl;
+import org.eclipse.rdf4j.query.algebra.StatementPattern.Scope;
 
 import com.bigdata.bop.IBindingSet;
 import com.bigdata.rdf.internal.IV;

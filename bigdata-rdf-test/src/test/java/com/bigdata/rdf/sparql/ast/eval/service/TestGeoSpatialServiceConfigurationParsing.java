@@ -73,7 +73,7 @@ public class TestGeoSpatialServiceConfigurationParsing extends AbstractDataDrive
         assertEquals(parsedDatatypeConfigs.size(),1);
         
         final GeoSpatialDatatypeConfiguration parsedDatatypeConfig = parsedDatatypeConfigs.get(0);
-        assertEquals(parsedDatatypeConfig.getUri().stringValue(), config1Uri);
+        assertEquals(parsedDatatypeConfig.getIri().stringValue(), config1Uri);
         
         final List<GeoSpatialDatatypeFieldConfiguration> fields = parsedDatatypeConfig.getFields();
         assertEquals(fields.size(), 5);
@@ -150,11 +150,11 @@ public class TestGeoSpatialServiceConfigurationParsing extends AbstractDataDrive
             final GeoSpatialDatatypeConfiguration parsedDatatypeConfig = parsedDatatypeConfigs.get(i);
             
             if (i==0) {
-                assertEquals(parsedDatatypeConfig.getUri().stringValue(), config1Uri);
+                assertEquals(parsedDatatypeConfig.getIri().stringValue(), config1Uri);
             } else if (i==1) {
-                assertEquals(parsedDatatypeConfig.getUri().stringValue(), config2Uri);
+                assertEquals(parsedDatatypeConfig.getIri().stringValue(), config2Uri);
             } else if (i==2) {
-                assertEquals(parsedDatatypeConfig.getUri().stringValue(), config3Uri);
+                assertEquals(parsedDatatypeConfig.getIri().stringValue(), config3Uri);
             }
             
             final List<GeoSpatialDatatypeFieldConfiguration> fields = parsedDatatypeConfig.getFields();

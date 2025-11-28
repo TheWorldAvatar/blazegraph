@@ -37,18 +37,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.model.Resource;
-import org.openrdf.model.Statement;
-import org.openrdf.model.URI;
-import org.openrdf.model.Value;
-import org.openrdf.query.MalformedQueryException;
-import org.openrdf.rio.RDFFormat;
-import org.openrdf.rio.RDFHandlerException;
-import org.openrdf.rio.RDFParser;
-import org.openrdf.rio.RDFParserFactory;
-import org.openrdf.rio.RDFParserRegistry;
-import org.openrdf.rio.helpers.RDFHandlerBase;
-import org.openrdf.sail.SailException;
+import org.eclipse.rdf4j.model.Resource;
+import org.eclipse.rdf4j.model.Statement;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.Value;
+import org.eclipse.rdf4j.query.MalformedQueryException;
+import org.eclipse.rdf4j.rio.RDFFormat;
+import org.eclipse.rdf4j.rio.RDFHandlerException;
+import org.eclipse.rdf4j.rio.RDFParser;
+import org.eclipse.rdf4j.rio.RDFParserFactory;
+import org.eclipse.rdf4j.rio.RDFParserRegistry;
+import org.eclipse.rdf4j.rio.helpers.RDFHandlerBase;
+import org.eclipse.rdf4j.sail.SailException;
 
 import com.bigdata.journal.ITx;
 import com.bigdata.rdf.sail.BigdataSail.BigdataSailConnection;
@@ -981,7 +981,7 @@ public class DeleteServlet extends BigdataRDFServlet {
         final Resource[] c;
         try {
             s = EncodeDecodeValue.decodeResource(req.getParameter("s"));
-            p = EncodeDecodeValue.decodeURI(req.getParameter("p"));
+            p = EncodeDecodeValue.decodeIRI(req.getParameter("p"));
             o = EncodeDecodeValue.decodeValue(req.getParameter("o"));
             c = decodeContexts(req, "c");
 //            c = EncodeDecodeValue.decodeContexts(req.getParameterValues("c"));

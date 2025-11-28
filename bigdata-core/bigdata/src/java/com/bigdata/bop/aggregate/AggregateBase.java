@@ -2,8 +2,8 @@ package com.bigdata.bop.aggregate;
 
 import java.util.Map;
 
-import org.openrdf.model.Literal;
-import org.openrdf.model.impl.LiteralImpl;
+import org.eclipse.rdf4j.model.Literal;
+import org.eclipse.rdf4j.model.impl.LiteralImpl;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.IBindingSet;

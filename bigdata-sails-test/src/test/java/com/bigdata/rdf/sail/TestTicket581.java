@@ -27,11 +27,11 @@ import java.util.Properties;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.query.GraphQueryResult;
-import org.openrdf.query.QueryLanguage;
-import org.openrdf.repository.RepositoryConnection;
-import org.openrdf.repository.sail.SailGraphQuery;
-import org.openrdf.rio.RDFFormat;
+import org.eclipse.rdf4j.query.GraphQueryResult;
+import org.eclipse.rdf4j.query.QueryLanguage;
+import org.eclipse.rdf4j.repository.RepositoryConnection;
+import org.eclipse.rdf4j.repository.sail.SailGraphQuery;
+import org.eclipse.rdf4j.rio.RDFFormat;
 
 import com.bigdata.rdf.axioms.NoAxioms;
 import com.bigdata.rdf.store.BDS;

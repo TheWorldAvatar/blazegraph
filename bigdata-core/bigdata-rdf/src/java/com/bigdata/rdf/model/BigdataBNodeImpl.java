@@ -47,7 +47,7 @@ Modifications:
 
 package com.bigdata.rdf.model;
 
-import org.openrdf.model.BNode;
+import org.eclipse.rdf4j.model.BNode;
 
 import com.bigdata.rdf.internal.IV;
 import com.bigdata.rdf.internal.impl.bnode.SidIV;

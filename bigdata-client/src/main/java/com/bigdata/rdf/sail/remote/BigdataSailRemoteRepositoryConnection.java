@@ -24,9 +24,6 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 package com.bigdata.rdf.sail.remote;
 
-import info.aduna.iteration.CloseableIteration;
-import info.aduna.iteration.Iteration;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -38,37 +35,39 @@ import java.util.concurrent.atomic.AtomicReference;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.IsolationLevel;
-import org.openrdf.model.Graph;
-import org.openrdf.model.Namespace;
-import org.openrdf.model.Resource;
-import org.openrdf.model.Statement;
-import org.openrdf.model.URI;
-import org.openrdf.model.Value;
-import org.openrdf.model.ValueFactory;
-import org.openrdf.model.impl.LinkedHashModel;
-import org.openrdf.model.impl.StatementImpl;
-import org.openrdf.query.BindingSet;
-import org.openrdf.query.BooleanQuery;
-import org.openrdf.query.Dataset;
-import org.openrdf.query.GraphQuery;
-import org.openrdf.query.GraphQueryResult;
-import org.openrdf.query.MalformedQueryException;
-import org.openrdf.query.Query;
-import org.openrdf.query.QueryLanguage;
-import org.openrdf.query.TupleQuery;
-import org.openrdf.query.Update;
-import org.openrdf.query.UpdateExecutionException;
-import org.openrdf.repository.Repository;
-import org.openrdf.repository.RepositoryConnection;
-import org.openrdf.repository.RepositoryException;
-import org.openrdf.repository.RepositoryResult;
-import org.openrdf.repository.UnknownTransactionStateException;
-import org.openrdf.rio.ParserConfig;
-import org.openrdf.rio.RDFFormat;
-import org.openrdf.rio.RDFHandler;
-import org.openrdf.rio.RDFHandlerException;
-import org.openrdf.rio.RDFParseException;
+import org.eclipse.rdf4j.IsolationLevel;
+import org.eclipse.rdf4j.common.iteration.CloseableIteration;
+import org.eclipse.rdf4j.common.iteration.Iteration;
+import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.Model;
+import org.eclipse.rdf4j.model.Namespace;
+import org.eclipse.rdf4j.model.Resource;
+import org.eclipse.rdf4j.model.Statement;
+import org.eclipse.rdf4j.model.Value;
+import org.eclipse.rdf4j.model.ValueFactory;
+import org.eclipse.rdf4j.model.impl.LinkedHashModel;
+import org.eclipse.rdf4j.model.impl.StatementImpl;
+import org.eclipse.rdf4j.query.BindingSet;
+import org.eclipse.rdf4j.query.BooleanQuery;
+import org.eclipse.rdf4j.query.Dataset;
+import org.eclipse.rdf4j.query.GraphQuery;
+import org.eclipse.rdf4j.query.GraphQueryResult;
+import org.eclipse.rdf4j.query.MalformedQueryException;
+import org.eclipse.rdf4j.query.Query;
+import org.eclipse.rdf4j.query.QueryLanguage;
+import org.eclipse.rdf4j.query.TupleQuery;
+import org.eclipse.rdf4j.query.Update;
+import org.eclipse.rdf4j.query.UpdateExecutionException;
+import org.eclipse.rdf4j.repository.Repository;
+import org.eclipse.rdf4j.repository.RepositoryConnection;
+import org.eclipse.rdf4j.repository.RepositoryException;
+import org.eclipse.rdf4j.repository.RepositoryResult;
+import org.eclipse.rdf4j.repository.UnknownTransactionStateException;
+import org.eclipse.rdf4j.rio.ParserConfig;
+import org.eclipse.rdf4j.rio.RDFFormat;
+import org.eclipse.rdf4j.rio.RDFHandler;
+import org.eclipse.rdf4j.rio.RDFHandlerException;
+import org.eclipse.rdf4j.rio.RDFParseException;
 
 import com.bigdata.rdf.sail.webapp.client.IPreparedSparqlUpdate;
 import com.bigdata.rdf.sail.webapp.client.IRemoteTx;
@@ -153,7 +152,7 @@ public class BigdataSailRemoteRepositoryConnection implements RepositoryConnecti
     * Report the fast range count (aka ESTCARD) associated with the specified
     * access path.
     */
-	public long count(final Resource s, final URI p, final Value o, 
+	public long count(final Resource s, final IRI p, final Value o, 
 			final Resource... c) 
 			throws RepositoryException {
 
@@ -176,7 +175,7 @@ public class BigdataSailRemoteRepositoryConnection implements RepositoryConnecti
     */
 	@Override
 	public RepositoryResult<Statement> getStatements(final Resource s,
-            final URI p, final Value o, final boolean includeInferred,
+            final IRI p, final Value o, final boolean includeInferred,
             final Resource... c) throws RepositoryException {
 		
 		try {
@@ -244,7 +243,7 @@ public class BigdataSailRemoteRepositoryConnection implements RepositoryConnecti
     *      overestimate and ignores includeInferred (REST API) </a>
     */
 	@Override
-	public boolean hasStatement(final Resource s, final URI p, final Value o,
+	public boolean hasStatement(final Resource s, final IRI p, final Value o,
             final boolean includeInferred, final Resource... c)
             throws RepositoryException {
 
@@ -390,7 +389,7 @@ public class BigdataSailRemoteRepositoryConnection implements RepositoryConnecti
             final Iteration<? extends Statement, E> stmts, final Resource... c)
             throws RepositoryException, E {
 		
-		final Graph g = new LinkedHashModel();
+		final Model g = new LinkedHashModel();
 
 		while (stmts.hasNext()) {
 		
@@ -403,7 +402,7 @@ public class BigdataSailRemoteRepositoryConnection implements RepositoryConnecti
 	}
 
 	@Override
-    public void add(final Resource s, final URI p, final Value o,
+    public void add(final Resource s, final IRI p, final Value o,
             final Resource... c) throws RepositoryException {
 		
 		add(new StatementImpl(s, p, o), c);
@@ -422,7 +421,7 @@ public class BigdataSailRemoteRepositoryConnection implements RepositoryConnecti
 
 //		log.warn("single statement updates not recommended");
 		
-		final Graph g = new LinkedHashModel();
+		final Model g = new LinkedHashModel();
 
 		g.add(stmt);
 		
@@ -520,7 +519,7 @@ public class BigdataSailRemoteRepositoryConnection implements RepositoryConnecti
             final Iteration<? extends Statement, E> stmts, final Resource... c)
             throws RepositoryException, E {
 
-		final Graph g = new LinkedHashModel();
+		final Model g = new LinkedHashModel();
 
       while (stmts.hasNext()) {
 
@@ -544,7 +543,7 @@ public class BigdataSailRemoteRepositoryConnection implements RepositoryConnecti
 		
 //		log.warn("single statement updates not recommended");
 		
-		final Graph g = new LinkedHashModel();
+		final Model g = new LinkedHashModel();
 	
 		g.add(stmt);
 		
@@ -563,7 +562,7 @@ public class BigdataSailRemoteRepositoryConnection implements RepositoryConnecti
 	}
 
 	@Override
-    public void remove(final Resource s, URI p, Value o, final Resource... c)
+    public void remove(final Resource s, IRI p, Value o, final Resource... c)
             throws RepositoryException {
 
 		final RemoveOp op = new RemoveOp(s, p, o, c);
@@ -705,7 +704,7 @@ public class BigdataSailRemoteRepositoryConnection implements RepositoryConnecti
 	}
 
 	@Override
-    public void exportStatements(final Resource s, final URI p, final Value o,
+    public void exportStatements(final Resource s, final IRI p, final Value o,
             final boolean includeInferred, final RDFHandler handler,
             final Resource... c) throws RepositoryException,
             RDFHandlerException {

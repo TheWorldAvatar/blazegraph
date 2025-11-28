@@ -34,8 +34,8 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.openrdf.repository.RepositoryException;
-import org.openrdf.sail.SailException;
+import org.eclipse.rdf4j.repository.RepositoryException;
+import org.eclipse.rdf4j.sail.SailException;
 
 import com.bigdata.BigdataStatics;
 import com.bigdata.journal.IIndexManager;

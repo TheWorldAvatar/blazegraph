@@ -17,10 +17,10 @@ package com.bigdata.rdf.graph;
 
 import java.util.Set;
 
-import org.openrdf.model.Literal;
-import org.openrdf.model.Statement;
-import org.openrdf.model.URI;
-import org.openrdf.model.Value;
+import org.eclipse.rdf4j.model.Literal;
+import org.eclipse.rdf4j.model.Statement;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.Value;
 
 /**
  * Interface exposes access to the VS and ES that is visible during a GATHER or

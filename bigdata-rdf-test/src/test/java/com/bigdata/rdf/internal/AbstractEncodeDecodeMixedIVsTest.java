@@ -39,10 +39,11 @@ import java.util.UUID;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 
-import org.openrdf.model.URI;
-import org.openrdf.model.impl.LiteralImpl;
-import org.openrdf.model.impl.URIImpl;
-import org.openrdf.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.ValueFactory;
+import org.eclipse.rdf4j.model.impl.LiteralImpl;
+import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
 
 import com.bigdata.rdf.internal.ColorsEnumExtension.Color;
 import com.bigdata.rdf.internal.impl.BlobIV;
@@ -70,8 +71,8 @@ import com.bigdata.rdf.internal.impl.uri.URIExtensionIV;
 import com.bigdata.rdf.internal.impl.uri.VocabURIByteIV;
 import com.bigdata.rdf.internal.impl.uri.VocabURIShortIV;
 import com.bigdata.rdf.model.BigdataBNode;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataLiteral;
-import com.bigdata.rdf.model.BigdataURI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.model.BigdataValueFactoryImpl;
@@ -108,6 +109,8 @@ public abstract class AbstractEncodeDecodeMixedIVsTest extends AbstractEncodeDec
      * imposed by the {@link AbstractTripleStore.Options}.
      */
     static private boolean fullyInlineUnicode = true;
+
+    private static final ValueFactory VALUE_FACTORY = SimpleValueFactory.getInstance();
     
     protected List<IV<?,?>> prepareIVs() throws DatatypeConfigurationException {
         
@@ -115,21 +118,21 @@ public abstract class AbstractEncodeDecodeMixedIVsTest extends AbstractEncodeDec
 
         final BigdataValueFactory vf = BigdataValueFactoryImpl.getInstance(getName());
         
-        final URI datatype = new URIImpl("http://www.bigdata.com");
-        final URI dt1 = new URIImpl("http://www.bigdata.com/mock-datatype-1");
-        final URI dt2 = new URIImpl("http://www.bigdata.com/mock-datatype-2");
+        final IRI datatype = VALUE_FACTORY.createIRI("http://www.bigdata.com");
+        final IRI dt1 = VALUE_FACTORY.createIRI("http://www.bigdata.com/mock-datatype-1");
+        final IRI dt2 = VALUE_FACTORY.createIRI("http://www.bigdata.com/mock-datatype-2");
 
-        final IV<?, ?> namespaceIV = newTermId(VTE.URI);
-        final IV<?, ?> datatypeIV = newTermId(VTE.URI);
-        final IV<?, ?> datatypeIV2 = newTermId(VTE.URI);
+        final IV<?, ?> namespaceIV = newTermId(VTE.IRI);
+        final IV<?, ?> datatypeIV = newTermId(VTE.IRI);
+        final IV<?, ?> datatypeIV2 = newTermId(VTE.IRI);
 
-        final IV<?, ?> colorIV = newTermId(VTE.URI);// ColorsEnumExtension.COLOR;
-        final IV<?, ?> xsdStringIV = newTermId(VTE.URI);// XSD.STRING;
-        final IV<?, ?> xsdDateTimeIV = newTermId(VTE.URI);// XSD.DATETIME;
+        final IV<?, ?> colorIV = newTermId(VTE.IRI);// ColorsEnumExtension.COLOR;
+        final IV<?, ?> xsdStringIV = newTermId(VTE.IRI);// XSD.STRING;
+        final IV<?, ?> xsdDateTimeIV = newTermId(VTE.IRI);// XSD.DATETIME;
 
         final IDatatypeURIResolver resolver = new IDatatypeURIResolver() {
-            public BigdataURI resolve(final URI uri) {
-                final BigdataURI buri = vf.createURI(uri.stringValue());
+            public BigdataIRI resolve(final IRI uri) {
+                final BigdataIRI buri = vf.createURI(uri.stringValue());
                 if (ColorsEnumExtension.COLOR.equals(uri)) {
                     buri.setIV(colorIV);
                 } else if (XSD.STRING.equals(uri)) {
@@ -137,27 +140,27 @@ public abstract class AbstractEncodeDecodeMixedIVsTest extends AbstractEncodeDec
                 } else if (XSD.DATETIME.equals(uri)) {
                     buri.setIV(xsdDateTimeIV);
                 } else if (XSD.DATE.equals(uri)) {
-                    buri.setIV(newTermId(VTE.URI));
+                    buri.setIV(newTermId(VTE.IRI));
                 } else if (XSD.TIME.equals(uri)) {
-                    buri.setIV(newTermId(VTE.URI));
+                    buri.setIV(newTermId(VTE.IRI));
                 } else if (XSD.GDAY.equals(uri)) {
-                    buri.setIV(newTermId(VTE.URI));
+                    buri.setIV(newTermId(VTE.IRI));
                 } else if (XSD.GMONTH.equals(uri)) {
-                    buri.setIV(newTermId(VTE.URI));
+                    buri.setIV(newTermId(VTE.IRI));
                 } else if (XSD.GMONTHDAY.equals(uri)) {
-                    buri.setIV(newTermId(VTE.URI));
+                    buri.setIV(newTermId(VTE.IRI));
                 } else if (XSD.GYEAR.equals(uri)) {
-                    buri.setIV(newTermId(VTE.URI));
+                    buri.setIV(newTermId(VTE.IRI));
                 } else if (XSD.GYEARMONTH.equals(uri)) {
-                    buri.setIV(newTermId(VTE.URI));
+                    buri.setIV(newTermId(VTE.IRI));
                 } else if (XSD.POSITIVE_INTEGER.equals(uri)) {
-                    buri.setIV(newTermId(VTE.URI));
+                    buri.setIV(newTermId(VTE.IRI));
                 } else if (XSD.NEGATIVE_INTEGER.equals(uri)) {
-                    buri.setIV(newTermId(VTE.URI));
+                    buri.setIV(newTermId(VTE.IRI));
                 } else if (XSD.NON_POSITIVE_INTEGER.equals(uri)) {
-                    buri.setIV(newTermId(VTE.URI));
+                    buri.setIV(newTermId(VTE.IRI));
                 } else if (XSD.NON_NEGATIVE_INTEGER.equals(uri)) {
-                    buri.setIV(newTermId(VTE.URI));
+                    buri.setIV(newTermId(VTE.IRI));
                 } else
                     throw new UnsupportedOperationException();
                 return buri;
@@ -204,28 +207,28 @@ public abstract class AbstractEncodeDecodeMixedIVsTest extends AbstractEncodeDec
                 /*
                  * URIs
                  */
-                ivs.add(new FullyInlineURIIV<BigdataURI>(new URIImpl("http://www.bigdata.com")));
-                ivs.add(new FullyInlineURIIV<BigdataURI>(new URIImpl("http://www.bigdata.com/")));
-                ivs.add(new FullyInlineURIIV<BigdataURI>(new URIImpl("http://www.bigdata.com/foo")));
-                ivs.add(new FullyInlineURIIV<BigdataURI>(new URIImpl("http://www.bigdata.com:80/foo")));
-                ivs.add(new FullyInlineURIIV<BigdataURI>(new URIImpl("http://www.bigdata.com")));
+                ivs.add(new FullyInlineURIIV<BigdataIRI>(VALUE_FACTORY.createIRI("http://www.bigdata.com")));
+                ivs.add(new FullyInlineURIIV<BigdataIRI>(VALUE_FACTORY.createIRI("http://www.bigdata.com/")));
+                ivs.add(new FullyInlineURIIV<BigdataIRI>(VALUE_FACTORY.createIRI("http://www.bigdata.com/foo")));
+                ivs.add(new FullyInlineURIIV<BigdataIRI>(VALUE_FACTORY.createIRI("http://www.bigdata.com:80/foo")));
+                ivs.add(new FullyInlineURIIV<BigdataIRI>(VALUE_FACTORY.createIRI("http://www.bigdata.com")));
                 if (fullyInlineUnicode) {
-                    ivs.add(new FullyInlineURIIV<BigdataURI>(RDF.TYPE));
-                    ivs.add(new FullyInlineURIIV<BigdataURI>(RDF.SUBJECT));
-                    ivs.add(new FullyInlineURIIV<BigdataURI>(RDF.BAG));
-                    ivs.add(new FullyInlineURIIV<BigdataURI>(RDF.OBJECT));
-                    ivs.add(new URIExtensionIV<BigdataURI>(
+                    ivs.add(new FullyInlineURIIV<BigdataIRI>(RDF.TYPE));
+                    ivs.add(new FullyInlineURIIV<BigdataIRI>(RDF.SUBJECT));
+                    ivs.add(new FullyInlineURIIV<BigdataIRI>(RDF.BAG));
+                    ivs.add(new FullyInlineURIIV<BigdataIRI>(RDF.OBJECT));
+                    ivs.add(new URIExtensionIV<BigdataIRI>(
                             new FullyInlineTypedLiteralIV<BigdataLiteral>(
                                     "http://www.example.com/"),
-                            new VocabURIByteIV<BigdataURI>((byte) 1)));
-                    ivs.add(new URIExtensionIV<BigdataURI>(
+                            new VocabURIByteIV<BigdataIRI>((byte) 1)));
+                    ivs.add(new URIExtensionIV<BigdataIRI>(
                             new FullyInlineTypedLiteralIV<BigdataLiteral>(
                                     "http://www.example.com/foo"),
-                            new VocabURIByteIV<BigdataURI>((byte) 1)));
-                    ivs.add(new URIExtensionIV<BigdataURI>(
+                            new VocabURIByteIV<BigdataIRI>((byte) 1)));
+                    ivs.add(new URIExtensionIV<BigdataIRI>(
                             new FullyInlineTypedLiteralIV<BigdataLiteral>(
                                     "http://www.example.com/foobar"),
-                            new VocabURIByteIV<BigdataURI>((byte) 1)));
+                            new VocabURIByteIV<BigdataIRI>((byte) 1)));
                     }
 
                 /*
@@ -491,27 +494,27 @@ public abstract class AbstractEncodeDecodeMixedIVsTest extends AbstractEncodeDec
                 ivs.add(new XSDIntegerIV<BigdataLiteral>(new BigInteger("-151")));//
 
                 // byte vocabulary IVs.
-                ivs.add(new VocabURIByteIV<BigdataURI>((byte) Byte.MIN_VALUE));
-                ivs.add(new VocabURIByteIV<BigdataURI>((byte) -1));
-                ivs.add(new VocabURIByteIV<BigdataURI>((byte) 0));
-                ivs.add(new VocabURIByteIV<BigdataURI>((byte) 1));
-                ivs.add(new VocabURIByteIV<BigdataURI>((byte) Byte.MAX_VALUE));
+                ivs.add(new VocabURIByteIV<BigdataIRI>((byte) Byte.MIN_VALUE));
+                ivs.add(new VocabURIByteIV<BigdataIRI>((byte) -1));
+                ivs.add(new VocabURIByteIV<BigdataIRI>((byte) 0));
+                ivs.add(new VocabURIByteIV<BigdataIRI>((byte) 1));
+                ivs.add(new VocabURIByteIV<BigdataIRI>((byte) Byte.MAX_VALUE));
 
                 // short vocabulary IVs.
-                ivs.add(new VocabURIShortIV<BigdataURI>((short) Short.MIN_VALUE));
-                ivs.add(new VocabURIShortIV<BigdataURI>((short) -1));
-                ivs.add(new VocabURIShortIV<BigdataURI>((short) 0));
-                ivs.add(new VocabURIShortIV<BigdataURI>((short) 1));
-                ivs.add(new VocabURIShortIV<BigdataURI>((short) Short.MAX_VALUE));
+                ivs.add(new VocabURIShortIV<BigdataIRI>((short) Short.MIN_VALUE));
+                ivs.add(new VocabURIShortIV<BigdataIRI>((short) -1));
+                ivs.add(new VocabURIShortIV<BigdataIRI>((short) 0));
+                ivs.add(new VocabURIShortIV<BigdataIRI>((short) 1));
+                ivs.add(new VocabURIShortIV<BigdataIRI>((short) Short.MAX_VALUE));
 
                 // SIDs
                 {
                     
-                    final IV<?,?> s1 = newTermId(VTE.URI);
-                    final IV<?,?> s2 = newTermId(VTE.URI);
-                    final IV<?,?> p1 = newTermId(VTE.URI);
-                    final IV<?,?> p2 = newTermId(VTE.URI);
-                    final IV<?,?> o1 = newTermId(VTE.URI);
+                    final IV<?,?> s1 = newTermId(VTE.IRI);
+                    final IV<?,?> s2 = newTermId(VTE.IRI);
+                    final IV<?,?> p1 = newTermId(VTE.IRI);
+                    final IV<?,?> p2 = newTermId(VTE.IRI);
+                    final IV<?,?> o1 = newTermId(VTE.IRI);
                     final IV<?,?> o2 = newTermId(VTE.BNODE);
                     final IV<?,?> o3 = newTermId(VTE.LITERAL);
 
@@ -625,19 +628,19 @@ public abstract class AbstractEncodeDecodeMixedIVsTest extends AbstractEncodeDec
 
                 // URIs
                 if (fullyInlineUnicode) {
-                    ivs.add(new PartlyInlineURIIV<BigdataURI>(
+                    ivs.add(new PartlyInlineURIIV<BigdataIRI>(
                             new FullyInlineTypedLiteralIV<BigdataLiteral>("bar"),
                             namespaceIV));
-                    ivs.add(new PartlyInlineURIIV<BigdataURI>(
+                    ivs.add(new PartlyInlineURIIV<BigdataIRI>(
                             new FullyInlineTypedLiteralIV<BigdataLiteral>("baz"),
                             namespaceIV));
-                    ivs.add(new PartlyInlineURIIV<BigdataURI>(
+                    ivs.add(new PartlyInlineURIIV<BigdataIRI>(
                             new FullyInlineTypedLiteralIV<BigdataLiteral>("123"),
                             namespaceIV));
-                    ivs.add(new PartlyInlineURIIV<BigdataURI>(
+                    ivs.add(new PartlyInlineURIIV<BigdataIRI>(
                             new FullyInlineTypedLiteralIV<BigdataLiteral>("23"),
                             namespaceIV));
-                    ivs.add(new PartlyInlineURIIV<BigdataURI>(
+                    ivs.add(new PartlyInlineURIIV<BigdataIRI>(
                             new FullyInlineTypedLiteralIV<BigdataLiteral>("3"),
                             namespaceIV));
                 }
@@ -715,53 +718,53 @@ public abstract class AbstractEncodeDecodeMixedIVsTest extends AbstractEncodeDec
                 }
 
                 if(fullyInlineUnicode){
-                    ivs.add(new PartlyInlineURIIV<BigdataURI>(
+                    ivs.add(new PartlyInlineURIIV<BigdataIRI>(
                             new FullyInlineTypedLiteralIV<BigdataLiteral>("bar"),// localName
-                            new VocabURIShortIV<BigdataURI>((short) 1) // namespace
+                            new VocabURIShortIV<BigdataIRI>((short) 1) // namespace
                     ));
-                    ivs.add(new PartlyInlineURIIV<BigdataURI>(
+                    ivs.add(new PartlyInlineURIIV<BigdataIRI>(
                             new FullyInlineTypedLiteralIV<BigdataLiteral>("baz"),// localName
-                            new VocabURIShortIV<BigdataURI>((short) 1) // namespace
+                            new VocabURIShortIV<BigdataIRI>((short) 1) // namespace
                     ));
-                    ivs.add(new PartlyInlineURIIV<BigdataURI>(
+                    ivs.add(new PartlyInlineURIIV<BigdataIRI>(
                             new FullyInlineTypedLiteralIV<BigdataLiteral>("bar"),// localName
-                            new VocabURIShortIV<BigdataURI>((short) 2) // namespace
+                            new VocabURIShortIV<BigdataIRI>((short) 2) // namespace
                     ));
-                    ivs.add(new PartlyInlineURIIV<BigdataURI>(
+                    ivs.add(new PartlyInlineURIIV<BigdataIRI>(
                             new FullyInlineTypedLiteralIV<BigdataLiteral>("baz"),// localName
-                            new VocabURIShortIV<BigdataURI>((short) 2) // namespace
+                            new VocabURIShortIV<BigdataIRI>((short) 2) // namespace
                     ));
-                    ivs.add(new PartlyInlineURIIV<BigdataURI>(
+                    ivs.add(new PartlyInlineURIIV<BigdataIRI>(
                             new FullyInlineTypedLiteralIV<BigdataLiteral>("123"),// localName
-                            new VocabURIShortIV<BigdataURI>((short) 2) // namespace
+                            new VocabURIShortIV<BigdataIRI>((short) 2) // namespace
                     ));
-                    ivs.add(new PartlyInlineURIIV<BigdataURI>(
+                    ivs.add(new PartlyInlineURIIV<BigdataIRI>(
                             new FullyInlineTypedLiteralIV<BigdataLiteral>("123"),// localName
-                            new VocabURIShortIV<BigdataURI>((short) 2) // namespace
+                            new VocabURIShortIV<BigdataIRI>((short) 2) // namespace
                     ));
-                    ivs.add(new PartlyInlineURIIV<BigdataURI>(
+                    ivs.add(new PartlyInlineURIIV<BigdataIRI>(
                             new FullyInlineTypedLiteralIV<BigdataLiteral>("23"),// localName
-                            new VocabURIShortIV<BigdataURI>((short) 2) // namespace
+                            new VocabURIShortIV<BigdataIRI>((short) 2) // namespace
                     ));
-                    ivs.add(new PartlyInlineURIIV<BigdataURI>(
+                    ivs.add(new PartlyInlineURIIV<BigdataIRI>(
                             new FullyInlineTypedLiteralIV<BigdataLiteral>("23"),// localName
-                            new VocabURIShortIV<BigdataURI>((short) 2) // namespace
+                            new VocabURIShortIV<BigdataIRI>((short) 2) // namespace
                     ));
-                    ivs.add(new PartlyInlineURIIV<BigdataURI>(
+                    ivs.add(new PartlyInlineURIIV<BigdataIRI>(
                             new FullyInlineTypedLiteralIV<BigdataLiteral>("3"),// localName
-                            new VocabURIShortIV<BigdataURI>((short) 2) // namespace
+                            new VocabURIShortIV<BigdataIRI>((short) 2) // namespace
                     ));
-                    ivs.add(new PartlyInlineURIIV<BigdataURI>(
+                    ivs.add(new PartlyInlineURIIV<BigdataIRI>(
                             new FullyInlineTypedLiteralIV<BigdataLiteral>("3"),// localName
-                            new VocabURIShortIV<BigdataURI>((short) 2) // namespace
+                            new VocabURIShortIV<BigdataIRI>((short) 2) // namespace
                     ));
                 }
 
                 if (fullyInlineUnicode) {
 
-                    final IV<?, ?> datatypeIVa = new VocabURIShortIV<BigdataURI>(
+                    final IV<?, ?> datatypeIVa = new VocabURIShortIV<BigdataIRI>(
                             (short) 1);
-                    final IV<?, ?> datatypeIVa2 = new VocabURIShortIV<BigdataURI>(
+                    final IV<?, ?> datatypeIVa2 = new VocabURIShortIV<BigdataIRI>(
                             (short) 2);
                     ivs.add(new PartlyInlineTypedLiteralIV<BigdataLiteral>(
                             new FullyInlineTypedLiteralIV<BigdataLiteral>("bar"),

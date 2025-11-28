@@ -29,23 +29,23 @@ import java.io.IOException;
 
 import junit.framework.Test;
 
-import org.openrdf.model.Graph;
-import org.openrdf.model.Literal;
-import org.openrdf.model.Resource;
-import org.openrdf.model.Statement;
-import org.openrdf.model.URI;
-import org.openrdf.model.impl.LinkedHashModel;
-import org.openrdf.model.impl.StatementImpl;
-import org.openrdf.model.impl.URIImpl;
-import org.openrdf.model.vocabulary.RDF;
-import org.openrdf.model.vocabulary.RDFS;
-import org.openrdf.query.QueryLanguage;
-import org.openrdf.query.TupleQueryResult;
-import org.openrdf.query.resultio.TupleQueryResultFormat;
-import org.openrdf.rio.RDFFormat;
-import org.openrdf.rio.RDFWriter;
-import org.openrdf.rio.RDFWriterFactory;
-import org.openrdf.rio.RDFWriterRegistry;
+import org.eclipse.rdf4j.model.Graph;
+import org.eclipse.rdf4j.model.Literal;
+import org.eclipse.rdf4j.model.Resource;
+import org.eclipse.rdf4j.model.Statement;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.impl.LinkedHashModel;
+import org.eclipse.rdf4j.model.impl.StatementImpl;
+import org.eclipse.rdf4j.model.impl.URIImpl;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.vocabulary.RDFS;
+import org.eclipse.rdf4j.query.QueryLanguage;
+import org.eclipse.rdf4j.query.TupleQueryResult;
+import org.eclipse.rdf4j.query.resultio.TupleQueryResultFormat;
+import org.eclipse.rdf4j.rio.RDFFormat;
+import org.eclipse.rdf4j.rio.RDFWriter;
+import org.eclipse.rdf4j.rio.RDFWriterFactory;
+import org.eclipse.rdf4j.rio.RDFWriterRegistry;
 
 import com.bigdata.journal.IIndexManager;
 import com.bigdata.rdf.sail.remote.BigdataSailRemoteRepository;
@@ -1078,7 +1078,7 @@ public class TestNanoSparqlClient<S extends IIndexManager> extends
         try {
           String queryStr = "select * where {SERVICE <https://dbpedia.org/sparql> { <http://dbpedia.org/resource/Tonga_(Nyasa)_language> rdfs:label ?langLabel. }}";
 //                String queryStr = "SELECT * WHERE { BIND (<http://dbpedia.org/resource/Tonga_(Nyasa)_language> AS ?ref) . SERVICE <https://dbpedia.org/sparql> { ?ref rdfs:label ?langLabel. } }";
-            final org.openrdf.query.TupleQuery tq = cxn.prepareTupleQuery(QueryLanguage.SPARQL, queryStr);
+            final org.eclipse.rdf4j.query.TupleQuery tq = cxn.prepareTupleQuery(QueryLanguage.SPARQL, queryStr);
             final TupleQueryResult tqr = tq.evaluate();
             try {
                 int cnt = 0;

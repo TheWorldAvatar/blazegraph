@@ -31,7 +31,7 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import org.openrdf.model.URI;
+import org.eclipse.rdf4j.model.IRI;
 
 import com.bigdata.rdf.sparql.ast.service.ServiceNode;
 import com.bigdata.service.fts.FTS;
@@ -46,11 +46,11 @@ import com.bigdata.service.geospatial.GeoSpatial;
  */
 public class ASTGeoSpatialSearchOptimizer extends ASTSearchOptimizerBase {
 
-    static public final Set<URI> searchUris;
+    static public final Set<IRI> searchUris;
    
     static {
       
-        final Set<URI> set = new LinkedHashSet<URI>();
+        final Set<IRI> set = new LinkedHashSet<IRI>();
         
         set.add(GeoSpatial.SEARCH);
         set.add(GeoSpatial.SEARCH_DATATYPE);
@@ -81,7 +81,7 @@ public class ASTGeoSpatialSearchOptimizer extends ASTSearchOptimizerBase {
     }
    
     @Override
-    protected Set<URI> getSearchUris() {
+    protected Set<IRI> getSearchUris() {
        return searchUris;
     }
 
@@ -91,7 +91,7 @@ public class ASTGeoSpatialSearchOptimizer extends ASTSearchOptimizerBase {
     }
 
     @Override
-    protected URI getSearchPredicate() {
+    protected IRI getSearchPredicate() {
        return GeoSpatial.SEARCH;
     }
 }

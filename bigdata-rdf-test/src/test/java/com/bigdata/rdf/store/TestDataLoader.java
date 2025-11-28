@@ -31,8 +31,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Properties;
 
-import org.openrdf.rio.RDFFormat;
-import org.openrdf.rio.RDFParseException;
+import org.eclipse.rdf4j.rio.RDFFormat;
+import org.eclipse.rdf4j.rio.RDFParseException;
 
 import com.bigdata.rdf.store.DataLoader.ClosureEnum;
 import com.bigdata.rdf.store.DataLoader.CommitEnum;

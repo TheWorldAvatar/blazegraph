@@ -5,14 +5,14 @@ import java.util.Set;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.model.Graph;
-import org.openrdf.query.GraphQueryResult;
+import org.eclipse.rdf4j.model.Model;
+import org.eclipse.rdf4j.query.GraphQueryResult;
 
 import com.bigdata.btree.keys.IKeyBuilder;
 import com.bigdata.htree.HTree;
 import com.bigdata.io.SerializerUtil;
 import com.bigdata.rdf.internal.IV;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.store.AbstractTripleStore;
 
 /**
@@ -25,7 +25,7 @@ import com.bigdata.rdf.store.AbstractTripleStore;
  *         addressed for the {@link CacheConnectionImpl} for named solution sets.
  * 
  *         TODO Support hash partitioned and remove DESCRIBE cache instances.
- *         These will need access to a service that resolves {@link BigdataURI}
+ *         These will need access to a service that resolves {@link BigdataIRI}
  *         s to {@link IV}s efficiently. That service can be exposed using the
  *         NSS or using jini/River.
  */
@@ -34,7 +34,7 @@ public class DescribeCache implements IDescribeCache {
     static private transient final Logger log = LogManager.getLogger(CacheConnectionImpl.class);
 
     /**
-     * The cache. The keys are {@link IV}s. The values are the {@link Graph} s
+     * The cache. The keys are {@link IV}s. The values are the {@link Model} s
      * describing those {@link IV}s.
      */
     private HTree map;
@@ -101,7 +101,7 @@ public class DescribeCache implements IDescribeCache {
      * the sketch is to stream onto a buffer backed by temporary file, computing
      * the sketch as we go and then replay the stream into a compact
      * representation for the resource description. However, note that the API
-     * currently presumes that the {@link Graph} is transmitted as a unit. A
+     * currently presumes that the {@link Model} is transmitted as a unit. A
      * {@link GraphQueryResult} provides an iterator oriented view of a graph
      * more suitable to the transmission of large graphs and streaming graphs
      * over a network.
@@ -119,7 +119,7 @@ public class DescribeCache implements IDescribeCache {
      * storage explicitly, including explicitly deleting the backing raw record
      * for each cache entry when that cache entry is invalidated.
      */
-    public void insert(final IV<?, ?> iv, final Graph g) {
+    public void insert(final IV<?, ?> iv, final Model g) {
 
         final byte[] key = iv2key(getKeyBuilder(), iv);
 
@@ -135,7 +135,7 @@ public class DescribeCache implements IDescribeCache {
 
     }
 
-    public Graph lookup(final IV<?, ?> iv) {
+    public Model lookup(final IV<?, ?> iv) {
 
         final byte[] key = iv2key(getKeyBuilder(), iv);
 
@@ -144,7 +144,7 @@ public class DescribeCache implements IDescribeCache {
         if (val == null)
             return null;
 
-        final Graph x = (Graph) SerializerUtil.deserialize(val);
+        final Model x = (Model) SerializerUtil.deserialize(val);
 
         return x;
 

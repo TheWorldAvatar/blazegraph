@@ -26,7 +26,7 @@ package com.bigdata.rdf.internal;
 import java.util.Map;
 import java.util.TreeMap;
 
-import org.openrdf.model.URI;
+import org.eclipse.rdf4j.model.URI;
 
 import com.bigdata.rdf.internal.impl.literal.AbstractLiteralIV;
 import com.bigdata.rdf.internal.impl.uri.URIExtensionIV;

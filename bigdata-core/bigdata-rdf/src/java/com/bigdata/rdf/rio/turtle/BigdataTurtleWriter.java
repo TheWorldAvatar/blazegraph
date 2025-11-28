@@ -9,9 +9,9 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.Writer;
 
-import org.openrdf.model.BNode;
-import org.openrdf.rio.RDFWriter;
-import org.openrdf.rio.turtle.TurtleWriter;
+import org.eclipse.rdf4j.model.BNode;
+import org.eclipse.rdf4j.rio.RDFWriter;
+import org.eclipse.rdf4j.rio.turtle.TurtleWriter;
 
 import com.bigdata.rdf.model.BigdataBNode;
 import com.bigdata.rdf.model.BigdataStatement;

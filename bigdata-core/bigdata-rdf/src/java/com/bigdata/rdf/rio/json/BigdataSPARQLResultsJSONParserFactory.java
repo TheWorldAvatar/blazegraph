@@ -16,10 +16,10 @@
  */
 package com.bigdata.rdf.rio.json;
 
-import org.openrdf.query.resultio.TupleQueryResultFormat;
-import org.openrdf.query.resultio.TupleQueryResultParser;
-import org.openrdf.query.resultio.TupleQueryResultParserFactory;
-import org.openrdf.query.resultio.sparqljson.SPARQLResultsJSONParser;
+import org.eclipse.rdf4j.query.resultio.TupleQueryResultFormat;
+import org.eclipse.rdf4j.query.resultio.TupleQueryResultParser;
+import org.eclipse.rdf4j.query.resultio.TupleQueryResultParserFactory;
+import org.eclipse.rdf4j.query.resultio.sparqljson.SPARQLResultsJSONParser;
 
 /**
  * A {@link TupleQueryResultParserFactory} for parsers of SPARQL-1.1 JSON Tuple

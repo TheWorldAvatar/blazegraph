@@ -47,8 +47,8 @@ Modifications:
 
 package com.bigdata.rdf.model;
 
-import org.openrdf.model.URI;
-import org.openrdf.model.util.URIUtil;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.util.URIUtil;
 
 /**
  * A URI. Use {@link BigdataValueFactory} to create instances of this class.
@@ -56,7 +56,7 @@ import org.openrdf.model.util.URIUtil;
  * @author <a href="mailto:thompsonbry@users.sourceforge.net">Bryan Thompson</a>
  * @version $Id$
  */
-public class BigdataURIImpl extends BigdataResourceImpl implements BigdataURI {
+public class BigdataURIImpl extends BigdataResourceImpl implements BigdataIRI {
 
     /**
      * 

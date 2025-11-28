@@ -2,8 +2,8 @@ package com.bigdata.gom;
 
 import java.util.Properties;
 
-import org.openrdf.rio.RDFFormat;
-import org.openrdf.rio.RDFParserRegistry;
+import org.eclipse.rdf4j.rio.RDFFormat;
+import org.eclipse.rdf4j.rio.RDFParserRegistry;
 
 import com.bigdata.rdf.axioms.NoAxioms;
 import com.bigdata.rdf.rio.turtle.BigdataTurtleParser;

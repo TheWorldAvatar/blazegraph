@@ -35,8 +35,8 @@ import java.util.concurrent.atomic.AtomicReference;
 
 import org.apache.http.conn.ClientConnectionManager;
 import org.eclipse.jetty.client.HttpClient;
-import org.openrdf.model.URI;
-import org.openrdf.model.impl.URIImpl;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.impl.URIImpl;
 
 import com.bigdata.bop.join.BaseJoinStats;
 import com.bigdata.rdf.graph.impl.bd.GASService;

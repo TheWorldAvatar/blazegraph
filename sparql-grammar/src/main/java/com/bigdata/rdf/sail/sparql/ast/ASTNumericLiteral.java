@@ -2,7 +2,7 @@
 
 package com.bigdata.rdf.sail.sparql.ast;
 
-import org.openrdf.model.URI;
+import org.eclipse.rdf4j.model.URI;
 import com.bigdata.rdf.sail.sparql.ast.ASTRDFValue;
 import com.bigdata.rdf.sail.sparql.ast.SyntaxTreeBuilder;
 import com.bigdata.rdf.sail.sparql.ast.SyntaxTreeBuilderVisitor;

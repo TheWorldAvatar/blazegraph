@@ -18,8 +18,8 @@ package com.bigdata.rdf.graph.analytics;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.openrdf.model.Value;
-import org.openrdf.sail.SailConnection;
+import org.eclipse.rdf4j.model.Value;
+import org.eclipse.rdf4j.sail.SailConnection;
 
 import com.bigdata.rdf.graph.IGASContext;
 import com.bigdata.rdf.graph.IGASEngine;

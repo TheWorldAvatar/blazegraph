@@ -39,8 +39,8 @@ import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.model.URI;
-import org.openrdf.model.Value;
+import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.Value;
 
 import com.bigdata.bop.Constant;
 import com.bigdata.bop.IConstant;
@@ -48,7 +48,7 @@ import com.bigdata.io.LongPacker;
 import com.bigdata.rdf.internal.IV;
 import com.bigdata.rdf.internal.impl.uri.VocabURIByteIV;
 import com.bigdata.rdf.internal.impl.uri.VocabURIShortIV;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.model.BigdataValueFactoryImpl;
@@ -214,7 +214,7 @@ abstract public class BaseVocabulary implements Vocabulary, Externalizable {
 //     * @throws IllegalArgumentException
 //     *             if the value is <code>null</code>.
 //     */
-//    final protected void add(final URI value) {
+//    final protected void add(final IRI value) {
 //
 //        if (value == null)
 //            throw new IllegalArgumentException();
@@ -231,7 +231,7 @@ abstract public class BaseVocabulary implements Vocabulary, Externalizable {
 
         for (VocabularyDecl decl : decls) {
         
-            final Iterator<URI> itr = decl.values();
+            final Iterator<IRI> itr = decl.values();
 
             while (itr.hasNext()) {
 
@@ -298,12 +298,12 @@ abstract public class BaseVocabulary implements Vocabulary, Externalizable {
             if (i <= 255) {
             
                 // Use a byte for the 1st 256 declared vocabulary items.
-                iv = new VocabURIByteIV<BigdataURI>((byte) i);
+                iv = new VocabURIByteIV<BigdataIRI>((byte) i);
                 
             } else {
                 
                 // Use a short for the next 64k declared vocabulary items.
-                iv = new VocabURIShortIV<BigdataURI>((short) i);
+                iv = new VocabURIShortIV<BigdataIRI>((short) i);
                 
             }
             

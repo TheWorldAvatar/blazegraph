@@ -2,7 +2,7 @@
 
 package com.bigdata.rdf.sail.sparql.ast;
 
-import org.openrdf.query.algebra.Compare.CompareOp;
+import org.eclipse.rdf4j.query.algebra.Compare.CompareOp;
 import com.bigdata.rdf.sail.sparql.ast.SimpleNode;
 import com.bigdata.rdf.sail.sparql.ast.SyntaxTreeBuilder;
 import com.bigdata.rdf.sail.sparql.ast.SyntaxTreeBuilderVisitor;

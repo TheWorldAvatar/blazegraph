@@ -31,14 +31,14 @@ package com.bigdata.rdf.sail;
 import java.util.Iterator;
 import java.util.Properties;
 
-import org.openrdf.model.vocabulary.RDF;
-import org.openrdf.sail.SailException;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.sail.SailException;
 
 import com.bigdata.btree.IIndex;
 import com.bigdata.btree.ITuple;
 import com.bigdata.rdf.axioms.NoAxioms;
 import com.bigdata.rdf.changesets.ChangeAction;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.model.StatementEnum;
 import com.bigdata.rdf.sail.BigdataSail.BigdataSailConnection;
@@ -216,13 +216,13 @@ public class TestHistoryIndex extends ProxyBigdataSailTestCase  {
                     final BigdataValueFactory f = (BigdataValueFactory) sail
                             .getValueFactory();
 
-                    final BigdataURI A = f
+                    final BigdataIRI A = f
                             .createURI("http://www.bigdata.com/A");
-                    final BigdataURI B = f
+                    final BigdataIRI B = f
                             .createURI("http://www.bigdata.com/B");
-                    final BigdataURI C = f
+                    final BigdataIRI C = f
                             .createURI("http://www.bigdata.com/C");
-                    final BigdataURI rdfType = f.asValue(RDF.TYPE);
+                    final BigdataIRI rdfType = f.asValue(RDF.TYPE);
 
                     conn.addStatement(A, rdfType, B);
                     conn.addStatement(A, rdfType, C);
@@ -301,13 +301,13 @@ public class TestHistoryIndex extends ProxyBigdataSailTestCase  {
                     final BigdataValueFactory f = (BigdataValueFactory) sail
                             .getValueFactory();
 
-                    final BigdataURI A = f
+                    final BigdataIRI A = f
                             .createURI("http://www.bigdata.com/A");
-                    final BigdataURI B = f
+                    final BigdataIRI B = f
                             .createURI("http://www.bigdata.com/B");
 //                    final BigdataURI C = f
 //                            .createURI("http://www.bigdata.com/C");
-                    final BigdataURI rdfType = f.asValue(RDF.TYPE);
+                    final BigdataIRI rdfType = f.asValue(RDF.TYPE);
 
                     conn.removeStatements(A, rdfType, B);
 
@@ -425,13 +425,13 @@ public class TestHistoryIndex extends ProxyBigdataSailTestCase  {
                     final BigdataValueFactory f = (BigdataValueFactory) sail
                             .getValueFactory();
 
-                    final BigdataURI A = f
+                    final BigdataIRI A = f
                             .createURI("http://www.bigdata.com/A");
-                    final BigdataURI B = f
+                    final BigdataIRI B = f
                             .createURI("http://www.bigdata.com/B");
-                    final BigdataURI C = f
+                    final BigdataIRI C = f
                             .createURI("http://www.bigdata.com/C");
-                    final BigdataURI rdfType = f.asValue(RDF.TYPE);
+                    final BigdataIRI rdfType = f.asValue(RDF.TYPE);
 
                     conn.addStatement(A, rdfType, B);
                     conn.addStatement(A, rdfType, C);
@@ -510,13 +510,13 @@ public class TestHistoryIndex extends ProxyBigdataSailTestCase  {
                     final BigdataValueFactory f = (BigdataValueFactory) sail
                             .getValueFactory();
 
-                    final BigdataURI A = f
+                    final BigdataIRI A = f
                             .createURI("http://www.bigdata.com/A");
-                    final BigdataURI B = f
+                    final BigdataIRI B = f
                             .createURI("http://www.bigdata.com/B");
 //                    final BigdataURI C = f
 //                            .createURI("http://www.bigdata.com/C");
-                    final BigdataURI rdfType = f.asValue(RDF.TYPE);
+                    final BigdataIRI rdfType = f.asValue(RDF.TYPE);
 
                     conn.removeStatements(A, rdfType, B);
 

@@ -29,7 +29,7 @@ package com.bigdata.rdf.sparql.ast.optimizers;
 
 import java.util.UUID;
 
-import org.openrdf.query.algebra.StatementPattern.Scope;
+import org.eclipse.rdf4j.query.algebra.StatementPattern.Scope;
 
 import com.bigdata.bop.BOpContext;
 import com.bigdata.bop.Constant;

@@ -34,20 +34,20 @@ import java.util.UUID;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.model.BNode;
-import org.openrdf.model.Literal;
-import org.openrdf.model.Resource;
-import org.openrdf.model.Statement;
-import org.openrdf.model.URI;
-import org.openrdf.model.Value;
-import org.openrdf.model.impl.BNodeImpl;
-import org.openrdf.model.impl.LiteralImpl;
-import org.openrdf.model.impl.StatementImpl;
-import org.openrdf.model.impl.URIImpl;
-import org.openrdf.model.vocabulary.FOAF;
-import org.openrdf.model.vocabulary.RDF;
-import org.openrdf.model.vocabulary.RDFS;
-import org.openrdf.model.vocabulary.XMLSchema;
+import org.eclipse.rdf4j.model.BNode;
+import org.eclipse.rdf4j.model.Literal;
+import org.eclipse.rdf4j.model.Resource;
+import org.eclipse.rdf4j.model.Statement;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.Value;
+import org.eclipse.rdf4j.model.impl.BNodeImpl;
+import org.eclipse.rdf4j.model.impl.LiteralImpl;
+import org.eclipse.rdf4j.model.impl.StatementImpl;
+import org.eclipse.rdf4j.model.impl.URIImpl;
+import org.eclipse.rdf4j.model.vocabulary.FOAF;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.vocabulary.RDFS;
+import org.eclipse.rdf4j.model.vocabulary.XMLSchema;
 
 import com.bigdata.rdf.axioms.NoAxioms;
 import com.bigdata.rdf.internal.IV;
@@ -56,7 +56,7 @@ import com.bigdata.rdf.lexicon.LexiconRelation;
 import com.bigdata.rdf.lexicon.Term2IdWriteProc;
 import com.bigdata.rdf.model.BigdataBNode;
 import com.bigdata.rdf.model.BigdataLiteral;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.model.StatementEnum;
@@ -417,8 +417,8 @@ public class TestTripleStore extends AbstractTripleStoreTestCase {
         try {
         
             final BigdataValueFactory valueFactory = store.getValueFactory();
-            final BigdataURI x = valueFactory.createURI("http://www.foo.org/x");
-            final BigdataURI y = valueFactory.createURI("http://www.foo.org/y");
+            final BigdataIRI x = valueFactory.createURI("http://www.foo.org/x");
+            final BigdataIRI y = valueFactory.createURI("http://www.foo.org/y");
             final BigdataLiteral z = valueFactory.createLiteral("z");
             final BigdataBNode b = valueFactory.createBNode();
             final BigdataBNode c = valueFactory.createBNode("_c");
@@ -488,8 +488,8 @@ public class TestTripleStore extends AbstractTripleStoreTestCase {
         
             final BigdataValueFactory valueFactory = store.getValueFactory();
             
-            final BigdataURI x = valueFactory.createURI("http://www.foo.org/x");
-            final BigdataURI y = valueFactory.createURI("http://www.foo.org/y");
+            final BigdataIRI x = valueFactory.createURI("http://www.foo.org/x");
+            final BigdataIRI y = valueFactory.createURI("http://www.foo.org/y");
             final BigdataLiteral z = valueFactory.createLiteral("z");
             
             // add terms - lots of duplicates here.
@@ -538,8 +538,8 @@ public class TestTripleStore extends AbstractTripleStoreTestCase {
              */
             {
 
-                final BigdataURI x1 = valueFactory.createURI("http://www.foo.org/x");
-                final BigdataURI y1 = valueFactory.createURI("http://www.foo.org/y");
+                final BigdataIRI x1 = valueFactory.createURI("http://www.foo.org/x");
+                final BigdataIRI y1 = valueFactory.createURI("http://www.foo.org/y");
                 final BigdataLiteral z1 = valueFactory.createLiteral("z");
                 
                 // add terms - lots of duplicates here.
@@ -987,10 +987,10 @@ public class TestTripleStore extends AbstractTripleStoreTestCase {
                     store.getAccessPath(NULL,NULL,NULL).iterator());
             
             final BigdataValueFactory valueFactory = store.getValueFactory();
-            final BigdataURI A = valueFactory.createURI("http://www.bigdata.com/A");
-            final BigdataURI B = valueFactory.createURI("http://www.bigdata.com/B");
-            final BigdataURI C = valueFactory.createURI("http://www.bigdata.com/C");
-            final BigdataURI rdfType = valueFactory.createURI(RDF.TYPE.stringValue());
+            final BigdataIRI A = valueFactory.createURI("http://www.bigdata.com/A");
+            final BigdataIRI B = valueFactory.createURI("http://www.bigdata.com/B");
+            final BigdataIRI C = valueFactory.createURI("http://www.bigdata.com/C");
+            final BigdataIRI rdfType = valueFactory.createURI(RDF.TYPE.stringValue());
 
             store.addTerms(new BigdataValue[] { A, B, C, rdfType });
             
@@ -1198,10 +1198,10 @@ public class TestTripleStore extends AbstractTripleStoreTestCase {
 
             final BigdataValueFactory f = store.getValueFactory();
             
-            final BigdataURI A = f.createURI("http://www.bigdata.com/A");
-            final BigdataURI B = f.createURI("http://www.bigdata.com/B");
-            final BigdataURI C = f.createURI("http://www.bigdata.com/C");
-            final BigdataURI rdfType = f.asValue(RDF.TYPE);
+            final BigdataIRI A = f.createURI("http://www.bigdata.com/A");
+            final BigdataIRI B = f.createURI("http://www.bigdata.com/B");
+            final BigdataIRI C = f.createURI("http://www.bigdata.com/C");
+            final BigdataIRI rdfType = f.asValue(RDF.TYPE);
             
             // assign term identifiers for reuse below.
             store.addTerms(new BigdataValue[] { A, B, C, rdfType });
@@ -1275,9 +1275,9 @@ public class TestTripleStore extends AbstractTripleStoreTestCase {
             
             final BigdataValueFactory f = store.getValueFactory();
 
-            final BigdataURI v1 = f.createURI("http://www.bigdata.com/1"); 
-            final BigdataURI v2 = f.createURI("http://www.bigdata.com/2"); 
-            final BigdataURI v3 = f.createURI("http://www.bigdata.com/3"); 
+            final BigdataIRI v1 = f.createURI("http://www.bigdata.com/1"); 
+            final BigdataIRI v2 = f.createURI("http://www.bigdata.com/2"); 
+            final BigdataIRI v3 = f.createURI("http://www.bigdata.com/3"); 
             
             // assign term identifiers.
             store.addTerms(new BigdataValue[]{v1,v2,v3});
@@ -1333,10 +1333,10 @@ public class TestTripleStore extends AbstractTripleStoreTestCase {
 
             final BigdataValueFactory f = store.getValueFactory();
 
-            final BigdataURI A = f.createURI("http://www.bigdata.com/A");
-            final BigdataURI B = f.createURI("http://www.bigdata.com/B");
-            final BigdataURI C = f.createURI("http://www.bigdata.com/C");
-            final BigdataURI rdfType = f.asValue(RDF.TYPE);
+            final BigdataIRI A = f.createURI("http://www.bigdata.com/A");
+            final BigdataIRI B = f.createURI("http://www.bigdata.com/B");
+            final BigdataIRI C = f.createURI("http://www.bigdata.com/C");
+            final BigdataIRI rdfType = f.asValue(RDF.TYPE);
 
             {
 
@@ -1406,9 +1406,9 @@ public class TestTripleStore extends AbstractTripleStoreTestCase {
 
             final BigdataValueFactory f = store.getValueFactory();
 
-            final BigdataURI x = f.createURI("http://www.foo.org/x1");
-            final BigdataURI y = f.createURI("http://www.foo.org/y2");
-            final BigdataURI z = f.createURI("http://www.foo.org/z3");
+            final BigdataIRI x = f.createURI("http://www.foo.org/x1");
+            final BigdataIRI y = f.createURI("http://www.foo.org/y2");
+            final BigdataIRI z = f.createURI("http://www.foo.org/z3");
     
             store.addTerms(new BigdataValue[] { x, y, z });
             
@@ -1483,12 +1483,12 @@ public class TestTripleStore extends AbstractTripleStoreTestCase {
 
             final BigdataValueFactory f = store.getValueFactory();
 
-            final BigdataURI A = f.createURI("http://www.bigdata.com/A");
-            final BigdataURI B = f.createURI("http://www.bigdata.com/B");
-            final BigdataURI C = f.createURI("http://www.bigdata.com/C");
-            final BigdataURI Person = f.asValue(FOAF.PERSON);
-            final BigdataURI rdfType = f.asValue(RDF.TYPE);
-            final BigdataURI foafKnows = f.asValue(FOAF.KNOWS);
+            final BigdataIRI A = f.createURI("http://www.bigdata.com/A");
+            final BigdataIRI B = f.createURI("http://www.bigdata.com/B");
+            final BigdataIRI C = f.createURI("http://www.bigdata.com/C");
+            final BigdataIRI Person = f.asValue(FOAF.PERSON);
+            final BigdataIRI rdfType = f.asValue(RDF.TYPE);
+            final BigdataIRI foafKnows = f.asValue(FOAF.KNOWS);
 
             {
 

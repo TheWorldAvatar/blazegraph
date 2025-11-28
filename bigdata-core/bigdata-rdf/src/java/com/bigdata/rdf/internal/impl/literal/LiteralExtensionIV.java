@@ -5,8 +5,8 @@ import java.math.BigInteger;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 
-import org.openrdf.model.Literal;
-import org.openrdf.model.URI;
+import org.eclipse.rdf4j.model.Literal;
+import org.eclipse.rdf4j.model.URI;
 
 import com.bigdata.rdf.internal.DTE;
 import com.bigdata.rdf.internal.DTEExtension;
@@ -19,7 +19,7 @@ import com.bigdata.rdf.internal.impl.AbstractIV;
 import com.bigdata.rdf.internal.impl.AbstractInlineExtensionIV;
 import com.bigdata.rdf.lexicon.LexiconRelation;
 import com.bigdata.rdf.model.BigdataLiteral;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 
 /**
  * Class provides support for datatype {@link Literal}s for which an
@@ -47,7 +47,7 @@ public class LiteralExtensionIV<V extends BigdataLiteral>
     
     private final AbstractLiteralIV<BigdataLiteral, ?> delegate;
     
-    private final IV<BigdataURI, ?> datatype;
+    private final IV<BigdataIRI, ?> datatype;
 
     /**
      * {@inheritDoc}
@@ -76,7 +76,7 @@ public class LiteralExtensionIV<V extends BigdataLiteral>
     
     public LiteralExtensionIV(
     		final AbstractLiteralIV<BigdataLiteral, ?> delegate, 
-    		final IV<BigdataURI, ?> datatype) {
+    		final IV<BigdataIRI, ?> datatype) {
         
         super(VTE.LITERAL, true/*extension*/, delegate.getDTE());
         
@@ -85,7 +85,7 @@ public class LiteralExtensionIV<V extends BigdataLiteral>
         
         this.delegate = delegate;
         
-        this.datatype = (AbstractIV<BigdataURI, ?>) datatype;
+        this.datatype = (AbstractIV<BigdataIRI, ?>) datatype;
         
     }
     
@@ -118,7 +118,7 @@ public class LiteralExtensionIV<V extends BigdataLiteral>
      * Extension IV is the datatype for this literal.
      */
     @Override
-    public IV<BigdataURI, ?> getExtensionIV() {
+    public IV<BigdataIRI, ?> getExtensionIV() {
         return datatype;
     }
     

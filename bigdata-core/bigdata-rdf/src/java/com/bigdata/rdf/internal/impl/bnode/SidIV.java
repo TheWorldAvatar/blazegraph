@@ -31,8 +31,8 @@ import java.io.ObjectStreamException;
 import java.io.Serializable;
 import java.math.BigInteger;
 
-import org.openrdf.model.BNode;
-import org.openrdf.model.Value;
+import org.eclipse.rdf4j.model.BNode;
+import org.eclipse.rdf4j.model.Value;
 
 import com.bigdata.btree.keys.IKeyBuilder;
 import com.bigdata.btree.keys.KeyBuilder;
@@ -47,7 +47,7 @@ import com.bigdata.rdf.internal.impl.AbstractInlineIV;
 import com.bigdata.rdf.lexicon.LexiconRelation;
 import com.bigdata.rdf.model.BigdataBNode;
 import com.bigdata.rdf.model.BigdataResource;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.model.StatementEnum;
@@ -178,7 +178,7 @@ public class SidIV<V extends BigdataBNode> extends AbstractInlineIV<V, ISPO>
 	        		
 	        bnode.setStatement(lex.getValueFactory().createStatement(
 	        		(BigdataResource) spo.s().asValue(lex), 
-	        		(BigdataURI) spo.p().asValue(lex), 
+	        		(BigdataIRI) spo.p().asValue(lex), 
 	        		(BigdataValue) spo.o().asValue(lex), 
 	        		c));
         }

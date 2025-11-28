@@ -28,7 +28,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 package com.bigdata.rdf.sail.tck;
 
-import info.aduna.iteration.Iterations;
+import org.eclipse.rdf4j.common.iteration.Iterations;
 
 import java.net.URL;
 import java.util.Arrays;
@@ -41,21 +41,21 @@ import java.util.UUID;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
-import org.openrdf.model.Resource;
-import org.openrdf.model.Statement;
-import org.openrdf.model.URI;
-import org.openrdf.model.util.ModelUtil;
-import org.openrdf.query.QueryLanguage;
-import org.openrdf.query.Update;
-import org.openrdf.query.parser.sparql.manifest.SPARQL11ManifestTest;
-import org.openrdf.query.parser.sparql.manifest.SPARQLUpdateConformanceTest;
-import org.openrdf.repository.RepositoryConnection;
-import org.openrdf.repository.RepositoryException;
-import org.openrdf.repository.contextaware.ContextAwareConnection;
-import org.openrdf.repository.contextaware.ContextAwareRepository;
-import org.openrdf.repository.sail.SailRepository;
-import org.openrdf.rio.RDFFormat;
-import org.openrdf.sail.memory.MemoryStore;
+import org.eclipse.rdf4j.model.Resource;
+import org.eclipse.rdf4j.model.Statement;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.util.ModelUtil;
+import org.eclipse.rdf4j.query.QueryLanguage;
+import org.eclipse.rdf4j.query.Update;
+import org.eclipse.rdf4j.query.parser.sparql.manifest.SPARQL11ManifestTest;
+import org.eclipse.rdf4j.query.parser.sparql.manifest.SPARQLUpdateConformanceTest;
+import org.eclipse.rdf4j.repository.RepositoryConnection;
+import org.eclipse.rdf4j.repository.RepositoryException;
+import org.eclipse.rdf4j.repository.contextaware.ContextAwareConnection;
+import org.eclipse.rdf4j.repository.contextaware.ContextAwareRepository;
+import org.eclipse.rdf4j.repository.sail.SailRepository;
+import org.eclipse.rdf4j.rio.RDFFormat;
+import org.eclipse.rdf4j.sail.memory.MemoryStore;
 
 import com.bigdata.BigdataStatics;
 import com.bigdata.journal.BufferMode;

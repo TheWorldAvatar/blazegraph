@@ -15,7 +15,7 @@
 */
 package com.bigdata.rdf.graph;
 
-import org.openrdf.model.Value;
+import org.eclipse.rdf4j.model.Value;
 
 /**
  * A interface for {@link IGASProgram}s that compute paths and track a

@@ -24,10 +24,10 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 package com.bigdata.rdf.internal;
 
-import org.openrdf.model.URI;
+import org.eclipse.rdf4j.model.IRI;
 
 import com.bigdata.rdf.lexicon.LexiconRelation;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.vocab.Vocabulary;
 
 /**
@@ -67,6 +67,6 @@ public interface IDatatypeURIResolver {
      *             if the argument is not part of the pre-declared
      *             {@link Vocabulary}.
      */
-    BigdataURI resolve(final URI datatypeURI);
+    BigdataIRI resolve(final IRI datatypeURI);
     
 }

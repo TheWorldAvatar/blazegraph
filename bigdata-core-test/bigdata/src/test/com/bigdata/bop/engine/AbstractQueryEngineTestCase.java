@@ -58,8 +58,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package com.bigdata.bop.engine;
 
-import info.aduna.iteration.Iterations;
-import info.aduna.text.StringUtil;
+import org.eclipse.rdf4j.common.iteration.Iterations;
+import org.eclipse.rdf4j.common.text.StringUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -77,13 +77,13 @@ import junit.framework.TestCase2;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.model.Statement;
-import org.openrdf.model.util.ModelUtil;
-import org.openrdf.query.BindingSet;
-import org.openrdf.query.QueryEvaluationException;
-import org.openrdf.query.QueryResultUtil;
-import org.openrdf.query.TupleQueryResult;
-import org.openrdf.query.impl.MutableTupleQueryResult;
+import org.eclipse.rdf4j.model.Statement;
+import org.eclipse.rdf4j.model.util.ModelUtil;
+import org.eclipse.rdf4j.query.BindingSet;
+import org.eclipse.rdf4j.query.QueryEvaluationException;
+import org.eclipse.rdf4j.query.QueryResultUtil;
+import org.eclipse.rdf4j.query.TupleQueryResult;
+import org.eclipse.rdf4j.query.impl.MutableTupleQueryResult;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.IBindingSet;

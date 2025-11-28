@@ -1,7 +1,7 @@
 package com.bigdata.rdf.internal.impl.uri;
 
-import org.openrdf.model.URI;
-import org.openrdf.model.impl.URIImpl;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.impl.URIImpl;
 
 import com.bigdata.rdf.internal.ILexiconConfiguration;
 import com.bigdata.rdf.internal.IV;
@@ -11,7 +11,7 @@ import com.bigdata.rdf.internal.impl.AbstractInlineIV;
 import com.bigdata.rdf.internal.impl.literal.AbstractLiteralIV;
 import com.bigdata.rdf.lexicon.LexiconRelation;
 import com.bigdata.rdf.model.BigdataLiteral;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.vocab.Vocabulary;
 
@@ -26,7 +26,7 @@ import com.bigdata.rdf.vocab.Vocabulary;
  * @author <a href="mailto:thompsonbry@users.sourceforge.net">Bryan Thompson</a>
  * @param <V>
  */
-public class URIExtensionIV<V extends BigdataURI> 
+public class URIExtensionIV<V extends BigdataIRI> 
     	extends AbstractInlineExtensionIV<V, Object> 
 		implements URI { 
 
@@ -38,7 +38,7 @@ public class URIExtensionIV<V extends BigdataURI>
     /**
      * The namespace.
      */
-    private final AbstractInlineIV<BigdataURI, ?> namespaceIV;
+    private final AbstractInlineIV<BigdataIRI, ?> namespaceIV;
 
     /**
      * The localName.
@@ -96,7 +96,7 @@ public class URIExtensionIV<V extends BigdataURI>
 
         this.delegateIV = delegateIV;
 
-        this.namespaceIV = (AbstractInlineIV<BigdataURI, ?>) namespaceIV;
+        this.namespaceIV = (AbstractInlineIV<BigdataIRI, ?>) namespaceIV;
 
     }
     
@@ -124,7 +124,7 @@ public class URIExtensionIV<V extends BigdataURI>
      * Extension IV is the <code>namespace</code> for the {@link URI}.
      */
     @Override
-    public IV<BigdataURI, ?> getExtensionIV() {
+    public IV<BigdataIRI, ?> getExtensionIV() {
         return namespaceIV;
     }
     

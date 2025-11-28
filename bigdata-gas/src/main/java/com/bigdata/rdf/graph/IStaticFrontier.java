@@ -17,7 +17,7 @@ package com.bigdata.rdf.graph;
 
 import java.util.Iterator;
 
-import org.openrdf.model.Value;
+import org.eclipse.rdf4j.model.Value;
 
 /**
  * Interface abstracts the fixed frontier as known on entry into a new

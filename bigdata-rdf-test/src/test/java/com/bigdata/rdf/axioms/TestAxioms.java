@@ -30,12 +30,12 @@ package com.bigdata.rdf.axioms;
 import java.util.Iterator;
 import java.util.Properties;
 
-import org.openrdf.model.vocabulary.OWL;
-import org.openrdf.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.vocabulary.OWL;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
 
 import com.bigdata.io.SerializerUtil;
 import com.bigdata.rdf.model.BigdataStatement;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.spo.SPO;
@@ -112,9 +112,9 @@ public class TestAxioms extends AbstractTripleStoreTestCase {
             // Must be using the same namespace.
             assertEquals(store.getAxioms().getNamespace(), f.getNamespace());
 
-            final BigdataURI rdfType = f.asValue(RDF.TYPE);
-            final BigdataURI rdfProperty = f.asValue(RDF.PROPERTY);
-            final BigdataURI unknownURI = f.createURI("http://www.bigdata.com/unknown");
+            final BigdataIRI rdfType = f.asValue(RDF.TYPE);
+            final BigdataIRI rdfProperty = f.asValue(RDF.PROPERTY);
+            final BigdataIRI unknownURI = f.createURI("http://www.bigdata.com/unknown");
             
             // resolve term ids.
             store.addTerms(new BigdataValue[] { rdfType, rdfProperty, unknownURI });
@@ -198,9 +198,9 @@ public class TestAxioms extends AbstractTripleStoreTestCase {
             
             final BigdataValueFactory f = store.getValueFactory();
 
-            final BigdataURI rdfType = f.asValue(RDF.TYPE);
-            final BigdataURI rdfProperty = f.asValue(RDF.PROPERTY);
-            final BigdataURI unknownURI = f.createURI("http://www.bigdata.com/unknown");
+            final BigdataIRI rdfType = f.asValue(RDF.TYPE);
+            final BigdataIRI rdfProperty = f.asValue(RDF.PROPERTY);
+            final BigdataIRI unknownURI = f.createURI("http://www.bigdata.com/unknown");
             
             // resolve term ids.
             store.addTerms(new BigdataValue[] { rdfType, rdfProperty, unknownURI });
@@ -277,10 +277,10 @@ public class TestAxioms extends AbstractTripleStoreTestCase {
             
             final BigdataValueFactory f = store.getValueFactory();
 
-            final BigdataURI rdfType = f.asValue(RDF.TYPE);
-            final BigdataURI rdfProperty = f.asValue(RDF.PROPERTY);
-            final BigdataURI owlEquivalentClass = f.asValue(OWL.EQUIVALENTCLASS);
-            final BigdataURI unknownURI = f.createURI("http://www.bigdata.com/unknown");
+            final BigdataIRI rdfType = f.asValue(RDF.TYPE);
+            final BigdataIRI rdfProperty = f.asValue(RDF.PROPERTY);
+            final BigdataIRI owlEquivalentClass = f.asValue(OWL.EQUIVALENTCLASS);
+            final BigdataIRI unknownURI = f.createURI("http://www.bigdata.com/unknown");
             
             // resolve term ids.
             store.addTerms(new BigdataValue[] { rdfType, rdfProperty,

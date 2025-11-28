@@ -23,13 +23,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.openrdf.model.Value;
-import org.openrdf.model.ValueFactory;
-import org.openrdf.query.BindingSet;
-import org.openrdf.query.QueryResultHandlerException;
-import org.openrdf.query.impl.MapBindingSet;
-import org.openrdf.query.resultio.QueryResultParseException;
-import org.openrdf.query.resultio.QueryResultParserBase;
+import org.eclipse.rdf4j.model.Value;
+import org.eclipse.rdf4j.model.ValueFactory;
+import org.eclipse.rdf4j.query.BindingSet;
+import org.eclipse.rdf4j.query.QueryResultHandlerException;
+import org.eclipse.rdf4j.query.impl.MapBindingSet;
+import org.eclipse.rdf4j.query.resultio.QueryResultParseException;
+import org.eclipse.rdf4j.query.resultio.QueryResultParserBase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

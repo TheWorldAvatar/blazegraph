@@ -271,6 +271,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
       <groupId>org.eclipse.rdf4j</groupId>
       <artifactId>rdf4j-runtime</artifactId>
       <version>${rdf4j.version}</version>
+      <type>pom</type>
     </dependency>
     <dependency>
       <groupId>org.eclipse.rdf4j</groupId>

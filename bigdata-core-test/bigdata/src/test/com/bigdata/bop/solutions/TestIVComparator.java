@@ -30,7 +30,7 @@ import javax.xml.datatype.DatatypeFactory;
 
 import junit.framework.TestCase2;
 
-import org.openrdf.model.URI;
+import org.eclipse.rdf4j.model.URI;
 
 import com.bigdata.rdf.internal.IDatatypeURIResolver;
 import com.bigdata.rdf.internal.IV;
@@ -44,7 +44,7 @@ import com.bigdata.rdf.internal.impl.literal.XSDBooleanIV;
 import com.bigdata.rdf.internal.impl.literal.XSDNumericIV;
 import com.bigdata.rdf.model.BigdataBNode;
 import com.bigdata.rdf.model.BigdataLiteral;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.model.BigdataValueFactoryImpl;
@@ -101,8 +101,8 @@ public class TestIVComparator extends TestCase2 {
         /*
          * URIs
          */
-        final IV<BigdataURI, Void> noninline_uri1 = new TermId<BigdataURI>(VTE.URI, termId++);
-        final IV<BigdataURI, Void> noninline_uri2 = new TermId<BigdataURI>(VTE.URI, termId++);
+        final IV<BigdataIRI, Void> noninline_uri1 = new TermId<BigdataIRI>(VTE.URI, termId++);
+        final IV<BigdataIRI, Void> noninline_uri2 = new TermId<BigdataIRI>(VTE.URI, termId++);
         
         /*
          * Blank nodes.
@@ -126,8 +126,8 @@ public class TestIVComparator extends TestCase2 {
             }
             
             final IDatatypeURIResolver resolver = new IDatatypeURIResolver() {
-                public BigdataURI resolve(final URI uri) {
-                    final BigdataURI buri = f.createURI(uri.stringValue());
+                public BigdataIRI resolve(final URI uri) {
+                    final BigdataIRI buri = f.createURI(uri.stringValue());
                     buri.setIV(new TermId<BigdataLiteral>(VTE.URI,termId++));
                     return buri;
                 }

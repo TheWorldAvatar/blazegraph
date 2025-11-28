@@ -31,7 +31,7 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import org.openrdf.model.URI;
+import org.eclipse.rdf4j.model.URI;
 
 import com.bigdata.rdf.sparql.ast.service.ServiceNode;
 import com.bigdata.service.fts.FTS;

@@ -29,13 +29,13 @@ package com.bigdata.rdf.internal;
 
 import java.util.TimeZone;
 
-import org.openrdf.model.URI;
+import org.eclipse.rdf4j.model.URI;
 
 import com.bigdata.rdf.internal.impl.extensions.DateTimeExtension;
 import com.bigdata.rdf.internal.impl.literal.LiteralExtensionIV;
 import com.bigdata.rdf.internal.impl.literal.XSDIntegerIV;
 import com.bigdata.rdf.model.BigdataLiteral;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.model.BigdataValueFactoryImpl;
@@ -357,8 +357,8 @@ public class TestEncodeDecodeXSDDateIVs extends
        return 
           new DateTimeExtension<BigdataValue>(
              new IDatatypeURIResolver() {
-                public BigdataURI resolve(URI uri) {
-                   final BigdataURI buri = vf.createURI(uri.stringValue());
+                public BigdataIRI resolve(URI uri) {
+                   final BigdataIRI buri = vf.createURI(uri.stringValue());
                    buri.setIV(newTermId(VTE.URI));
                    return buri;
                 }

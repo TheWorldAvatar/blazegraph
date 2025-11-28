@@ -29,7 +29,7 @@ package com.bigdata.rdf.internal;
 
 import com.bigdata.btree.keys.KeyBuilder;
 import com.bigdata.rdf.internal.impl.uri.VocabURIByteIV;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.vocab.Vocabulary;
 import com.bigdata.util.BytesUtil;
 
@@ -65,9 +65,9 @@ public class TestVocabURIByteIV extends AbstractEncodeDecodeKeysTestCase {
         final IV<?, ?>[] e = {//
 //                new VocabURIByteIV<BigdataURI>((byte) Byte.MIN_VALUE),//
 //                new VocabURIByteIV<BigdataURI>((byte) -1),//
-                new VocabURIByteIV<BigdataURI>((byte) 0),//
-                new VocabURIByteIV<BigdataURI>((byte) KeyBuilder.encodeByte(14)),//
-                new VocabURIByteIV<BigdataURI>((byte) 14),//
+                new VocabURIByteIV<BigdataIRI>((byte) 0),//
+                new VocabURIByteIV<BigdataIRI>((byte) KeyBuilder.encodeByte(14)),//
+                new VocabURIByteIV<BigdataIRI>((byte) 14),//
 //                new VocabURIByteIV<BigdataURI>((byte) Byte.MAX_VALUE),//
         };
 

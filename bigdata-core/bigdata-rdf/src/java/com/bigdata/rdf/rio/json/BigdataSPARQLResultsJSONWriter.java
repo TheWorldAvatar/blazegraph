@@ -20,10 +20,10 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.Writer;
 
-import org.openrdf.model.Value;
-import org.openrdf.query.QueryResultHandlerException;
-import org.openrdf.query.resultio.TupleQueryResultFormat;
-import org.openrdf.query.resultio.TupleQueryResultWriter;
+import org.eclipse.rdf4j.model.Value;
+import org.eclipse.rdf4j.query.QueryResultHandlerException;
+import org.eclipse.rdf4j.query.resultio.TupleQueryResultFormat;
+import org.eclipse.rdf4j.query.resultio.TupleQueryResultWriter;
 
 import com.bigdata.rdf.model.BigdataBNode;
 import com.bigdata.rdf.model.BigdataStatement;

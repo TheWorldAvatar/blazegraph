@@ -29,8 +29,8 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.openrdf.model.Literal;
-import org.openrdf.model.URI;
+import org.eclipse.rdf4j.model.Literal;
+import org.eclipse.rdf4j.model.URI;
 
 import com.bigdata.rdf.internal.DTE;
 import com.bigdata.rdf.internal.XSD;

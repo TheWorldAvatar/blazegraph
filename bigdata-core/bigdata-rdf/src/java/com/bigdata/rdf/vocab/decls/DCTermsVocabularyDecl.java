@@ -27,12 +27,12 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 package com.bigdata.rdf.vocab.decls;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 
-import org.openrdf.model.URI;
-import org.openrdf.model.impl.URIImpl;
+import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.ValueFactory;
+import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
 
 /**
  * Dublin Core terms.
@@ -44,28 +44,30 @@ import org.openrdf.model.impl.URIImpl;
  */
 public class DCTermsVocabularyDecl {
 
-    public static final String NAMESPACE = "http://purl.org/dc/terms/";
-    public static final URI description = new URIImpl(NAMESPACE + "description");
-    public static final URI hasVersion = new URIImpl(NAMESPACE + "hasVersion");
-    public static final URI issued = new URIImpl(NAMESPACE + "issued");
-    public static final URI modified = new URIImpl(NAMESPACE + "modified");
-    public static final URI publisher = new URIImpl(NAMESPACE + "publisher");
-    public static final URI reviewer = new URIImpl(NAMESPACE + "reviewer");
-    public static final URI Review = new URIImpl(NAMESPACE + "Review");
-    public static final URI text = new URIImpl(NAMESPACE + "text");
-    public static final URI title = new URIImpl(NAMESPACE + "title");
+    private static final ValueFactory VALUE_FACTORY = SimpleValueFactory.getInstance();
 
-    static private final URI[] uris = new URI[]{
-            new URIImpl(NAMESPACE),//
+    public static final String NAMESPACE = "http://purl.org/dc/terms/";
+    public static final IRI description = VALUE_FACTORY.createIRI(NAMESPACE, "description");
+    public static final IRI hasVersion = VALUE_FACTORY.createIRI(NAMESPACE, "hasVersion");
+    public static final IRI issued = VALUE_FACTORY.createIRI(NAMESPACE, "issued");
+    public static final IRI modified = VALUE_FACTORY.createIRI(NAMESPACE, "modified");
+    public static final IRI publisher = VALUE_FACTORY.createIRI(NAMESPACE, "publisher");
+    public static final IRI reviewer = VALUE_FACTORY.createIRI(NAMESPACE, "reviewer");
+    public static final IRI Review = VALUE_FACTORY.createIRI(NAMESPACE, "Review");
+    public static final IRI text = VALUE_FACTORY.createIRI(NAMESPACE, "text");
+    public static final IRI title = VALUE_FACTORY.createIRI(NAMESPACE, "title");
+
+    static private final List<IRI> iris = List.of(
+            VALUE_FACTORY.createIRI(NAMESPACE), //
             description, hasVersion, issued, modified, publisher, reviewer,
-            Review, text, title, };
+            Review, text, title);
 
     public DCTermsVocabularyDecl() {
     }
 
-    public Iterator<URI> values() {
+    public Iterator<IRI> values() {
 
-        return Collections.unmodifiableList(Arrays.asList(uris)).iterator();
+        return iris.iterator();
 
     }
 

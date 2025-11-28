@@ -17,7 +17,7 @@ package com.bigdata.rdf.graph.impl;
 
 import java.util.concurrent.Callable;
 
-import org.openrdf.model.Value;
+import org.eclipse.rdf4j.model.Value;
 
 /**
  * A factory for tasks that are applied to each vertex in the frontier.

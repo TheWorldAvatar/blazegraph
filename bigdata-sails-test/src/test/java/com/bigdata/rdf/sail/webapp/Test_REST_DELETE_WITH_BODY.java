@@ -25,7 +25,7 @@ package com.bigdata.rdf.sail.webapp;
 
 import junit.framework.Test;
 
-import org.openrdf.rio.RDFFormat;
+import org.eclipse.rdf4j.rio.RDFFormat;
 
 import com.bigdata.journal.IIndexManager;
 

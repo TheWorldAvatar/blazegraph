@@ -61,7 +61,7 @@ import com.bigdata.journal.BufferMode;
 import com.bigdata.journal.ITx;
 import com.bigdata.journal.Journal;
 import com.bigdata.rdf.internal.IV;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.model.StatementEnum;
@@ -131,14 +131,14 @@ abstract public class AbstractHashJoinOpTestCase extends TestCase2 {
             {
                 final BigdataValueFactory vf = kb.getValueFactory();
                 final String uriString = "http://bigdata.com/";
-                final BigdataURI _knows = vf.asValue(FOAFVocabularyDecl.knows);
-                final BigdataURI _brad = vf.createURI(uriString+"brad");
-                final BigdataURI _john = vf.createURI(uriString+"john");
-                final BigdataURI _fred = vf.createURI(uriString+"fred");
-                final BigdataURI _mary = vf.createURI(uriString+"mary");
-                final BigdataURI _paul = vf.createURI(uriString+"paul");
-                final BigdataURI _leon = vf.createURI(uriString+"leon");
-                final BigdataURI _luke = vf.createURI(uriString+"luke");
+                final BigdataIRI _knows = vf.asValue(FOAFVocabularyDecl.knows);
+                final BigdataIRI _brad = vf.createURI(uriString+"brad");
+                final BigdataIRI _john = vf.createURI(uriString+"john");
+                final BigdataIRI _fred = vf.createURI(uriString+"fred");
+                final BigdataIRI _mary = vf.createURI(uriString+"mary");
+                final BigdataIRI _paul = vf.createURI(uriString+"paul");
+                final BigdataIRI _leon = vf.createURI(uriString+"leon");
+                final BigdataIRI _luke = vf.createURI(uriString+"luke");
 
                 final BigdataValue[] a = new BigdataValue[] {
                       _knows,//

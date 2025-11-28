@@ -24,7 +24,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 package com.bigdata.rdf.sparql.ast.eval.service;
 
-import org.openrdf.model.impl.URIImpl;
+import org.eclipse.rdf4j.model.impl.URIImpl;
 
 import com.bigdata.rdf.store.AbstractTripleStore;
 import com.bigdata.rdf.vocab.BaseVocabularyDecl;

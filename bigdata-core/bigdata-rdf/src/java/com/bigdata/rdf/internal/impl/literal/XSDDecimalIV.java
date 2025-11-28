@@ -27,7 +27,7 @@ package com.bigdata.rdf.internal.impl.literal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
-import org.openrdf.model.Literal;
+import org.eclipse.rdf4j.model.Literal;
 
 import com.bigdata.btree.keys.KeyBuilder;
 import com.bigdata.rdf.internal.DTE;

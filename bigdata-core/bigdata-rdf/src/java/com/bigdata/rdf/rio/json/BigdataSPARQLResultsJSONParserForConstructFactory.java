@@ -16,10 +16,10 @@
  */
 package com.bigdata.rdf.rio.json;
 
-import org.openrdf.query.resultio.TupleQueryResultParserFactory;
-import org.openrdf.rio.RDFFormat;
-import org.openrdf.rio.RDFParser;
-import org.openrdf.rio.RDFParserFactory;
+import org.eclipse.rdf4j.query.resultio.TupleQueryResultParserFactory;
+import org.eclipse.rdf4j.rio.RDFFormat;
+import org.eclipse.rdf4j.rio.RDFParser;
+import org.eclipse.rdf4j.rio.RDFParserFactory;
 
 import com.bigdata.rdf.ServiceProviderHook;
 import com.bigdata.rdf.model.BigdataValueFactoryImpl;

@@ -36,7 +36,7 @@ import com.bigdata.btree.keys.KeyBuilder;
 import com.bigdata.rdf.internal.impl.AbstractIV;
 import com.bigdata.rdf.internal.impl.TermId;
 import com.bigdata.rdf.lexicon.BlobsIndexHelper;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactoryImpl;
 import com.bigdata.util.Bytes;
@@ -83,7 +83,7 @@ public class TestTermIV extends TestCase2 {
 
     public void test_TermIV_isExtensionIV() {
 
-        final TermId<BigdataURI> iv = new TermId<BigdataURI>(VTE.URI,
+        final TermId<BigdataIRI> iv = new TermId<BigdataIRI>(VTE.URI,
                 12L);
 
         assertEquals(VTE.URI, iv.getVTE());

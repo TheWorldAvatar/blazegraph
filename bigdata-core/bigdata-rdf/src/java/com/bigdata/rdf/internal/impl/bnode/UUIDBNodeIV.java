@@ -25,7 +25,7 @@ package com.bigdata.rdf.internal.impl.bnode;
 
 import java.util.UUID;
 
-import org.openrdf.model.BNode;
+import org.eclipse.rdf4j.model.BNode;
 
 import com.bigdata.rdf.internal.DTE;
 import com.bigdata.rdf.internal.IV;

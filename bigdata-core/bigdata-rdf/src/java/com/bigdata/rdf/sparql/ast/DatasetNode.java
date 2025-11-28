@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
 
-import org.openrdf.query.Dataset;
+import org.eclipse.rdf4j.query.Dataset;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.rdf.internal.IV;

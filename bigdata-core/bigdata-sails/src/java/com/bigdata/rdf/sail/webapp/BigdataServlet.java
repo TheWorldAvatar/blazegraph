@@ -41,7 +41,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.model.Resource;
+import org.eclipse.rdf4j.model.Resource;
 
 import com.bigdata.ha.HAStatusEnum;
 import com.bigdata.journal.AbstractJournal;

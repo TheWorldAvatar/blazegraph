@@ -25,7 +25,7 @@ package com.bigdata.rdf.graph.impl.bd;
 
 import java.util.Properties;
 
-import org.openrdf.model.Value;
+import org.eclipse.rdf4j.model.Value;
 
 import com.bigdata.rdf.graph.IGASEngine;
 import com.bigdata.rdf.graph.IGraphAccessor;

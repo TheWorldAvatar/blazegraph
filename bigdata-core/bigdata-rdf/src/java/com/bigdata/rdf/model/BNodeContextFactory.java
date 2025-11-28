@@ -5,11 +5,11 @@ import java.util.UUID;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 
-import org.openrdf.model.BNode;
-import org.openrdf.model.Literal;
-import org.openrdf.model.Resource;
-import org.openrdf.model.URI;
-import org.openrdf.model.Value;
+import org.eclipse.rdf4j.model.BNode;
+import org.eclipse.rdf4j.model.Literal;
+import org.eclipse.rdf4j.model.Resource;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.Value;
 
 /**
  * Class provides a document-scoped context for generating blank node
@@ -206,12 +206,12 @@ public class BNodeContextFactory implements BigdataValueFactory {
     }
 	
     @Override
-	public BigdataURI createURI(String namespace, String localName) {
+	public BigdataIRI createURI(String namespace, String localName) {
         return valueFactory.createURI(namespace, localName);
     }
 
     @Override
-	public BigdataURI createURI(String uriString) {
+	public BigdataIRI createURI(String uriString) {
         return valueFactory.createURI(uriString);
     }
 
@@ -221,12 +221,12 @@ public class BNodeContextFactory implements BigdataValueFactory {
     }
 
     @Override
-    public BigdataURI getLangStringURI() {
+    public BigdataIRI getLangStringURI() {
         return valueFactory.getLangStringURI();
     }
 
     @Override
-    public BigdataURI getXSDStringURI() {
+    public BigdataIRI getXSDStringURI() {
         return valueFactory.getXSDStringURI();
     }
 
@@ -244,7 +244,7 @@ public class BNodeContextFactory implements BigdataValueFactory {
     }
 
     @Override
-    public BigdataURI asValue(URI v) {
+    public BigdataIRI asValue(URI v) {
         return valueFactory.asValue(v);
     }
 

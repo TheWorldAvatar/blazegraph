@@ -27,7 +27,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 package com.bigdata.rdf.sparql.ast.eval;
 
-import org.openrdf.query.Dataset;
+import org.eclipse.rdf4j.query.Dataset;
 
 import com.bigdata.rdf.internal.IV;
 

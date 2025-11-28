@@ -29,12 +29,12 @@ package com.bigdata.rdf.sparql.ast.eval;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.openrdf.model.Graph;
-import org.openrdf.model.Statement;
-import org.openrdf.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.Graph;
+import org.eclipse.rdf4j.model.Statement;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
 
 import com.bigdata.rdf.model.BigdataStatement;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.sail.BigdataSail;
@@ -233,7 +233,7 @@ public class TestDescribe extends AbstractDataDrivenSPARQLTestCase {
 
         final BigdataValueFactory f = h.getTripleStore().getValueFactory();
 
-        final BigdataURI dc = f.createURI("http://www.bigdata.com/DC");
+        final BigdataIRI dc = f.createURI("http://www.bigdata.com/DC");
 
         final BigdataValue[] values = new BigdataValue[] { dc };
 
@@ -309,8 +309,8 @@ public class TestDescribe extends AbstractDataDrivenSPARQLTestCase {
 
         final BigdataValueFactory f = h.getTripleStore().getValueFactory();
 
-        final BigdataURI mike = f.createURI("http://www.bigdata.com/Mike");
-        final BigdataURI bryan = f.createURI("http://www.bigdata.com/Bryan");
+        final BigdataIRI mike = f.createURI("http://www.bigdata.com/Mike");
+        final BigdataIRI bryan = f.createURI("http://www.bigdata.com/Bryan");
 
         final BigdataValue[] values = new BigdataValue[] { mike, bryan};
 
@@ -372,9 +372,9 @@ public class TestDescribe extends AbstractDataDrivenSPARQLTestCase {
 
         final BigdataValueFactory f = h.getTripleStore().getValueFactory();
 
-        final BigdataURI dc = f.createURI("http://www.bigdata.com/DC");
-        final BigdataURI mike = f.createURI("http://www.bigdata.com/Mike");
-        final BigdataURI bryan = f.createURI("http://www.bigdata.com/Bryan");
+        final BigdataIRI dc = f.createURI("http://www.bigdata.com/DC");
+        final BigdataIRI mike = f.createURI("http://www.bigdata.com/Mike");
+        final BigdataIRI bryan = f.createURI("http://www.bigdata.com/Bryan");
 
         final BigdataValue[] values = new BigdataValue[] { dc, mike, bryan};
 
@@ -439,7 +439,7 @@ public class TestDescribe extends AbstractDataDrivenSPARQLTestCase {
 
         final BigdataValueFactory f = h.getTripleStore().getValueFactory();
 
-        final BigdataURI mike = f.createURI("http://www.bigdata.com/mike");
+        final BigdataIRI mike = f.createURI("http://www.bigdata.com/mike");
 
         final BigdataValue[] values = new BigdataValue[] { mike };
 
@@ -497,8 +497,8 @@ public class TestDescribe extends AbstractDataDrivenSPARQLTestCase {
 
         final BigdataValueFactory f = h.getTripleStore().getValueFactory();
 
-        final BigdataURI mike = f.createURI("http://www.bigdata.com/mike");
-        final BigdataURI rdf = f.createURI("http://www.bigdata.com/rdf");
+        final BigdataIRI mike = f.createURI("http://www.bigdata.com/mike");
+        final BigdataIRI rdf = f.createURI("http://www.bigdata.com/rdf");
 
         final BigdataValue[] values = new BigdataValue[] { mike, rdf };
 
@@ -557,11 +557,11 @@ public class TestDescribe extends AbstractDataDrivenSPARQLTestCase {
 
         final BigdataValueFactory f = h.getTripleStore().getValueFactory();
 
-        final BigdataURI dc = f.createURI("http://www.bigdata.com/DC");
+        final BigdataIRI dc = f.createURI("http://www.bigdata.com/DC");
 
-        final BigdataURI foafPerson = f.asValue(FOAFVocabularyDecl.Person);
+        final BigdataIRI foafPerson = f.asValue(FOAFVocabularyDecl.Person);
 
-        final BigdataURI rdfType = f.asValue(RDF.TYPE);
+        final BigdataIRI rdfType = f.asValue(RDF.TYPE);
 
         final BigdataValue[] values = new BigdataValue[] { //
                 dc, foafPerson, rdfType 
@@ -660,7 +660,7 @@ public class TestDescribe extends AbstractDataDrivenSPARQLTestCase {
 
         final BigdataValueFactory f = h.getTripleStore().getValueFactory();
 
-        final BigdataURI dc = f.createURI("http://www.bigdata.com/DC");
+        final BigdataIRI dc = f.createURI("http://www.bigdata.com/DC");
 
         final BigdataValue[] values = new BigdataValue[] { dc };
 
@@ -741,7 +741,7 @@ public class TestDescribe extends AbstractDataDrivenSPARQLTestCase {
 
         final BigdataValueFactory f = h.getTripleStore().getValueFactory();
 
-        final BigdataURI dc = f.createURI("http://www.bigdata.com/DC");
+        final BigdataIRI dc = f.createURI("http://www.bigdata.com/DC");
 
         final BigdataValue[] values = new BigdataValue[] { dc };
 

@@ -17,7 +17,7 @@ package com.bigdata.rdf.graph.impl.util;
 
 import java.util.Set;
 
-import org.openrdf.model.Value;
+import org.eclipse.rdf4j.model.Value;
 
 
 /**

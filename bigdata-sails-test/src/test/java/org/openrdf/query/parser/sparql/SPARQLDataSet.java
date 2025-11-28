@@ -14,7 +14,7 @@
  * implied. See the License for the specific language governing permissions
  * and limitations under the License.
  */
-package org.openrdf.query.parser.sparql;
+package org.eclipse.rdf4j.query.parser.sparql;
 
 import java.util.HashMap;
 import java.util.Set;

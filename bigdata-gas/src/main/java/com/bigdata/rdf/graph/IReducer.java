@@ -15,7 +15,7 @@
 */
 package com.bigdata.rdf.graph;
 
-import org.openrdf.model.Value;
+import org.eclipse.rdf4j.model.Value;
 
 /**
  * An interface for computing reductions over the vertices of a graph.

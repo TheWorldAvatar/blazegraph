@@ -6,8 +6,8 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import org.openrdf.model.URI;
-import org.openrdf.query.Dataset;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.query.Dataset;
 
 import com.bigdata.bop.BOpContextBase;
 import com.bigdata.bop.Constant;
@@ -17,7 +17,7 @@ import com.bigdata.bop.cost.SubqueryCostReport;
 import com.bigdata.bop.fed.FederatedQueryEngine;
 import com.bigdata.rdf.internal.IV;
 import com.bigdata.rdf.lexicon.LexiconRelation;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.store.IRawTripleStore;
 import com.bigdata.relation.IRelation;
 import com.bigdata.relation.accesspath.AccessPath;
@@ -49,9 +49,9 @@ public class DataSetSummary {
 			
 			IV iv = null;
 			
-			if (uri != null && uri instanceof BigdataURI) {
+			if (uri != null && uri instanceof BigdataIRI) {
 				
-				final BigdataURI bURI = (BigdataURI) uri;
+				final BigdataIRI bURI = (BigdataIRI) uri;
 				
 				iv = bURI.getIV();
 				
@@ -107,7 +107,7 @@ public class DataSetSummary {
      * @param graphs
      *            The set of named graphs in the SPARQL DATASET (optional). A
      *            runtime exception will be thrown during evaluation of the if
-     *            the {@link URI}s are not {@link BigdataURI}s. If
+     *            the {@link URI}s are not {@link BigdataIRI}s. If
      *            <code>graphs := null</code>, then the set of named graphs is
      *            understood to be ALL graphs in the quad store.
      * @param update

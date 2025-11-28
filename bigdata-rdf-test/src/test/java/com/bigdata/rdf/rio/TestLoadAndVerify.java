@@ -29,7 +29,7 @@ package com.bigdata.rdf.rio;
 
 import java.util.Properties;
 
-import org.openrdf.model.Statement;
+import org.eclipse.rdf4j.model.Statement;
 
 import com.bigdata.btree.UnisolatedReadWriteIndex;
 import com.bigdata.rdf.load.IStatementBufferFactory;

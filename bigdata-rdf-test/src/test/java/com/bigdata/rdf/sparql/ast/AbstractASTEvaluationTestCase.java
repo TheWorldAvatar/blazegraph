@@ -40,7 +40,7 @@ import java.util.Set;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.model.Value;
+import org.eclipse.rdf4j.model.Value;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.BOpContextBase;

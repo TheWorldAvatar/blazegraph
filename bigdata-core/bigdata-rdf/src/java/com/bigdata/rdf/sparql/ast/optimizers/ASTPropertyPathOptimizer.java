@@ -33,7 +33,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.UUID;
 
-import org.openrdf.query.algebra.StatementPattern.Scope;
+import org.eclipse.rdf4j.query.algebra.StatementPattern.Scope;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.IBindingSet;

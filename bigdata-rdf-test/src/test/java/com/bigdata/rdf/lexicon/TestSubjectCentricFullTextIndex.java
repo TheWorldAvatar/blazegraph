@@ -36,14 +36,14 @@ import junit.framework.AssertionFailedError;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.model.impl.LiteralImpl;
-import org.openrdf.model.vocabulary.RDF;
-import org.openrdf.model.vocabulary.RDFS;
-import org.openrdf.model.vocabulary.XMLSchema;
+import org.eclipse.rdf4j.model.impl.LiteralImpl;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.vocabulary.RDFS;
+import org.eclipse.rdf4j.model.vocabulary.XMLSchema;
 
 import com.bigdata.rdf.internal.IV;
 import com.bigdata.rdf.lexicon.ITextIndexer.FullTextQuery;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.spo.TestSPOKeyOrder;
@@ -229,9 +229,9 @@ public class TestSubjectCentricFullTextIndex extends AbstractTripleStoreTestCase
 
             final BigdataValueFactory f = store.getValueFactory();
             
-            final BigdataURI s = f.createURI(BD.NAMESPACE+"s");
+            final BigdataIRI s = f.createURI(BD.NAMESPACE+"s");
             
-            final BigdataURI p = f.createURI(BD.NAMESPACE+"p");
+            final BigdataIRI p = f.createURI(BD.NAMESPACE+"p");
             
             final LiteralImpl largeLiteral = getLargeLiteral(store);
 
@@ -391,13 +391,13 @@ public class TestSubjectCentricFullTextIndex extends AbstractTripleStoreTestCase
 
             final BigdataValueFactory f = store.getValueFactory();
             
-            final BigdataURI s1 = f.createURI(BD.NAMESPACE+"s1");
+            final BigdataIRI s1 = f.createURI(BD.NAMESPACE+"s1");
             
-            final BigdataURI s2 = f.createURI(BD.NAMESPACE+"s2");
+            final BigdataIRI s2 = f.createURI(BD.NAMESPACE+"s2");
             
-            final BigdataURI s3 = f.createURI(BD.NAMESPACE+"s3");
+            final BigdataIRI s3 = f.createURI(BD.NAMESPACE+"s3");
             
-            final BigdataURI p = f.createURI(BD.NAMESPACE+"p");
+            final BigdataIRI p = f.createURI(BD.NAMESPACE+"p");
             
             final LiteralImpl largeLiteral = getLargeLiteral(store);
 

@@ -27,10 +27,10 @@ package com.bigdata.gom.gpo;
 import java.util.Map;
 import java.util.Set;
 
-import org.openrdf.model.Resource;
-import org.openrdf.model.Statement;
-import org.openrdf.model.URI;
-import org.openrdf.model.Value;
+import org.eclipse.rdf4j.model.Resource;
+import org.eclipse.rdf4j.model.Statement;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.Value;
 
 import com.bigdata.gom.om.IObjectManager;
 import com.bigdata.gom.skin.GenericSkinRegistry;

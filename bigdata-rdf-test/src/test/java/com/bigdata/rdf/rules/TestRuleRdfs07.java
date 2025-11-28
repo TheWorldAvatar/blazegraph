@@ -29,8 +29,8 @@ package com.bigdata.rdf.rules;
 
 import java.util.Properties;
 
-import org.openrdf.model.URI;
-import org.openrdf.model.vocabulary.RDFS;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.vocabulary.RDFS;
 
 import com.bigdata.rdf.axioms.NoAxioms;
 import com.bigdata.rdf.model.BigdataValueFactory;

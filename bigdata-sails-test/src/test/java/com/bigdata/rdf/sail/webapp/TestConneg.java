@@ -29,9 +29,9 @@ package com.bigdata.rdf.sail.webapp;
 
 import junit.framework.TestCase2;
 
-import org.openrdf.query.resultio.BooleanQueryResultFormat;
-import org.openrdf.query.resultio.TupleQueryResultFormat;
-import org.openrdf.rio.RDFFormat;
+import org.eclipse.rdf4j.query.resultio.BooleanQueryResultFormat;
+import org.eclipse.rdf4j.query.resultio.TupleQueryResultFormat;
+import org.eclipse.rdf4j.rio.RDFFormat;
 
 import com.bigdata.counters.format.CounterSetFormat;
 

@@ -37,10 +37,10 @@ import java.util.UUID;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 
-import org.openrdf.model.Literal;
-import org.openrdf.model.URI;
-import org.openrdf.model.impl.LiteralImpl;
-import org.openrdf.model.impl.URIImpl;
+import org.eclipse.rdf4j.model.Literal;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.impl.LiteralImpl;
+import org.eclipse.rdf4j.model.impl.URIImpl;
 
 import com.bigdata.rdf.internal.ColorsEnumExtension.Color;
 import com.bigdata.rdf.internal.impl.AbstractIV;
@@ -60,7 +60,7 @@ import com.bigdata.rdf.internal.impl.uri.VocabURIShortIV;
 import com.bigdata.rdf.lexicon.LexiconRelation;
 import com.bigdata.rdf.model.BigdataBNode;
 import com.bigdata.rdf.model.BigdataLiteral;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.model.BigdataValueFactoryImpl;
@@ -465,8 +465,8 @@ public class TestEncodeDecodeKeys extends AbstractEncodeDecodeKeysTestCase {
         
         final EpochExtension<BigdataValue> ext = 
             new EpochExtension<BigdataValue>(new IDatatypeURIResolver() {
-            public BigdataURI resolve(final URI uri) {
-                final BigdataURI buri = vf.createURI(uri.stringValue());
+            public BigdataIRI resolve(final URI uri) {
+                final BigdataIRI buri = vf.createURI(uri.stringValue());
                 buri.setIV(newTermId(VTE.URI));
                 return buri;
             }
@@ -508,8 +508,8 @@ public class TestEncodeDecodeKeys extends AbstractEncodeDecodeKeysTestCase {
         
         final ColorsEnumExtension<BigdataValue> ext = 
             new ColorsEnumExtension<BigdataValue>(new IDatatypeURIResolver() {
-            public BigdataURI resolve(URI uri) {
-                final BigdataURI buri = vf.createURI(uri.stringValue());
+            public BigdataIRI resolve(URI uri) {
+                final BigdataIRI buri = vf.createURI(uri.stringValue());
                 buri.setIV(newTermId(VTE.URI));
                 return buri;
             }
@@ -543,8 +543,8 @@ public class TestEncodeDecodeKeys extends AbstractEncodeDecodeKeysTestCase {
 
         final DateTimeExtension<BigdataValue> ext = 
             new DateTimeExtension<BigdataValue>(new IDatatypeURIResolver() {
-                public BigdataURI resolve(URI uri) {
-                    final BigdataURI buri = vf.createURI(uri.stringValue());
+                public BigdataIRI resolve(URI uri) {
+                    final BigdataIRI buri = vf.createURI(uri.stringValue());
                     buri.setIV(newTermId(VTE.URI));
                     return buri;
                 }
@@ -612,8 +612,8 @@ public class TestEncodeDecodeKeys extends AbstractEncodeDecodeKeysTestCase {
 
         final DateTimeExtension<BigdataValue> ext = new DateTimeExtension<BigdataValue>(
                 new IDatatypeURIResolver() {
-                    public BigdataURI resolve(URI uri) {
-                        final BigdataURI buri = vf.createURI(uri.stringValue());
+                    public BigdataIRI resolve(URI uri) {
+                        final BigdataIRI buri = vf.createURI(uri.stringValue());
                         buri.setIV(newTermId(VTE.URI));
                         return buri;
                     }
@@ -668,8 +668,8 @@ public class TestEncodeDecodeKeys extends AbstractEncodeDecodeKeysTestCase {
         
         final DerivedNumericsExtension<BigdataValue> ext = 
             new DerivedNumericsExtension<BigdataValue>(new IDatatypeURIResolver() {
-                public BigdataURI resolve(URI uri) {
-                    final BigdataURI buri = vf.createURI(uri.stringValue());
+                public BigdataIRI resolve(URI uri) {
+                    final BigdataIRI buri = vf.createURI(uri.stringValue());
                     buri.setIV(newTermId(VTE.URI));
                     return buri;
                 }
@@ -725,8 +725,8 @@ public class TestEncodeDecodeKeys extends AbstractEncodeDecodeKeysTestCase {
         final GeoSpatialDatatypeConfiguration datatypeConfig = conf.getDatatypeConfigs().get(0);
         final GeoSpatialLiteralExtension<BigdataValue> ext = 
             new GeoSpatialLiteralExtension<BigdataValue>(new IDatatypeURIResolver() {
-                public BigdataURI resolve(URI uri) {
-                    final BigdataURI buri = vf.createURI(uri.stringValue());
+                public BigdataIRI resolve(URI uri) {
+                    final BigdataIRI buri = vf.createURI(uri.stringValue());
                     buri.setIV(newTermId(VTE.URI));
                     return buri;
                 }
@@ -782,8 +782,8 @@ public class TestEncodeDecodeKeys extends AbstractEncodeDecodeKeysTestCase {
         final GeoSpatialDatatypeConfiguration datatypeConfig = conf.getDatatypeConfigs().get(0);
         final GeoSpatialLiteralExtension<BigdataValue> ext = 
             new GeoSpatialLiteralExtension<BigdataValue>(new IDatatypeURIResolver() {
-                public BigdataURI resolve(URI uri) {
-                    final BigdataURI buri = vf.createURI(uri.stringValue());
+                public BigdataIRI resolve(URI uri) {
+                    final BigdataIRI buri = vf.createURI(uri.stringValue());
                     buri.setIV(newTermId(VTE.URI));
                     return buri;
                 }
@@ -897,11 +897,11 @@ public class TestEncodeDecodeKeys extends AbstractEncodeDecodeKeysTestCase {
     public void test_encodeDecode_URIByteIV() {
 
         final IV<?, ?>[] e = {//
-                new VocabURIByteIV<BigdataURI>((byte) Byte.MIN_VALUE),//
-                new VocabURIByteIV<BigdataURI>((byte) -1),//
-                new VocabURIByteIV<BigdataURI>((byte) 0),//
-                new VocabURIByteIV<BigdataURI>((byte) 1),//
-                new VocabURIByteIV<BigdataURI>((byte) Byte.MAX_VALUE),//
+                new VocabURIByteIV<BigdataIRI>((byte) Byte.MIN_VALUE),//
+                new VocabURIByteIV<BigdataIRI>((byte) -1),//
+                new VocabURIByteIV<BigdataIRI>((byte) 0),//
+                new VocabURIByteIV<BigdataIRI>((byte) 1),//
+                new VocabURIByteIV<BigdataIRI>((byte) Byte.MAX_VALUE),//
         };
 
         doEncodeDecodeTest(e);
@@ -921,11 +921,11 @@ public class TestEncodeDecodeKeys extends AbstractEncodeDecodeKeysTestCase {
     public void test_encodeDecode_URIShortIV() {
 
         final IV<?, ?>[] e = {//
-                new VocabURIShortIV<BigdataURI>((short) Short.MIN_VALUE),//
-                new VocabURIShortIV<BigdataURI>((short) -1),//
-                new VocabURIShortIV<BigdataURI>((short) 0),//
-                new VocabURIShortIV<BigdataURI>((short) 1),//
-                new VocabURIShortIV<BigdataURI>((short) Short.MAX_VALUE),//
+                new VocabURIShortIV<BigdataIRI>((short) Short.MIN_VALUE),//
+                new VocabURIShortIV<BigdataIRI>((short) -1),//
+                new VocabURIShortIV<BigdataIRI>((short) 0),//
+                new VocabURIShortIV<BigdataIRI>((short) 1),//
+                new VocabURIShortIV<BigdataIRI>((short) Short.MAX_VALUE),//
         };
 
         doEncodeDecodeTest(e);

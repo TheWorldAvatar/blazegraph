@@ -28,6 +28,7 @@ import java.io.PipedOutputStream;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -40,19 +41,20 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.model.Resource;
-import org.openrdf.model.Value;
-import org.openrdf.query.MalformedQueryException;
-import org.openrdf.rio.RDFFormat;
-import org.openrdf.rio.RDFHandler;
-import org.openrdf.rio.RDFParser;
-import org.openrdf.rio.RDFParserFactory;
-import org.openrdf.rio.RDFParserRegistry;
+import org.eclipse.rdf4j.model.Resource;
+import org.eclipse.rdf4j.model.Value;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.query.MalformedQueryException;
+import org.eclipse.rdf4j.rio.RDFFormat;
+import org.eclipse.rdf4j.rio.RDFHandler;
+import org.eclipse.rdf4j.rio.RDFParser;
+import org.eclipse.rdf4j.rio.RDFParserFactory;
+import org.eclipse.rdf4j.rio.RDFParserRegistry;
 
 import com.bigdata.journal.ITx;
 import com.bigdata.rdf.sail.BigdataSail.BigdataSailConnection;
-import com.bigdata.rdf.sail.sparql.Bigdata2ASTSPARQLParser;
 import com.bigdata.rdf.sail.BigdataSailRepositoryConnection;
+import com.bigdata.rdf.sail.sparql.Bigdata2ASTSPARQLParser;
 import com.bigdata.rdf.sail.webapp.BigdataRDFContext.AbstractQueryTask;
 import com.bigdata.rdf.sail.webapp.DeleteServlet.BufferStatementHandler;
 import com.bigdata.rdf.sail.webapp.DeleteServlet.RemoveStatementHandler;
@@ -155,10 +157,10 @@ public class UpdateServlet extends BigdataRDFServlet {
          * UpdateServlet fails to parse MIMEType when doing conneg. </a>
          */
 
-        final RDFFormat requestBodyFormat = RDFFormat.forMIMEType(new MiniMime(
-                contentType).getMimeType());
+        final Optional<RDFFormat> requestBodyFormat = RDFFormat.matchMIMEType(new MiniMime(
+                contentType).getMimeType(), RDFParserRegistry.getInstance().getKeys());
 
-        if (requestBodyFormat == null) {
+        if (requestBodyFormat.isEmpty()) {
 
             buildAndCommitResponse(resp, HTTP_BADREQUEST, MIME_TEXT_PLAIN,
                     "Content-Type not recognized as RDF: " + contentType);
@@ -167,10 +169,10 @@ public class UpdateServlet extends BigdataRDFServlet {
 
         }
 
-        final RDFParserFactory rdfParserFactory = RDFParserRegistry
-                .getInstance().get(requestBodyFormat);
+        final Optional<RDFParserFactory> rdfParserFactory = RDFParserRegistry
+                .getInstance().get(requestBodyFormat.get());
 
-        if (rdfParserFactory == null) {
+        if (rdfParserFactory.isEmpty()) {
 
             buildAndCommitResponse(resp, HTTP_INTERNALERROR, MIME_TEXT_PLAIN,
                     "Parser factory not found: Content-Type="
@@ -230,7 +232,7 @@ public class UpdateServlet extends BigdataRDFServlet {
 							baseURI,//
 							suppressTruthMaintenance, //
 							bindings,//
-							rdfParserFactory,//
+							rdfParserFactory.get(),//
 							defaultContextDelete,//
 							defaultContextInsert//
 					)).get();
@@ -245,7 +247,7 @@ public class UpdateServlet extends BigdataRDFServlet {
 	                     baseURI,//
 	                     suppressTruthMaintenance, //
 	                     bindings,//
-	                     rdfParserFactory,//
+	                     rdfParserFactory.get(),//
 	                     defaultContextDelete,//
 	                     defaultContextInsert//
 	               )).get();
@@ -419,10 +421,10 @@ public class UpdateServlet extends BigdataRDFServlet {
 						// Run DELETE
 						{
 
-							final RDFParserFactory factory = RDFParserRegistry
+							final Optional<RDFParserFactory> factory = RDFParserRegistry
 									.getInstance().get(deleteQueryFormat);
 
-							final RDFParser rdfParser = factory.getParser();
+							final RDFParser rdfParser = factory.get().getParser();
 
 							rdfParser.setValueFactory(conn.getTripleStore()
 									.getValueFactory());
@@ -681,10 +683,10 @@ public class UpdateServlet extends BigdataRDFServlet {
 	               // Run DELETE
 	               {
 	
-	                  final RDFParserFactory factory = RDFParserRegistry
+	                  final Optional<RDFParserFactory> factory = RDFParserRegistry
 	                        .getInstance().get(deleteQueryFormat);
 	
-	                  final RDFParser rdfParser = factory.getParser();
+	                  final RDFParser rdfParser = factory.get().getParser();
 	
 	                  rdfParser.setValueFactory(conn.getTripleStore()
 	                        .getValueFactory());
@@ -1100,12 +1102,13 @@ public class UpdateServlet extends BigdataRDFServlet {
              */
 
             final RDFFormat format = RDFFormat
-                    .forMIMEType(new MiniMime(contentType).getMimeType());
+                    .matchMIMEType(new MiniMime(contentType).getMimeType(),
+                        RDFParserRegistry.getInstance().getKeys()).get();
 
-            final RDFParserFactory rdfParserFactory = RDFParserRegistry
+            final Optional<RDFParserFactory> rdfParserFactory = RDFParserRegistry
                     .getInstance().get(format);
 
-            final RDFParser rdfParser = rdfParserFactory.getParser();
+            final RDFParser rdfParser = rdfParserFactory.get().getParser();
 
             rdfParser.setValueFactory(conn.getTripleStore()
                     .getValueFactory());
@@ -1143,10 +1146,11 @@ public class UpdateServlet extends BigdataRDFServlet {
 	        
 	    }
 	
-        final RDFFormat format = RDFFormat
-                .forMIMEType(new MiniMime(contentType).getMimeType());
+        final Optional<RDFFormat> format = RDFFormat
+                .matchMIMEType(new MiniMime(contentType).getMimeType(), RDFParserRegistry
+                        .getInstance().getKeys());
 
-	    if (format == null) {
+	    if (format.isEmpty()) {
 	
 	        buildAndCommitResponse(resp, HTTP_BADREQUEST, MIME_TEXT_PLAIN,
 	                "Content-Type not recognized as RDF: " + contentType);
@@ -1155,10 +1159,10 @@ public class UpdateServlet extends BigdataRDFServlet {
 	
 	    }
 	    
-        final RDFParserFactory rdfParserFactory = RDFParserRegistry
-		        .getInstance().get(format);
+        final Optional<RDFParserFactory> rdfParserFactory = RDFParserRegistry
+		        .getInstance().get(format.get());
 		
-		if (rdfParserFactory == null) {
+		if (rdfParserFactory.isEmpty()) {
 		
 		    buildAndCommitResponse(resp, HTTP_INTERNALERROR, MIME_TEXT_PLAIN,
 		            "Parser factory not found: Content-Type=" + contentType

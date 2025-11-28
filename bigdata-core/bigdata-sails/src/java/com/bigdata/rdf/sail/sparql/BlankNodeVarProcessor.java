@@ -11,7 +11,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.openrdf.query.MalformedQueryException;
+import org.eclipse.rdf4j.query.MalformedQueryException;
 
 import com.bigdata.rdf.sail.sparql.ast.ASTBasicGraphPattern;
 import com.bigdata.rdf.sail.sparql.ast.ASTBlankNode;

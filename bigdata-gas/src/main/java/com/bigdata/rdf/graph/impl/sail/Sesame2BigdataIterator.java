@@ -21,7 +21,7 @@ package com.bigdata.rdf.graph.impl.sail;
 
 import java.util.NoSuchElementException;
 
-import info.aduna.iteration.CloseableIteration;
+import org.eclipse.rdf4j.common.iteration.CloseableIteration;
 
 import cutthecrap.utils.striterators.ICloseableIterator;
 

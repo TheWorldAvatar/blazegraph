@@ -78,30 +78,30 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.IsolationLevel;
-import org.openrdf.IsolationLevels;
-import org.openrdf.OpenRDFUtil;
-import org.openrdf.model.Namespace;
-import org.openrdf.model.Resource;
-import org.openrdf.model.Statement;
-import org.openrdf.model.URI;
-import org.openrdf.model.Value;
-import org.openrdf.model.ValueFactory;
-import org.openrdf.model.impl.ContextStatementImpl;
-import org.openrdf.model.impl.NamespaceImpl;
-import org.openrdf.query.BindingSet;
-import org.openrdf.query.Dataset;
-import org.openrdf.query.QueryEvaluationException;
-import org.openrdf.query.algebra.TupleExpr;
-import org.openrdf.query.algebra.evaluation.QueryBindingSet;
-import org.openrdf.repository.RepositoryException;
-import org.openrdf.sail.NotifyingSailConnection;
-import org.openrdf.sail.Sail;
-import org.openrdf.sail.SailConnection;
-import org.openrdf.sail.SailConnectionListener;
-import org.openrdf.sail.SailException;
-import org.openrdf.sail.UnknownSailTransactionStateException;
-import org.openrdf.sail.UpdateContext;
+import org.eclipse.rdf4j.IsolationLevel;
+import org.eclipse.rdf4j.IsolationLevels;
+import org.eclipse.rdf4j.OpenRDFUtil;
+import org.eclipse.rdf4j.model.Namespace;
+import org.eclipse.rdf4j.model.Resource;
+import org.eclipse.rdf4j.model.Statement;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.Value;
+import org.eclipse.rdf4j.model.ValueFactory;
+import org.eclipse.rdf4j.model.impl.ContextStatementImpl;
+import org.eclipse.rdf4j.model.impl.NamespaceImpl;
+import org.eclipse.rdf4j.query.BindingSet;
+import org.eclipse.rdf4j.query.Dataset;
+import org.eclipse.rdf4j.query.QueryEvaluationException;
+import org.eclipse.rdf4j.query.algebra.TupleExpr;
+import org.eclipse.rdf4j.query.algebra.evaluation.QueryBindingSet;
+import org.eclipse.rdf4j.repository.RepositoryException;
+import org.eclipse.rdf4j.sail.NotifyingSailConnection;
+import org.eclipse.rdf4j.sail.Sail;
+import org.eclipse.rdf4j.sail.SailConnection;
+import org.eclipse.rdf4j.sail.SailConnectionListener;
+import org.eclipse.rdf4j.sail.SailException;
+import org.eclipse.rdf4j.sail.UnknownSailTransactionStateException;
+import org.eclipse.rdf4j.sail.UpdateContext;
 
 import com.bigdata.bop.engine.QueryEngine;
 import com.bigdata.bop.fed.QueryEngineFactory;
@@ -168,7 +168,7 @@ import com.bigdata.util.InnerCause;
 
 import cutthecrap.utils.striterators.Expander;
 import cutthecrap.utils.striterators.Striterator;
-import info.aduna.iteration.CloseableIteration;
+import org.eclipse.rdf4j.common.iteration.CloseableIteration;
 
 /**
  * <p>
@@ -4836,7 +4836,7 @@ public class BigdataSail extends SailBase implements Sail {
 		 * 
 		 * (non-Javadoc)
 		 * 
-		 * @see org.openrdf.sail.SailConnection#begin()
+		 * @see org.eclipse.rdf4j.sail.SailConnection#begin()
 		 */
         
         /**
@@ -4900,7 +4900,7 @@ public class BigdataSail extends SailBase implements Sail {
 		 * 
 		 * (non-Javadoc)
 		 * 
-		 * @see org.openrdf.sail.SailConnection#startUpdate(org.openrdf.sail.
+		 * @see org.eclipse.rdf4j.sail.SailConnection#startUpdate(org.eclipse.rdf4j.sail.
 		 * UpdateContext)
 		 */
         

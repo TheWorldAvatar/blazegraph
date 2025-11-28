@@ -5,9 +5,9 @@
  */
 package com.bigdata.rdf.sail.sparql;
 
-import info.aduna.net.ParsedURI;
+import org.eclipse.rdf4j.common.net.ParsedURI;
 
-import org.openrdf.query.MalformedQueryException;
+import org.eclipse.rdf4j.query.MalformedQueryException;
 
 import com.bigdata.rdf.sail.sparql.ast.ASTBaseDecl;
 import com.bigdata.rdf.sail.sparql.ast.ASTDeleteData;

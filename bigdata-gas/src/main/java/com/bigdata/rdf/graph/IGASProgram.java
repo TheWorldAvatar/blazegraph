@@ -15,8 +15,8 @@
 */
 package com.bigdata.rdf.graph;
 
-import org.openrdf.model.Statement;
-import org.openrdf.model.Value;
+import org.eclipse.rdf4j.model.Statement;
+import org.eclipse.rdf4j.model.Value;
 
 /**
  * Abstract interface for GAS programs.

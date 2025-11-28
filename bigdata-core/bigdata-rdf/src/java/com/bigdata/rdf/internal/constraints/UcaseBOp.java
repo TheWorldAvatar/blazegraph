@@ -25,7 +25,7 @@ package com.bigdata.rdf.internal.constraints;
 
 import java.util.Map;
 
-import org.openrdf.model.Literal;
+import org.eclipse.rdf4j.model.Literal;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.IBindingSet;

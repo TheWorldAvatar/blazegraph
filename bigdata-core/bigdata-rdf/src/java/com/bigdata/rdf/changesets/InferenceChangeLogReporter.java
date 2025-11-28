@@ -4,7 +4,7 @@ import java.beans.Statement;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import org.openrdf.model.Value;
+import org.eclipse.rdf4j.model.Value;
 
 import com.bigdata.bop.rdf.filter.NativeDistinctFilter;
 import com.bigdata.htree.HTree;

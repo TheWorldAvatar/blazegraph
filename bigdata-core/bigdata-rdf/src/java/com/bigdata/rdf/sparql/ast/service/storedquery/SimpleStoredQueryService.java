@@ -24,8 +24,8 @@
  */
 package com.bigdata.rdf.sparql.ast.service.storedquery;
 
-import org.openrdf.query.QueryLanguage;
-import org.openrdf.query.TupleQueryResult;
+import org.eclipse.rdf4j.query.QueryLanguage;
+import org.eclipse.rdf4j.query.TupleQueryResult;
 
 import com.bigdata.rdf.sail.BigdataSailRepositoryConnection;
 import com.bigdata.rdf.sail.BigdataSailTupleQuery;

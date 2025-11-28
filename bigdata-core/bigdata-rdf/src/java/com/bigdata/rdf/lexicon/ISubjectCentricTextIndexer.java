@@ -30,7 +30,7 @@ package com.bigdata.rdf.lexicon;
 import java.util.Iterator;
 import java.util.Locale;
 
-import org.openrdf.model.Value;
+import org.eclipse.rdf4j.model.Value;
 
 import com.bigdata.rdf.internal.IV;
 import com.bigdata.rdf.model.BigdataValue;

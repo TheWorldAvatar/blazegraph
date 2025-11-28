@@ -28,6 +28,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 package com.bigdata.search;
 
 import java.util.Locale;
+import java.util.Optional;
 
 import org.apache.lucene.analysis.Analyzer;
 
@@ -50,6 +51,6 @@ public interface IAnalyzerFactory {
      * 
      * @return The token analyzer best suited to the indicated language family.
      */
-    Analyzer getAnalyzer(final String languageCode, final boolean filterStopwords);
+    Analyzer getAnalyzer(final Optional<String> languageCode, final boolean filterStopwords);
 
 }

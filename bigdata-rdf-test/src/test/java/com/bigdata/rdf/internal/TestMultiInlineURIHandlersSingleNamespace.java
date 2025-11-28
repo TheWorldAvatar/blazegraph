@@ -7,7 +7,7 @@ import junit.framework.TestSuite;
 
 import com.bigdata.rdf.axioms.NoAxioms;
 import com.bigdata.rdf.model.BigdataStatement;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.rio.StatementBuffer;
@@ -105,7 +105,7 @@ public class TestMultiInlineURIHandlersSingleNamespace extends
 			final StatementBuffer<BigdataStatement> sb = new StatementBuffer<BigdataStatement>(
 					store, 4 /* capacity */);
 
-			BigdataURI pred = vf
+			BigdataIRI pred = vf
 					.createURI("http://blazegraph.com/Position#hasMarketValue");
 			BigdataValue obj = vf.createLiteral("100.00");
 
@@ -114,7 +114,7 @@ public class TestMultiInlineURIHandlersSingleNamespace extends
 			// http://blazegraph.com/Data#Position_010072F0000038090100000000D56C9E_UnrealizedGain
 			// http://blazegraph.com/Data#Position_010072F0000038090100000000D56C9E_WashSale
 
-			final BigdataURI[] uris = new BigdataURI[] {
+			final BigdataIRI[] uris = new BigdataIRI[] {
 					vf.createURI("http://blazegraph.com/Data#Position_010072F0000038090100000000D56C9E_TaxCost"),
 					vf.createURI("http://blazegraph.com/Data#Position_010072F0000038090100000000D56C9E_UnrealizedGain"),
 					vf.createURI("http://blazegraph.com/Data#Position_010072F0000038090100000000D56C9E"),
@@ -139,7 +139,7 @@ public class TestMultiInlineURIHandlersSingleNamespace extends
 
 			for (int i = 0; i < uris.length; i++) {
 
-				final BigdataURI uri = uris[i];
+				final BigdataIRI uri = uris[i];
 
 				if (log.isDebugEnabled()) {
 					log.debug("Checking " + uri.getNamespace() + " "

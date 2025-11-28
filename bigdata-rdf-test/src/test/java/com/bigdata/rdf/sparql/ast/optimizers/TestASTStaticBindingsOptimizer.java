@@ -30,8 +30,8 @@ import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 
-import org.openrdf.model.impl.URIImpl;
-import org.openrdf.query.algebra.StatementPattern.Scope;
+import org.eclipse.rdf4j.model.impl.URIImpl;
+import org.eclipse.rdf4j.query.algebra.StatementPattern.Scope;
 
 import com.bigdata.bop.Constant;
 import com.bigdata.bop.IBindingSet;
@@ -43,7 +43,7 @@ import com.bigdata.rdf.internal.IV;
 import com.bigdata.rdf.internal.VTE;
 import com.bigdata.rdf.internal.impl.TermId;
 import com.bigdata.rdf.model.BigdataLiteral;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.sparql.ast.ASTContainer;
@@ -286,7 +286,7 @@ public class TestASTStaticBindingsOptimizer extends AbstractASTEvaluationTestCas
    public void testInlineFromBind() {
       
       final BigdataValueFactory f = store.getValueFactory();
-      final BigdataURI cTestUri = f.createURI("http://www.test.com");
+      final BigdataIRI cTestUri = f.createURI("http://www.test.com");
 
       final IV cTest = makeIV(cTestUri);
       
@@ -378,7 +378,7 @@ public class TestASTStaticBindingsOptimizer extends AbstractASTEvaluationTestCas
    public void testInlineFromBindNested1() {
       
       final BigdataValueFactory f = store.getValueFactory();
-      final BigdataURI cTestUri = f.createURI("http://www.test.com");
+      final BigdataIRI cTestUri = f.createURI("http://www.test.com");
 
       final IV cTest = makeIV(cTestUri);
       
@@ -476,7 +476,7 @@ public class TestASTStaticBindingsOptimizer extends AbstractASTEvaluationTestCas
    public void testInlineFromBindNested2() {
       
       final BigdataValueFactory f = store.getValueFactory();
-      final BigdataURI cTestUri = f.createURI("http://www.test.com");
+      final BigdataIRI cTestUri = f.createURI("http://www.test.com");
 
       final IV cTest = makeIV(cTestUri);
       
@@ -573,7 +573,7 @@ public class TestASTStaticBindingsOptimizer extends AbstractASTEvaluationTestCas
    public void testInlineFromTopLevelValues() {
       
       final BigdataValueFactory f = store.getValueFactory();
-      final BigdataURI cTestUri = f.createURI("http://www.test.com");
+      final BigdataIRI cTestUri = f.createURI("http://www.test.com");
 
       final IV cTest = makeIV(cTestUri);
       
@@ -676,7 +676,7 @@ public class TestASTStaticBindingsOptimizer extends AbstractASTEvaluationTestCas
    public void testInlineFromValues() {
 
       final BigdataValueFactory f = store.getValueFactory();
-      final BigdataURI cTestUri = f.createURI("http://www.test.com");
+      final BigdataIRI cTestUri = f.createURI("http://www.test.com");
 
       final IV cTest = makeIV(cTestUri);
       
@@ -1157,7 +1157,7 @@ public class TestASTStaticBindingsOptimizer extends AbstractASTEvaluationTestCas
    public void testInlineSimpleFilterEqURI() {
       
       final BigdataValueFactory f = store.getValueFactory();
-      final BigdataURI fooLit = f.createURI(":foo");
+      final BigdataIRI fooLit = f.createURI(":foo");
 
       final IV foo = makeIV(fooLit);
       
@@ -1250,7 +1250,7 @@ public class TestASTStaticBindingsOptimizer extends AbstractASTEvaluationTestCas
    public void testInlineSimpleFilterINURI() {
       
       final BigdataValueFactory f = store.getValueFactory();
-      final BigdataURI fooLit = f.createURI(":foo");
+      final BigdataIRI fooLit = f.createURI(":foo");
 
       final IV foo = makeIV(fooLit);
       
@@ -1327,7 +1327,7 @@ public class TestASTStaticBindingsOptimizer extends AbstractASTEvaluationTestCas
    public void testInlineSimpleFilterEqURIRev() {
       
       final BigdataValueFactory f = store.getValueFactory();
-      final BigdataURI fooLit = f.createURI(":foo");
+      final BigdataIRI fooLit = f.createURI(":foo");
 
       final IV foo = makeIV(fooLit);
       
@@ -1785,7 +1785,7 @@ public class TestASTStaticBindingsOptimizer extends AbstractASTEvaluationTestCas
    public void testInlineFromBindInFilter() {
       
       final BigdataValueFactory f = store.getValueFactory();
-      final BigdataURI cTestUri = f.createURI("http://www.test.com");
+      final BigdataIRI cTestUri = f.createURI("http://www.test.com");
 
       final IV cTest = makeIV(cTestUri);
       
@@ -1878,8 +1878,8 @@ public class TestASTStaticBindingsOptimizer extends AbstractASTEvaluationTestCas
    public void testInlineFromBindInComplexFilter() {
       
       final BigdataValueFactory f = store.getValueFactory();
-      final BigdataURI cTestUri = f.createURI("http://www.test.com");
-      final BigdataURI cTestUri2 = f.createURI("http://www.test2.com");
+      final BigdataIRI cTestUri = f.createURI("http://www.test.com");
+      final BigdataIRI cTestUri2 = f.createURI("http://www.test2.com");
 
       final IV cTest = makeIV(cTestUri);
       final IV cTest2 = makeIV(cTestUri2);
@@ -1992,8 +1992,8 @@ public class TestASTStaticBindingsOptimizer extends AbstractASTEvaluationTestCas
    public void testInlineWithSubquery() {
       
       final BigdataValueFactory f = store.getValueFactory();
-      final BigdataURI cTestUri = f.createURI("http://www.test.com");
-      final BigdataURI cTestUri2 = f.createURI("http://www.test2.com");
+      final BigdataIRI cTestUri = f.createURI("http://www.test.com");
+      final BigdataIRI cTestUri2 = f.createURI("http://www.test2.com");
 
       final IV cTest = makeIV(cTestUri);
       final IV cTest2 = makeIV(cTestUri2);
@@ -2140,7 +2140,7 @@ public class TestASTStaticBindingsOptimizer extends AbstractASTEvaluationTestCas
    public void testSubqueryWithValues() {
       
       final BigdataValueFactory f = store.getValueFactory();
-      final BigdataURI c1BD = f.createURI("http://www.test.com");
+      final BigdataIRI c1BD = f.createURI("http://www.test.com");
       final BigdataLiteral c2BD = f.createLiteral("X");
       final BigdataLiteral c3BD = f.createLiteral("Y");
 
@@ -2309,9 +2309,9 @@ public class TestASTStaticBindingsOptimizer extends AbstractASTEvaluationTestCas
    public void testTicket653() {
       
       final BigdataValueFactory f = store.getValueFactory();
-      final BigdataURI cTestUri = f.createURI("http://www.yso.fi/onto/ysa/Y141994");
-      final BigdataURI rdfTypeUri = f.createURI("http://www.w3.org/1999/02/22-rdf-syntax-ns#type");
-      final BigdataURI rdfsLabelUri = f.createURI("http://www.w3.org/2000/01/rdf-schema#label");
+      final BigdataIRI cTestUri = f.createURI("http://www.yso.fi/onto/ysa/Y141994");
+      final BigdataIRI rdfTypeUri = f.createURI("http://www.w3.org/1999/02/22-rdf-syntax-ns#type");
+      final BigdataIRI rdfsLabelUri = f.createURI("http://www.w3.org/2000/01/rdf-schema#label");
       
       final IV cTest = makeIV(cTestUri);
       final IV rdfType = makeIV(cTestUri);
@@ -2428,7 +2428,7 @@ public class TestASTStaticBindingsOptimizer extends AbstractASTEvaluationTestCas
    public void testTicketBLZG2042() {
       
       final BigdataValueFactory f = store.getValueFactory();
-      final BigdataURI cTestUri = f.createURI("http://www.test.com");
+      final BigdataIRI cTestUri = f.createURI("http://www.test.com");
       final BigdataValue bv1 = store.getValueFactory().asValue(new URIImpl("http://p1"));
       final BigdataValue bv2 = store.getValueFactory().asValue(new URIImpl("http://p2"));
 

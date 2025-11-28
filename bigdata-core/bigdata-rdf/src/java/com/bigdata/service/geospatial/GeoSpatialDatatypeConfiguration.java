@@ -40,8 +40,9 @@ import org.apache.logging.log4j.Logger;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
-import org.openrdf.model.URI;
-import org.openrdf.model.impl.URIImpl;
+import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
+import org.eclipse.rdf4j.model.impl.URIImpl;
 
 import com.bigdata.rdf.internal.impl.extensions.InvalidGeoSpatialDatatypeConfigurationError;
 import com.bigdata.service.geospatial.GeoSpatialDatatypeFieldConfiguration.ServiceMapping;
@@ -61,8 +62,8 @@ public class GeoSpatialDatatypeConfiguration implements Serializable {
     final static private transient Logger log = 
         LogManager.getLogger(GeoSpatialDatatypeConfiguration.class);
 
-    // URI of the datatype, e.g. <http://my.custom.geospatial.coordinate>
-    private final URI uri;
+    // IRI of the datatype, e.g. <http://my.custom.geospatial.coordinate>
+    private final IRI iri;
     
     private final IGeoSpatialLiteralSerializer literalSerializer;
 
@@ -78,21 +79,21 @@ public class GeoSpatialDatatypeConfiguration implements Serializable {
 
 
     /**
-     * Constructor, setting up a {@link GeoSpatialDatatypeConfiguration} given a uri and a
+     * Constructor, setting up a {@link GeoSpatialDatatypeConfiguration} given a iri and a
      * JSON array defining the fields as input. Throws an {@link InvalidGeoSpatialDatatypeConfigurationError}
-     * if the uri is null or empty or in case the JSON array does not describe a set of
+     * if the iri is null or empty or in case the JSON array does not describe a set of
      * valid fields.
      */
     public GeoSpatialDatatypeConfiguration(
         final String uriStr, final String literalSerializerClass, final JSONArray fieldsJson) {
         
         if (uriStr==null || uriStr.isEmpty())
-            throw new InvalidGeoSpatialDatatypeConfigurationError("URI parameter must not be null or empty");
+            throw new InvalidGeoSpatialDatatypeConfigurationError("IRI parameter must not be null or empty");
         
         try {
-            this.uri = new URIImpl(uriStr);
+            this.iri = SimpleValueFactory.getInstance().createIRI(uriStr);
         } catch (Exception e) {
-            throw new InvalidGeoSpatialDatatypeConfigurationError("Invalid URI in geospatial datatype config: " + uriStr);
+            throw new InvalidGeoSpatialDatatypeConfigurationError("Invalid IRI in geospatial datatype config: " + uriStr);
         }
         
         if (literalSerializerClass==null || literalSerializerClass.isEmpty()) {
@@ -156,7 +157,7 @@ public class GeoSpatialDatatypeConfiguration implements Serializable {
         // validate that there is at least one field defined for the geospatial datatype
         if (fields.isEmpty()) {
             throw new InvalidGeoSpatialDatatypeConfigurationError(
-                "Geospatial datatype config for datatype " + uri + " must have at least one field, but has none.");
+                "Geospatial datatype config for datatype " + iri + " must have at least one field, but has none.");
         }
         
         // validate that there are no duplicate service mappings used for the fields
@@ -191,7 +192,7 @@ public class GeoSpatialDatatypeConfiguration implements Serializable {
     /**
      * Alternative constructor (to ease writing test cases)
      * 
-     * @param uri
+     * @param iri
      * @param fields
      */
     public GeoSpatialDatatypeConfiguration(
@@ -199,7 +200,7 @@ public class GeoSpatialDatatypeConfiguration implements Serializable {
         final List<GeoSpatialDatatypeFieldConfiguration> fields) {
         
         if (uriString==null || uriString.isEmpty()) {
-            throw new InvalidGeoSpatialDatatypeConfigurationError("URI string must not be null or empty.");
+            throw new InvalidGeoSpatialDatatypeConfigurationError("IRI string must not be null or empty.");
         }
 
         if (literalSerializer==null) {
@@ -210,15 +211,15 @@ public class GeoSpatialDatatypeConfiguration implements Serializable {
             throw new InvalidGeoSpatialDatatypeConfigurationError("Fields must not be null.");
         }
 
-        this.uri = new URIImpl(uriString);
+        this.iri = SimpleValueFactory.getInstance().createIRI(uriString);
         this.literalSerializer = literalSerializer;
         this.fields = fields;
      
         initDerivedMembers();
     }
     
-    public URI getUri() {
-        return uri;
+    public IRI getIri() {
+        return iri;
     }
     
     public IGeoSpatialLiteralSerializer getLiteralSerializer() {

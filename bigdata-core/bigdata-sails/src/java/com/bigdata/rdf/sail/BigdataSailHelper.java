@@ -15,7 +15,7 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.TreeMap;
 
-import org.openrdf.sail.SailException;
+import org.eclipse.rdf4j.sail.SailException;
 
 import com.bigdata.btree.IIndex;
 import com.bigdata.btree.IndexMetadata;

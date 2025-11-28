@@ -4,10 +4,10 @@ import java.io.FileReader;
 import java.io.Reader;
 import java.util.Properties;
 
-import org.openrdf.query.GraphQueryResult;
-import org.openrdf.query.QueryLanguage;
-import org.openrdf.query.TupleQuery;
-import org.openrdf.query.TupleQueryResult;
+import org.eclipse.rdf4j.query.GraphQueryResult;
+import org.eclipse.rdf4j.query.QueryLanguage;
+import org.eclipse.rdf4j.query.TupleQuery;
+import org.eclipse.rdf4j.query.TupleQueryResult;
 
 import com.bigdata.journal.Journal;
 import com.bigdata.rdf.sail.BigdataSail;

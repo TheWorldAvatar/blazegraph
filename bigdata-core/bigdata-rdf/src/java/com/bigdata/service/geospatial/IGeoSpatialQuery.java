@@ -29,7 +29,7 @@ package com.bigdata.service.geospatial;
 import java.util.List;
 import java.util.Map;
 
-import org.openrdf.model.URI;
+import org.eclipse.rdf4j.model.IRI;
 
 import com.bigdata.bop.IBindingSet;
 import com.bigdata.bop.IConstant;
@@ -58,7 +58,7 @@ public interface IGeoSpatialQuery {
     /**
      * @return the datatype of literals we're searching for
      */
-    public URI getSearchDatatype();
+    public IRI getSearchDatatype();
     
     /**
      * @return the constant representing the search subject

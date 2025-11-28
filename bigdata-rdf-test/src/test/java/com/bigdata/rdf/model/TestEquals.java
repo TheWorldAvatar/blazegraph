@@ -2,14 +2,14 @@ package com.bigdata.rdf.model;
 
 import junit.framework.TestCase;
 
-import org.openrdf.model.BNode;
-import org.openrdf.model.Literal;
-import org.openrdf.model.URI;
-import org.openrdf.model.ValueFactory;
-import org.openrdf.model.impl.BNodeImpl;
-import org.openrdf.model.impl.URIImpl;
-import org.openrdf.model.impl.ValueFactoryImpl;
-import org.openrdf.model.vocabulary.XMLSchema;
+import org.eclipse.rdf4j.model.BNode;
+import org.eclipse.rdf4j.model.Literal;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.ValueFactory;
+import org.eclipse.rdf4j.model.impl.BNodeImpl;
+import org.eclipse.rdf4j.model.impl.URIImpl;
+import org.eclipse.rdf4j.model.impl.ValueFactoryImpl;
+import org.eclipse.rdf4j.model.vocabulary.XMLSchema;
 
 import com.bigdata.rdf.internal.IV;
 import com.bigdata.rdf.internal.VTE;
@@ -39,13 +39,13 @@ public class TestEquals extends TestCase {
 	
 	    final BigdataValueFactory vf2 = BigdataValueFactoryImpl.getInstance(getName()+"2");
 		
-	    final BigdataURI v1 = vf.createURI("http://www.bigdata.com");
+	    final BigdataIRI v1 = vf.createURI("http://www.bigdata.com");
 	    
-	    final BigdataURI v2 = vf.createURI("http://www.bigdata.com");
+	    final BigdataIRI v2 = vf.createURI("http://www.bigdata.com");
 	    
 	    final URI v3 = new URIImpl("http://www.bigdata.com");
 
-	    final BigdataURI v4 = vf2.createURI("http://www.bigdata.com");
+	    final BigdataIRI v4 = vf2.createURI("http://www.bigdata.com");
 
 	    assertTrue( v1 != v2 );
 	    
@@ -77,7 +77,7 @@ public class TestEquals extends TestCase {
 	    assertTrue(v2.equals(v4));
 	    assertTrue(v4.equals(v2));
 
-	    v1.setIV(new TermId<BigdataURI>(VTE.URI, 1));
+	    v1.setIV(new TermId<BigdataIRI>(VTE.URI, 1));
 
 	    assertTrue(v1.equals(v2));
 	    assertTrue(v2.equals(v1));

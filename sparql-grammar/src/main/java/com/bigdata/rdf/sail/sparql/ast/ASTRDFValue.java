@@ -27,7 +27,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 package com.bigdata.rdf.sail.sparql.ast;
 
-import org.openrdf.model.Value;
+import org.eclipse.rdf4j.model.Value;
 import com.bigdata.rdf.sail.sparql.ast.SimpleNode;
 import com.bigdata.rdf.sail.sparql.ast.SyntaxTreeBuilder;
 

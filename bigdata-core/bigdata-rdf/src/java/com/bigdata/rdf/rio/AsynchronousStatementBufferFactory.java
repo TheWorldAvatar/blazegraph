@@ -70,12 +70,12 @@ import java.util.zip.ZipInputStream;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.model.BNode;
-import org.openrdf.model.Resource;
-import org.openrdf.model.URI;
-import org.openrdf.model.Value;
-import org.openrdf.rio.RDFFormat;
-import org.openrdf.rio.RDFParser;
+import org.eclipse.rdf4j.model.BNode;
+import org.eclipse.rdf4j.model.Resource;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.Value;
+import org.eclipse.rdf4j.rio.RDFFormat;
+import org.eclipse.rdf4j.rio.RDFParser;
 
 import com.bigdata.btree.AsynchronousIndexWriteConfiguration;
 import com.bigdata.btree.IndexMetadata;
@@ -110,7 +110,7 @@ import com.bigdata.rdf.model.BigdataBNodeImpl;
 import com.bigdata.rdf.model.BigdataLiteral;
 import com.bigdata.rdf.model.BigdataResource;
 import com.bigdata.rdf.model.BigdataStatement;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.model.BigdataValueImpl;
@@ -4000,7 +4000,7 @@ public class AsynchronousStatementBufferFactory<S extends BigdataStatement, R>
             _handleStatement(
                     (Resource) getCanonicalValue((BigdataResource) valueFactory
                             .asValue(s)),//
-                    (URI) getCanonicalValue((BigdataURI) valueFactory
+                    (URI) getCanonicalValue((BigdataIRI) valueFactory
                             .asValue(p)),//
                     (Value) getCanonicalValue((BigdataValue) valueFactory
                             .asValue(o)),//
@@ -4020,7 +4020,7 @@ public class AsynchronousStatementBufferFactory<S extends BigdataStatement, R>
                 final Value o, final Resource c, final StatementEnum type) {
 
             final BigdataStatement stmt = valueFactory.createStatement(
-                    (BigdataResource) s, (BigdataURI) p, (BigdataValue) o,
+                    (BigdataResource) s, (BigdataIRI) p, (BigdataValue) o,
                     (BigdataResource) c, type);
 
             if (statements == null) {

@@ -34,7 +34,7 @@ import java.util.concurrent.FutureTask;
 
 import junit.framework.TestCase2;
 
-import org.openrdf.query.algebra.Compare.CompareOp;
+import org.eclipse.rdf4j.query.algebra.Compare.CompareOp;
 
 import com.bigdata.bop.BOpContext;
 import com.bigdata.bop.Bind;

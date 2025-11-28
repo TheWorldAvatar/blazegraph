@@ -33,12 +33,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import junit.framework.Test;
 
-import org.openrdf.model.Literal;
-import org.openrdf.model.Statement;
-import org.openrdf.model.URI;
-import org.openrdf.model.impl.ValueFactoryImpl;
-import org.openrdf.model.vocabulary.RDFS;
-import org.openrdf.query.TupleQueryResult;
+import org.eclipse.rdf4j.model.Literal;
+import org.eclipse.rdf4j.model.Statement;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.impl.ValueFactoryImpl;
+import org.eclipse.rdf4j.model.vocabulary.RDFS;
+import org.eclipse.rdf4j.query.TupleQueryResult;
 
 import com.bigdata.journal.BufferMode;
 import com.bigdata.journal.IIndexManager;

@@ -43,10 +43,10 @@ import junit.framework.AssertionFailedError;
 import junit.framework.TestCase;
 import junit.framework.TestCase2;
 
-import org.openrdf.model.Statement;
-import org.openrdf.model.Value;
-import org.openrdf.rio.RDFHandler;
-import org.openrdf.rio.helpers.RDFHandlerBase;
+import org.eclipse.rdf4j.model.Statement;
+import org.eclipse.rdf4j.model.Value;
+import org.eclipse.rdf4j.rio.RDFHandler;
+import org.eclipse.rdf4j.rio.helpers.RDFHandlerBase;
 
 import com.bigdata.btree.IIndex;
 import com.bigdata.btree.ITupleIterator;
@@ -63,7 +63,7 @@ import com.bigdata.journal.TestHelper;
 import com.bigdata.rdf.internal.IV;
 import com.bigdata.rdf.internal.IVUtility;
 import com.bigdata.rdf.model.BigdataResource;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueSerializer;
 import com.bigdata.rdf.model.StatementEnum;
@@ -1153,7 +1153,7 @@ abstract public class AbstractTestCase
                     final BigdataResource s = (BigdataResource) db
                             .asValue(termSet.get(stmt.getSubject()));
 
-                    final BigdataURI p = (BigdataURI) db.asValue(termSet
+                    final BigdataIRI p = (BigdataIRI) db.asValue(termSet
                             .get(stmt.getPredicate()));
 
                     final BigdataValue o = (BigdataValue) db.asValue(termSet

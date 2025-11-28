@@ -31,14 +31,14 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.Properties;
 import java.util.UUID;
-import org.openrdf.model.BNode;
-import org.openrdf.model.vocabulary.RDF;
-import org.openrdf.model.vocabulary.RDFS;
+import org.eclipse.rdf4j.model.BNode;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.vocabulary.RDFS;
 import com.bigdata.rdf.axioms.NoAxioms;
 import com.bigdata.rdf.internal.IV;
 import com.bigdata.rdf.model.BigdataBNode;
 import com.bigdata.rdf.model.BigdataLiteral;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.spo.SPOKeyOrder;
 import com.bigdata.rdf.vocab.NoVocabulary;
@@ -78,17 +78,17 @@ public class TestRestartSafe extends AbstractTripleStoreTestCase {
             
             final BigdataValueFactory f = store.getValueFactory();
             
-            final BigdataURI x = f.createURI("http://www.foo.org/x");
-            final BigdataURI y = f.createURI("http://www.foo.org/y");
-            final BigdataURI z = f.createURI("http://www.foo.org/z");
+            final BigdataIRI x = f.createURI("http://www.foo.org/x");
+            final BigdataIRI y = f.createURI("http://www.foo.org/y");
+            final BigdataIRI z = f.createURI("http://www.foo.org/z");
 
-            final BigdataURI A = f.createURI("http://www.foo.org/A");
-            final BigdataURI B = f.createURI("http://www.foo.org/B");
-            final BigdataURI C = f.createURI("http://www.foo.org/C");
+            final BigdataIRI A = f.createURI("http://www.foo.org/A");
+            final BigdataIRI B = f.createURI("http://www.foo.org/B");
+            final BigdataIRI C = f.createURI("http://www.foo.org/C");
 
-            final BigdataURI rdfType = f.asValue(RDF.TYPE);
+            final BigdataIRI rdfType = f.asValue(RDF.TYPE);
 
-            final BigdataURI rdfsSubClassOf = f.asValue(RDFS.SUBCLASSOF);
+            final BigdataIRI rdfsSubClassOf = f.asValue(RDFS.SUBCLASSOF);
 
             final BigdataLiteral lit1 = f.createLiteral("abc");
             final BigdataLiteral lit2 = f.createLiteral("abc", A);

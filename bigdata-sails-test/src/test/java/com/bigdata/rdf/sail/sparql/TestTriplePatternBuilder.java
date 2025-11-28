@@ -27,14 +27,14 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 package com.bigdata.rdf.sail.sparql;
 
-import info.aduna.net.ParsedURI;
+import org.eclipse.rdf4j.common.net.ParsedURI;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import org.openrdf.model.vocabulary.RDF;
-import org.openrdf.query.MalformedQueryException;
-import org.openrdf.query.algebra.StatementPattern.Scope;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.query.MalformedQueryException;
+import org.eclipse.rdf4j.query.algebra.StatementPattern.Scope;
 
 import com.bigdata.rdf.internal.XSD;
 import com.bigdata.rdf.sail.sparql.ast.ParseException;
@@ -53,7 +53,7 @@ import com.bigdata.rdf.vocab.decls.FOAFVocabularyDecl;
 /**
  * Test suite for building up triple patterns, including those which are covered
  * by the property paths extension in SPARQL 1.1 (a triple pattern which a
- * constant in the predicate position is treated by the sesame SPARQL grammar as
+ * constant in the predicate position is treated by the rdf4j SPARQL grammar as
  * a degenerate case of a property path.)
  * 
  * @author <a href="mailto:thompsonbry@users.sourceforge.net">Bryan Thompson</a>

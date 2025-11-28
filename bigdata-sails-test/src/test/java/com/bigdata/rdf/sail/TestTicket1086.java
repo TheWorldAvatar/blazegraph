@@ -28,10 +28,10 @@ package com.bigdata.rdf.sail;
 
 import java.util.Properties;
 
-import org.openrdf.model.Statement;
-import org.openrdf.model.URI;
-import org.openrdf.repository.RepositoryException;
-import org.openrdf.repository.RepositoryResult;
+import org.eclipse.rdf4j.model.Statement;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.repository.RepositoryException;
+import org.eclipse.rdf4j.repository.RepositoryResult;
 
 import com.bigdata.rdf.axioms.NoAxioms;
 import com.bigdata.rdf.model.BigdataStatement;

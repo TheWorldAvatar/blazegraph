@@ -29,14 +29,14 @@ package com.bigdata.rdf.sparql.ast.eval;
 
 import java.util.concurrent.atomic.AtomicLong;
 
-import org.openrdf.query.Dataset;
-import org.openrdf.query.algebra.evaluation.QueryBindingSet;
-import org.openrdf.sail.SailException;
+import org.eclipse.rdf4j.query.Dataset;
+import org.eclipse.rdf4j.query.algebra.evaluation.QueryBindingSet;
+import org.eclipse.rdf4j.sail.SailException;
 
 import com.bigdata.bop.IBindingSet;
 import com.bigdata.journal.ITx;
 import com.bigdata.rdf.internal.IVCache;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.sail.BigdataSail;
 import com.bigdata.rdf.sail.BigdataSailRepositoryConnection;
@@ -137,7 +137,7 @@ public class AST2BOpUpdateContext extends AST2BOpContext {
      * be set (which is always true for the vocabulary).
      */
     @SuppressWarnings("unchecked")
-    public BigdataURI getNullGraph() {
+    public BigdataIRI getNullGraph() {
 
         if (nullGraph == null) {
 
@@ -177,7 +177,7 @@ public class AST2BOpUpdateContext extends AST2BOpContext {
         
     }
 
-    private BigdataURI nullGraph = null;
+    private BigdataIRI nullGraph = null;
 
     public void setDataset(Dataset dataset) {
         this.dataset = dataset;

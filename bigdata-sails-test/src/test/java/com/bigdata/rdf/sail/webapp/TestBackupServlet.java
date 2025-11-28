@@ -30,7 +30,7 @@ import java.util.UUID;
 
 import junit.framework.Test;
 
-import org.openrdf.rio.RDFFormat;
+import org.eclipse.rdf4j.rio.RDFFormat;
 
 import com.bigdata.journal.BufferMode;
 import com.bigdata.journal.IIndexManager;

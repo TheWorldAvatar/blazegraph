@@ -36,7 +36,7 @@ import java.util.concurrent.FutureTask;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.model.Statement;
+import org.eclipse.rdf4j.model.Statement;
 
 import com.bigdata.journal.Journal;
 import com.bigdata.journal.TimestampUtility;

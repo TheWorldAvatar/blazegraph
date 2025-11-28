@@ -41,7 +41,7 @@ import com.bigdata.bop.bindingSet.ListBindingSet;
 import com.bigdata.rdf.internal.IV;
 import com.bigdata.rdf.internal.VTE;
 import com.bigdata.rdf.internal.impl.TermId;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.sparql.ast.ASTContainer;
@@ -439,7 +439,7 @@ extends AbstractOptimizerTestCase {
       final JoinGroupNode jgn = joinGroupWithVars(varNames);
       
       final BigdataValueFactory f = store.getValueFactory();
-      final BigdataURI serviceEndpoint = f.createURI("http://custom.endpoint");
+      final BigdataIRI serviceEndpoint = f.createURI("http://custom.endpoint");
       final IV serviceEndpointIV = makeIV(serviceEndpoint);
       
       final BigdataValue[] values = new BigdataValue[] { serviceEndpoint };       
@@ -478,10 +478,10 @@ extends AbstractOptimizerTestCase {
    ServiceNode serviceBDSWithVariable(final String inputVar) {
       
       final BigdataValueFactory f = store.getValueFactory();
-      final BigdataURI bdsSearch = f.createURI(BDS.NAMESPACE + "search");
-      final BigdataURI predSearch = f.createURI(BDS.SEARCH.toString());
-      final BigdataURI predSearchTimeout = f.createURI(BDS.SEARCH_TIMEOUT.toString());
-      final BigdataURI predMatchExact = f.createURI(BDS.MATCH_EXACT.toString());
+      final BigdataIRI bdsSearch = f.createURI(BDS.NAMESPACE + "search");
+      final BigdataIRI predSearch = f.createURI(BDS.SEARCH.toString());
+      final BigdataIRI predSearchTimeout = f.createURI(BDS.SEARCH_TIMEOUT.toString());
+      final BigdataIRI predMatchExact = f.createURI(BDS.MATCH_EXACT.toString());
       
       final BigdataValue[] values = 
          new BigdataValue[] { bdsSearch, predSearch, predSearchTimeout, predMatchExact };       
@@ -511,10 +511,10 @@ extends AbstractOptimizerTestCase {
       final String searchVar, final String endpointVar, final String paramsVar) {
       
       final BigdataValueFactory f = store.getValueFactory();
-      final BigdataURI ftsSearch = f.createURI(FTS.NAMESPACE + "search");
-      final BigdataURI predSearch = f.createURI(FTS.SEARCH.toString());
-      final BigdataURI predEndpoint = f.createURI(FTS.ENDPOINT.toString());
-      final BigdataURI predParams = f.createURI(FTS.PARAMS.toString());
+      final BigdataIRI ftsSearch = f.createURI(FTS.NAMESPACE + "search");
+      final BigdataIRI predSearch = f.createURI(FTS.SEARCH.toString());
+      final BigdataIRI predEndpoint = f.createURI(FTS.ENDPOINT.toString());
+      final BigdataIRI predParams = f.createURI(FTS.PARAMS.toString());
       
       final BigdataValue[] values = 
          new BigdataValue[] { 

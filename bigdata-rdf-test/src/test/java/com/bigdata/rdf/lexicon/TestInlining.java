@@ -41,7 +41,7 @@ import java.util.UUID;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.model.URI;
+import org.eclipse.rdf4j.model.URI;
 
 import com.bigdata.rdf.axioms.NoAxioms;
 import com.bigdata.rdf.internal.ColorsEnumExtension;
@@ -53,7 +53,7 @@ import com.bigdata.rdf.internal.XSD;
 import com.bigdata.rdf.internal.impl.literal.LiteralExtensionIV;
 import com.bigdata.rdf.model.BigdataBNode;
 import com.bigdata.rdf.model.BigdataLiteral;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.store.AbstractTripleStore;
@@ -474,7 +474,7 @@ public class TestInlining extends AbstractTripleStoreTestCase {
             final BigdataLiteral l1 = f.createLiteral("1", EpochExtension.EPOCH);
             final BigdataLiteral l2 = f.createLiteral(String.valueOf(System.currentTimeMillis()), EpochExtension.EPOCH);
 //            final BigdataLiteral l3 = f.createLiteral("-100", EpochExtension.EPOCH);
-            final BigdataURI datatype = f.createURI(EpochExtension.EPOCH.stringValue());
+            final BigdataIRI datatype = f.createURI(EpochExtension.EPOCH.stringValue());
 
             terms.add(l1);
             terms.add(l2);
@@ -623,7 +623,7 @@ public class TestInlining extends AbstractTripleStoreTestCase {
             final BigdataLiteral l3 = f.createLiteral("Yellow", ColorsEnumExtension.COLOR);
             final BigdataLiteral l4 = f.createLiteral("Dog", ColorsEnumExtension.COLOR);
             final BigdataLiteral l5 = f.createLiteral("yellow", ColorsEnumExtension.COLOR);
-            final BigdataURI datatype = f.createURI(ColorsEnumExtension.COLOR.stringValue());
+            final BigdataIRI datatype = f.createURI(ColorsEnumExtension.COLOR.stringValue());
 
             terms.add(l1);
             terms.add(l2);

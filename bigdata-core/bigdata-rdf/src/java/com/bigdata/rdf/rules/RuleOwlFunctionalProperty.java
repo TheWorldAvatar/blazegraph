@@ -27,8 +27,10 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 package com.bigdata.rdf.rules;
 
-import org.openrdf.model.vocabulary.OWL;
-import org.openrdf.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.ValueFactory;
+import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
+import org.semarglproject.vocab.OWL;
+import org.semarglproject.vocab.RDF;
 
 import com.bigdata.bop.IConstraint;
 import com.bigdata.bop.constraint.Constraint;
@@ -53,15 +55,18 @@ public class RuleOwlFunctionalProperty extends Rule {
 	 */
 	private static final long serialVersionUID = -6688762355076324400L;
 
+
+    private static final ValueFactory VALUE_FACTORY = SimpleValueFactory.getInstance();
+
 	/**
      * @param vocab
      */
     public RuleOwlFunctionalProperty(String relationName, Vocabulary vocab) {
 
         super( "owlFunctionalProperty", //
-                new SPOPredicate(relationName,var("b"), vocab.getConstant(OWL.SAMEAS), var("c")),//
+                new SPOPredicate(relationName,var("b"), vocab.getConstant(VALUE_FACTORY.createIRI(OWL.SAME_AS)), var("c")),//
                 new SPOPredicate[] {//
-                    new SPOPredicate(relationName,var("x"), vocab.getConstant(RDF.TYPE), vocab.getConstant(OWL.FUNCTIONALPROPERTY)),//
+                    new SPOPredicate(relationName,var("x"), vocab.getConstant(VALUE_FACTORY.createIRI(RDF.TYPE)), vocab.getConstant(VALUE_FACTORY.createIRI(OWL.FUNCTIONAL_PROPERTY))),//
                     new SPOPredicate(relationName,var("a"), var("x"), var("b")),//
                     new SPOPredicate(relationName,var("a"), var("x"), var("c"))//
                 },
