@@ -222,7 +222,7 @@ Copyright 2010 by TalkingTrends (Amsterdam, The Netherlands)
     <apache.httpcore.version> 4.4.16</apache.httpcore.version>
     <apache.httpmime.version>4.5.14</apache.httpmime.version>
     <highscalelib.version>1.1.4</highscalelib.version>
-    <log4j.version>2.25.1</log4j.version>
+    <log4j.version>2.25.4</log4j.version>
     <colt.version>${project.version}</colt.version>
     <fastutil.version>6.5.16</fastutil.version>
     <!-- Note, that jackson version no higher than 2.6.x should be used
