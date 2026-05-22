@@ -32,7 +32,7 @@ Copyright 2010 by TalkingTrends (Amsterdam, The Netherlands)
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.blazegraph</groupId>
   <artifactId>blazegraph-parent</artifactId>
-  <version>2.5.0</version>
+  <version>2.5.1</version>
   <packaging>pom</packaging>
   <name>Blazegraph Database Platform</name>
   <description>Blazegraph™ DB is our ultra high-performance graph database supporting Blueprints and RDF/SPARQL APIs. It supports up to 50 Billion edges on a single machine and has a High Availability and Scale-out architecture. It is in production use for customers such as EMC, Syapse, Wikidata Query Service, the British Museum, and many others.  GPU acceleration and High Availability (HA) are available in the Enterprise edition.  It contains war, jar, deb, rpm, and tar.gz deployment artifacts.</description>
@@ -222,7 +222,7 @@ Copyright 2010 by TalkingTrends (Amsterdam, The Netherlands)
     <apache.httpcore.version> 4.4.16</apache.httpcore.version>
     <apache.httpmime.version>4.5.14</apache.httpmime.version>
     <highscalelib.version>1.1.4</highscalelib.version>
-    <log4j.version>2.25.1</log4j.version>
+    <log4j.version>2.26.0</log4j.version>
     <colt.version>${project.version}</colt.version>
     <fastutil.version>6.5.16</fastutil.version>
     <!-- Note, that jackson version no higher than 2.6.x should be used
