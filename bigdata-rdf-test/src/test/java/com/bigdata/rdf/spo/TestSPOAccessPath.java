@@ -27,7 +27,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 package com.bigdata.rdf.spo;
 
-import org.openrdf.model.Statement;
+import org.eclipse.rdf4j.model.Statement;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.Constant;
@@ -36,7 +36,7 @@ import com.bigdata.bop.NV;
 import com.bigdata.bop.Var;
 import com.bigdata.rdf.internal.IV;
 import com.bigdata.rdf.internal.VTE;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.model.StatementEnum;
 import com.bigdata.rdf.rio.StatementBuffer;
@@ -206,12 +206,12 @@ public class TestSPOAccessPath extends AbstractTripleStoreTestCase {
 
             final BigdataValueFactory f = store.getValueFactory();
             
-            final BigdataURI s1 = f.createURI("http://www.bigdata.com/rdf#s1");
-            final BigdataURI s2 = f.createURI("http://www.bigdata.com/rdf#s2");
-            final BigdataURI p1 = f.createURI("http://www.bigdata.com/rdf#p1");
-            final BigdataURI o1 = f.createURI("http://www.bigdata.com/rdf#o1");
-            final BigdataURI p2 = f.createURI("http://www.bigdata.com/rdf#p2");
-            final BigdataURI o2 = f.createURI("http://www.bigdata.com/rdf#o2");
+            final BigdataIRI s1 = f.createURI("http://www.bigdata.com/rdf#s1");
+            final BigdataIRI s2 = f.createURI("http://www.bigdata.com/rdf#s2");
+            final BigdataIRI p1 = f.createURI("http://www.bigdata.com/rdf#p1");
+            final BigdataIRI o1 = f.createURI("http://www.bigdata.com/rdf#o1");
+            final BigdataIRI p2 = f.createURI("http://www.bigdata.com/rdf#p2");
+            final BigdataIRI o2 = f.createURI("http://www.bigdata.com/rdf#o2");
 
             {
 
@@ -313,13 +313,13 @@ public class TestSPOAccessPath extends AbstractTripleStoreTestCase {
             
             final BigdataValueFactory f = store.getValueFactory();
             
-            final BigdataURI graphA = f.createURI("http://www.bigdata.com/graphA");
-            final BigdataURI graphB = f.createURI("http://www.bigdata.com/graphB");
-            final BigdataURI s = f.createURI("http://www.bigdata.com/rdf#s");
-            final BigdataURI p1 = f.createURI("http://www.bigdata.com/rdf#p1");
-            final BigdataURI o1 = f.createURI("http://www.bigdata.com/rdf#o1");
-            final BigdataURI p2 = f.createURI("http://www.bigdata.com/rdf#p2");
-            final BigdataURI o2 = f.createURI("http://www.bigdata.com/rdf#o2");
+            final BigdataIRI graphA = f.createURI("http://www.bigdata.com/graphA");
+            final BigdataIRI graphB = f.createURI("http://www.bigdata.com/graphB");
+            final BigdataIRI s = f.createURI("http://www.bigdata.com/rdf#s");
+            final BigdataIRI p1 = f.createURI("http://www.bigdata.com/rdf#p1");
+            final BigdataIRI o1 = f.createURI("http://www.bigdata.com/rdf#o1");
+            final BigdataIRI p2 = f.createURI("http://www.bigdata.com/rdf#p2");
+            final BigdataIRI o2 = f.createURI("http://www.bigdata.com/rdf#o2");
 
             {
 

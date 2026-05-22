@@ -1,8 +1,8 @@
 package com.bigdata.rdf.sail.remote;
 
-import org.openrdf.model.URI;
-import org.openrdf.query.Binding;
-import org.openrdf.query.impl.AbstractQuery;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.query.Binding;
+import org.eclipse.rdf4j.query.impl.AbstractQuery;
 
 import com.bigdata.rdf.sail.webapp.client.EncodeDecodeValue;
 import com.bigdata.rdf.sail.webapp.client.IPreparedQuery;
@@ -19,7 +19,7 @@ public abstract class AbstractBigdataRemoteQuery extends AbstractQuery {
 	}
 
 	/**
-	 * @see org.openrdf.http.client.HTTPClient#getQueryMethodParameters(QueryLanguage, String, String, Dataset, boolean, int, Binding...)
+	 * @see org.eclipse.rdf4j.http.client.HTTPClient#getQueryMethodParameters(QueryLanguage, String, String, Dataset, boolean, int, Binding...)
 	 */
 	protected void configureConnectOptions(IPreparedQuery q) {
 		if (baseURI != null) {

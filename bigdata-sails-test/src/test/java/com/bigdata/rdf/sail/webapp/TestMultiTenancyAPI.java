@@ -45,14 +45,14 @@ import static org.apache.commons.lang.StringEscapeUtils.escapeHtml;
 import junit.framework.Test;
 
 import org.eclipse.jetty.util.IO;
-import org.openrdf.model.Graph;
-import org.openrdf.model.Literal;
-import org.openrdf.model.Resource;
-import org.openrdf.model.Statement;
-import org.openrdf.model.URI;
-import org.openrdf.model.impl.LiteralImpl;
-import org.openrdf.model.vocabulary.RDF;
-import org.openrdf.query.TupleQueryResult;
+import org.eclipse.rdf4j.model.Graph;
+import org.eclipse.rdf4j.model.Literal;
+import org.eclipse.rdf4j.model.Resource;
+import org.eclipse.rdf4j.model.Statement;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.impl.LiteralImpl;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.query.TupleQueryResult;
 
 import com.bigdata.journal.BufferMode;
 import com.bigdata.journal.IIndexManager;

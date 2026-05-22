@@ -8,16 +8,16 @@ import java.util.List;
 
 import junit.framework.TestCase2;
 
-import org.openrdf.model.URI;
-import org.openrdf.model.impl.URIImpl;
-import org.openrdf.model.vocabulary.RDFS;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.impl.URIImpl;
+import org.eclipse.rdf4j.model.vocabulary.RDFS;
 
 import com.bigdata.btree.keys.IKeyBuilder;
 import com.bigdata.rdf.internal.impl.literal.FullyInlineTypedLiteralIV;
 import com.bigdata.rdf.internal.impl.uri.URIExtensionIV;
 import com.bigdata.rdf.lexicon.BlobsIndexHelper;
 import com.bigdata.rdf.model.BigdataLiteral;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.vocab.BaseVocabulary;
 import com.bigdata.rdf.vocab.VocabularyDecl;
 
@@ -109,7 +109,7 @@ public class TestURIExtensionIV extends TestCase2 {
         
     }
 
-    private URIExtensionIV<BigdataURI> newFixture(final URI uri) {
+    private URIExtensionIV<BigdataIRI> newFixture(final URI uri) {
 
         final String namespace = uri.getNamespace();
 
@@ -126,7 +126,7 @@ public class TestURIExtensionIV extends TestCase2 {
         final FullyInlineTypedLiteralIV<BigdataLiteral> localNameIV = new FullyInlineTypedLiteralIV<BigdataLiteral>(
                 uri.getLocalName());
 
-        final URIExtensionIV<BigdataURI> iv = new URIExtensionIV<BigdataURI>(
+        final URIExtensionIV<BigdataIRI> iv = new URIExtensionIV<BigdataIRI>(
                 localNameIV, namespaceIV);
         
         return iv;
@@ -148,7 +148,7 @@ public class TestURIExtensionIV extends TestCase2 {
 
 	private void doTest(final URI uri) {
 
-        final URIExtensionIV<BigdataURI> iv = newFixture(uri);
+        final URIExtensionIV<BigdataIRI> iv = newFixture(uri);
         
 		assertEquals(VTE.URI, iv.getVTE());
 		

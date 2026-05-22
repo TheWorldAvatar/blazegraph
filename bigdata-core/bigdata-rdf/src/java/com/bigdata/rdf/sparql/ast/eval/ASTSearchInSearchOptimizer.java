@@ -29,7 +29,7 @@ package com.bigdata.rdf.sparql.ast.eval;
 
 import java.util.Map;
 
-import org.openrdf.model.Literal;
+import org.eclipse.rdf4j.model.Literal;
 
 import com.bigdata.bop.Constant;
 import com.bigdata.bop.IBindingSet;

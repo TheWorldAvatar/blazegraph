@@ -35,12 +35,12 @@ import junit.framework.TestSuite;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.query.Dataset;
-import org.openrdf.query.parser.sparql.manifest.ManifestTest;
-import org.openrdf.query.parser.sparql.manifest.SPARQL11ManifestTest;
-import org.openrdf.query.parser.sparql.manifest.SPARQLQueryTest;
-import org.openrdf.repository.Repository;
-import org.openrdf.repository.RepositoryException;
+import org.eclipse.rdf4j.query.Dataset;
+import org.eclipse.rdf4j.query.parser.sparql.manifest.ManifestTest;
+import org.eclipse.rdf4j.query.parser.sparql.manifest.SPARQL11ManifestTest;
+import org.eclipse.rdf4j.query.parser.sparql.manifest.SPARQLQueryTest;
+import org.eclipse.rdf4j.repository.Repository;
+import org.eclipse.rdf4j.repository.RepositoryException;
 
 import com.bigdata.btree.keys.CollatorEnum;
 import com.bigdata.btree.keys.StrengthEnum;

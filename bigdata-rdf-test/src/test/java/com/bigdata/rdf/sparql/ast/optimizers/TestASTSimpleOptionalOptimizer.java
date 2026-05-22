@@ -31,12 +31,12 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.openrdf.query.MalformedQueryException;
-import org.openrdf.query.algebra.StatementPattern.Scope;
+import org.eclipse.rdf4j.query.MalformedQueryException;
+import org.eclipse.rdf4j.query.algebra.StatementPattern.Scope;
 
 import com.bigdata.bop.BOpUtility;
 import com.bigdata.bop.Constant;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.sail.sparql.Bigdata2ASTSPARQLParser;
@@ -194,8 +194,8 @@ public class TestASTSimpleOptionalOptimizer extends
          * the verify it using equals().
          */
         final BigdataValueFactory f = store.getValueFactory();
-        final BigdataURI p = f.createURI("http://example.org/ns#p");
-        final BigdataURI q = f.createURI("http://example.org/ns#q");
+        final BigdataIRI p = f.createURI("http://example.org/ns#p");
+        final BigdataIRI q = f.createURI("http://example.org/ns#q");
         final BigdataValue[] values = new BigdataValue[] { p, q };
         store.getLexiconRelation()
                 .addTerms(values, values.length, false/* readOnly */);
@@ -281,8 +281,8 @@ public class TestASTSimpleOptionalOptimizer extends
          * the verify it using equals().
          */
         final BigdataValueFactory f = store.getValueFactory();
-        final BigdataURI p = f.createURI("http://example.org/ns#p");
-        final BigdataURI q = f.createURI("http://example.org/ns#q");
+        final BigdataIRI p = f.createURI("http://example.org/ns#p");
+        final BigdataIRI q = f.createURI("http://example.org/ns#q");
         final BigdataValue[] values = new BigdataValue[] { p, q };
         store.getLexiconRelation()
                 .addTerms(values, values.length, false/* readOnly */);

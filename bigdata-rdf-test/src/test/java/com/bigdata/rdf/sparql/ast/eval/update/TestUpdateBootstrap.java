@@ -34,9 +34,9 @@ import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.model.impl.URIImpl;
-import org.openrdf.model.vocabulary.RDF;
-import org.openrdf.model.vocabulary.RDFS;
+import org.eclipse.rdf4j.model.impl.URIImpl;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.vocabulary.RDFS;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.Constant;
@@ -54,7 +54,7 @@ import com.bigdata.bop.rdf.update.ParseOp;
 import com.bigdata.journal.ITx;
 import com.bigdata.rdf.internal.IV;
 import com.bigdata.rdf.model.BigdataLiteral;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.model.StatementEnum;
@@ -257,13 +257,13 @@ public class TestUpdateBootstrap extends AbstractASTEvaluationTestCase {
         
         {
             final BigdataValueFactory f = store.getValueFactory();
-            final BigdataURI mike = f.createURI("http://www.bigdata.com/Mike");
-            final BigdataURI bryan = f.createURI("http://www.bigdata.com/Bryan");
-            final BigdataURI dc = f.createURI("http://www.bigdata.com/DC");
-            final BigdataURI g1 = f.createURI("http://www.bigdata.com/g1");
-            final BigdataURI rdfType = f.asValue(RDF.TYPE);
-            final BigdataURI rdfsLabel = f.asValue(RDFS.LABEL);
-            final BigdataURI foafPerson = f.createURI("http://xmlns.com/foaf/0.1/Person");
+            final BigdataIRI mike = f.createURI("http://www.bigdata.com/Mike");
+            final BigdataIRI bryan = f.createURI("http://www.bigdata.com/Bryan");
+            final BigdataIRI dc = f.createURI("http://www.bigdata.com/DC");
+            final BigdataIRI g1 = f.createURI("http://www.bigdata.com/g1");
+            final BigdataIRI rdfType = f.asValue(RDF.TYPE);
+            final BigdataIRI rdfsLabel = f.asValue(RDFS.LABEL);
+            final BigdataIRI foafPerson = f.createURI("http://xmlns.com/foaf/0.1/Person");
             final BigdataLiteral mikeL = f.createLiteral("Mike");
             final BigdataLiteral bryanL = f.createLiteral("Bryan");
             final BigdataLiteral DCL = f.createLiteral("DC");
@@ -458,13 +458,13 @@ public class TestUpdateBootstrap extends AbstractASTEvaluationTestCase {
         
         {
             final BigdataValueFactory f = store.getValueFactory();
-            final BigdataURI mike = f.createURI("http://www.bigdata.com/Mike");
-            final BigdataURI bryan = f.createURI("http://www.bigdata.com/Bryan");
-            final BigdataURI dc = f.createURI("http://www.bigdata.com/DC");
-            final BigdataURI g1 = f.createURI("http://www.bigdata.com/g1");
-            final BigdataURI rdfType = f.asValue(RDF.TYPE);
-            final BigdataURI rdfsLabel = f.asValue(RDFS.LABEL);
-            final BigdataURI foafPerson = f.createURI("http://xmlns.com/foaf/0.1/Person");
+            final BigdataIRI mike = f.createURI("http://www.bigdata.com/Mike");
+            final BigdataIRI bryan = f.createURI("http://www.bigdata.com/Bryan");
+            final BigdataIRI dc = f.createURI("http://www.bigdata.com/DC");
+            final BigdataIRI g1 = f.createURI("http://www.bigdata.com/g1");
+            final BigdataIRI rdfType = f.asValue(RDF.TYPE);
+            final BigdataIRI rdfsLabel = f.asValue(RDFS.LABEL);
+            final BigdataIRI foafPerson = f.createURI("http://xmlns.com/foaf/0.1/Person");
             final BigdataLiteral mikeL = f.createLiteral("Mike");
             final BigdataLiteral bryanL = f.createLiteral("Bryan");
             final BigdataLiteral DCL = f.createLiteral("DC");

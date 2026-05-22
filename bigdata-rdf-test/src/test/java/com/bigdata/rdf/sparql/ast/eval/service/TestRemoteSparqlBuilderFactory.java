@@ -34,19 +34,19 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.openrdf.model.BNode;
-import org.openrdf.model.Value;
-import org.openrdf.model.impl.BNodeImpl;
-import org.openrdf.model.impl.LiteralImpl;
-import org.openrdf.model.vocabulary.DC;
-import org.openrdf.query.BindingSet;
-import org.openrdf.query.impl.MapBindingSet;
+import org.eclipse.rdf4j.model.BNode;
+import org.eclipse.rdf4j.model.Value;
+import org.eclipse.rdf4j.model.impl.BNodeImpl;
+import org.eclipse.rdf4j.model.impl.LiteralImpl;
+import org.eclipse.rdf4j.model.vocabulary.DC;
+import org.eclipse.rdf4j.query.BindingSet;
+import org.eclipse.rdf4j.query.impl.MapBindingSet;
 
 import com.bigdata.bop.IVariable;
 import com.bigdata.bop.Var;
 import com.bigdata.rdf.internal.XSD;
 import com.bigdata.rdf.model.BigdataLiteral;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.sparql.AbstractBigdataExprBuilderTestCase;
 import com.bigdata.rdf.sparql.ast.ConstantNode;
@@ -131,7 +131,7 @@ public class TestRemoteSparqlBuilderFactory extends
      */
     public void test_service_001() throws Exception {
         
-        final BigdataURI serviceURI = valueFactory
+        final BigdataIRI serviceURI = valueFactory
                 .createURI("http://www.bigdata.com/myService");
 
         final GraphPatternGroup<IGroupMemberNode> groupNode = new JoinGroupNode();
@@ -196,7 +196,7 @@ public class TestRemoteSparqlBuilderFactory extends
      */
     public void test_service_001b() throws Exception {
         
-        final BigdataURI serviceURI = valueFactory
+        final BigdataIRI serviceURI = valueFactory
                 .createURI("http://www.bigdata.com/myService");
 
         final GraphPatternGroup<IGroupMemberNode> groupNode = new JoinGroupNode();
@@ -266,15 +266,15 @@ public class TestRemoteSparqlBuilderFactory extends
         /*
          * Resolve IVs that we will use below.
          */
-        final BigdataURI dcCreator = valueFactory.asValue(DC.CREATOR);
-        final BigdataURI book1 = valueFactory.createURI("http://example.org/book/book1");
-        final BigdataURI book2 = valueFactory.createURI("http://example.org/book/book2");
-        final BigdataURI author1 = valueFactory.createURI("http://example.org/author/author1");
-        final BigdataURI author2 = valueFactory.createURI("http://example.org/author/author2");
+        final BigdataIRI dcCreator = valueFactory.asValue(DC.CREATOR);
+        final BigdataIRI book1 = valueFactory.createURI("http://example.org/book/book1");
+        final BigdataIRI book2 = valueFactory.createURI("http://example.org/book/book2");
+        final BigdataIRI author1 = valueFactory.createURI("http://example.org/author/author1");
+        final BigdataIRI author2 = valueFactory.createURI("http://example.org/author/author2");
 
         addResolveIVs(dcCreator, book1, book2, author1, author2);
 
-        final BigdataURI serviceURI = valueFactory
+        final BigdataIRI serviceURI = valueFactory
                 .createURI("http://www.bigdata.com/myService");
 
         final GraphPatternGroup<IGroupMemberNode> groupNode = new JoinGroupNode();
@@ -358,9 +358,9 @@ public class TestRemoteSparqlBuilderFactory extends
         /*
          * Resolve IVs that we will use below.
          */
-        final BigdataURI dcCreator = valueFactory.asValue(DC.CREATOR);
-        final BigdataURI book1 = valueFactory.createURI("http://example.org/book/book1");
-        final BigdataURI book2 = valueFactory.createURI("http://example.org/book/book2");
+        final BigdataIRI dcCreator = valueFactory.asValue(DC.CREATOR);
+        final BigdataIRI book1 = valueFactory.createURI("http://example.org/book/book1");
+        final BigdataIRI book2 = valueFactory.createURI("http://example.org/book/book2");
         final BigdataLiteral book3 = valueFactory.createLiteral("Semantic Web Primer");
         final BigdataLiteral book4 = valueFactory.createLiteral("Semantic Web Primer", "DE");
         final BigdataLiteral book5 = valueFactory.createLiteral("12", XSD.INT);
@@ -368,7 +368,7 @@ public class TestRemoteSparqlBuilderFactory extends
 
         addResolveIVs(dcCreator, book1, book2, book3, book4, book5, book6);
 
-        final BigdataURI serviceURI = valueFactory
+        final BigdataIRI serviceURI = valueFactory
                 .createURI("http://www.bigdata.com/myService");
 
         final GraphPatternGroup<IGroupMemberNode> groupNode = new JoinGroupNode();
@@ -464,7 +464,7 @@ public class TestRemoteSparqlBuilderFactory extends
      */
     public void test_service_004() throws Exception {
         
-        final BigdataURI serviceURI = valueFactory
+        final BigdataIRI serviceURI = valueFactory
                 .createURI("http://www.bigdata.com/myService");
 
         final GraphPatternGroup<IGroupMemberNode> groupNode = new JoinGroupNode();
@@ -538,7 +538,7 @@ public class TestRemoteSparqlBuilderFactory extends
      */
     public void test_service_005() throws Exception {
         
-        final BigdataURI serviceURI = valueFactory
+        final BigdataIRI serviceURI = valueFactory
                 .createURI("http://www.bigdata.com/myService");
 
         final GraphPatternGroup<IGroupMemberNode> groupNode = new JoinGroupNode();
@@ -624,7 +624,7 @@ public class TestRemoteSparqlBuilderFactory extends
      */
     public void test_service_006() throws Exception {
         
-        final BigdataURI serviceURI = valueFactory
+        final BigdataIRI serviceURI = valueFactory
                 .createURI("http://www.bigdata.com/myService");
 
         final GraphPatternGroup<IGroupMemberNode> groupNode = new JoinGroupNode();
@@ -712,7 +712,7 @@ public class TestRemoteSparqlBuilderFactory extends
      */
     public void test_service_007() throws Exception {
 
-        final BigdataURI serviceURI = valueFactory
+        final BigdataIRI serviceURI = valueFactory
                 .createURI("http://www.bigdata.com/myService");
 
         final GraphPatternGroup<IGroupMemberNode> groupNode = new JoinGroupNode();
@@ -813,7 +813,7 @@ public class TestRemoteSparqlBuilderFactory extends
      */
     public void test_service_008() throws Exception {
         
-        final BigdataURI serviceURI = valueFactory
+        final BigdataIRI serviceURI = valueFactory
                 .createURI("http://www.bigdata.com/myService");
 
         final GraphPatternGroup<IGroupMemberNode> groupNode = new JoinGroupNode();
@@ -904,7 +904,7 @@ public class TestRemoteSparqlBuilderFactory extends
     
     public void test_service_009() throws Exception {
         
-        final BigdataURI serviceURI = valueFactory
+        final BigdataIRI serviceURI = valueFactory
                 .createURI("http://www.bigdata.com/myService");
         
         final String exprImage = "SERVICE <" + serviceURI + "> { ?s ?p ?o }";
@@ -937,7 +937,7 @@ public class TestRemoteSparqlBuilderFactory extends
        
         { 
         	final MapBindingSet bset = new MapBindingSet();
-            final BigdataURI tmp1 = valueFactory.createURI("p:p1");
+            final BigdataIRI tmp1 = valueFactory.createURI("p:p1");
             // @see https://jira.blazegraph.com/browse/BLZG-1951 (Strings in federated query not escaped)
             // this literal tests proper escaping of string literals in prepared SPARQL.
             final BigdataLiteral tmp2 = valueFactory.createLiteral("\"lit1\"");

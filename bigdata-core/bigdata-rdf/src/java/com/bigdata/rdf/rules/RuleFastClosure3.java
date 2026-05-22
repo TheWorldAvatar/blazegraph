@@ -29,7 +29,7 @@ package com.bigdata.rdf.rules;
 
 import java.util.Set;
 
-import org.openrdf.model.vocabulary.RDFS;
+import org.eclipse.rdf4j.model.vocabulary.RDFS;
 
 import com.bigdata.bop.IConstant;
 import com.bigdata.rdf.internal.IV;

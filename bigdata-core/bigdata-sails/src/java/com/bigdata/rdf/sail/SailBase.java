@@ -14,9 +14,9 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import org.openrdf.sail.Sail;
-import org.openrdf.sail.SailConnection;
-import org.openrdf.sail.SailException;
+import org.eclipse.rdf4j.sail.Sail;
+import org.eclipse.rdf4j.sail.SailConnection;
+import org.eclipse.rdf4j.sail.SailException;
 
 /**
  * SailBase is an abstract Sail implementation that takes care of common sail
@@ -46,7 +46,7 @@ public abstract class SailBase implements Sail {
 	// Note: the following variable and method are package protected so that they
 	// can be removed when open connections no longer block other connections and
 	// they can be closed silently (just like in JDBC).
-	static final String DEBUG_PROP = "org.openrdf.repository.debug";
+	static final String DEBUG_PROP = "org.eclipse.rdf4j.repository.debug";
 
 	protected static boolean debugEnabled() {
 		try {

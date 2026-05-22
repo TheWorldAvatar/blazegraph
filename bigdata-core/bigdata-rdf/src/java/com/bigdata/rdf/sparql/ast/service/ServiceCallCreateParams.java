@@ -29,7 +29,7 @@ package com.bigdata.rdf.sparql.ast.service;
 
 import org.apache.http.conn.ClientConnectionManager;
 import org.eclipse.jetty.client.HttpClient;
-import org.openrdf.model.URI;
+import org.eclipse.rdf4j.model.URI;
 
 import com.bigdata.bop.join.BaseJoinStats;
 import com.bigdata.rdf.store.AbstractTripleStore;

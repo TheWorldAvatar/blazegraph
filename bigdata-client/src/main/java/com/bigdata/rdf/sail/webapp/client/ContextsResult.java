@@ -29,7 +29,7 @@ package com.bigdata.rdf.sail.webapp.client;
 
 import java.util.Collection;
 
-import org.openrdf.model.Resource;
+import org.eclipse.rdf4j.model.Resource;
 
 /**
  * Class representing the result of a get contexts operation against 

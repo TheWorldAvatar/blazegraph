@@ -5,7 +5,7 @@
  */
 package com.bigdata.rdf.sail.sparql;
 
-import info.aduna.text.StringUtil;
+import org.eclipse.rdf4j.common.text.StringUtil;
 
 /**
  * SPARQL-related utility methods.

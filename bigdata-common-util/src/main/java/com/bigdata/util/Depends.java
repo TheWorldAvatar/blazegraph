@@ -238,7 +238,7 @@ public class Depends {
     private final static Dep slf4j = new Dep("slf4j", "http://www.slf4j.org/",
             "http://www.slf4j.org/license.html");
     
-    private final static Dep sesame = new Dep("sesame",
+    private final static Dep rdf4j = new Dep("rdf4j",
             "http://www.openrdf.org/", "http://www.openrdf.org/download.jsp");
     
     //Used for RDFa support.  Apache2 License
@@ -317,7 +317,7 @@ public class Depends {
             // webapp
 //            cweb,//
             slf4j,//
-            sesame,//
+            rdf4j,//
             semargl,//
             icu,//
 //            nxparser,//

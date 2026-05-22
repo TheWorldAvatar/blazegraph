@@ -7,10 +7,10 @@ import java.io.ObjectOutput;
 import java.util.Arrays;
 import java.util.HashSet;
 
-import org.openrdf.model.URI;
+import org.eclipse.rdf4j.model.URI;
 
 import com.bigdata.rdf.internal.IV;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 
 /**
  * "IN" filter for the context position based on a sorted long[] of the
@@ -61,7 +61,7 @@ public final class InGraphBinarySearchFilter<E extends ISPO> extends SPOFilter<E
         
         for (URI uri : graphs) {
         
-            final IV termId = ((BigdataURI) uri).getIV();
+            final IV termId = ((BigdataIRI) uri).getIV();
             
             if (termId != null) {
 

@@ -27,8 +27,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 package com.bigdata.rdf.sail;
 
-import org.openrdf.query.algebra.TupleExpr;
-import org.openrdf.query.parser.ParsedTupleQuery;
+import org.eclipse.rdf4j.query.algebra.TupleExpr;
+import org.eclipse.rdf4j.query.parser.ParsedTupleQuery;
 
 /**
  * 

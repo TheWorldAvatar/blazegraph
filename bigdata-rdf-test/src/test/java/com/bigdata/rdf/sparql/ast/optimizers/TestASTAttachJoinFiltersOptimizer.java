@@ -32,7 +32,7 @@ import java.util.List;
 
 import com.bigdata.bop.BOpUtility;
 import com.bigdata.bop.IBindingSet;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.sparql.ast.ASTContainer;
 import com.bigdata.rdf.sparql.ast.AbstractASTEvaluationTestCase;
@@ -193,7 +193,7 @@ public class TestASTAttachJoinFiltersOptimizer extends AbstractASTEvaluationTest
 	public void test_redundantFilter() {
 
         final String sampleInstance = "http://www.example.com/I";
-        final BigdataURI someUri = valueFactory.createURI(sampleInstance);
+        final BigdataIRI someUri = valueFactory.createURI(sampleInstance);
         final BigdataValue[] terms = new BigdataValue[] { someUri };
 
         // resolve terms.

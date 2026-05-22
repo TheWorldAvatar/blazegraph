@@ -33,14 +33,14 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
-import org.openrdf.model.vocabulary.DC;
-import org.openrdf.query.MalformedQueryException;
-import org.openrdf.query.algebra.StatementPattern.Scope;
-import org.openrdf.query.impl.DatasetImpl;
+import org.eclipse.rdf4j.model.vocabulary.DC;
+import org.eclipse.rdf4j.query.MalformedQueryException;
+import org.eclipse.rdf4j.query.algebra.StatementPattern.Scope;
+import org.eclipse.rdf4j.query.impl.DatasetImpl;
 
 import com.bigdata.rdf.internal.IV;
 import com.bigdata.rdf.model.BigdataStatement;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.StatementEnum;
 import com.bigdata.rdf.rio.StatementBuffer;
@@ -137,21 +137,21 @@ public class TestVirtualGraphs extends AbstractBigdataExprBuilderTestCase {
         /*
          * Setup the virtual graph associations in the data.
          */
-        final BigdataURI virtualGraph = valueFactory.asValue(BD.VIRTUAL_GRAPH);
+        final BigdataIRI virtualGraph = valueFactory.asValue(BD.VIRTUAL_GRAPH);
 
-        final BigdataURI vg = valueFactory
+        final BigdataIRI vg = valueFactory
                 .createURI("http://example.org/vg");
 
-        final BigdataURI context = valueFactory
+        final BigdataIRI context = valueFactory
                 .createURI("http://www.bigdata.com/context");
 
-        final BigdataURI uri1 = valueFactory
+        final BigdataIRI uri1 = valueFactory
                 .createURI("http://example.org/dft.ttl");
 
-        final BigdataURI alice = valueFactory
+        final BigdataIRI alice = valueFactory
                 .createURI("http://example.org/alice");
 
-        final BigdataURI bob = valueFactory.createURI("http://example.org/bob");
+        final BigdataIRI bob = valueFactory.createURI("http://example.org/bob");
         
         /*
          * Most URIs wind up declared when we insert the statements, but not
@@ -291,21 +291,21 @@ public class TestVirtualGraphs extends AbstractBigdataExprBuilderTestCase {
         /*
          * Setup the virtual graph associations in the data.
          */
-        final BigdataURI virtualGraph = valueFactory.asValue(BD.VIRTUAL_GRAPH);
+        final BigdataIRI virtualGraph = valueFactory.asValue(BD.VIRTUAL_GRAPH);
 
-        final BigdataURI vg = valueFactory
+        final BigdataIRI vg = valueFactory
                 .createURI("http://example.org/vg");
 
-        final BigdataURI context = valueFactory
+        final BigdataIRI context = valueFactory
                 .createURI("http://www.bigdata.com/context");
 
-        final BigdataURI uri1 = valueFactory
+        final BigdataIRI uri1 = valueFactory
                 .createURI("http://example.org/dft.ttl");
 
-        final BigdataURI alice = valueFactory
+        final BigdataIRI alice = valueFactory
                 .createURI("http://example.org/alice");
 
-        final BigdataURI bob = valueFactory.createURI("http://example.org/bob");
+        final BigdataIRI bob = valueFactory.createURI("http://example.org/bob");
         
         /*
          * Most URIs wind up declared when we insert the statements, but not

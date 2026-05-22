@@ -5,12 +5,12 @@ import java.util.List;
 
 import junit.framework.TestCase2;
 
-import org.openrdf.model.impl.URIImpl;
+import org.eclipse.rdf4j.model.impl.URIImpl;
 
 import com.bigdata.btree.keys.IKeyBuilder;
 import com.bigdata.rdf.internal.impl.uri.FullyInlineURIIV;
 import com.bigdata.rdf.lexicon.BlobsIndexHelper;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 
 /**
  * Test suite for {@link FullyInlineURIIV}.
@@ -26,14 +26,14 @@ public class TestFullyInlineURIIV extends TestCase2 {
 
 	public void test_InlineURIIV() {
 
-        doTest(new FullyInlineURIIV<BigdataURI>(new URIImpl("http://www.bigdata.com")));
-        doTest(new FullyInlineURIIV<BigdataURI>(new URIImpl("http://www.bigdata.com/")));
-        doTest(new FullyInlineURIIV<BigdataURI>(new URIImpl("http://www.bigdata.com/foo")));
-        doTest(new FullyInlineURIIV<BigdataURI>(new URIImpl("http://www.bigdata.com:80/foo")));
+        doTest(new FullyInlineURIIV<BigdataIRI>(new URIImpl("http://www.bigdata.com")));
+        doTest(new FullyInlineURIIV<BigdataIRI>(new URIImpl("http://www.bigdata.com/")));
+        doTest(new FullyInlineURIIV<BigdataIRI>(new URIImpl("http://www.bigdata.com/foo")));
+        doTest(new FullyInlineURIIV<BigdataIRI>(new URIImpl("http://www.bigdata.com:80/foo")));
 
 	}
 
-	private void doTest(final FullyInlineURIIV<BigdataURI> iv) {
+	private void doTest(final FullyInlineURIIV<BigdataIRI> iv) {
 
 		assertEquals(VTE.URI, iv.getVTE());
 		
@@ -64,10 +64,10 @@ public class TestFullyInlineURIIV extends TestCase2 {
         final List<IV<?,?>> ivs = new LinkedList<IV<?,?>>();
         {
 
-            ivs.add(new FullyInlineURIIV<BigdataURI>(new URIImpl("http://www.bigdata.com")));
-            ivs.add(new FullyInlineURIIV<BigdataURI>(new URIImpl("http://www.bigdata.com/")));
-            ivs.add(new FullyInlineURIIV<BigdataURI>(new URIImpl("http://www.bigdata.com/foo")));
-            ivs.add(new FullyInlineURIIV<BigdataURI>(new URIImpl("http://www.bigdata.com:80/foo")));
+            ivs.add(new FullyInlineURIIV<BigdataIRI>(new URIImpl("http://www.bigdata.com")));
+            ivs.add(new FullyInlineURIIV<BigdataIRI>(new URIImpl("http://www.bigdata.com/")));
+            ivs.add(new FullyInlineURIIV<BigdataIRI>(new URIImpl("http://www.bigdata.com/foo")));
+            ivs.add(new FullyInlineURIIV<BigdataIRI>(new URIImpl("http://www.bigdata.com:80/foo")));
 
         }
         

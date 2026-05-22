@@ -24,10 +24,10 @@ package com.bigdata.rdf.sail.webapp;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import org.openrdf.model.Value;
-import org.openrdf.query.BindingSet;
-import org.openrdf.query.QueryLanguage;
-import org.openrdf.query.TupleQueryResult;
+import org.eclipse.rdf4j.model.Value;
+import org.eclipse.rdf4j.query.BindingSet;
+import org.eclipse.rdf4j.query.QueryLanguage;
+import org.eclipse.rdf4j.query.TupleQueryResult;
 import com.bigdata.bop.engine.NativeHeapStandloneChunkHandler;
 import com.bigdata.rdf.sail.remote.BigdataSailRemoteRepositoryConnection;
 import com.bigdata.rdf.sparql.ast.QueryHints;

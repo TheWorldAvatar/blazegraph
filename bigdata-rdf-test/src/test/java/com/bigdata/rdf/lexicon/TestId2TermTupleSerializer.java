@@ -38,7 +38,7 @@ import com.bigdata.io.SerializerUtil;
 import com.bigdata.rdf.internal.IVUtility;
 import com.bigdata.rdf.internal.VTE;
 import com.bigdata.rdf.internal.impl.TermId;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValueFactoryImpl;
 import com.bigdata.util.BytesUtil;
 
@@ -72,13 +72,13 @@ public class TestId2TermTupleSerializer extends TestCase2 {
 
         final TermId<?> id1, id2, id3;
         if (IVUtility.PACK_TIDS) {
-            id1 = new TermId<BigdataURI>(VTE.URI, 0);
-            id2 = new TermId<BigdataURI>(VTE.URI, 1);
-            id3 = new TermId<BigdataURI>(VTE.URI, 2);
+            id1 = new TermId<BigdataIRI>(VTE.URI, 0);
+            id2 = new TermId<BigdataIRI>(VTE.URI, 1);
+            id3 = new TermId<BigdataIRI>(VTE.URI, 2);
         } else {
-            id1 = new TermId<BigdataURI>(VTE.URI, -1);
-            id2 = new TermId<BigdataURI>(VTE.URI, 0);
-            id3 = new TermId<BigdataURI>(VTE.URI, 1);
+            id1 = new TermId<BigdataIRI>(VTE.URI, -1);
+            id2 = new TermId<BigdataIRI>(VTE.URI, 0);
+            id3 = new TermId<BigdataIRI>(VTE.URI, 1);
         }
 
         final byte[] k1 = fixture.id2key(id1);

@@ -37,7 +37,7 @@ import java.util.UUID;
 
 import junit.framework.TestCase2;
 
-import org.openrdf.model.impl.URIImpl;
+import org.eclipse.rdf4j.model.impl.URIImpl;
 
 import com.bigdata.bop.Constant;
 import com.bigdata.bop.IBindingSet;
@@ -72,7 +72,7 @@ import com.bigdata.rdf.internal.impl.uri.URIExtensionIV;
 import com.bigdata.rdf.internal.impl.uri.VocabURIByteIV;
 import com.bigdata.rdf.internal.impl.uri.VocabURIShortIV;
 import com.bigdata.rdf.model.BigdataLiteral;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.model.BigdataValueFactoryImpl;
@@ -170,13 +170,13 @@ abstract public class AbstractBindingSetEncoderTestCase extends TestCase2 {
     protected XSDUnsignedShortIV<BigdataLiteral> unsignedShortIV;
     
     /** Extension IVs (require materialization) and the like */
-    protected FullyInlineURIIV<BigdataURI> fullyInlineUriIV;
+    protected FullyInlineURIIV<BigdataIRI> fullyInlineUriIV;
     protected LiteralExtensionIV<BigdataLiteral> literalExtensionIV;
     protected URIExtensionIV<?> uriExtensionIV;
     
     /** Other IVs requiring materialization */
-    protected VocabURIByteIV<BigdataURI> vocabUriByteIV;
-    protected VocabURIShortIV<BigdataURI> vocabUriShortIV;
+    protected VocabURIByteIV<BigdataIRI> vocabUriByteIV;
+    protected VocabURIShortIV<BigdataIRI> vocabUriShortIV;
     
     
     /**
@@ -256,10 +256,10 @@ abstract public class AbstractBindingSetEncoderTestCase extends TestCase2 {
         
         // vocabUriByteIV and vocabUriShortIV both require materialization
         vocabUriByteIV = new VocabURIByteIV((byte)3);
-        vocabUriByteIV.setValue((BigdataURI) valueFactory.createURI("http://some.vocab.item1"));
+        vocabUriByteIV.setValue((BigdataIRI) valueFactory.createURI("http://some.vocab.item1"));
         
         vocabUriShortIV = new VocabURIShortIV((short)4);
-        vocabUriShortIV.setValue((BigdataURI) valueFactory.createURI("http://some.vocab.item2"));
+        vocabUriShortIV.setValue((BigdataIRI) valueFactory.createURI("http://some.vocab.item2"));
         
     }
 
@@ -436,7 +436,7 @@ abstract public class AbstractBindingSetEncoderTestCase extends TestCase2 {
         expected.set(Var.var("x"), new Constant<IV>(
                 new XSDNumericIV<BigdataLiteral>(12)));
         expected.set(Var.var("y"), new Constant<IV>(
-                new FullyInlineURIIV<BigdataURI>(new URIImpl(
+                new FullyInlineURIIV<BigdataIRI>(new URIImpl(
                         "http://www.bigdata.com"))));
 
         doEncodeDecodeTest(expected);
@@ -454,7 +454,7 @@ abstract public class AbstractBindingSetEncoderTestCase extends TestCase2 {
             expected.set(Var.var("x"), new Constant<IV>(
                     new XSDNumericIV<BigdataLiteral>(12)));
             expected.set(Var.var("y"), new Constant<IV>(
-                    new FullyInlineURIIV<BigdataURI>(new URIImpl(
+                    new FullyInlineURIIV<BigdataIRI>(new URIImpl(
                             "http://www.bigdata.com"))));
 
             doEncodeDecodeTest(expected);
@@ -489,7 +489,7 @@ abstract public class AbstractBindingSetEncoderTestCase extends TestCase2 {
             expected.set(Var.var("x"), new Constant<IV>(
                     new XSDNumericIV<BigdataLiteral>(99)));
             expected.set(Var.var("y"), new Constant<IV>(
-                    new FullyInlineURIIV<BigdataURI>(new URIImpl(
+                    new FullyInlineURIIV<BigdataIRI>(new URIImpl(
                             "http://www.bigdata.com"))));
 
             doEncodeDecodeTest(expected);
@@ -523,7 +523,7 @@ abstract public class AbstractBindingSetEncoderTestCase extends TestCase2 {
             expected.set(Var.var("x"), new Constant<IV>(
                     new XSDNumericIV<BigdataLiteral>(99)));
             expected.set(Var.var("y"), new Constant<IV>(
-                    new FullyInlineURIIV<BigdataURI>(new URIImpl(
+                    new FullyInlineURIIV<BigdataIRI>(new URIImpl(
                             "http://www.bigdata.com"))));
 
             doEncodeDecodeTest(expected);
@@ -556,7 +556,7 @@ abstract public class AbstractBindingSetEncoderTestCase extends TestCase2 {
             expected.set(Var.var("x"), new Constant<IV>(
                     new XSDNumericIV<BigdataLiteral>(99)));
             expected.set(Var.var("y"), new Constant<IV>(
-                    new FullyInlineURIIV<BigdataURI>(new URIImpl(
+                    new FullyInlineURIIV<BigdataIRI>(new URIImpl(
                             "http://www.bigdata.com"))));
 
             doEncodeDecodeTest(expected);
@@ -583,7 +583,7 @@ abstract public class AbstractBindingSetEncoderTestCase extends TestCase2 {
             expected.set(Var.var("x"), new Constant<IV>(
                     new XSDNumericIV<BigdataLiteral>(99)));
             expected.set(Var.var("y"), new Constant<IV>(
-                    new FullyInlineURIIV<BigdataURI>(new URIImpl(
+                    new FullyInlineURIIV<BigdataIRI>(new URIImpl(
                             "http://www.bigdata.com"))));
 
             doEncodeDecodeTest(expected);

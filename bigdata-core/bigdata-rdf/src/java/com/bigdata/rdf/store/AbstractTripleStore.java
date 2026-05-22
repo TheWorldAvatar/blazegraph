@@ -47,16 +47,16 @@ import java.util.concurrent.atomic.AtomicReference;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.model.Literal;
-import org.openrdf.model.Resource;
-import org.openrdf.model.Statement;
-import org.openrdf.model.URI;
-import org.openrdf.model.Value;
-import org.openrdf.model.vocabulary.OWL;
-import org.openrdf.model.vocabulary.RDF;
-import org.openrdf.model.vocabulary.RDFS;
-import org.openrdf.model.vocabulary.XMLSchema;
-import org.openrdf.rio.rdfxml.RDFXMLParser;
+import org.eclipse.rdf4j.model.Literal;
+import org.eclipse.rdf4j.model.Resource;
+import org.eclipse.rdf4j.model.Statement;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.Value;
+import org.eclipse.rdf4j.model.vocabulary.OWL;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.vocabulary.RDFS;
+import org.eclipse.rdf4j.model.vocabulary.XMLSchema;
+import org.eclipse.rdf4j.rio.rdfxml.RDFXMLParser;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.Constant;
@@ -113,7 +113,7 @@ import com.bigdata.rdf.lexicon.LexiconRelation;
 import com.bigdata.rdf.lexicon.TermIdEncoder;
 import com.bigdata.rdf.model.BigdataResource;
 import com.bigdata.rdf.model.BigdataStatement;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.model.BigdataValueFactoryImpl;
@@ -3188,7 +3188,7 @@ abstract public class AbstractTripleStore extends
 
         return getValueFactory().createStatement(//
                 (BigdataResource)  terms.get(spo.s()),//
-                (BigdataURI)       terms.get(spo.p()),//
+                (BigdataIRI)       terms.get(spo.p()),//
                 (BigdataValue)     terms.get(spo.o()),//
                 (BigdataResource)  (c != null ? terms.get(c) : null),//
                 spo.getStatementType(),//
@@ -3248,7 +3248,7 @@ abstract public class AbstractTripleStore extends
         final BigdataResource _s = valueFactory == null ? null : valueFactory
                 .asValue(s);
 
-        final BigdataURI _p = valueFactory == null ? null : valueFactory
+        final BigdataIRI _p = valueFactory == null ? null : valueFactory
                 .asValue(p);
 
         final BigdataValue _o = valueFactory == null ? null : valueFactory
@@ -3375,7 +3375,7 @@ abstract public class AbstractTripleStore extends
         final BigdataResource _s = valueFactory == null ? null : valueFactory
                 .asValue(s);
 
-        final BigdataURI _p = valueFactory == null ? null : valueFactory
+        final BigdataIRI _p = valueFactory == null ? null : valueFactory
                 .asValue(p);
 
         final BigdataValue _o = valueFactory == null ? null : valueFactory

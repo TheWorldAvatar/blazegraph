@@ -41,18 +41,18 @@ import java.util.concurrent.locks.ReentrantLock;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.model.Resource;
-import org.openrdf.model.Statement;
-import org.openrdf.model.URI;
-import org.openrdf.model.Value;
-import org.openrdf.query.BindingSet;
+import org.eclipse.rdf4j.model.Resource;
+import org.eclipse.rdf4j.model.Statement;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.Value;
+import org.eclipse.rdf4j.query.BindingSet;
 
 import com.bigdata.cache.ConcurrentWeakValueCache;
 import com.bigdata.gom.gpo.GPO;
 import com.bigdata.gom.gpo.IGPO;
 import com.bigdata.rdf.internal.IV;
 import com.bigdata.rdf.model.BigdataBNode;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValueFactory;
 
 import cutthecrap.utils.striterators.ICloseableIterator;
@@ -92,7 +92,7 @@ public abstract class ObjectMgrModel implements IObjectManager {
      * This is only for the predicates and provides the guarantee that we can
      * reference test on predicates within the scope of a given object manager.
      */
-    private final ConcurrentHashMap<BigdataURI, BigdataURI> m_internedKeys = new ConcurrentHashMap<BigdataURI, BigdataURI>();
+    private final ConcurrentHashMap<BigdataIRI, BigdataIRI> m_internedKeys = new ConcurrentHashMap<BigdataIRI, BigdataIRI>();
 
     /**
      * We need to maintain a dirty list in order to pin object references that
@@ -190,16 +190,16 @@ public abstract class ObjectMgrModel implements IObjectManager {
      * 
      * @return The interned version of the predicate.
      */
-    public BigdataURI internKey(final URI aKey) {
+    public BigdataIRI internKey(final URI aKey) {
 
         // Ensure URI is for the namespace associated with this OM.
-        final BigdataURI key = m_valueFactory.asValue(aKey);
+        final BigdataIRI key = m_valueFactory.asValue(aKey);
         
         // Internal the URI.
-        final BigdataURI old = m_internedKeys.putIfAbsent(key, key);
+        final BigdataIRI old = m_internedKeys.putIfAbsent(key, key);
 
         // Resolve data race.
-        final BigdataURI uri = old != null ? old : key;
+        final BigdataIRI uri = old != null ? old : key;
 
 		return uri;
 

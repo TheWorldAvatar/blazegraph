@@ -30,9 +30,10 @@ package com.bigdata.rdf.vocab.decls;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 
-import org.openrdf.model.URI;
-import org.openrdf.model.impl.URIImpl;
+import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
 
 import com.bigdata.rdf.vocab.VocabularyDecl;
 
@@ -49,49 +50,51 @@ import com.bigdata.rdf.vocab.VocabularyDecl;
  */
 public class VoidVocabularyDecl implements VocabularyDecl {
 
+    private static final SimpleValueFactory VALUE_FACTORY = SimpleValueFactory.getInstance();
+
     public static final String NAMESPACE = "http://rdfs.org/ns/void#";
 
     // Classes.
-    public static final URI //
-            Dataset = new URIImpl(NAMESPACE + "Dataset"),//
-            DatasetDescription = new URIImpl(NAMESPACE + "DatasetDescription"),//
-            Linkset = new URIImpl(NAMESPACE + "Linkset"),//
-            TechnicalFeature = new URIImpl(NAMESPACE + "TechnicalFeature")//
+    public static final IRI //
+            Dataset = VALUE_FACTORY.createIRI(NAMESPACE, "Dataset"),//
+            DatasetDescription = VALUE_FACTORY.createIRI(NAMESPACE, "DatasetDescription"),//
+            Linkset = VALUE_FACTORY.createIRI(NAMESPACE, "Linkset"),//
+            TechnicalFeature = VALUE_FACTORY.createIRI(NAMESPACE, "TechnicalFeature")//
             ;
 
     // Properties.
-    public static final URI //
-            class_ = new URIImpl(NAMESPACE+"class"),//
-            classPartition = new URIImpl(NAMESPACE+"classPartition"),//
-            classes = new URIImpl(NAMESPACE+"classes"),//
-            dataDump = new URIImpl(NAMESPACE+"dataDump"),//
-            distinctObjects = new URIImpl(NAMESPACE+"distinctObjects"),//
-            distinctSubjects = new URIImpl(NAMESPACE+"distinctSubjects"),//
-            documents = new URIImpl(NAMESPACE+"documents"),//
-            entities = new URIImpl(NAMESPACE+"entities"),//
-            exampleResource = new URIImpl(NAMESPACE+"exampleResource"),//
-            feature = new URIImpl(NAMESPACE+"feature"),//
-            inDataset = new URIImpl(NAMESPACE+"inDataset"),//
-            linkPredicate = new URIImpl(NAMESPACE+"linkPredicate"),//
-            objectsTarget = new URIImpl(NAMESPACE+"objectsTarget"),//
-            openSearchDescription = new URIImpl(NAMESPACE+"openSearchDescription"),//
-            properties = new URIImpl(NAMESPACE+"properties"),//
-            property = new URIImpl(NAMESPACE+"property"),//
-            propertyPartition = new URIImpl(NAMESPACE+"propertyPartition"),//
-            rootResource = new URIImpl(NAMESPACE+"rootResource"),//
-            sparqlEndpoint = new URIImpl(NAMESPACE+"sparqlEndpoint"),//
-            subjectsTarget = new URIImpl(NAMESPACE+"subjectsTarget"),//
-            subset = new URIImpl(NAMESPACE+"subset"),//
-            target = new URIImpl(NAMESPACE+"target"),//
-            triples = new URIImpl(NAMESPACE+"triples"),//
-            uriLookupEndpoint = new URIImpl(NAMESPACE+"uriLookupEndpoint"),//
-            uriRegexPattern = new URIImpl(NAMESPACE+"uriRegexPattern"),//
-            uriSpace = new URIImpl(NAMESPACE+"uriSpace"),//
-            vocabulary = new URIImpl(NAMESPACE+"vocabulary")//
+    public static final IRI //
+            class_ = VALUE_FACTORY.createIRI(NAMESPACE, "class"),//
+            classPartition = VALUE_FACTORY.createIRI(NAMESPACE, "classPartition"),//
+            classes = VALUE_FACTORY.createIRI(NAMESPACE, "classes"),//
+            dataDump = VALUE_FACTORY.createIRI(NAMESPACE, "dataDump"),//
+            distinctObjects = VALUE_FACTORY.createIRI(NAMESPACE, "distinctObjects"),//
+            distinctSubjects = VALUE_FACTORY.createIRI(NAMESPACE, "distinctSubjects"),//
+            documents = VALUE_FACTORY.createIRI(NAMESPACE, "documents"),//
+            entities = VALUE_FACTORY.createIRI(NAMESPACE, "entities"),//
+            exampleResource = VALUE_FACTORY.createIRI(NAMESPACE, "exampleResource"),//
+            feature = VALUE_FACTORY.createIRI(NAMESPACE, "feature"),//
+            inDataset = VALUE_FACTORY.createIRI(NAMESPACE, "inDataset"),//
+            linkPredicate = VALUE_FACTORY.createIRI(NAMESPACE, "linkPredicate"),//
+            objectsTarget = VALUE_FACTORY.createIRI(NAMESPACE, "objectsTarget"),//
+            openSearchDescription = VALUE_FACTORY.createIRI(NAMESPACE, "openSearchDescription"),//
+            properties = VALUE_FACTORY.createIRI(NAMESPACE, "properties"),//
+            property = VALUE_FACTORY.createIRI(NAMESPACE, "property"),//
+            propertyPartition = VALUE_FACTORY.createIRI(NAMESPACE, "propertyPartition"),//
+            rootResource = VALUE_FACTORY.createIRI(NAMESPACE, "rootResource"),//
+            sparqlEndpoint = VALUE_FACTORY.createIRI(NAMESPACE, "sparqlEndpoint"),//
+            subjectsTarget = VALUE_FACTORY.createIRI(NAMESPACE, "subjectsTarget"),//
+            subset = VALUE_FACTORY.createIRI(NAMESPACE, "subset"),//
+            target = VALUE_FACTORY.createIRI(NAMESPACE, "target"),//
+            triples = VALUE_FACTORY.createIRI(NAMESPACE, "triples"),//
+            uriLookupEndpoint = VALUE_FACTORY.createIRI(NAMESPACE, "uriLookupEndpoint"),//
+            uriRegexPattern = VALUE_FACTORY.createIRI(NAMESPACE, "uriRegexPattern"),//
+            uriSpace = VALUE_FACTORY.createIRI(NAMESPACE, "uriSpace"),//
+            vocabulary = VALUE_FACTORY.createIRI(NAMESPACE, "vocabulary")//
     ;
 
-    static private final URI[] uris = new URI[]{
-            new URIImpl(NAMESPACE),
+    static private final List<IRI> iris = List.of(
+            VALUE_FACTORY.createIRI(NAMESPACE),
             // classes
             Dataset,
             DatasetDescription,
@@ -104,14 +107,14 @@ public class VoidVocabularyDecl implements VocabularyDecl {
             properties, property, propertyPartition, rootResource,
             sparqlEndpoint, subjectsTarget, subset, target, triples,
             uriLookupEndpoint, uriRegexPattern, uriSpace, vocabulary//
-    };
+    );
 
     public VoidVocabularyDecl() {
     }
     
-    public Iterator<URI> values() {
+    public Iterator<IRI> values() {
 
-        return Collections.unmodifiableList(Arrays.asList(uris)).iterator();
+        return iris.iterator();
         
     }
 

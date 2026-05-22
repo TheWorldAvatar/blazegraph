@@ -2,8 +2,8 @@ package com.bigdata.rdf.sparql.ast.cache;
 
 import java.util.Set;
 
-import org.openrdf.model.Graph;
-import org.openrdf.query.GraphQueryResult;
+import org.eclipse.rdf4j.model.Model;
+import org.eclipse.rdf4j.query.GraphQueryResult;
 
 import com.bigdata.rdf.internal.IV;
 
@@ -44,13 +44,13 @@ public interface IDescribeCache {
      *         support a star-join against the DESCRIBE cache (leveraging
      *         materialized joins).
      * 
-     *         TODO Offer a stream oriented response. For a single {@link Graph}
+     *         TODO Offer a stream oriented response. For a single {@link Model}
      *         , that could be a {@link GraphQueryResult}. For vectored lookups,
      *         this might be a stream of binding sets (vectored lookups make
      *         sense primarily in star joins, so this would really be the
      *         signature for the star-join operator).
      */
-    Graph lookup(final IV<?, ?> iv);
+    Model lookup(final IV<?, ?> iv);
     
     /**
      * Insert/update the cache entry for an {@link IV}.
@@ -58,13 +58,13 @@ public interface IDescribeCache {
      * @param iv
      *            The {@link IV}.
      * @param g
-     *            The {@link Graph} that describes that {@link IV}.
+     *            The {@link Model} that describes that {@link IV}.
      * 
      *            TODO Vector inserts.
      * 
      *            TODO We probably need to include the timestamp of the database
      *            view from which the resource description was constructed.
      */
-    void insert(final IV<?, ?> iv, final Graph g);
+    void insert(final IV<?, ?> iv, final Model g);
 
 }

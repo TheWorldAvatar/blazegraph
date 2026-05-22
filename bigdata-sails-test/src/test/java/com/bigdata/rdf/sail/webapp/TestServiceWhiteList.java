@@ -30,8 +30,8 @@ import java.util.UUID;
 
 import org.eclipse.jetty.client.HttpClient;
 import org.eclipse.jetty.server.Server;
-import org.openrdf.model.impl.URIImpl;
-import org.openrdf.query.TupleQueryResult;
+import org.eclipse.rdf4j.model.impl.URIImpl;
+import org.eclipse.rdf4j.query.TupleQueryResult;
 
 import com.bigdata.BigdataStatics;
 import com.bigdata.journal.BufferMode;

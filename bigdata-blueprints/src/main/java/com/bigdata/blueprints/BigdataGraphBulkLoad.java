@@ -25,11 +25,11 @@ package com.bigdata.blueprints;
 import java.util.Collection;
 import java.util.UUID;
 
-import org.openrdf.model.Literal;
-import org.openrdf.model.URI;
-import org.openrdf.model.impl.StatementImpl;
-import org.openrdf.query.impl.AbstractQuery;
-import org.openrdf.repository.RepositoryConnection;
+import org.eclipse.rdf4j.model.Literal;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.impl.StatementImpl;
+import org.eclipse.rdf4j.query.impl.AbstractQuery;
+import org.eclipse.rdf4j.repository.RepositoryConnection;
 
 import com.bigdata.rdf.changesets.IChangeLog;
 import com.bigdata.rdf.changesets.IChangeRecord;

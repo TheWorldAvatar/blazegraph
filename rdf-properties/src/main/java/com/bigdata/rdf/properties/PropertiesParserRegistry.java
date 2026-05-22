@@ -57,9 +57,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package com.bigdata.rdf.properties;
 
-import info.aduna.lang.service.FileFormatServiceRegistry;
+import org.eclipse.rdf4j.common.lang.service.FileFormatServiceRegistry;
 
-import org.openrdf.rio.RDFParserFactory;
+import org.eclipse.rdf4j.rio.RDFParserFactory;
 
 /**
  * A registry that keeps track of the available {@link RDFParserFactory}s.

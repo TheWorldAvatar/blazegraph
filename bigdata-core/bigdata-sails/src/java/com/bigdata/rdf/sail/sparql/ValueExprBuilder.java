@@ -37,13 +37,13 @@ import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import org.openrdf.model.URI;
-import org.openrdf.model.vocabulary.FN;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.vocabulary.FN;
 
 import com.bigdata.bop.aggregate.AggregateBase;
 import com.bigdata.bop.rdf.aggregate.GROUP_CONCAT;
 import com.bigdata.rdf.internal.constraints.IriBOp;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.sail.sparql.ast.ASTAbs;
 import com.bigdata.rdf.sail.sparql.ast.ASTAggregate;
 import com.bigdata.rdf.sail.sparql.ast.ASTAnd;
@@ -467,7 +467,7 @@ public class ValueExprBuilder extends BigdataASTVisitorBase {
         final ConstantNode uriNode = (ConstantNode) node.jjtGetChild(0)
                 .jjtAccept(this, null);
 
-        final BigdataURI functionURI = (BigdataURI) uriNode.getValue();
+        final BigdataIRI functionURI = (BigdataIRI) uriNode.getValue();
 
         final int nargs = node.jjtGetNumChildren() - 1;
         

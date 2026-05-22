@@ -23,10 +23,10 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 package com.bigdata.rdf.sail;
 
-import org.openrdf.query.UpdateExecutionException;
-import org.openrdf.query.algebra.evaluation.QueryBindingSet;
-import org.openrdf.query.parser.ParsedUpdate;
-import org.openrdf.repository.sail.SailUpdate;
+import org.eclipse.rdf4j.query.UpdateExecutionException;
+import org.eclipse.rdf4j.query.algebra.evaluation.QueryBindingSet;
+import org.eclipse.rdf4j.query.parser.ParsedUpdate;
+import org.eclipse.rdf4j.repository.sail.SailUpdate;
 
 import com.bigdata.rdf.sparql.ast.ASTContainer;
 import com.bigdata.rdf.sparql.ast.eval.ASTEvalHelper;

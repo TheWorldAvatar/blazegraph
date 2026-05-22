@@ -1,6 +1,6 @@
 package com.bigdata.rdf.internal.impl.uri;
 
-import org.openrdf.model.URI;
+import org.eclipse.rdf4j.model.URI;
 
 import com.bigdata.rdf.internal.INonInlineExtensionCodes;
 import com.bigdata.rdf.internal.IV;
@@ -8,7 +8,7 @@ import com.bigdata.rdf.internal.VTE;
 import com.bigdata.rdf.internal.impl.AbstractNonInlineExtensionIVWithDelegateIV;
 import com.bigdata.rdf.internal.impl.literal.AbstractLiteralIV;
 import com.bigdata.rdf.model.BigdataLiteral;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 
 /**
  * A {@link URI} modeled as a namespace {@link IV} plus an inline Unicode
@@ -18,7 +18,7 @@ import com.bigdata.rdf.model.BigdataURI;
  * @version $Id$
  * @param <V>
  */
-public class PartlyInlineURIIV<V extends BigdataURI> extends
+public class PartlyInlineURIIV<V extends BigdataIRI> extends
         AbstractNonInlineExtensionIVWithDelegateIV<V, URI> {
 
 	/**

@@ -3,7 +3,7 @@ package com.bigdata.rdf.rules;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.openrdf.model.vocabulary.OWL;
+import org.eclipse.rdf4j.model.vocabulary.OWL;
 
 import com.bigdata.bop.IBindingSet;
 import com.bigdata.bop.IConstant;

@@ -49,13 +49,14 @@ package com.bigdata.rdf.model;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.Optional;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 
-import org.openrdf.model.Literal;
-import org.openrdf.model.datatypes.XMLDatatypeUtil;
-import org.openrdf.model.vocabulary.RDF;
-import org.openrdf.model.vocabulary.XMLSchema;
+import org.eclipse.rdf4j.model.Literal;
+import org.eclipse.rdf4j.model.datatypes.XMLDatatypeUtil;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.vocabulary.XMLSchema;
 
 /**
  * A literal. Use {@link BigdataValueFactory} to create instances of this class.
@@ -71,14 +72,14 @@ public class BigdataLiteralImpl extends BigdataValueImpl implements
     private static final long serialVersionUID = 2301819664179569810L;
 
     private final String label;
-    private final String language;
-    private final BigdataURI datatype;
+    private final Optional<String> language;
+    private final BigdataIRI datatype;
 
     /**
      * Used by {@link BigdataValueFactoryImpl}.
      */
     BigdataLiteralImpl(final BigdataValueFactory valueFactory,
-            final String label, final String language, final BigdataURI datatype) {
+            final String label, final String language, final BigdataIRI datatype) {
 
         super(valueFactory, null);
 
@@ -93,12 +94,12 @@ public class BigdataLiteralImpl extends BigdataValueImpl implements
             }
             this.datatype = (datatype == null ? valueFactory.getLangStringURI() : datatype);
             // force to lowercase (Sesame does this too).
-            this.language = language.toLowerCase().intern();
+            this.language = Optional.of(language.toLowerCase().intern());
         } else {
             if (RDF.LANGSTRING.equals(datatype)) {
                 throw new IllegalArgumentException("Language tagged literals cannot have a null language tag");
             }
-            this.language = null;
+            this.language = Optional.empty();
             this.datatype = (datatype == null ? valueFactory.getXSDStringURI() : datatype);
         }
     }
@@ -109,57 +110,57 @@ public class BigdataLiteralImpl extends BigdataValueImpl implements
         final StringBuilder sb = new StringBuilder();
 
         sb.append('\"');
-        
+
         sb.append(label);
-        
+
         sb.append('\"');
 
         if (language != null) {
-            
+
             sb.append('@');
-            
+
             sb.append(language);
-            
+
         } else if (datatype != null && !XMLSchema.STRING.equals(datatype)) {
-        
+
             sb.append("^^<");
-            
+
             sb.append(datatype);
-            
+
             sb.append('>');
-            
+
         }
-        
+
         return sb.toString();
-        
+
     }
-    
+
     @Override
     public String stringValue() {
-       
+
         return label;
-        
+
     }
 
     @Override
     final public String getLabel() {
 
         return label;
-        
+
     }
 
     @Override
-    final public String getLanguage() {
+    final public Optional<String> getLanguage() {
 
         return language;
-        
+
     }
 
     @Override
-    final public BigdataURI getDatatype() {
+    final public BigdataIRI getDatatype() {
 
         return datatype;
-        
+
     }
 
     final public int hashCode() {
@@ -173,42 +174,42 @@ public class BigdataLiteralImpl extends BigdataValueImpl implements
         }
         return hashCode;
     }
-    
+
     final public boolean equals(Object o) {
 
         if (!(o instanceof Literal))
             return false;
 
-        return equals((Literal)o);
-        
+        return equals((Literal) o);
+
     }
-    
+
     final public boolean equals(final Literal o) {
 
         if (this == o)
             return true;
-        
+
         if (o == null)
             return false;
 
-		if ((o instanceof BigdataValue) //
-				&& isRealIV()
-				&& ((BigdataValue)o).isRealIV()
-				&& ((BigdataValue) o).getValueFactory() == getValueFactory()) {
+        if ((o instanceof BigdataValue) //
+                && isRealIV()
+                && ((BigdataValue) o).isRealIV()
+                && ((BigdataValue) o).getValueFactory() == getValueFactory()) {
 
-			return getIV().equals(((BigdataValue) o).getIV());
+            return getIV().equals(((BigdataValue) o).getIV());
 
         }
-        
+
         if (!label.equals(o.getLabel()))
             return false;
 
-        if (language != null) {
+        if (language.isPresent() && o.getLanguage().isPresent()) {
 
             // the language code is case insensitive.
-            return language.equalsIgnoreCase(o.getLanguage());
+            return language.get().equalsIgnoreCase(o.getLanguage().get());
 
-        } else if (o.getLanguage() != null) {
+        } else if (o.getLanguage() != language) {
 
             return false;
 
@@ -227,11 +228,11 @@ public class BigdataLiteralImpl extends BigdataValueImpl implements
         return true;
 
     }
-    
+
     /*
      * XSD stuff.
      */
-    
+
     @Override
     final public boolean booleanValue() {
 

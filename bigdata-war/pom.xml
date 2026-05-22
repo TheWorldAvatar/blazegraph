@@ -301,19 +301,20 @@ ga('send', 'pageview');
       <version>${jackson.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.openrdf.sesame</groupId>
-      <artifactId>sesame-runtime</artifactId>
-      <version>${sesame.version}</version>
+      <groupId>org.eclipse.rdf4j</groupId>
+      <artifactId>rdf4j-runtime</artifactId>
+      <version>${rdf4j.version}</version>
+      <type>pom</type>
     </dependency>
     <dependency>
-      <groupId>org.openrdf.sesame</groupId>
-      <artifactId>sesame-rio-rdfxml</artifactId>
-      <version>${sesame.version}</version>
+      <groupId>org.eclipse.rdf4j</groupId>
+      <artifactId>rdf4j-rio-rdfxml</artifactId>
+      <version>${rdf4j.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.openrdf.sesame</groupId>
-      <artifactId>sesame-queryresultio-sparqljson</artifactId>
-      <version>${sesame.version}</version>
+      <groupId>org.eclipse.rdf4j</groupId>
+      <artifactId>rdf4j-queryresultio-sparqljson</artifactId>
+      <version>${rdf4j.version}</version>
     </dependency>
     <dependency>
       <groupId>com.tinkerpop.blueprints</groupId>
@@ -353,7 +354,7 @@ ga('send', 'pageview');
       <version>${jsonld.version}</version>
       <exclusions>
         <exclusion>
-          <groupId>org.openrdf.sesame</groupId>
+          <groupId>org.eclipse.rdf4j</groupId>
           <artifactId>*</artifactId>
         </exclusion>
         <exclusion>
@@ -365,7 +366,7 @@ ga('send', 'pageview');
     <!-- Included for RDFa support -->
     <dependency>
       <groupId>org.semarglproject</groupId>
-      <artifactId>semargl-sesame</artifactId>
+      <artifactId>semargl-rdf4j</artifactId>
       <version>${semargl.version}</version>
     </dependency>
   </dependencies>

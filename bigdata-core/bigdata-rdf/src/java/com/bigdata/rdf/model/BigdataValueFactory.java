@@ -31,12 +31,12 @@ import java.util.Date;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 
-import org.openrdf.model.BNode;
-import org.openrdf.model.Literal;
-import org.openrdf.model.Resource;
-import org.openrdf.model.URI;
-import org.openrdf.model.Value;
-import org.openrdf.model.ValueFactory;
+import org.eclipse.rdf4j.model.BNode;
+import org.eclipse.rdf4j.model.Literal;
+import org.eclipse.rdf4j.model.Resource;
+import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.Value;
+import org.eclipse.rdf4j.model.ValueFactory;
 
 import com.bigdata.rdf.store.IRawTripleStore;
 
@@ -122,23 +122,23 @@ public interface BigdataValueFactory extends ValueFactory {
         
     BigdataLiteral createLiteral(String label, String language);
 
-    BigdataLiteral createLiteral(String label, URI datatype);
+    BigdataLiteral createLiteral(String label, IRI datatype);
 
-    BigdataLiteral createLiteral(String label, URI datatype, String language);
+    BigdataLiteral createLiteral(String label, IRI datatype, String language);
 
-    BigdataURI createURI(String uriString);
+    BigdataIRI createURI(String uriString);
 
-    BigdataURI createURI(String namespace, String localName);
-
-    /**
-     * Create a statement whose {@link StatementEnum} is NOT specified.
-     */
-    BigdataStatement createStatement(Resource s, URI p, Value o);
+    BigdataIRI createURI(String namespace, String localName);
 
     /**
      * Create a statement whose {@link StatementEnum} is NOT specified.
      */
-    BigdataStatement createStatement(Resource s, URI p, Value o, Resource c);
+    BigdataStatement createStatement(Resource s, IRI p, Value o);
+
+    /**
+     * Create a statement whose {@link StatementEnum} is NOT specified.
+     */
+    BigdataStatement createStatement(Resource s, IRI p, Value o, Resource c);
 
     /**
      * Create a statement (core impl). The s,p,o, and the optional c arguments
@@ -158,7 +158,7 @@ public interface BigdataValueFactory extends ValueFactory {
      * @param type
      *            The statement type (optional).
      */
-    BigdataStatement createStatement(Resource s, URI p, Value o,
+    BigdataStatement createStatement(Resource s, IRI p, Value o,
             Resource c, StatementEnum type);
     
     /**
@@ -181,7 +181,7 @@ public interface BigdataValueFactory extends ValueFactory {
      * @param userFlag
      *            The user flag
      */
-    BigdataStatement createStatement(Resource s, URI p, Value o,
+    BigdataStatement createStatement(Resource s, IRI p, Value o,
             Resource c, StatementEnum type, boolean userFlag);
 
     /**
@@ -215,9 +215,9 @@ public interface BigdataValueFactory extends ValueFactory {
     BigdataResource asValue(Resource v);
     
     /**
-     * Strongly typed for {@link URI}s.
+     * Strongly typed for {@link IRI}s.
      */
-    BigdataURI asValue(URI v);
+    BigdataIRI asValue(IRI v);
 
     /**
      * Strongly typed for {@link Literal}s.
@@ -243,10 +243,10 @@ public interface BigdataValueFactory extends ValueFactory {
     /**
      * Get this factory's implementation of rdf:langString
      */
-    BigdataURI getLangStringURI();
+    BigdataIRI getLangStringURI();
 
     /**
      * Get this factory's implementation of xsd:string
      */
-    BigdataURI getXSDStringURI();
+    BigdataIRI getXSDStringURI();
 }

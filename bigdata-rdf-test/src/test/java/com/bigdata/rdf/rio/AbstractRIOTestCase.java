@@ -46,7 +46,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import junit.framework.AssertionFailedError;
 
-import org.openrdf.rio.RDFFormat;
+import org.eclipse.rdf4j.rio.RDFFormat;
 
 import com.bigdata.rdf.load.IStatementBufferFactory;
 import com.bigdata.rdf.model.BigdataStatement;

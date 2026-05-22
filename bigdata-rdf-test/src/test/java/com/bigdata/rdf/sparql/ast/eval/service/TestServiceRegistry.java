@@ -31,15 +31,15 @@ import java.util.concurrent.atomic.AtomicInteger;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.eclipse.jetty.client.HttpClient;
-import org.openrdf.model.URI;
-import org.openrdf.model.impl.URIImpl;
-import org.openrdf.sail.SailException;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.impl.URIImpl;
+import org.eclipse.rdf4j.sail.SailException;
 
 import com.bigdata.bop.engine.QueryEngine;
 import com.bigdata.bop.fed.QueryEngineFactory;
 import com.bigdata.journal.BufferMode;
 import com.bigdata.rdf.axioms.NoAxioms;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.sail.BigdataSail;
@@ -272,11 +272,11 @@ public class TestServiceRegistry extends AbstractBigdataExprBuilderTestCase {
             
             final BigdataValueFactory f = store.getValueFactory();
 
-            final BigdataURI serviceURI1 = f
+            final BigdataIRI serviceURI1 = f
                     .createURI("http://www.bigdata.com/myService/" + getName()
                             + "/" + UUID.randomUUID());
 
-            final BigdataURI serviceURI2 = f
+            final BigdataIRI serviceURI2 = f
                     .createURI("http://www.bigdata.com/myService2/" + getName()
                             + "/" + UUID.randomUUID());
 

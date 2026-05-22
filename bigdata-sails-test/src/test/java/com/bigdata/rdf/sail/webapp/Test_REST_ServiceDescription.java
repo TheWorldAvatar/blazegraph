@@ -25,8 +25,8 @@ package com.bigdata.rdf.sail.webapp;
 
 import junit.framework.Test;
 
-import org.openrdf.model.Graph;
-import org.openrdf.model.ValueFactory;
+import org.eclipse.rdf4j.model.Graph;
+import org.eclipse.rdf4j.model.ValueFactory;
 
 import com.bigdata.journal.IIndexManager;
 import com.bigdata.rdf.sail.webapp.client.RemoteRepository;

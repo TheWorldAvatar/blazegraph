@@ -15,10 +15,10 @@
 */
 package com.bigdata.rdf.graph.impl.ram;
 
-import org.openrdf.model.Resource;
-import org.openrdf.model.Statement;
-import org.openrdf.model.ValueFactory;
-import org.openrdf.rio.RDFHandlerException;
+import org.eclipse.rdf4j.model.Resource;
+import org.eclipse.rdf4j.model.Statement;
+import org.eclipse.rdf4j.model.ValueFactory;
+import org.eclipse.rdf4j.rio.RDFHandlerException;
 
 import com.bigdata.rdf.graph.impl.ram.RAMGASEngine.RAMGraph;
 import com.bigdata.rdf.graph.util.GraphLoader;

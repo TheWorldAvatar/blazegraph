@@ -34,20 +34,20 @@ import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openrdf.model.Resource;
-import org.openrdf.model.Statement;
-import org.openrdf.model.URI;
-import org.openrdf.model.Value;
-import org.openrdf.model.impl.URIImpl;
-import org.openrdf.query.QueryLanguage;
-import org.openrdf.query.TupleQuery;
-import org.openrdf.query.TupleQueryResult;
-import org.openrdf.query.impl.DatasetImpl;
-import org.openrdf.repository.RepositoryException;
-import org.openrdf.repository.RepositoryResult;
-import org.openrdf.rio.RDFHandler;
-import org.openrdf.rio.RDFHandlerException;
-import org.openrdf.rio.helpers.RDFHandlerBase;
+import org.eclipse.rdf4j.model.Resource;
+import org.eclipse.rdf4j.model.Statement;
+import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.Value;
+import org.eclipse.rdf4j.model.impl.URIImpl;
+import org.eclipse.rdf4j.query.QueryLanguage;
+import org.eclipse.rdf4j.query.TupleQuery;
+import org.eclipse.rdf4j.query.TupleQueryResult;
+import org.eclipse.rdf4j.query.impl.DatasetImpl;
+import org.eclipse.rdf4j.repository.RepositoryException;
+import org.eclipse.rdf4j.repository.RepositoryResult;
+import org.eclipse.rdf4j.rio.RDFHandler;
+import org.eclipse.rdf4j.rio.RDFHandlerException;
+import org.eclipse.rdf4j.rio.helpers.RDFHandlerBase;
 
 import com.bigdata.rdf.sail.webapp.client.EncodeDecodeValue;
 import com.bigdata.rdf.sail.webapp.client.MockRemoteRepository;
@@ -67,16 +67,16 @@ public class BigdataSailRemoteRepositoryConnectionTest extends TestCase {
 
 	private final boolean includeInferred = false;
 	private final Resource s = new URIImpl("http://test/s");
-	private final URI p = new URIImpl("http://test/p");
+	private final IRI p = new URIImpl("http://test/p");
 	private final Value o = new URIImpl("http://test/o");
 	private final Resource c = new URIImpl("http://test/c");
-	private final URI defaultGraph1 = new URIImpl("http://test/defaultGraph1");
-	private final URI defaultGraph2 = new URIImpl("http://test/defaultGraph2");
-	private final URI namedGraph1 = new URIImpl("http://test/namedGraph1");
-	private final URI namedGraph2 = new URIImpl("http://test/namedGraph2");
+	private final IRI defaultGraph1 = new URIImpl("http://test/defaultGraph1");
+	private final IRI defaultGraph2 = new URIImpl("http://test/defaultGraph2");
+	private final IRI namedGraph1 = new URIImpl("http://test/namedGraph1");
+	private final IRI namedGraph2 = new URIImpl("http://test/namedGraph2");
 	private final DatasetImpl dataset = new DatasetImpl();
-	private final Set<URI> defaultGraphs = new HashSet<>();
-	private final Set<URI> namedGraphs = new HashSet<>();
+	private final Set<IRI> defaultGraphs = new HashSet<>();
+	private final Set<IRI> namedGraphs = new HashSet<>();
 
 	@Before
     protected void setUp() {

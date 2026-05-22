@@ -25,7 +25,7 @@ package com.bigdata.rdf.sail.webapp;
 
 import junit.framework.Test;
 
-import org.openrdf.query.resultio.BooleanQueryResultFormat;
+import org.eclipse.rdf4j.query.resultio.BooleanQueryResultFormat;
 
 import com.bigdata.journal.IIndexManager;
 import com.bigdata.rdf.sail.webapp.client.IPreparedBooleanQuery;

@@ -34,13 +34,13 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Properties;
 
-import org.openrdf.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
 
 import com.bigdata.rdf.axioms.NoAxioms;
 import com.bigdata.rdf.internal.IV;
 import com.bigdata.rdf.model.BigdataBNode;
 import com.bigdata.rdf.model.BigdataLiteral;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.store.AbstractTripleStore;
@@ -278,13 +278,13 @@ public class TestAddTerms extends AbstractTripleStoreTestCase {
             final BigdataValueFactory f = store.getValueFactory();
 
             // Add two instances of the same reference.
-            final BigdataURI type = f.asValue(RDF.TYPE);
+            final BigdataIRI type = f.asValue(RDF.TYPE);
             terms.add(type);
             terms.add(type);
             assertEquals(2,terms.size());
             
             // Add two instances of the same reference.
-            final BigdataURI largeURI = f.createURI(getVeryLargeURI());
+            final BigdataIRI largeURI = f.createURI(getVeryLargeURI());
             terms.add(largeURI);
             terms.add(largeURI);
             assertEquals(4,terms.size());

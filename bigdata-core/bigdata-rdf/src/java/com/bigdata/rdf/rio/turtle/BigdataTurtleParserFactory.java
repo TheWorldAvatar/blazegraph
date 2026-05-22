@@ -5,10 +5,10 @@
  */
 package com.bigdata.rdf.rio.turtle;
 
-import org.openrdf.rio.RDFFormat;
-import org.openrdf.rio.RDFParser;
-import org.openrdf.rio.RDFParserFactory;
-import org.openrdf.rio.turtle.TurtleParser;
+import org.eclipse.rdf4j.rio.RDFFormat;
+import org.eclipse.rdf4j.rio.RDFParser;
+import org.eclipse.rdf4j.rio.RDFParserFactory;
+import org.eclipse.rdf4j.rio.turtle.TurtleParser;
 
 import com.bigdata.rdf.ServiceProviderHook;
 

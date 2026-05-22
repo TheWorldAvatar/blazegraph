@@ -47,7 +47,7 @@ Modifications:
 
 package com.bigdata.rdf.model;
 
-import org.openrdf.model.Literal;
+import org.eclipse.rdf4j.model.Literal;
 
 /**
  * A {@link Literal} that exposes the internal term identifier.
@@ -60,6 +60,6 @@ public interface BigdataLiteral extends Literal, BigdataValue {
     /**
      * Specialized return type.
      */
-    public BigdataURI getDatatype();
+    public BigdataIRI getDatatype();
     
 }

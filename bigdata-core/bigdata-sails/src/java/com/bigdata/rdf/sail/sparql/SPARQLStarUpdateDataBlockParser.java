@@ -24,14 +24,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.openrdf.model.Statement;
-import org.openrdf.model.Value;
-import org.openrdf.model.ValueFactory;
-import org.openrdf.model.impl.ValueFactoryImpl;
-import org.openrdf.repository.sail.helpers.SPARQLUpdateDataBlockParser;
-import org.openrdf.rio.RDFHandlerException;
-import org.openrdf.rio.RDFParseException;
-import org.openrdf.rio.helpers.StatementCollector;
+import org.eclipse.rdf4j.model.Statement;
+import org.eclipse.rdf4j.model.Value;
+import org.eclipse.rdf4j.model.ValueFactory;
+import org.eclipse.rdf4j.model.impl.ValueFactoryImpl;
+import org.eclipse.rdf4j.repository.sail.helpers.SPARQLUpdateDataBlockParser;
+import org.eclipse.rdf4j.rio.RDFHandlerException;
+import org.eclipse.rdf4j.rio.RDFParseException;
+import org.eclipse.rdf4j.rio.helpers.StatementCollector;
 
 import com.bigdata.rdf.model.BigdataStatement;
 import com.bigdata.rdf.model.BigdataValueFactory;
@@ -185,7 +185,7 @@ public class SPARQLStarUpdateDataBlockParser extends SPARQLUpdateDataBlockParser
 
 	/**
 	 * Overriding setBaseURI to keep base URI value for SPARQL* parsing as
-	 * org.openrdf.rio.helpers.RDFParserBase.baseURI is a private field
+	 * org.eclipse.rdf4j.rio.helpers.RDFParserBase.baseURI is a private field
 	 */
 	@Override
 	protected void setBaseURI(String uri) {

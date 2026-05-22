@@ -32,9 +32,9 @@ import java.util.Properties;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.rio.RDFParser;
-import org.openrdf.rio.RDFParser.DatatypeHandling;
-import org.openrdf.rio.helpers.RDFParserBase;
+import org.eclipse.rdf4j.rio.RDFParser;
+import org.eclipse.rdf4j.rio.RDFParser.DatatypeHandling;
+import org.eclipse.rdf4j.rio.helpers.RDFParserBase;
 
 /**
  * Instances of this class may be used to configure options on an
@@ -210,7 +210,7 @@ public class RDFParserOptions implements Serializable, IRDFParserOptions {
     }
 
     /* (non-Javadoc)
-     * @see com.bigdata.rdf.rio.IRDFParserOptions#setDatatypeHandling(org.openrdf.rio.RDFParser.DatatypeHandling)
+     * @see com.bigdata.rdf.rio.IRDFParserOptions#setDatatypeHandling(org.eclipse.rdf4j.rio.RDFParser.DatatypeHandling)
      */
     @Override
     synchronized public void setDatatypeHandling(

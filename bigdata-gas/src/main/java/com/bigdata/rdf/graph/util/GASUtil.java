@@ -18,8 +18,8 @@ package com.bigdata.rdf.graph.util;
 import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
 
-import org.openrdf.model.Statement;
-import org.openrdf.model.Value;
+import org.eclipse.rdf4j.model.Statement;
+import org.eclipse.rdf4j.model.Value;
 
 import cutthecrap.utils.striterators.EmptyIterator;
 

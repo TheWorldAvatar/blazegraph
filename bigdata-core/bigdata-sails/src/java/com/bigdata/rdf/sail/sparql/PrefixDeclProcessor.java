@@ -17,15 +17,15 @@ import java.util.regex.Pattern;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.model.vocabulary.DC;
-import org.openrdf.model.vocabulary.FN;
-import org.openrdf.model.vocabulary.FOAF;
-import org.openrdf.model.vocabulary.OWL;
-import org.openrdf.model.vocabulary.RDF;
-import org.openrdf.model.vocabulary.RDFS;
-import org.openrdf.model.vocabulary.SESAME;
-import org.openrdf.model.vocabulary.XMLSchema;
-import org.openrdf.query.MalformedQueryException;
+import org.eclipse.rdf4j.model.vocabulary.DC;
+import org.eclipse.rdf4j.model.vocabulary.FN;
+import org.eclipse.rdf4j.model.vocabulary.FOAF;
+import org.eclipse.rdf4j.model.vocabulary.OWL;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.vocabulary.RDFS;
+import org.eclipse.rdf4j.model.vocabulary.SESAME;
+import org.eclipse.rdf4j.model.vocabulary.XMLSchema;
+import org.eclipse.rdf4j.query.MalformedQueryException;
 
 import com.bigdata.rdf.graph.impl.bd.GASService;
 import com.bigdata.rdf.internal.XSD;
@@ -88,7 +88,7 @@ public class PrefixDeclProcessor {
     static {
         defaultDecls.put("rdf", RDF.NAMESPACE);
         defaultDecls.put("rdfs", RDFS.NAMESPACE);
-        defaultDecls.put("sesame", SESAME.NAMESPACE);
+        defaultDecls.put("rdf4j", SESAME.NAMESPACE);
         defaultDecls.put("owl", OWL.NAMESPACE);
         defaultDecls.put("xsd", XMLSchema.NAMESPACE);
         defaultDecls.put("fn", FN.NAMESPACE);
@@ -138,7 +138,7 @@ public class PrefixDeclProcessor {
         // insert some default prefixes (if not explicitly defined in the query)
 //      insertDefaultPrefix(prefixMap, "rdf", RDF.NAMESPACE);
 //      insertDefaultPrefix(prefixMap, "rdfs", RDFS.NAMESPACE);
-//      insertDefaultPrefix(prefixMap, "sesame", SESAME.NAMESPACE);
+//      insertDefaultPrefix(prefixMap, "rdf4j", SESAME.NAMESPACE);
 //      insertDefaultPrefix(prefixMap, "owl", OWL.NAMESPACE);
 //      insertDefaultPrefix(prefixMap, "xsd", XMLSchema.NAMESPACE);
 //      insertDefaultPrefix(prefixMap, "fn", FN.NAMESPACE);
@@ -302,8 +302,8 @@ public class PrefixDeclProcessor {
                 prefixMap.put("fn", namespace = FN.NAMESPACE);
             } else if (prefix.equals("owl")) {
                 prefixMap.put("owl", namespace = OWL.NAMESPACE);
-            } else if (prefix.equals("sesame")) {
-                prefixMap.put("sesame", namespace = SESAME.NAMESPACE);
+            } else if (prefix.equals("rdf4j")) {
+                prefixMap.put("rdf4j", namespace = SESAME.NAMESPACE);
             } else if (prefix.equals("gas")) {
                 prefixMap.put("gas", namespace = GASService.Options.NAMESPACE);
             } else {

@@ -29,9 +29,9 @@ package com.bigdata.rdf.sparql.ast;
 
 import java.util.Map;
 
-import org.openrdf.model.URI;
-import org.openrdf.rio.RDFParser;
-import org.openrdf.rio.helpers.RDFParserBase;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.rio.RDFParser;
+import org.eclipse.rdf4j.rio.helpers.RDFParserBase;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.rdf.rio.IRDFParserOptions;

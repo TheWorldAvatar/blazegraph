@@ -22,11 +22,12 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 package com.bigdata.blueprints;
 
-import org.openrdf.model.URI;
-import org.openrdf.model.impl.URIImpl;
-import org.openrdf.model.impl.ValueFactoryImpl;
-import org.openrdf.model.vocabulary.RDF;
-import org.openrdf.model.vocabulary.RDFS;
+import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
+import org.eclipse.rdf4j.model.impl.URIImpl;
+import org.eclipse.rdf4j.model.impl.ValueFactoryImpl;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.vocabulary.RDFS;
 
 import com.bigdata.rdf.store.BD;
 
@@ -56,14 +57,14 @@ public class BigdataRDFFactory extends DefaultBlueprintsValueFactory {
 	public static final String EDGE_NAMESPACE = "http://www.bigdata.com/rdf/graph/edge/";
 	
     /**
-     * URI used to represent a Vertex.
+     * IRI used to represent a Vertex.
      */
-    public static final URI VERTEX = new URIImpl(BD.NAMESPACE + "Vertex");
+    public static final IRI VERTEX = SimpleValueFactory.getInstance().createIRI(BD.NAMESPACE, "Vertex");
     
     /**
-     * URI used to represent a Edge.
+     * IRI used to represent a Edge.
      */
-    public static final URI EDGE = new URIImpl(BD.NAMESPACE + "Edge");
+    public static final IRI EDGE = SimpleValueFactory.getInstance().createIRI(BD.NAMESPACE, "Edge");
     
     public static BigdataRDFFactory INSTANCE = new BigdataRDFFactory();
     
@@ -71,7 +72,7 @@ public class BigdataRDFFactory extends DefaultBlueprintsValueFactory {
 	 * Construct an instance with a simple Sesame ValueFactoryImpl.
 	 */
 	private BigdataRDFFactory() {
-		super(new ValueFactoryImpl(), 
+		super(SimpleValueFactory.getInstance(), 
 		        GRAPH_NAMESPACE, VERTEX_NAMESPACE, EDGE_NAMESPACE,
 		        RDF.TYPE, VERTEX, EDGE, RDFS.LABEL);
 	}

@@ -26,10 +26,10 @@ package com.bigdata.rdf.internal;
 
 import java.util.Iterator;
 
-import org.openrdf.model.URI;
+import org.eclipse.rdf4j.model.URI;
 
 import com.bigdata.rdf.internal.impl.BlobIV;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 
 /**
@@ -51,7 +51,7 @@ public interface IExtensionFactory {
      * 
      * @param resolver
      *            The interface used to resolve an {@link URI} to an
-     *            {@link BigdataURI}.
+     *            {@link BigdataIRI}.
      * @param config
      *            The {@link ILexiconConfiguration}.
      */

@@ -27,22 +27,22 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 package com.bigdata.rdf.internal;
 
-import org.openrdf.model.BNode;
-import org.openrdf.model.Literal;
-import org.openrdf.model.URI;
-import org.openrdf.model.Value;
+import org.eclipse.rdf4j.model.BNode;
+import org.eclipse.rdf4j.model.Literal;
+import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.Value;
 
 import com.bigdata.rdf.internal.impl.AbstractIV;
 
 /**
  * Value Type Enumeration (IVTE) is a class with methods for interpreting and 
- * setting the bit flags used to identify the type of an RDF Value (URI, 
+ * setting the bit flags used to identify the type of an RDF Value (IRI, 
  * Literal, Blank Node, SID, etc).
  */
 public enum VTE {
 
-    /** A URI. */
-    URI((byte) 0x00),
+    /** A IRI. */
+    IRI((byte) 0x00),
     
     /** A blank node. */
     BNODE((byte) 0x01),
@@ -84,14 +84,14 @@ public enum VTE {
 	 */
     static public VTE valueOf(final byte b) {
 		/*
-		 * Note: Java does not permit the construction URI.v in the cases of the
+		 * Note: Java does not permit the construction IRI.v in the cases of the
 		 * switch (it is not interpreted as a constant). Therefore the switch
 		 * cases are hard wired to the values specified for each of the 4 RDF
 		 * Value types above.
 		 */
         switch (b & 0x03) { // mask off everything but the low 2 bits.
         case 0x00:
-            return URI;
+            return IRI;
         case 0x01:
             return BNODE;
         case 0x02:
@@ -108,7 +108,7 @@ public enum VTE {
      * This is used in various internal toString() implementations.
      */
     public final char getCharCode() {
-        if (v == URI.v)
+        if (v == IRI.v)
             return 'U';
         else if (v == LITERAL.v)
             return 'L';
@@ -122,7 +122,7 @@ public enum VTE {
     static public final VTE valueOf(char c) {
         switch(c) {
         case 'U':
-            return URI;
+            return IRI;
         case 'L':
             return LITERAL;
         case 'B':
@@ -135,11 +135,11 @@ public enum VTE {
     }
 
     /**
-     * Determine the VTE based on the type of Value - URI, Literal, or BNode.
+     * Determine the VTE based on the type of Value - IRI, Literal, or BNode.
      */
     static public final VTE valueOf(final Value v) {
-    	if (v instanceof URI)
-            return URI;
+    	if (v instanceof IRI)
+            return IRI;
     	if (v instanceof Literal)
             return LITERAL;
     	if (v instanceof BNode)

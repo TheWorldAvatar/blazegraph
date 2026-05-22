@@ -15,7 +15,7 @@
 */
 package com.bigdata.rdf.graph;
 
-import org.openrdf.model.Value;
+import org.eclipse.rdf4j.model.Value;
 
 /**
  * Interface schedules a vertex for execution. This interface is exposed to the

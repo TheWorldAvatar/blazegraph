@@ -29,8 +29,8 @@ package com.bigdata.rdf.sail;
 
 import java.util.Map;
 
-import org.openrdf.query.algebra.TupleExpr;
-import org.openrdf.query.parser.ParsedGraphQuery;
+import org.eclipse.rdf4j.query.algebra.TupleExpr;
+import org.eclipse.rdf4j.query.parser.ParsedGraphQuery;
 
 /**
  * 

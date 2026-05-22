@@ -32,7 +32,7 @@ import java.io.ObjectInput;
 import java.io.ObjectOutput;
 import java.util.Properties;
 
-import org.openrdf.model.Value;
+import org.eclipse.rdf4j.model.Value;
 
 import com.bigdata.btree.DefaultTupleSerializer;
 import com.bigdata.btree.ITuple;

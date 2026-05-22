@@ -6,12 +6,12 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import org.junit.Test;
-import org.openrdf.model.BNode;
-import org.openrdf.model.Statement;
-import org.openrdf.rio.RDFHandlerException;
-import org.openrdf.rio.RDFParseException;
-import org.openrdf.rio.RDFParser;
-import org.openrdf.rio.helpers.RDFHandlerBase;
+import org.eclipse.rdf4j.model.BNode;
+import org.eclipse.rdf4j.model.Statement;
+import org.eclipse.rdf4j.rio.RDFHandlerException;
+import org.eclipse.rdf4j.rio.RDFParseException;
+import org.eclipse.rdf4j.rio.RDFParser;
+import org.eclipse.rdf4j.rio.helpers.RDFHandlerBase;
 
 import com.bigdata.rdf.rio.ntriples.BigdataNTriplesParser;
 import com.bigdata.rdf.rio.turtle.BigdataTurtleParser;

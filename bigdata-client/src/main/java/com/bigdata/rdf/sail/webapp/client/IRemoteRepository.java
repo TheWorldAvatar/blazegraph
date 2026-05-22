@@ -25,10 +25,10 @@ package com.bigdata.rdf.sail.webapp.client;
 
 import java.util.UUID;
 
-import org.openrdf.model.URI;
-import org.openrdf.model.Value;
-import org.openrdf.query.GraphQueryResult;
-import org.openrdf.query.TupleQueryResult;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.Value;
+import org.eclipse.rdf4j.query.GraphQueryResult;
+import org.eclipse.rdf4j.query.TupleQueryResult;
 
 /**
  * Interface for the Java API to the NanoSparqlServer. See 

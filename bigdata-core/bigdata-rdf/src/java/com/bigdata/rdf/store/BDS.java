@@ -28,8 +28,9 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 package com.bigdata.rdf.store;
 
-import org.openrdf.model.URI;
-import org.openrdf.model.impl.URIImpl;
+import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
+import org.eclipse.rdf4j.model.impl.URIImpl;
 
 import com.bigdata.rdf.sparql.ast.eval.SliceServiceFactory;
 
@@ -91,7 +92,7 @@ public interface BDS {
      * Note: The context position should be unbound when using statement
      * identifiers.
      */
-    final URI SEARCH = new URIImpl(NAMESPACE + "search");
+    final IRI SEARCH = SimpleValueFactory.getInstance().createIRI(NAMESPACE, "search");
     
     /**
      * Magic predicate used to query for free text search metadata, reporting
@@ -116,7 +117,7 @@ public interface BDS {
      * @see #MIN_RELEVANCE
      * @see #MAX_RELEVANCE
      */
-    final URI RELEVANCE = new URIImpl(NAMESPACE + "relevance");
+    final IRI RELEVANCE = SimpleValueFactory.getInstance().createIRI(NAMESPACE, "relevance");
     
     /**
      * Magic predicate used to query for free text search metadata, reporting
@@ -140,7 +141,7 @@ public interface BDS {
      * @see #MIN_RANK
      * @see #MAX_RANK
      */
-    final URI RANK = new URIImpl(NAMESPACE + "rank");
+    final IRI RANK = SimpleValueFactory.getInstance().createIRI(NAMESPACE, "rank");
     
     /**
      * Magic predicate used to limit the maximum rank of the free text search
@@ -166,7 +167,7 @@ public interface BDS {
      * feed the next "page" of free text results by changing the values for the
      * {@link #MIN_RANK} AND {@link #MAX_RANK} query hints.
      */
-    final URI MAX_RANK = new URIImpl(NAMESPACE + "maxRank");
+    final IRI MAX_RANK = SimpleValueFactory.getInstance().createIRI(NAMESPACE, "maxRank");
 
     /**
      * The default for {@link #MAX_RANK}.
@@ -191,7 +192,7 @@ public interface BDS {
      * 
      * The default is {@value #DEFAULT_MIN_RANK}.
      */
-    final URI MIN_RANK = new URIImpl(NAMESPACE + "minRank");
+    final IRI MIN_RANK = SimpleValueFactory.getInstance().createIRI(NAMESPACE, "minRank");
 
     /**
      * The default for {@link #MIN_RANK} is 1, full text search results will
@@ -219,7 +220,7 @@ public interface BDS {
      * specify a minimum relevance of ZERO (0.0) as this can drag in way too
      * many unrelated results. The default is {@value #DEFAULT_MIN_RELEVANCE}.
      */
-    final URI MIN_RELEVANCE = new URIImpl(NAMESPACE + "minRelevance");
+    final IRI MIN_RELEVANCE = SimpleValueFactory.getInstance().createIRI(NAMESPACE, "minRelevance");
 
     final double DEFAULT_MIN_RELEVANCE = 0.0d;
 
@@ -244,7 +245,7 @@ public interface BDS {
      * many unrelated results. The default maximum relevance is
      * {@value #DEFAULT_MAX_RELEVANCE}.
      */
-    final URI MAX_RELEVANCE = new URIImpl(NAMESPACE + "maxRelevance");
+    final IRI MAX_RELEVANCE = SimpleValueFactory.getInstance().createIRI(NAMESPACE, "maxRelevance");
 
     /**
      * The default value for {@link #MAX_RELEVANCE} unless overridden.
@@ -269,7 +270,7 @@ public interface BDS {
      * 
      * </pre>
      */
-    final URI MATCH_ALL_TERMS = new URIImpl(NAMESPACE + "matchAllTerms");
+    final IRI MATCH_ALL_TERMS = SimpleValueFactory.getInstance().createIRI(NAMESPACE, "matchAllTerms");
 
     final boolean DEFAULT_MATCH_ALL_TERMS = false;
     
@@ -292,7 +293,7 @@ public interface BDS {
      * This operation will be rather expensive as it will require materializing
      * all the hits to check their values.
      */
-    final URI MATCH_EXACT = new URIImpl(NAMESPACE + "matchExact");
+    final IRI MATCH_EXACT = SimpleValueFactory.getInstance().createIRI(NAMESPACE, "matchExact");
 
     final boolean DEFAULT_MATCH_EXACT = false;
     
@@ -315,7 +316,7 @@ public interface BDS {
      * This operation will be rather expensive as it will require materializing
      * all the hits to check their values.
      */
-    final URI MATCH_REGEX = new URIImpl(NAMESPACE + "matchRegex");
+    final IRI MATCH_REGEX = SimpleValueFactory.getInstance().createIRI(NAMESPACE, "matchRegex");
 
     final String DEFAULT_MATCH_REGEX = null;
     
@@ -361,7 +362,7 @@ public interface BDS {
      *      prefixMatch does not work in full text search </a>
      */
     @Deprecated
-    final URI PREFIX_MATCH = new URIImpl(NAMESPACE + "prefixMatch");
+    final IRI PREFIX_MATCH = SimpleValueFactory.getInstance().createIRI(NAMESPACE, "prefixMatch");
 
     /**
      * @deprecated This option is now invoked using a wildcard.
@@ -390,7 +391,7 @@ public interface BDS {
 	 *             BZLG-1548, BLZG-563.
 	 */
     @Deprecated
-    final URI SUBJECT_SEARCH = new URIImpl(NAMESPACE + "subjectSearch");
+    final IRI SUBJECT_SEARCH = SimpleValueFactory.getInstance().createIRI(NAMESPACE, "subjectSearch");
 
     @Deprecated
     final boolean DEFAULT_SUBJECT_SEARCH = false;
@@ -399,7 +400,7 @@ public interface BDS {
      * Magic predicate used for the "search in search" service. Also serves as
      * the identifier for the service itself.
      */
-    final URI SEARCH_IN_SEARCH = new URIImpl(NAMESPACE + "searchInSearch");
+    final IRI SEARCH_IN_SEARCH = SimpleValueFactory.getInstance().createIRI(NAMESPACE, "searchInSearch");
 
     /**
      * Magic predicate used to query for free text search metadata to set a
@@ -420,7 +421,7 @@ public interface BDS {
      * <p>
      * Timeout specified in milliseconds.
      */
-    final URI SEARCH_TIMEOUT = new URIImpl(NAMESPACE + "searchTimeout");
+    final IRI SEARCH_TIMEOUT = SimpleValueFactory.getInstance().createIRI(NAMESPACE, "searchTimeout");
 
     /**
      * The default timeout for a free text search (milliseconds).
@@ -434,6 +435,6 @@ public interface BDS {
      * the hits into an array.  This is only possible if matchExact == false
      * and matchRegex == null.
      */
-    final URI RANGE_COUNT = new URIImpl(NAMESPACE + "rangeCount");
+    final IRI RANGE_COUNT = SimpleValueFactory.getInstance().createIRI(NAMESPACE, "rangeCount");
 
 }

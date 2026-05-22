@@ -27,10 +27,10 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 package com.bigdata.rdf.sparql.ast.optimizers;
 
-import org.openrdf.query.algebra.StatementPattern.Scope;
+import org.eclipse.rdf4j.query.algebra.StatementPattern.Scope;
 
 import com.bigdata.bop.IBindingSet;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.sparql.ast.QueryNodeWithBindingSet;
 import com.bigdata.rdf.sparql.ast.DatasetNode;
 import com.bigdata.rdf.sparql.ast.FilterNode;
@@ -236,7 +236,7 @@ public class ASTGraphGroupOptimizer implements IASTOptimizer {
                  */
 
                 assertGraphInNamedDataset(
-                        (BigdataURI) ((TermNode) innerGraphContext).getValue(),
+                        (BigdataIRI) ((TermNode) innerGraphContext).getValue(),
                         dataSet);
 
             }
@@ -463,7 +463,7 @@ public class ASTGraphGroupOptimizer implements IASTOptimizer {
      * @param dataSet
      *            The dataset.
      */
-    private void assertGraphInNamedDataset(final BigdataURI uri,
+    private void assertGraphInNamedDataset(final BigdataIRI uri,
             final DatasetNode dataSet) {
 
         if (dataSet == null) {

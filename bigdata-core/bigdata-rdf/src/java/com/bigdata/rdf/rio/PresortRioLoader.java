@@ -23,13 +23,13 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 package com.bigdata.rdf.rio;
 
-import org.openrdf.model.Resource;
-import org.openrdf.model.Statement;
-import org.openrdf.model.Value;
-import org.openrdf.rio.RDFHandler;
-import org.openrdf.rio.RDFHandlerException;
+import org.eclipse.rdf4j.model.Resource;
+import org.eclipse.rdf4j.model.Statement;
+import org.eclipse.rdf4j.model.Value;
+import org.eclipse.rdf4j.rio.RDFHandler;
+import org.eclipse.rdf4j.rio.RDFHandlerException;
 
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 
 /**
  * Statement handler for the RIO RDF Parser that writes on a
@@ -59,7 +59,7 @@ public class PresortRioLoader extends BasicRioLoader implements RDFHandler
      * The value that will be used for the graph/context co-ordinate when
      * loading data represented in a triple format into a quad store.
      */
-    private BigdataURI defaultGraphURI = null ;
+    private BigdataIRI defaultGraphURI = null ;
 
     /**
      * Sets up parser to load RDF.

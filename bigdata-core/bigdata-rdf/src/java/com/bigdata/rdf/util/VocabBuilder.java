@@ -42,16 +42,16 @@ import java.util.zip.ZipInputStream;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.model.Statement;
-import org.openrdf.model.URI;
-import org.openrdf.model.Value;
-import org.openrdf.model.vocabulary.RDF;
-import org.openrdf.rio.RDFFormat;
-import org.openrdf.rio.RDFHandlerException;
-import org.openrdf.rio.RDFParser;
-import org.openrdf.rio.RDFParserFactory;
-import org.openrdf.rio.RDFParserRegistry;
-import org.openrdf.rio.helpers.RDFHandlerBase;
+import org.eclipse.rdf4j.model.Statement;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.Value;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.rio.RDFFormat;
+import org.eclipse.rdf4j.rio.RDFHandlerException;
+import org.eclipse.rdf4j.rio.RDFParser;
+import org.eclipse.rdf4j.rio.RDFParserFactory;
+import org.eclipse.rdf4j.rio.RDFParserRegistry;
+import org.eclipse.rdf4j.rio.helpers.RDFHandlerBase;
 
 import com.bigdata.rdf.ServiceProviderHook;
 import com.bigdata.rdf.rio.IRDFParserOptions;
@@ -343,8 +343,8 @@ public class VocabBuilder {
 			System.out.println("import java.util.Arrays;");
 			System.out.println("import java.util.Collections;");
 			System.out.println("import java.util.Iterator;");
-			System.out.println("import org.openrdf.model.URI;");
-			System.out.println("import org.openrdf.model.impl.URIImpl;");
+			System.out.println("import org.eclipse.rdf4j.model.URI;");
+			System.out.println("import org.eclipse.rdf4j.model.impl.URIImpl;");
 			System.out.println("import com.bigdata.rdf.vocab.VocabularyDecl;");
 
 			System.out.println("public class "+className+" implements VocabularyDecl {");

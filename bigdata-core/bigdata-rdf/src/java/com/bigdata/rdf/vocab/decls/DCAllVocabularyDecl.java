@@ -29,7 +29,7 @@ package com.bigdata.rdf.vocab.decls;
 
 import java.util.Iterator;
 
-import org.openrdf.model.URI;
+import org.eclipse.rdf4j.model.URI;
 
 import com.bigdata.rdf.vocab.VocabularyDecl;
 

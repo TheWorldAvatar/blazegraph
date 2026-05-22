@@ -1,6 +1,6 @@
 package com.bigdata.rdf.internal.constraints;
 
-import org.openrdf.model.Literal;
+import org.eclipse.rdf4j.model.Literal;
 
 import com.bigdata.rdf.internal.IV;
 import com.bigdata.rdf.internal.constraints.MathBOp.MathOp;

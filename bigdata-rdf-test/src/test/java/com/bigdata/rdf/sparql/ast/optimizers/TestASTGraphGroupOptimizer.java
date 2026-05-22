@@ -27,12 +27,12 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 package com.bigdata.rdf.sparql.ast.optimizers;
 
-import org.openrdf.query.MalformedQueryException;
-import org.openrdf.query.algebra.StatementPattern.Scope;
+import org.eclipse.rdf4j.query.MalformedQueryException;
+import org.eclipse.rdf4j.query.algebra.StatementPattern.Scope;
 
 import com.bigdata.bop.BOpUtility;
 import com.bigdata.bop.Constant;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.sail.sparql.Bigdata2ASTSPARQLParser;
@@ -111,9 +111,9 @@ public class TestASTGraphGroupOptimizer extends
          * the verify it using equals().
          */
         final BigdataValueFactory f = store.getValueFactory();
-        final BigdataURI p = f.createURI("http://example.org/p");
-        final BigdataURI p2= f.createURI("http://example.org/p2");
-        final BigdataURI o = f.createURI("http://example.org/o");
+        final BigdataIRI p = f.createURI("http://example.org/p");
+        final BigdataIRI p2= f.createURI("http://example.org/p2");
+        final BigdataIRI o = f.createURI("http://example.org/o");
         final BigdataValue[] values = new BigdataValue[] { p, p2, o };
         store.getLexiconRelation()
                 .addTerms(values, values.length, false/* readOnly */);
@@ -210,9 +210,9 @@ public class TestASTGraphGroupOptimizer extends
         * the verify it using equals().
         */
        final BigdataValueFactory f = store.getValueFactory();
-       final BigdataURI p = f.createURI("http://example.org/p");
-       final BigdataURI p2= f.createURI("http://example.org/p2");
-       final BigdataURI o = f.createURI("http://example.org/o");
+       final BigdataIRI p = f.createURI("http://example.org/p");
+       final BigdataIRI p2= f.createURI("http://example.org/p2");
+       final BigdataIRI o = f.createURI("http://example.org/o");
        final BigdataValue[] values = new BigdataValue[] { p, p2, o };
        store.getLexiconRelation()
                .addTerms(values, values.length, false/* readOnly */);

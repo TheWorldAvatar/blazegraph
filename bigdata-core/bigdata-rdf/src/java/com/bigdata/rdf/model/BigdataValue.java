@@ -47,7 +47,7 @@ Modifications:
 
 package com.bigdata.rdf.model;
 
-import org.openrdf.model.Value;
+import org.eclipse.rdf4j.model.Value;
 
 import com.bigdata.bop.IElement;
 import com.bigdata.rdf.internal.IV;

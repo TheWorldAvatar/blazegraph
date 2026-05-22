@@ -38,6 +38,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Properties;
 import java.util.Set;
 import java.util.UUID;
@@ -748,7 +749,7 @@ public class FullTextIndex<V extends Comparable<V>> extends AbstractRelation {
      * 
      * @return The token analyzer best suited to the indicated language family.
      */
-    protected Analyzer getAnalyzer(final String languageCode, final boolean filterStopwords) {
+    protected Analyzer getAnalyzer(final Optional<String> languageCode, final boolean filterStopwords) {
 
         return analyzerFactory.getAnalyzer(languageCode, filterStopwords);
         
@@ -772,7 +773,7 @@ public class FullTextIndex<V extends Comparable<V>> extends AbstractRelation {
      * Uses a default filterStopwords value of <code>true</code>.
      */
     public void index(final TokenBuffer<V> buffer, final V docId,
-            final int fieldId, final String languageCode, final Reader r) {
+            final int fieldId, final Optional<String> languageCode, final Reader r) {
     	
     	index(buffer, docId, fieldId, languageCode, r, true/* filterStopwords */);
     	
@@ -808,7 +809,7 @@ public class FullTextIndex<V extends Comparable<V>> extends AbstractRelation {
      * @see TokenBuffer#flush()
      */
     public void index(final TokenBuffer<V> buffer, final V docId,
-            final int fieldId, final String languageCode, final Reader r,
+            final int fieldId, final Optional<String> languageCode, final Reader r,
             final boolean filterStopwords) {
 
         /*
@@ -873,7 +874,7 @@ public class FullTextIndex<V extends Comparable<V>> extends AbstractRelation {
      * 
      * @return The extracted token stream.
      */
-    protected TokenStream getTokenStream(final String languageCode, 
+    protected TokenStream getTokenStream(final Optional<String> languageCode, 
     		final Reader r, final boolean filterStopwords) {
 
         /*
@@ -1027,7 +1028,7 @@ public class FullTextIndex<V extends Comparable<V>> extends AbstractRelation {
     protected TermFrequencyData<V> tokenize(final FullTextQuery query) {
     	
 		final String q = query.getQuery();
-		final String languageCode = query.getLanguageCode(); 
+		final Optional<String> languageCode = query.getLanguageCode(); 
 		final boolean prefixMatch = query.isPrefixMatch();
 
         // tokenize the query.
@@ -1075,7 +1076,7 @@ public class FullTextIndex<V extends Comparable<V>> extends AbstractRelation {
     public Hit<V>[] _search(final FullTextQuery query) {
     	
 		final String queryStr = query.getQuery();
-		final String languageCode = query.getLanguageCode(); 
+		final Optional<String> languageCode = query.getLanguageCode(); 
 		final boolean prefixMatch = query.isPrefixMatch();
         final double minCosine = query.getMinCosine();
         final double maxCosine = query.getMaxCosine();

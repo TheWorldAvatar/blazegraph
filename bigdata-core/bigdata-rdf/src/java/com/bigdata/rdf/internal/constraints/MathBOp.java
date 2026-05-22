@@ -36,7 +36,7 @@ import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.model.Literal;
+import org.eclipse.rdf4j.model.Literal;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.IBindingSet;
@@ -88,7 +88,7 @@ final public class MathBOp extends IVValueExpression
 		CEIL,
 		FLOOR;
 
-		public static MathOp valueOf(org.openrdf.query.algebra.MathExpr.MathOp op) {
+		public static MathOp valueOf(org.eclipse.rdf4j.query.algebra.MathExpr.MathOp op) {
 			switch(op) {
 			case PLUS: return MathOp.PLUS;
 			case MINUS: return MathOp.MINUS;

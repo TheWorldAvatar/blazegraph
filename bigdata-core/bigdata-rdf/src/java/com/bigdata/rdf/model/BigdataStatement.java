@@ -47,7 +47,7 @@ Modifications:
 
 package com.bigdata.rdf.model;
 
-import org.openrdf.model.Statement;
+import org.eclipse.rdf4j.model.Statement;
 
 import com.bigdata.rdf.spo.ISPO;
 
@@ -67,7 +67,7 @@ public interface BigdataStatement extends Statement, ISPO {
     /**
      * Specialized return type.
      */
-    public BigdataURI getPredicate();
+    public BigdataIRI getPredicate();
     
     /**
      * Specialized return type.

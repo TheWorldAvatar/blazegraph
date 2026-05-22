@@ -603,7 +603,7 @@ public class TestTCK extends AbstractDataDrivenSPARQLTestCase {
     }
 
     /**
-     * This is sesame TCK test <code>sparql11-subquery-04</code>. We picked it
+     * This is rdf4j TCK test <code>sparql11-subquery-04</code>. We picked it
      * up with Sesame 2.6.3. It fails in the TCK run, but it appears to be Ok
      * when run at this layer.
      * <p>

@@ -37,8 +37,8 @@ import org.apache.logging.log4j.Logger;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
-import org.openrdf.model.URI;
-import org.openrdf.model.impl.URIImpl;
+import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.impl.URIImpl;
 
 import com.bigdata.rdf.internal.impl.extensions.InvalidGeoSpatialDatatypeConfigurationError;
 
@@ -68,7 +68,7 @@ public class GeoSpatialConfig implements Serializable {
 
     
     // the default datatype for querying
-    private URI defaultDatatype;
+    private IRI defaultDatatype;
 
     
     public GeoSpatialConfig(final List<String> geoSpatialDatatypeConfigs, final String defaultDatatype) {
@@ -81,12 +81,12 @@ public class GeoSpatialConfig implements Serializable {
                 this.defaultDatatype = new URIImpl(defaultDatatype);
             } catch (Exception e) {
                 throw new InvalidGeoSpatialDatatypeConfigurationError(
-                    "Invalid default datatype (" + defaultDatatype + ") does not represent a URI.");
+                    "Invalid default datatype (" + defaultDatatype + ") does not represent a IRI.");
             }
             
             boolean isRegistered = false;
             for (final GeoSpatialDatatypeConfiguration config : datatypeConfigs) {
-                isRegistered |= config.getUri().equals(this.defaultDatatype);
+                isRegistered |= config.getIri().equals(this.defaultDatatype);
             }
 
             if (!isRegistered) {
@@ -144,13 +144,13 @@ public class GeoSpatialConfig implements Serializable {
             }
            
             // validate that there are no duplicate URIs used for the datatypeConfigs
-            final Set<URI> uris = new HashSet<URI>();
+            final Set<IRI> uris = new HashSet<IRI>();
             for (int i=0; i<datatypeConfigs.size(); i++) {
                 
-                final URI curUri = datatypeConfigs.get(i).getUri();
+                final IRI curUri = datatypeConfigs.get(i).getIri();
                 
                 if (uris.contains(curUri)) {
-                    throw new IllegalArgumentException("Duplicate URI used for geospatial datatype config: " + curUri);
+                    throw new IllegalArgumentException("Duplicate IRI used for geospatial datatype config: " + curUri);
                 }
                 
                 uris.add(curUri);
@@ -159,10 +159,10 @@ public class GeoSpatialConfig implements Serializable {
         }
     }
    
-    public GeoSpatialDatatypeConfiguration getConfigurationForDatatype(URI datatypeUri) {
+    public GeoSpatialDatatypeConfiguration getConfigurationForDatatype(IRI datatypeUri) {
         for (int i=0; i<datatypeConfigs.size(); i++) {
             final GeoSpatialDatatypeConfiguration cur = datatypeConfigs.get(i);
-            if (cur.getUri().equals(datatypeUri)) {
+            if (cur.getIri().equals(datatypeUri)) {
                 return cur;
             }
         }
@@ -174,7 +174,7 @@ public class GeoSpatialConfig implements Serializable {
         return datatypeConfigs;
     }
 
-    public URI getDefaultDatatype() {
+    public IRI getDefaultDatatype() {
         return defaultDatatype;
     }
 

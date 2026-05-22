@@ -18,8 +18,8 @@ package com.bigdata.rdf.graph;
 import java.util.Iterator;
 import java.util.Random;
 
-import org.openrdf.model.Statement;
-import org.openrdf.model.Value;
+import org.eclipse.rdf4j.model.Statement;
+import org.eclipse.rdf4j.model.Value;
 
 import com.bigdata.rdf.graph.impl.util.VertexDistribution;
 

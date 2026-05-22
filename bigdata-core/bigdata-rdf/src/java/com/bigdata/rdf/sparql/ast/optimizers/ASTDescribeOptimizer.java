@@ -30,10 +30,10 @@ package com.bigdata.rdf.sparql.ast.optimizers;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 
-import org.openrdf.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
 
 import com.bigdata.bop.IBindingSet;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.sparql.ast.AssignmentNode;
 import com.bigdata.rdf.sparql.ast.ConstantNode;
@@ -233,7 +233,7 @@ public class ASTDescribeOptimizer implements IASTOptimizer {
 
         }
 
-        final BigdataURI rdfSubject;
+        final BigdataIRI rdfSubject;
         if (describeMode.isForward() && describeMode.isReifiedStatements()) {
             /*
              * We will need to look for the rdf:subject property, so resolve
@@ -246,7 +246,7 @@ public class ASTDescribeOptimizer implements IASTOptimizer {
 
             final AbstractTripleStore db = context.getAbstractTripleStore();
 
-            final BigdataURI tmp = db.getValueFactory().asValue(RDF.SUBJECT);
+            final BigdataIRI tmp = db.getValueFactory().asValue(RDF.SUBJECT);
 
             db.getLexiconRelation().addTerms(new BigdataValue[] { tmp },
                     1/* numTerms */, true/* readOnly */);

@@ -31,11 +31,11 @@ import java.util.Map;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 
-import org.openrdf.model.Literal;
-import org.openrdf.model.vocabulary.XMLSchema;
-import org.openrdf.query.algebra.evaluation.ValueExprEvaluationException;
-import org.openrdf.query.algebra.evaluation.function.datetime.Timezone;
-import org.openrdf.query.algebra.evaluation.function.datetime.Tz;
+import org.eclipse.rdf4j.model.Literal;
+import org.eclipse.rdf4j.model.vocabulary.XMLSchema;
+import org.eclipse.rdf4j.query.algebra.evaluation.ValueExprEvaluationException;
+import org.eclipse.rdf4j.query.algebra.evaluation.function.datetime.Timezone;
+import org.eclipse.rdf4j.query.algebra.evaluation.function.datetime.Tz;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.IBindingSet;

@@ -27,7 +27,7 @@ package com.bigdata.gom.gpo;
 import java.util.Iterator;
 import java.util.Set;
 
-import org.openrdf.model.URI;
+import org.eclipse.rdf4j.model.URI;
 
 /**
  * A collection of links into (edges in) or links out of (edges out) of an

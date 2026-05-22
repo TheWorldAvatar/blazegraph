@@ -30,7 +30,7 @@ package com.bigdata.rdf.model;
 /**
  * This class wraps a {@link BigdataStatement} and provides {@link #hashCode()}
  * and {@link #equals(Object)} respecting all four fields rather than SPO as per
- * the {@link org.openrdf.model.Statement} contract.
+ * the {@link org.eclipse.rdf4j.model.Statement} contract.
  * 
  * @author jeremycarroll
  */

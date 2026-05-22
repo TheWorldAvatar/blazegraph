@@ -30,10 +30,12 @@ package com.bigdata.rdf.vocab.decls;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 
-import org.openrdf.model.URI;
-import org.openrdf.model.impl.URIImpl;
-import org.openrdf.model.vocabulary.SESAME;
+import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
+import org.eclipse.rdf4j.model.impl.URIImpl;
+import org.eclipse.rdf4j.model.vocabulary.SESAME;
 
 import com.bigdata.rdf.vocab.VocabularyDecl;
 
@@ -47,19 +49,19 @@ import com.bigdata.rdf.vocab.VocabularyDecl;
  */
 public class SesameVocabularyDecl implements VocabularyDecl {
 
-    static private final URI[] uris = new URI[]{
-        new URIImpl(SESAME.NAMESPACE),//
+    static private final List<IRI> iris = List.of(
+        SimpleValueFactory.getInstance().createIRI(SESAME.NAMESPACE),//
         SESAME.DIRECTSUBCLASSOF,//
         SESAME.DIRECTSUBPROPERTYOF,//
-        SESAME.DIRECTTYPE,//
-    };
+        SESAME.DIRECTTYPE//
+    );
 
     public SesameVocabularyDecl() {
     }
     
-    public Iterator<URI> values() {
+    public Iterator<IRI> values() {
 
-        return Collections.unmodifiableList(Arrays.asList(uris)).iterator();
+        return iris.iterator();
         
     }
 

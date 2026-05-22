@@ -43,12 +43,12 @@ import java.util.concurrent.FutureTask;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.model.BNode;
-import org.openrdf.model.Resource;
-import org.openrdf.model.Statement;
-import org.openrdf.model.URI;
-import org.openrdf.model.Value;
-import org.openrdf.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.BNode;
+import org.eclipse.rdf4j.model.Resource;
+import org.eclipse.rdf4j.model.Statement;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.Value;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
 
 import com.bigdata.counters.CounterSet;
 import com.bigdata.counters.ICounterSetAccess;
@@ -62,7 +62,7 @@ import com.bigdata.rdf.model.BigdataBNode;
 import com.bigdata.rdf.model.BigdataBNodeImpl;
 import com.bigdata.rdf.model.BigdataResource;
 import com.bigdata.rdf.model.BigdataStatement;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.model.StatementEnum;
@@ -258,11 +258,11 @@ public class StatementBuffer<S extends Statement> implements IStatementBuffer<S>
     /**
      * Reification vocabulary.
      */
-    private final BigdataURI RDF_SUBJECT;
-    private final BigdataURI RDF_PREDICATE;
-    private final BigdataURI RDF_OBJECT;
-    private final BigdataURI RDF_STATEMENT;
-    private final BigdataURI RDF_TYPE;
+    private final BigdataIRI RDF_SUBJECT;
+    private final BigdataIRI RDF_PREDICATE;
+    private final BigdataIRI RDF_OBJECT;
+    private final BigdataIRI RDF_STATEMENT;
+    private final BigdataIRI RDF_TYPE;
     
     /**
      * The maximum #of Statements, URIs, Literals, or BNodes that the buffer can
@@ -1524,7 +1524,7 @@ public class StatementBuffer<S extends Statement> implements IStatementBuffer<S>
 						// Create new statement using distinct values.
 						final BigdataStatement stmt = (BigdataStatement) sb.stmts[i];
 						final BigdataResource s = (BigdataResource) getDistinctTerm(stmt.getSubject());
-						final BigdataURI p = (BigdataURI) getDistinctTerm(stmt.getPredicate());
+						final BigdataIRI p = (BigdataIRI) getDistinctTerm(stmt.getPredicate());
 						final BigdataValue o = getDistinctTerm(stmt.getObject());
 						final BigdataResource c = stmt.getContext() == null ? null
 								: (BigdataResource) getDistinctTerm(stmt.getContext());
@@ -2328,7 +2328,7 @@ public class StatementBuffer<S extends Statement> implements IStatementBuffer<S>
             	
             	bnode.setStatement(valueFactory.createStatement(
             			(BigdataResource) getDistinctTerm(stmt.getSubject(), true),
-            			(BigdataURI) getDistinctTerm(stmt.getPredicate(), true),
+            			(BigdataIRI) getDistinctTerm(stmt.getPredicate(), true),
             			(BigdataValue) getDistinctTerm(stmt.getObject(), true)
             			));
             	
@@ -2530,7 +2530,7 @@ public class StatementBuffer<S extends Statement> implements IStatementBuffer<S>
     	
         final BigdataResource s = (BigdataResource) 
         		getDistinctTerm(valueFactory.asValue(_s), true);
-        final BigdataURI p = (BigdataURI) 
+        final BigdataIRI p = (BigdataIRI) 
         		getDistinctTerm(valueFactory.asValue(_p), true);
         final BigdataValue o = 
         		getDistinctTerm(valueFactory.asValue(_o), true);
@@ -2715,7 +2715,7 @@ public class StatementBuffer<S extends Statement> implements IStatementBuffer<S>
 		private static final long serialVersionUID = -7706421769807306702L;
 		
 		private BigdataResource s;
-    	private BigdataURI p;
+    	private BigdataIRI p;
     	private BigdataValue o;
     	private BigdataResource c;
     	
@@ -2737,7 +2737,7 @@ public class StatementBuffer<S extends Statement> implements IStatementBuffer<S>
 		}
 
 		@Override
-		public BigdataURI getPredicate() {
+		public BigdataIRI getPredicate() {
 			return p;
 		}
 
@@ -2754,7 +2754,7 @@ public class StatementBuffer<S extends Statement> implements IStatementBuffer<S>
 			
 			} else if (p.toString().equals(RDF.PREDICATE.toString())) {
 				
-				setPredicate((BigdataURI) o);
+				setPredicate((BigdataIRI) o);
 			
 			} else if (p.toString().equals(RDF.OBJECT.toString())) {
 				
@@ -2776,7 +2776,7 @@ public class StatementBuffer<S extends Statement> implements IStatementBuffer<S>
 			this.s = s;
 		}
 
-		public void setPredicate(final BigdataURI p) {
+		public void setPredicate(final BigdataIRI p) {
 			this.p = p;
 		}
 

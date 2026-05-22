@@ -57,7 +57,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package com.bigdata.counters.format;
 
-import info.aduna.lang.FileFormat;
+import org.eclipse.rdf4j.common.lang.FileFormat;
 
 import java.nio.charset.Charset;
 import java.util.Arrays;
@@ -206,8 +206,7 @@ public class CounterSetFormat extends FileFormat implements Iterable<CounterSetF
     public static CounterSetFormat forMIMEType(String mimeType,
             CounterSetFormat fallback) {
 
-        return matchMIMEType(mimeType, formats/* Iterable<FileFormat> */,
-                fallback);
+        return matchMIMEType(mimeType, formats/* Iterable<FileFormat> */).orElse(fallback);
         
     }
 

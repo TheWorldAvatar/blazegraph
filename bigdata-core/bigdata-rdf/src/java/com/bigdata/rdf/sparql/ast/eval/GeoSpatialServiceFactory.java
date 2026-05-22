@@ -45,9 +45,9 @@ import java.util.concurrent.FutureTask;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.model.Literal;
-import org.openrdf.model.URI;
-import org.openrdf.query.algebra.evaluation.util.QueryEvaluationUtil;
+import org.eclipse.rdf4j.model.Literal;
+import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.query.algebra.evaluation.util.QueryEvaluationUtil;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.BOpContextBase;
@@ -78,7 +78,7 @@ import com.bigdata.rdf.internal.gis.ICoordinate.UNITS;
 import com.bigdata.rdf.internal.impl.TermId;
 import com.bigdata.rdf.internal.impl.extensions.GeoSpatialLiteralExtension;
 import com.bigdata.rdf.internal.impl.literal.LiteralExtensionIV;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.sparql.ast.ConstantNode;
@@ -178,7 +178,7 @@ public class GeoSpatialServiceFactory extends AbstractServiceFactoryBase {
       /*
        * Validate the geospatial predicates for a given search variable.
        */
-      final Map<IVariable<?>, Map<URI, StatementPatternNode>> map = verifyGraphPattern(
+      final Map<IVariable<?>, Map<IRI, StatementPatternNode>> map = verifyGraphPattern(
             store, serviceNode.getGraphPattern());
 
       if (map == null)
@@ -188,12 +188,12 @@ public class GeoSpatialServiceFactory extends AbstractServiceFactoryBase {
          throw new RuntimeException(
                "Multiple geospatial service requests may not be combined.");
 
-      final Map.Entry<IVariable<?>, Map<URI, StatementPatternNode>> e = map
+      final Map.Entry<IVariable<?>, Map<IRI, StatementPatternNode>> e = map
             .entrySet().iterator().next();
 
       final IVariable<?> searchVar = e.getKey();
 
-      final Map<URI, StatementPatternNode> statementPatterns = e.getValue();
+      final Map<IRI, StatementPatternNode> statementPatterns = e.getValue();
 
       validateSearch(searchVar, statementPatterns);
 
@@ -275,12 +275,12 @@ public class GeoSpatialServiceFactory extends AbstractServiceFactoryBase {
     * will detect both the absence of any search and the presence of more than
     * one search and throw an exception.
     */
-   private Map<IVariable<?>, Map<URI, StatementPatternNode>> verifyGraphPattern(
+   private Map<IVariable<?>, Map<IRI, StatementPatternNode>> verifyGraphPattern(
          final AbstractTripleStore database,
          final GroupNodeBase<IGroupMemberNode> group) {
 
       // lazily allocate iff we find some search predicates in this group.
-      Map<IVariable<?>, Map<URI, StatementPatternNode>> tmp = null;
+      Map<IVariable<?>, Map<IRI, StatementPatternNode>> tmp = null;
 
       final int arity = group.arity();
 
@@ -304,7 +304,7 @@ public class GeoSpatialServiceFactory extends AbstractServiceFactoryBase {
                throw new RuntimeException("Expecting geospatial predicate: "
                      + sp);
 
-            final URI uri = (URI) ((ConstantNode) p).getValue();
+            final IRI uri = (IRI) ((ConstantNode) p).getValue();
 
             if (!uri.stringValue().startsWith(GeoSpatial.NAMESPACE))
                throw new RuntimeException("Expecting search predicate: " + sp);
@@ -327,19 +327,19 @@ public class GeoSpatialServiceFactory extends AbstractServiceFactoryBase {
             // Lazily allocate map.
             if (tmp == null) {
 
-               tmp = new LinkedHashMap<IVariable<?>, Map<URI, StatementPatternNode>>();
+               tmp = new LinkedHashMap<IVariable<?>, Map<IRI, StatementPatternNode>>();
 
             }
 
             // Lazily allocate set for that searchVar.
-            Map<URI, StatementPatternNode> statementPatterns = tmp
+            Map<IRI, StatementPatternNode> statementPatterns = tmp
                   .get(searchVar);
 
             if (statementPatterns == null) {
 
                tmp.put(
                      searchVar,
-                     statementPatterns = new LinkedHashMap<URI, StatementPatternNode>());
+                     statementPatterns = new LinkedHashMap<IRI, StatementPatternNode>());
 
             }
 
@@ -360,13 +360,13 @@ public class GeoSpatialServiceFactory extends AbstractServiceFactoryBase {
     * for a given searchVar.
     */
    private void validateSearch(final IVariable<?> searchVar,
-         final Map<URI, StatementPatternNode> statementPatterns) {
+         final Map<IRI, StatementPatternNode> statementPatterns) {
 
-      final Set<URI> uris = new LinkedHashSet<URI>();
+      final Set<IRI> uris = new LinkedHashSet<IRI>();
 
       for (StatementPatternNode sp : statementPatterns.values()) {
 
-         final URI uri = (URI) (sp.p()).getValue();
+         final IRI uri = (IRI) (sp.p()).getValue();
 
          if (!uris.add(uri))
             throw new RuntimeException(
@@ -401,10 +401,10 @@ public class GeoSpatialServiceFactory extends AbstractServiceFactoryBase {
 
       final TermNode o = sp.o();
 
-      if (o instanceof URI) {
+      if (o instanceof IRI) {
 
          throw new IllegalArgumentException(
-               "Object is not a URI: " + sp);
+               "Object is not a IRI: " + sp);
 
       }
 
@@ -415,7 +415,7 @@ public class GeoSpatialServiceFactory extends AbstractServiceFactoryBase {
        final TermNode o = sp.o();
 
        boolean isNotUri= !o.isConstant()
-             || !(((ConstantNode) o).getValue() instanceof URI);
+             || !(((ConstantNode) o).getValue() instanceof IRI);
        boolean isNotVariable = !o.isVariable();
 
        if (isNotUri && isNotVariable) {
@@ -486,7 +486,7 @@ public class GeoSpatialServiceFactory extends AbstractServiceFactoryBase {
       
       
       public GeoSpatialServiceCall(final IVariable<?> searchVar,
-            final Map<URI, StatementPatternNode> sps,
+            final Map<IRI, StatementPatternNode> sps,
             final IServiceOptions serviceOptions,
             final GeoSpatialDefaults dflts, final AbstractTripleStore kb,
             final int maxParallel, final int numTasks,
@@ -716,7 +716,7 @@ public class GeoSpatialServiceFactory extends AbstractServiceFactoryBase {
                 stats.accessPathRangeCount.add(totalPointsInRange);
 
                 
-                // set up datatype configuration for the datatype URI
+                // set up datatype configuration for the datatype IRI
                 final GeoSpatialDatatypeConfiguration datatypeConfig =
                     geoSpatialConfig.getConfigurationForDatatype(query.getSearchDatatype());
                 if (datatypeConfig==null) {
@@ -819,7 +819,7 @@ public class GeoSpatialServiceFactory extends AbstractServiceFactoryBase {
              */
             final GeoSpatialFilterBase filter;
 
-            // set up datatype configuration for the datatype URI
+            // set up datatype configuration for the datatype IRI
             final GeoSpatialDatatypeConfiguration datatypeConfig = query.getDatatypeConfig();
             final GeoSpatialLiteralExtension<BigdataValue> litExt = 
                 new GeoSpatialLiteralExtension<BigdataValue>(kb.getLexiconRelation(), datatypeConfig);
@@ -872,14 +872,14 @@ public class GeoSpatialServiceFactory extends AbstractServiceFactoryBase {
                
                final BigdataValue ctx = 
                   ctxTermNode==null ? null : ctxTermNode.getValue();
-               if (ctx!=null && !(ctx instanceof BigdataURI)) {
+               if (ctx!=null && !(ctx instanceof BigdataIRI)) {
                   throw new IllegalArgumentException(
-                     "Context in GeoSpatial search must be a URI");
+                     "Context in GeoSpatial search must be a IRI");
                }  
 
                // register context check in the filter
                filter.addContextCheck(
-                  keyOrder.getPositionInIndex(SPOKeyOrder.C), (BigdataURI)ctx);
+                  keyOrder.getPositionInIndex(SPOKeyOrder.C), (BigdataIRI)ctx);
                
             }
 
@@ -937,7 +937,7 @@ public class GeoSpatialServiceFactory extends AbstractServiceFactoryBase {
             final Object[] lowerBorderComponents, final Object[] upperBorderComponents,
             final IGeoSpatialQuery query) {
 
-             // set up datatype configuration and literal extension object for the datatype URI
+             // set up datatype configuration and literal extension object for the datatype IRI
              final GeoSpatialDatatypeConfiguration datatypeConfig = query.getDatatypeConfig();
              final GeoSpatialLiteralExtension litExt = 
                  new GeoSpatialLiteralExtension<BigdataValue>(kb.getLexiconRelation(), datatypeConfig);
@@ -966,8 +966,8 @@ public class GeoSpatialServiceFactory extends AbstractServiceFactoryBase {
              * exit point for the service (see null check below).
              */
             IPredicate<ISPO> pred = (IPredicate<ISPO>) kb.getPredicate(
-                  (URI) s.getValue(), /* subject */
-                  p==null ? null : (URI)p.getValue(), /* predicate */
+                  (IRI) s.getValue(), /* subject */
+                  p==null ? null : (IRI)p.getValue(), /* predicate */
                   o.getValue(), /* object */
                   null, /* context */
                   null, /* filter */
@@ -1566,7 +1566,7 @@ public class GeoSpatialServiceFactory extends AbstractServiceFactoryBase {
                        new Constant<IV>(
                            DummyConstantNode.toDummyIV(
                                vf.createLiteral(literalSerializer.fromComponents(componentArr),
-                               litExt.getDatatypeConfig().getUri()))));
+                               litExt.getDatatypeConfig().getIri()))));
                     
                 }
                 
@@ -1775,7 +1775,7 @@ public class GeoSpatialServiceFactory extends AbstractServiceFactoryBase {
       
       // value of the constrained context (only used in quads mode if 
       // geo:context predicate is used)
-      BigdataURI context = null;
+      BigdataIRI context = null;
       
       // counters objects
       GeoSpatialCounters geoSpatialCounters;
@@ -1792,7 +1792,7 @@ public class GeoSpatialServiceFactory extends AbstractServiceFactoryBase {
       
       // sets member variables that imply an additional context check
       public void addContextCheck(
-         final Integer contextPos, final BigdataURI context) {
+         final Integer contextPos, final BigdataIRI context) {
          
          this.contextPos = contextPos;
          this.context = context;
@@ -2015,7 +2015,7 @@ public class GeoSpatialServiceFactory extends AbstractServiceFactoryBase {
       final Set<IVariable<?>> requiredBound = new HashSet<IVariable<?>>();
       for (StatementPatternNode sp : getStatementPatterns(serviceNode)) {
             
-         final URI predicate = (URI) (sp.p()).getValue();
+         final IRI predicate = (IRI) (sp.p()).getValue();
          final IVariableOrConstant<?> object = sp.o().getValueExpression();
             
          if (object instanceof IVariable<?>) {
@@ -2083,7 +2083,7 @@ public class GeoSpatialServiceFactory extends AbstractServiceFactoryBase {
        
        public GeoSpatialServiceCallConfiguration(
            final GeoSpatialDefaults defaults, final GeoSpatialConfig geoSpatialConfig,
-           final IVariable<?> searchVar, final Map<URI, StatementPatternNode> sps) {
+           final IVariable<?> searchVar, final Map<IRI, StatementPatternNode> sps) {
            
            this.geoSpatialConfig = geoSpatialConfig;
            this.defaults = defaults;
@@ -2262,7 +2262,7 @@ public class GeoSpatialServiceFactory extends AbstractServiceFactoryBase {
         */
        public GeoSpatialQuery toGeoSpatialQuery(final IBindingSet bs) {
            
-             final URI searchDatatypeUri = resolveSearchDatatype(
+             final IRI searchDatatypeUri = resolveSearchDatatype(
                    this.searchDatatype, bs);
              final GeoFunction searchFunction = resolveAsGeoFunction(
                    this.searchFunction, bs);
@@ -2594,10 +2594,10 @@ public class GeoSpatialServiceFactory extends AbstractServiceFactoryBase {
             return objArr;
         }
         
-        URI resolveSearchDatatype(final TermNode searchDatatype, final IBindingSet bs) {
+        IRI resolveSearchDatatype(final TermNode searchDatatype, final IBindingSet bs) {
             
             if (searchDatatype==null) {
-                final URI datatype = geoSpatialConfig.getDefaultDatatype();
+                final IRI datatype = geoSpatialConfig.getDefaultDatatype();
                 
                 if (datatype==null) {
                     throw new GeoSpatialSearchException(
@@ -2610,7 +2610,7 @@ public class GeoSpatialServiceFactory extends AbstractServiceFactoryBase {
             
             if (searchDatatype.isConstant()) {
                 
-                URI uri = (URI) searchDatatype.getValue();
+                IRI uri = (IRI) searchDatatype.getValue();
                 
                 if (uri==null) {
                     
@@ -2640,7 +2640,7 @@ public class GeoSpatialServiceFactory extends AbstractServiceFactoryBase {
                     }
 
                     TermId<?> cAsTerm = (TermId<?>) c.get();
-                    return (URI)cAsTerm.getValue();
+                    return (IRI)cAsTerm.getValue();
 
                  } else {
                     throw new GeoSpatialSearchException(

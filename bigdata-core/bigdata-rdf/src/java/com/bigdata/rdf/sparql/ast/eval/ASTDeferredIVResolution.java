@@ -10,22 +10,23 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Optional;
 import java.util.Set;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.model.Literal;
-import org.openrdf.model.URI;
-import org.openrdf.model.Value;
-import org.openrdf.model.vocabulary.RDF;
-import org.openrdf.query.Binding;
-import org.openrdf.query.BindingSet;
-import org.openrdf.query.Dataset;
-import org.openrdf.query.MalformedQueryException;
-import org.openrdf.query.algebra.StatementPattern.Scope;
-import org.openrdf.query.algebra.evaluation.QueryBindingSet;
-import org.openrdf.query.impl.DatasetImpl;
-import org.openrdf.query.impl.MapBindingSet;
+import org.eclipse.rdf4j.model.Literal;
+import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.Value;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.query.Binding;
+import org.eclipse.rdf4j.query.BindingSet;
+import org.eclipse.rdf4j.query.Dataset;
+import org.eclipse.rdf4j.query.MalformedQueryException;
+import org.eclipse.rdf4j.query.algebra.StatementPattern.Scope;
+import org.eclipse.rdf4j.query.algebra.evaluation.QueryBindingSet;
+import org.eclipse.rdf4j.query.impl.DatasetImpl;
+import org.eclipse.rdf4j.query.impl.MapBindingSet;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.BOpBase;
@@ -41,7 +42,7 @@ import com.bigdata.rdf.internal.constraints.IVValueExpression;
 import com.bigdata.rdf.internal.impl.AbstractIV;
 import com.bigdata.rdf.internal.impl.TermId;
 import com.bigdata.rdf.model.BigdataStatement;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.sail.sparql.ast.ASTDatasetClause;
@@ -509,7 +510,7 @@ public class ASTDeferredIVResolution {
                     final ASTIRI astIri = dc.jjtGetChild(ASTIRI.class);
     
                     // Setup the callback handler : TODO Pull handler into a private class? Questions about scope for defaultGraphs and namedGraphs.
-					defer((BigdataURI) astIri.getRDFValue(), new Handler() {
+					defer((BigdataIRI) astIri.getRDFValue(), new Handler() {
 
 						@Override
                         public void handle(final IV newIV) {
@@ -797,27 +798,27 @@ public class ASTDeferredIVResolution {
 
             DatasetImpl newDataset = new DatasetImpl();
             
-            for (final URI uri: dataset.getDefaultGraphs()) {
-                URI value = handleDatasetGraph(store, uri);
+            for (final IRI uri: dataset.getDefaultGraphs()) {
+                IRI value = handleDatasetGraph(store, uri);
                 newDataset.addDefaultGraph(value);
             }
-            for (final URI uri: dataset.getDefaultRemoveGraphs()) {
-                URI value = handleDatasetGraph(store, uri);
+            for (final IRI uri: dataset.getDefaultRemoveGraphs()) {
+                IRI value = handleDatasetGraph(store, uri);
                 newDataset.addDefaultRemoveGraph(value);
             }
-            for (final URI uri: dataset.getNamedGraphs()) {
-                URI value = handleDatasetGraph(store, uri);
+            for (final IRI uri: dataset.getNamedGraphs()) {
+                IRI value = handleDatasetGraph(store, uri);
                 newDataset.addNamedGraph(value);
             }
-            URI value = handleDatasetGraph(store, dataset.getDefaultInsertGraph());
+            IRI value = handleDatasetGraph(store, dataset.getDefaultInsertGraph());
             newDataset.setDefaultInsertGraph(value);
             return newDataset;
         }
         return dataset;
     }
 
-    private URI handleDatasetGraph(final AbstractTripleStore store, final URI uri) {
-        URI value = uri;
+    private IRI handleDatasetGraph(final AbstractTripleStore store, final IRI uri) {
+        IRI value = uri;
         if (value!= null && !(value instanceof BigdataValue)) {
             value = store.getValueFactory().asValue(value);
         }
@@ -1212,11 +1213,11 @@ public class ASTDeferredIVResolution {
                          * @see TestRollbacks
                          */
                         final String label = ((Literal) v).getLabel();
-                        final URI dataType = ((Literal) v).getDatatype();
-                        final String language = ((Literal) v).getLanguage();
+                        final IRI dataType = ((Literal) v).getDatatype();
+                        final Optional<String> language = ((Literal) v).getLanguage();
                         final BigdataValue resolved;
-                        if (language != null) {
-                            resolved = vf.createLiteral(label, language);
+                        if (language.isPresent()) {
+                            resolved = vf.createLiteral(label, language.get());
                         } else {
                             resolved = vf.createLiteral(label, dataType);
                         }

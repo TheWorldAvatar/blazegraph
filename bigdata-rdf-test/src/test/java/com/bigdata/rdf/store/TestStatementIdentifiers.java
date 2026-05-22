@@ -53,14 +53,14 @@ import java.util.UUID;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.model.vocabulary.RDF;
-import org.openrdf.model.vocabulary.RDFS;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.vocabulary.RDFS;
 
 import com.bigdata.rdf.axioms.NoAxioms;
 import com.bigdata.rdf.internal.IV;
 import com.bigdata.rdf.model.BigdataBNode;
 import com.bigdata.rdf.model.BigdataLiteral;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.model.StatementEnum;
@@ -123,17 +123,17 @@ public class TestStatementIdentifiers extends AbstractTripleStoreTestCase {
             
             final BigdataValueFactory f = store.getValueFactory();
 
-            final BigdataURI x = f.createURI("http://www.foo.org/x");
-            final BigdataURI y = f.createURI("http://www.foo.org/y");
-            final BigdataURI z = f.createURI("http://www.foo.org/z");
+            final BigdataIRI x = f.createURI("http://www.foo.org/x");
+            final BigdataIRI y = f.createURI("http://www.foo.org/y");
+            final BigdataIRI z = f.createURI("http://www.foo.org/z");
     
-            final BigdataURI A = f.createURI("http://www.foo.org/A");
-            final BigdataURI B = f.createURI("http://www.foo.org/B");
-            final BigdataURI C = f.createURI("http://www.foo.org/C");
+            final BigdataIRI A = f.createURI("http://www.foo.org/A");
+            final BigdataIRI B = f.createURI("http://www.foo.org/B");
+            final BigdataIRI C = f.createURI("http://www.foo.org/C");
     
-            final BigdataURI rdfType = f.asValue(RDF.TYPE);
-            final BigdataURI rdfsLabel = f.asValue(RDFS.LABEL);
-            final BigdataURI rdfsSubClassOf = f.asValue(RDFS.SUBCLASSOF);
+            final BigdataIRI rdfType = f.asValue(RDF.TYPE);
+            final BigdataIRI rdfsLabel = f.asValue(RDFS.LABEL);
+            final BigdataIRI rdfsSubClassOf = f.asValue(RDFS.SUBCLASSOF);
     
             final BigdataLiteral lit1 = f.createLiteral("abc");
             final BigdataLiteral lit2 = f.createLiteral("abc", A);
@@ -435,17 +435,17 @@ public class TestStatementIdentifiers extends AbstractTripleStoreTestCase {
 
             final BigdataValueFactory f = store.getValueFactory();
 
-            final BigdataURI x = f.createURI("http://www.foo.org/x");
-            final BigdataURI y = f.createURI("http://www.foo.org/y");
-            final BigdataURI z = f.createURI("http://www.foo.org/z");
+            final BigdataIRI x = f.createURI("http://www.foo.org/x");
+            final BigdataIRI y = f.createURI("http://www.foo.org/y");
+            final BigdataIRI z = f.createURI("http://www.foo.org/z");
     
-            final BigdataURI A = f.createURI("http://www.foo.org/A");
-            final BigdataURI B = f.createURI("http://www.foo.org/B");
-            final BigdataURI C = f.createURI("http://www.foo.org/C");
+            final BigdataIRI A = f.createURI("http://www.foo.org/A");
+            final BigdataIRI B = f.createURI("http://www.foo.org/B");
+            final BigdataIRI C = f.createURI("http://www.foo.org/C");
     
-            final BigdataURI rdfType = f.asValue(RDF.TYPE);
+            final BigdataIRI rdfType = f.asValue(RDF.TYPE);
 //            final BigdataURI rdfsLabel = f.createURI(RDFS.LABEL);
-            final BigdataURI dcCreator = f.createURI("http://purl.org/dc/terms/creator");
+            final BigdataIRI dcCreator = f.createURI("http://purl.org/dc/terms/creator");
     
             BigdataLiteral lit1 = f.createLiteral("bryan");
             BigdataLiteral lit2 = f.createLiteral("mike");
@@ -552,16 +552,16 @@ public class TestStatementIdentifiers extends AbstractTripleStoreTestCase {
 
             final BigdataValueFactory f = store.getValueFactory();
 
-            final BigdataURI x = f.createURI("http://www.foo.org/x");
-            final BigdataURI y = f.createURI("http://www.foo.org/y");
-            final BigdataURI z = f.createURI("http://www.foo.org/z");
+            final BigdataIRI x = f.createURI("http://www.foo.org/x");
+            final BigdataIRI y = f.createURI("http://www.foo.org/y");
+            final BigdataIRI z = f.createURI("http://www.foo.org/z");
     
-            final BigdataURI A = f.createURI("http://www.foo.org/A");
-            final BigdataURI B = f.createURI("http://www.foo.org/B");
-            final BigdataURI C = f.createURI("http://www.foo.org/C");
+            final BigdataIRI A = f.createURI("http://www.foo.org/A");
+            final BigdataIRI B = f.createURI("http://www.foo.org/B");
+            final BigdataIRI C = f.createURI("http://www.foo.org/C");
     
-            final BigdataURI rdfType = f.asValue(RDF.TYPE);
-            final BigdataURI dcCreator = f.createURI("http://purl.org/dc/terms/creator");
+            final BigdataIRI rdfType = f.asValue(RDF.TYPE);
+            final BigdataIRI dcCreator = f.createURI("http://purl.org/dc/terms/creator");
     
             final BigdataLiteral lit1 = f.createLiteral("bryan");
             final BigdataLiteral lit2 = f.createLiteral("mike");
@@ -744,8 +744,8 @@ public class TestStatementIdentifiers extends AbstractTripleStoreTestCase {
             }
 
             final BigdataValueFactory valueFactory = store.getValueFactory();
-            final BigdataURI A = valueFactory.createURI("http://www.foo.org/A");
-            final BigdataURI rdfType = valueFactory.createURI(RDF.TYPE.stringValue());
+            final BigdataIRI A = valueFactory.createURI("http://www.foo.org/A");
+            final BigdataIRI rdfType = valueFactory.createURI(RDF.TYPE.stringValue());
             final BigdataBNode sid1 = valueFactory.createBNode("_S1");
 
             /*
@@ -809,8 +809,8 @@ public class TestStatementIdentifiers extends AbstractTripleStoreTestCase {
             }
 
             final BigdataValueFactory valueFactory = store.getValueFactory();
-            final BigdataURI B = valueFactory.createURI("http://www.foo.org/B");
-            final BigdataURI rdfType = valueFactory.createURI(RDF.TYPE.stringValue());
+            final BigdataIRI B = valueFactory.createURI("http://www.foo.org/B");
+            final BigdataIRI rdfType = valueFactory.createURI(RDF.TYPE.stringValue());
             final BigdataBNode sid1 = valueFactory.createBNode("_S1");
             final BigdataBNode sid2 = valueFactory.createBNode("_S2");
 
@@ -882,10 +882,10 @@ public class TestStatementIdentifiers extends AbstractTripleStoreTestCase {
 
             final BigdataValueFactory f = store.getValueFactory();
 
-            final BigdataURI A = f.createURI("http://www.foo.org/A");
-            final BigdataURI B = f.createURI("http://www.foo.org/B");
-            final BigdataURI C = f.createURI("http://www.foo.org/C");
-            final BigdataURI rdfType = f.asValue(RDF.TYPE);
+            final BigdataIRI A = f.createURI("http://www.foo.org/A");
+            final BigdataIRI B = f.createURI("http://www.foo.org/B");
+            final BigdataIRI C = f.createURI("http://www.foo.org/C");
+            final BigdataIRI rdfType = f.asValue(RDF.TYPE);
             final BigdataBNode sid1 = f.createBNode("_S1");
 
             StatementBuffer buf = new StatementBuffer(store, 100/* capacity */);

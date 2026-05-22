@@ -27,9 +27,9 @@ package com.bigdata.rdf.internal.impl.extensions;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import org.openrdf.model.Literal;
-import org.openrdf.model.URI;
-import org.openrdf.model.Value;
+import org.eclipse.rdf4j.model.Literal;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.Value;
 
 import com.bigdata.rdf.internal.IDatatypeURIResolver;
 import com.bigdata.rdf.internal.IExtension;
@@ -37,7 +37,7 @@ import com.bigdata.rdf.internal.XSD;
 import com.bigdata.rdf.internal.impl.literal.LiteralExtensionIV;
 import com.bigdata.rdf.internal.impl.literal.FullyInlineTypedLiteralIV;
 import com.bigdata.rdf.model.BigdataLiteral;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 
@@ -47,7 +47,7 @@ import com.bigdata.rdf.model.BigdataValueFactory;
  */
 public class XSDStringExtension<V extends BigdataValue> implements IExtension<V> {
 
-    private final BigdataURI xsdStringURI;
+    private final BigdataIRI xsdStringURI;
     private final int maxInlineStringLength;
     
     public XSDStringExtension(final IDatatypeURIResolver resolver,
@@ -65,9 +65,9 @@ public class XSDStringExtension<V extends BigdataValue> implements IExtension<V>
         
     }
         
-    public Set<BigdataURI> getDatatypes() {
+    public Set<BigdataIRI> getDatatypes() {
         
-        final Set<BigdataURI> datatypes = new LinkedHashSet<BigdataURI>();
+        final Set<BigdataIRI> datatypes = new LinkedHashSet<BigdataIRI>();
         datatypes.add(xsdStringURI);
         return datatypes;
         

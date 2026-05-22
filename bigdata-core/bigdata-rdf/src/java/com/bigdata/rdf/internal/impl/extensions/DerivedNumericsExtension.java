@@ -32,10 +32,10 @@ import java.util.Set;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.model.Literal;
-import org.openrdf.model.URI;
-import org.openrdf.model.Value;
-import org.openrdf.model.datatypes.XMLDatatypeUtil;
+import org.eclipse.rdf4j.model.Literal;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.Value;
+import org.eclipse.rdf4j.model.datatypes.XMLDatatypeUtil;
 
 import com.bigdata.rdf.internal.IDatatypeURIResolver;
 import com.bigdata.rdf.internal.IExtension;
@@ -44,7 +44,7 @@ import com.bigdata.rdf.internal.XSD;
 import com.bigdata.rdf.internal.impl.literal.AbstractLiteralIV;
 import com.bigdata.rdf.internal.impl.literal.LiteralExtensionIV;
 import com.bigdata.rdf.internal.impl.literal.XSDIntegerIV;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 
@@ -63,11 +63,11 @@ public class DerivedNumericsExtension<V extends BigdataValue> implements IExtens
 	private static final transient Logger log = LogManager.getLogger(DerivedNumericsExtension.class);
 	
 	
-    private final Map<IV,BigdataURI> datatypes;
+    private final Map<IV,BigdataIRI> datatypes;
     
     public DerivedNumericsExtension(final IDatatypeURIResolver resolver) {
 
-        this.datatypes = new LinkedHashMap<IV,BigdataURI>();
+        this.datatypes = new LinkedHashMap<IV,BigdataIRI>();
         resolve(resolver, XSD.POSITIVE_INTEGER);
         resolve(resolver, XSD.NEGATIVE_INTEGER);
         resolve(resolver, XSD.NON_POSITIVE_INTEGER);
@@ -81,14 +81,14 @@ public class DerivedNumericsExtension<V extends BigdataValue> implements IExtens
     		log.debug("resolving: " + uri);
     	}
     	
-        final BigdataURI val = resolver.resolve(uri);
+        final BigdataIRI val = resolver.resolve(uri);
         datatypes.put(val.getIV(), val);
         
     }
         
-    public Set<BigdataURI> getDatatypes() {
+    public Set<BigdataIRI> getDatatypes() {
         
-        return new LinkedHashSet<BigdataURI>(datatypes.values());
+        return new LinkedHashSet<BigdataIRI>(datatypes.values());
         
     }
     
@@ -110,8 +110,8 @@ public class DerivedNumericsExtension<V extends BigdataValue> implements IExtens
         
         final String dts = dt.stringValue();
         
-        BigdataURI resolvedDT = null;
-        for (BigdataURI val : datatypes.values()) {
+        BigdataIRI resolvedDT = null;
+        for (BigdataIRI val : datatypes.values()) {
             // Note: URI.stringValue() is efficient....
             if (val.stringValue().equals(dts)) {
                 resolvedDT = val;
@@ -160,7 +160,7 @@ public class DerivedNumericsExtension<V extends BigdataValue> implements IExtens
         
         final BigInteger bi = iv.getDelegate().integerValue();
         
-        final BigdataURI dt = datatypes.get(iv.getExtensionIV());
+        final BigdataIRI dt = datatypes.get(iv.getExtensionIV());
         
         final String s = bi.toString();
         

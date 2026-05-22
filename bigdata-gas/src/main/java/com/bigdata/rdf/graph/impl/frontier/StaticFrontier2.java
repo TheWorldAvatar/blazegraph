@@ -18,7 +18,7 @@ package com.bigdata.rdf.graph.impl.frontier;
 import java.util.Arrays;
 import java.util.Iterator;
 
-import org.openrdf.model.Value;
+import org.eclipse.rdf4j.model.Value;
 
 import com.bigdata.rdf.graph.IStaticFrontier;
 import com.bigdata.rdf.graph.impl.util.IArraySlice;

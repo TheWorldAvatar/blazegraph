@@ -35,14 +35,14 @@ import java.util.Properties;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.model.Literal;
-import org.openrdf.model.URI;
+import org.eclipse.rdf4j.model.Literal;
+import org.eclipse.rdf4j.model.URI;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.BOpUtility;
 import com.bigdata.bop.IBindingSet;
 import com.bigdata.bop.IValueExpression;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.sparql.ast.ASTBase;
 import com.bigdata.rdf.sparql.ast.ConstantNode;
@@ -531,7 +531,7 @@ public class ASTQueryHintOptimizer implements IASTOptimizer {
         if(!(p instanceof URI))
             return false;
         
-        final BigdataURI u = (BigdataURI) p;
+        final BigdataIRI u = (BigdataIRI) p;
         
         final String str = u.stringValue();
         
@@ -568,10 +568,10 @@ public class ASTQueryHintOptimizer implements IASTOptimizer {
 
         final BigdataValue v = ((ConstantNode) t).getValue();
 
-        if (!(v instanceof BigdataURI))
+        if (!(v instanceof BigdataIRI))
             throw new RuntimeException("Query hint scope is not a URI.");
 
-        final BigdataURI u = (BigdataURI) v;
+        final BigdataIRI u = (BigdataIRI) v;
 
         return QueryHintScope.valueOf(u);
 
@@ -595,10 +595,10 @@ public class ASTQueryHintOptimizer implements IASTOptimizer {
 
         final BigdataValue v = ((ConstantNode) t).getValue();
 
-        if (!(v instanceof BigdataURI))
+        if (!(v instanceof BigdataIRI))
             throw new RuntimeException("Predicate position of query hint is not a URI.");
 
-        final BigdataURI u = (BigdataURI) v;
+        final BigdataIRI u = (BigdataIRI) v;
 
         final String name = u.getLocalName();
         

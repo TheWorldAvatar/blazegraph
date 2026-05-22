@@ -25,7 +25,7 @@ package com.bigdata.bop.rdf.aggregate;
 
 import junit.framework.TestCase2;
 
-import org.openrdf.model.impl.LiteralImpl;
+import org.eclipse.rdf4j.model.impl.LiteralImpl;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.BOpContext;

@@ -29,9 +29,10 @@ package com.bigdata.rdf.lexicon;
 
 import java.io.Serializable;
 import java.util.Locale;
+import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
-import org.openrdf.model.Value;
+import org.eclipse.rdf4j.model.Value;
 
 import com.bigdata.rdf.store.AbstractTripleStore;
 import com.bigdata.rdf.store.BDS;
@@ -111,7 +112,7 @@ public interface ITextIndexer<A extends IHit> {
 		private static final long serialVersionUID = 4159873519447769476L;
     	
 		final String query;
-		final String languageCode;
+		final Optional<String> languageCode;
         final boolean prefixMatch; 
         final double minCosine;
         final double maxCosine;
@@ -126,7 +127,7 @@ public interface ITextIndexer<A extends IHit> {
         public FullTextQuery(final String query) {
         	this(
     			query, 
-    			null,
+    			Optional.empty(),
     			BDS.DEFAULT_PREFIX_MATCH,
     			null,
     			BDS.DEFAULT_MATCH_ALL_TERMS,
@@ -140,7 +141,7 @@ public interface ITextIndexer<A extends IHit> {
     			);
         }
         
-        public FullTextQuery(final String query, final String languageCode,
+        public FullTextQuery(final String query, final Optional<String> languageCode,
 	            final boolean prefixMatch) {
         	this(
     			query, 
@@ -158,7 +159,7 @@ public interface ITextIndexer<A extends IHit> {
     			);
         }
         
-        public FullTextQuery(final String query, final String languageCode,
+        public FullTextQuery(final String query, final Optional<String> languageCode,
 	            final boolean prefixMatch, final String matchRegex, 
 	            final boolean matchAllTerms, final boolean matchExact) {
         	this(
@@ -177,7 +178,7 @@ public interface ITextIndexer<A extends IHit> {
     			);
         }
         
-        public FullTextQuery(final String query, final String languageCode,
+        public FullTextQuery(final String query, final Optional<String> languageCode,
 	            final boolean prefixMatch, final String matchRegex, 
 	            final boolean matchAllTerms, final boolean matchExact,
 	            final double minCosine, final double maxCosine,
@@ -238,7 +239,7 @@ public interface ITextIndexer<A extends IHit> {
 		 * @param unit
 		 *            The unit in which the timeout is expressed.
 		 */
-		public FullTextQuery(final String query, final String languageCode,
+		public FullTextQuery(final String query, final Optional<String> languageCode,
 	            final boolean prefixMatch, final String matchRegex, 
 	            final boolean matchAllTerms, final boolean matchExact, 
 	            final double minCosine, final double maxCosine,
@@ -270,7 +271,7 @@ public interface ITextIndexer<A extends IHit> {
 		/**
 		 * @return the languageCode
 		 */
-		public String getLanguageCode() {
+		public Optional<String> getLanguageCode() {
 			return languageCode;
 		}
 

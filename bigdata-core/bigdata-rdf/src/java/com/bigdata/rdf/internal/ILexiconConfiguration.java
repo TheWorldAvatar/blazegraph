@@ -26,8 +26,8 @@ package com.bigdata.rdf.internal;
 
 import java.util.TimeZone;
 
-import org.openrdf.model.URI;
-import org.openrdf.model.Value;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.Value;
 
 import com.bigdata.rdf.internal.constraints.IMathOpHandler;
 import com.bigdata.rdf.internal.impl.AbstractInlineExtensionIV;

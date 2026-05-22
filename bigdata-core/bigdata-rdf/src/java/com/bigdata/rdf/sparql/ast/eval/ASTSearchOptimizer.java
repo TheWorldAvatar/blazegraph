@@ -31,7 +31,7 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import org.openrdf.model.URI;
+import org.eclipse.rdf4j.model.IRI;
 
 import com.bigdata.rdf.sparql.ast.service.ServiceNode;
 import com.bigdata.rdf.store.BDS;
@@ -60,11 +60,11 @@ import com.bigdata.rdf.store.BDS;
  */
 public class ASTSearchOptimizer extends ASTSearchOptimizerBase {
 
-    static final Set<URI> searchUris;
+    static final Set<IRI> searchUris;
    
     static {
       
-        final Set<URI> set = new LinkedHashSet<URI>();
+        final Set<IRI> set = new LinkedHashSet<IRI>();
   
         set.add(BDS.SEARCH);
         set.add(BDS.RELEVANCE);
@@ -85,7 +85,7 @@ public class ASTSearchOptimizer extends ASTSearchOptimizerBase {
     }
    
     @Override
-    protected Set<URI> getSearchUris() {
+    protected Set<IRI> getSearchUris() {
        return searchUris;
     }
 
@@ -95,7 +95,7 @@ public class ASTSearchOptimizer extends ASTSearchOptimizerBase {
     }
 
     @Override
-    protected URI getSearchPredicate() {
+    protected IRI getSearchPredicate() {
        return BDS.SEARCH;
     }
     

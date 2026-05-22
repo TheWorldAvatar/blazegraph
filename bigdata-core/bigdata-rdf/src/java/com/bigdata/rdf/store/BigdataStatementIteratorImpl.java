@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.model.Value;
+import org.eclipse.rdf4j.model.Value;
 
 import com.bigdata.rdf.internal.IV;
 import com.bigdata.rdf.internal.impl.bnode.SidIV;
@@ -16,7 +16,7 @@ import com.bigdata.rdf.model.BigdataBNode;
 import com.bigdata.rdf.model.BigdataBNodeImpl;
 import com.bigdata.rdf.model.BigdataResource;
 import com.bigdata.rdf.model.BigdataStatement;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.spo.ISPO;
@@ -184,7 +184,7 @@ public class BigdataStatementIteratorImpl
              * fetched the current chunk.
              */
             final BigdataResource s = (BigdataResource) resolve(terms, spo.s());
-            final BigdataURI p = (BigdataURI) resolve(terms, spo.p());
+            final BigdataIRI p = (BigdataIRI) resolve(terms, spo.p());
 //            try {
 //                p = (BigdataURI) resolve(terms, spo.p());
 //            } catch (ClassCastException ex) {
@@ -202,8 +202,8 @@ public class BigdataStatementIteratorImpl
                  * BigdataSolutionResolverator.
                  */
                 final BigdataResource tmp = (BigdataResource) resolve(terms, _c);
-                if (tmp instanceof BigdataURI
-                        && ((BigdataURI) tmp).equals(BD.NULL_GRAPH)) {
+                if (tmp instanceof BigdataIRI
+                        && ((BigdataIRI) tmp).equals(BD.NULL_GRAPH)) {
                     /*
                      * Strip off the "nullGraph" context.
                      */

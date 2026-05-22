@@ -34,9 +34,9 @@ import java.util.regex.Pattern;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.query.resultio.BooleanQueryResultFormat;
-import org.openrdf.query.resultio.TupleQueryResultFormat;
-import org.openrdf.rio.RDFFormat;
+import org.eclipse.rdf4j.query.resultio.BooleanQueryResultFormat;
+import org.eclipse.rdf4j.query.resultio.TupleQueryResultFormat;
+import org.eclipse.rdf4j.rio.RDFFormat;
 
 import com.bigdata.counters.format.CounterSetFormat;
 import com.bigdata.rdf.properties.PropertiesFormat;
@@ -58,7 +58,7 @@ public class ConnegUtil {
 	}
 
 	// static {
-	// // Work-around for sesame not handling ask and json (see trac 704 and
+	// // Work-around for rdf4j not handling ask and json (see trac 704 and
 	// 714)
 	//
 	// if
@@ -66,7 +66,7 @@ public class ConnegUtil {
 	// {
 	// // This should fire once trac 714 is fixed, and we have upgraded, at this
 	// point the whole static block should be deleted.
-	// log.warn("Workaround for sesame 2.6 BooleanQueryResultFormat defect no longer needed",
+	// log.warn("Workaround for rdf4j 2.6 BooleanQueryResultFormat defect no longer needed",
 	// new RuntimeException("location of issue"));
 	// } else {
 	// final BooleanQueryResultFormat askJsonFormat =

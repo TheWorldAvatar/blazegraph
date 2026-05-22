@@ -3,8 +3,8 @@ package com.bigdata.perf.chem2bio2rdf;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-import org.openrdf.query.GraphQueryResult;
-import org.openrdf.query.TupleQueryResult;
+import org.eclipse.rdf4j.query.GraphQueryResult;
+import org.eclipse.rdf4j.query.TupleQueryResult;
 
 import com.bigdata.BigdataStatics;
 import com.bigdata.util.httpd.Config;

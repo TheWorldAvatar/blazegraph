@@ -29,11 +29,11 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import org.openrdf.model.Resource;
-import org.openrdf.model.vocabulary.RDF;
-import org.openrdf.query.MalformedQueryException;
-import org.openrdf.query.algebra.StatementPattern.Scope;
-import org.openrdf.rio.RDFParser.DatatypeHandling;
+import org.eclipse.rdf4j.model.Resource;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.query.MalformedQueryException;
+import org.eclipse.rdf4j.query.algebra.StatementPattern.Scope;
+import org.eclipse.rdf4j.rio.RDFParser.DatatypeHandling;
 
 import com.bigdata.rdf.internal.IV;
 import com.bigdata.rdf.internal.XSD;
@@ -41,7 +41,7 @@ import com.bigdata.rdf.model.BigdataBNode;
 import com.bigdata.rdf.model.BigdataLiteral;
 import com.bigdata.rdf.model.BigdataResource;
 import com.bigdata.rdf.model.BigdataStatement;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.StatementEnum;
 import com.bigdata.rdf.rio.RDFParserOptions;
@@ -1392,22 +1392,22 @@ public class TestUpdateExprBuilder extends AbstractBigdataExprBuilderTestCase {
 
             expected.addChild(op);
 
-            final BigdataURI book1 = valueFactory.createURI("http://example/book1");
-            final BigdataURI dcCreator = valueFactory.createURI("http://purl.org/dc/elements/1.1/creator");
-            final BigdataURI dcTitle = valueFactory.createURI("http://purl.org/dc/elements/1.1/title");
+            final BigdataIRI book1 = valueFactory.createURI("http://example/book1");
+            final BigdataIRI dcCreator = valueFactory.createURI("http://purl.org/dc/elements/1.1/creator");
+            final BigdataIRI dcTitle = valueFactory.createURI("http://purl.org/dc/elements/1.1/title");
             final BigdataLiteral label1 = valueFactory.createLiteral("A new book");
             final BigdataLiteral label2 = valueFactory.createLiteral("A.N.Other");
 
             final BigdataStatement[] data = new BigdataStatement[] { //
                     valueFactory.createStatement(//
                             (BigdataResource)book1,//
-                            (BigdataURI)dcTitle,//
+                            (BigdataIRI)dcTitle,//
                             (BigdataValue)label1, //
                             null,
                             StatementEnum.Explicit),//
                     valueFactory.createStatement(//
                             (BigdataResource)book1, //
-                            (BigdataURI)dcCreator, //
+                            (BigdataIRI)dcCreator, //
                             (BigdataValue) label2, //
                             null,//
                             StatementEnum.Explicit),//
@@ -1450,15 +1450,15 @@ public class TestUpdateExprBuilder extends AbstractBigdataExprBuilderTestCase {
 
             expected.addChild(op);
 
-            final BigdataURI bookstore = valueFactory.createURI("http://example/bookStore");
-            final BigdataURI book1 = valueFactory.createURI("http://example/book1");
-            final BigdataURI price = valueFactory.createURI("http://example.org/ns#price");
+            final BigdataIRI bookstore = valueFactory.createURI("http://example/bookStore");
+            final BigdataIRI book1 = valueFactory.createURI("http://example/book1");
+            final BigdataIRI price = valueFactory.createURI("http://example.org/ns#price");
             final BigdataLiteral i42 = valueFactory.createLiteral("42",XSD.INTEGER);
 
             final BigdataStatement[] data = new BigdataStatement[] { //
                     valueFactory.createStatement(//
                             (BigdataResource)book1,//
-                            (BigdataURI)price, //
+                            (BigdataIRI)price, //
                             (BigdataValue)i42, //
                             (BigdataResource)bookstore, //
                             StatementEnum.Explicit),//
@@ -1497,8 +1497,8 @@ public class TestUpdateExprBuilder extends AbstractBigdataExprBuilderTestCase {
 
             final BigdataBNode bnode = valueFactory.createBNode("-anon-1");
 //            final BigdataBNode bnode = valueFactory.createBNode("bnode");
-            final BigdataURI rdfType = valueFactory.createURI(RDF.TYPE.toString());
-            final BigdataURI foo = valueFactory.createURI("http://example/Foo");
+            final BigdataIRI rdfType = valueFactory.createURI(RDF.TYPE.toString());
+            final BigdataIRI foo = valueFactory.createURI("http://example/Foo");
 
             final BigdataStatement[] data = new BigdataStatement[] { //
                     valueFactory.createStatement(//
@@ -1553,31 +1553,31 @@ public class TestUpdateExprBuilder extends AbstractBigdataExprBuilderTestCase {
 
             expected.addChild(op);
 
-            final BigdataURI book1 = valueFactory.createURI("http://example/book1");
-            final BigdataURI dcCreator = valueFactory.createURI("http://purl.org/dc/elements/1.1/creator");
-            final BigdataURI dcTitle = valueFactory.createURI("http://purl.org/dc/elements/1.1/title");
+            final BigdataIRI book1 = valueFactory.createURI("http://example/book1");
+            final BigdataIRI dcCreator = valueFactory.createURI("http://purl.org/dc/elements/1.1/creator");
+            final BigdataIRI dcTitle = valueFactory.createURI("http://purl.org/dc/elements/1.1/title");
             final BigdataLiteral label1 = valueFactory.createLiteral("A new book");
             final BigdataLiteral label2 = valueFactory.createLiteral("A.N.Other");
-            final BigdataURI bookstore = valueFactory.createURI("http://example/bookStore");
-            final BigdataURI price = valueFactory.createURI("http://example.org/ns#price");
+            final BigdataIRI bookstore = valueFactory.createURI("http://example/bookStore");
+            final BigdataIRI price = valueFactory.createURI("http://example.org/ns#price");
             final BigdataLiteral i42 = valueFactory.createLiteral("42",XSD.INTEGER);
 
             final BigdataStatement[] data = new BigdataStatement[] { //
                     valueFactory.createStatement(//
                             (BigdataResource)book1,//
-                            (BigdataURI)dcTitle,//
+                            (BigdataIRI)dcTitle,//
                             (BigdataValue)label1,//
                             null,//
                             StatementEnum.Explicit),//
                     valueFactory.createStatement(//
                             (BigdataResource)book1,//
-                            (BigdataURI)dcCreator, //
+                            (BigdataIRI)dcCreator, //
                             (BigdataValue)label2,//
                             null,//
                             StatementEnum.Explicit),//
                     valueFactory.createStatement(//
                             (BigdataResource)book1, //
-                            (BigdataURI)price, //
+                            (BigdataIRI)price, //
                             (BigdataValue)i42, //
                             (BigdataResource)bookstore,//
                             StatementEnum.Explicit),//
@@ -1642,31 +1642,31 @@ public class TestUpdateExprBuilder extends AbstractBigdataExprBuilderTestCase {
 
             expected.addChild(op);
 
-            final BigdataURI book1 = valueFactory.createURI("http://example/book1");
-            final BigdataURI dcCreator = valueFactory.createURI("http://purl.org/dc/elements/1.1/creator");
-            final BigdataURI dcTitle = valueFactory.createURI("http://purl.org/dc/elements/1.1/title");
+            final BigdataIRI book1 = valueFactory.createURI("http://example/book1");
+            final BigdataIRI dcCreator = valueFactory.createURI("http://purl.org/dc/elements/1.1/creator");
+            final BigdataIRI dcTitle = valueFactory.createURI("http://purl.org/dc/elements/1.1/title");
             final BigdataLiteral label1 = valueFactory.createLiteral("A new book");
             final BigdataLiteral label2 = valueFactory.createLiteral("A.N.Other");
-            final BigdataURI bookstore = valueFactory.createURI("http://example/bookStore");
-            final BigdataURI price = valueFactory.createURI("http://example.org/ns#price");
+            final BigdataIRI bookstore = valueFactory.createURI("http://example/bookStore");
+            final BigdataIRI price = valueFactory.createURI("http://example.org/ns#price");
             final BigdataLiteral i42 = valueFactory.createLiteral("42",XSD.INTEGER);
 
             final BigdataStatement[] data = new BigdataStatement[] { //
                     valueFactory.createStatement(//
                             (BigdataResource)book1, //
-                            (BigdataURI)price, //
+                            (BigdataIRI)price, //
                             (BigdataValue)i42, //
                             (BigdataResource)bookstore,//
                             StatementEnum.Explicit),//
                     valueFactory.createStatement(//
                             (BigdataResource)book1,//
-                            (BigdataURI)dcTitle,//
+                            (BigdataIRI)dcTitle,//
                             (BigdataValue)label1,//
                             null,//
                             StatementEnum.Explicit),//
                     valueFactory.createStatement(//
                             (BigdataResource)book1, //
-                            (BigdataURI)dcCreator,//
+                            (BigdataIRI)dcCreator,//
                             (BigdataValue)label2, //
                             null,//
                             StatementEnum.Explicit),//
@@ -1713,34 +1713,34 @@ public class TestUpdateExprBuilder extends AbstractBigdataExprBuilderTestCase {
 
             expected.addChild(op);
 
-            final BigdataURI book1 = valueFactory.createURI("http://example/book1");
-            final BigdataURI dcCreator = valueFactory.createURI("http://purl.org/dc/elements/1.1/creator");
-            final BigdataURI dcTitle = valueFactory.createURI("http://purl.org/dc/elements/1.1/title");
+            final BigdataIRI book1 = valueFactory.createURI("http://example/book1");
+            final BigdataIRI dcCreator = valueFactory.createURI("http://purl.org/dc/elements/1.1/creator");
+            final BigdataIRI dcTitle = valueFactory.createURI("http://purl.org/dc/elements/1.1/title");
             final BigdataLiteral label1 = valueFactory.createLiteral("A new book");
             final BigdataLiteral label2 = valueFactory.createLiteral("A.N.Other");
-            final BigdataURI bookstore = valueFactory.createURI("http://example/bookStore");
-            final BigdataURI price = valueFactory.createURI("http://example.org/ns#price");
+            final BigdataIRI bookstore = valueFactory.createURI("http://example/bookStore");
+            final BigdataIRI price = valueFactory.createURI("http://example.org/ns#price");
             final BigdataLiteral i42 = valueFactory.createLiteral("42",XSD.INTEGER);
 
             final BigdataStatement[] data = new BigdataStatement[] { //
                     
                     valueFactory.createStatement(//
                             (BigdataResource)book1,//
-                            (BigdataURI)dcTitle,//
+                            (BigdataIRI)dcTitle,//
                             (BigdataValue)label1, //
                             null, //
                             StatementEnum.Explicit),//
                     
                     valueFactory.createStatement(//
                             (BigdataResource)book1,//
-                            (BigdataURI)price,//
+                            (BigdataIRI)price,//
                             (BigdataValue)i42,//
                             (BigdataResource)bookstore,//
                             StatementEnum.Explicit),//
                     
                     valueFactory.createStatement(//
                             (BigdataResource)book1,//
-                            (BigdataURI)dcCreator,//
+                            (BigdataIRI)dcCreator,//
                             (BigdataValue)label2,//
                             null,// 
                             StatementEnum.Explicit),//
@@ -1796,7 +1796,7 @@ public class TestUpdateExprBuilder extends AbstractBigdataExprBuilderTestCase {
                     
             valueFactory.createStatement(//
                     (BigdataResource) book1.getValue(),//
-                    (BigdataURI) dcTitle.getValue(),//
+                    (BigdataIRI) dcTitle.getValue(),//
                     (BigdataValue) label1.getValue(),//
                     (BigdataResource) bookstore.getValue(),//
                     StatementEnum.Explicit//
@@ -1817,7 +1817,7 @@ public class TestUpdateExprBuilder extends AbstractBigdataExprBuilderTestCase {
                     
                     valueFactory.createStatement(//
                             (BigdataResource) book1.getValue(),//
-                            (BigdataURI) dcTitle.getValue(),//
+                            (BigdataIRI) dcTitle.getValue(),//
                             (BigdataValue) label2.getValue(),//
                             (BigdataResource) bookstore.getValue(),//
                             StatementEnum.Explicit//

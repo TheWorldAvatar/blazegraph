@@ -31,74 +31,75 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
 
-import org.openrdf.model.URI;
-import org.openrdf.model.impl.URIImpl;
-import org.openrdf.model.vocabulary.XMLSchema;
+import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
+import org.eclipse.rdf4j.model.impl.URIImpl;
+import org.eclipse.rdf4j.model.vocabulary.XSD;
 
 import com.bigdata.rdf.vocab.VocabularyDecl;
 
 /**
- * Vocabulary and namespace for {@link XMLSchema}.
+ * Vocabulary and namespace for {@link XSD}.
  * 
- * @see http://www.w3.org/2001/XMLSchema#
+ * @see http://www.w3.org/2001/XSD#
  * 
  * @author <a href="mailto:thompsonbry@users.sourceforge.net">Bryan Thompson</a>
  * @version $Id$
  */
 public class XMLSchemaVocabularyDecl implements VocabularyDecl {
 
-    static private final URI[] uris = new URI[]{
-        new URIImpl(XMLSchema.NAMESPACE), //
-        XMLSchema.ANYURI, //
-        XMLSchema.BASE64BINARY, //
-        XMLSchema.BOOLEAN, //
-        XMLSchema.BYTE, //
-        XMLSchema.DATE, //
-        XMLSchema.DATETIME, //
-        XMLSchema.DECIMAL, //
-        XMLSchema.DOUBLE, //
-        XMLSchema.DURATION, //
-        XMLSchema.ENTITIES, //
-        XMLSchema.ENTITY, //
-        XMLSchema.FLOAT, //
-        XMLSchema.GDAY, //
-        XMLSchema.GMONTH, //
-        XMLSchema.GMONTHDAY, //
-        XMLSchema.GYEAR, //
-        XMLSchema.GYEARMONTH, //
-        XMLSchema.HEXBINARY, //
-        XMLSchema.ID, //
-        XMLSchema.IDREF, //
-        XMLSchema.IDREFS, //
-        XMLSchema.INT, //
-        XMLSchema.INTEGER, //
-        XMLSchema.LANGUAGE, //
-        XMLSchema.LONG, //
-        XMLSchema.NAME, //
-        XMLSchema.NCNAME, //
-        XMLSchema.NEGATIVE_INTEGER, //
-        XMLSchema.NMTOKEN, //
-        XMLSchema.NMTOKENS, //
-        XMLSchema.NON_NEGATIVE_INTEGER, //
-        XMLSchema.NON_POSITIVE_INTEGER, //
-        XMLSchema.NORMALIZEDSTRING, //
-        XMLSchema.NOTATION, //
-        XMLSchema.POSITIVE_INTEGER, //
-        XMLSchema.QNAME, //
-        XMLSchema.SHORT, //
-        XMLSchema.STRING, //
-        XMLSchema.TIME, //
-        XMLSchema.TOKEN, //
-        XMLSchema.UNSIGNED_BYTE, //
-        XMLSchema.UNSIGNED_INT, //
-        XMLSchema.UNSIGNED_LONG, //
-        XMLSchema.UNSIGNED_SHORT, //
+    static private final IRI[] uris = new IRI[]{
+        SimpleValueFactory.getInstance().createIRI(XSD.NAMESPACE), //
+        XSD.ANYURI, //
+        XSD.BASE64BINARY, //
+        XSD.BOOLEAN, //
+        XSD.BYTE, //
+        XSD.DATE, //
+        XSD.DATETIME, //
+        XSD.DECIMAL, //
+        XSD.DOUBLE, //
+        XSD.DURATION, //
+        XSD.ENTITIES, //
+        XSD.ENTITY, //
+        XSD.FLOAT, //
+        XSD.GDAY, //
+        XSD.GMONTH, //
+        XSD.GMONTHDAY, //
+        XSD.GYEAR, //
+        XSD.GYEARMONTH, //
+        XSD.HEXBINARY, //
+        XSD.ID, //
+        XSD.IDREF, //
+        XSD.IDREFS, //
+        XSD.INT, //
+        XSD.INTEGER, //
+        XSD.LANGUAGE, //
+        XSD.LONG, //
+        XSD.NAME, //
+        XSD.NCNAME, //
+        XSD.NEGATIVE_INTEGER, //
+        XSD.NMTOKEN, //
+        XSD.NMTOKENS, //
+        XSD.NON_NEGATIVE_INTEGER, //
+        XSD.NON_POSITIVE_INTEGER, //
+        XSD.NORMALIZEDSTRING, //
+        XSD.NOTATION, //
+        XSD.POSITIVE_INTEGER, //
+        XSD.QNAME, //
+        XSD.SHORT, //
+        XSD.STRING, //
+        XSD.TIME, //
+        XSD.TOKEN, //
+        XSD.UNSIGNED_BYTE, //
+        XSD.UNSIGNED_INT, //
+        XSD.UNSIGNED_LONG, //
+        XSD.UNSIGNED_SHORT, //
     };
 
     public XMLSchemaVocabularyDecl() {
     }
     
-    public Iterator<URI> values() {
+    public Iterator<IRI> values() {
 
         return Collections.unmodifiableList(Arrays.asList(uris)).iterator();
         

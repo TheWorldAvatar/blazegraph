@@ -24,7 +24,7 @@ package com.bigdata.rdf.internal.impl.literal;
 
 import java.util.Arrays;
 
-import org.openrdf.model.Literal;
+import org.eclipse.rdf4j.model.Literal;
 
 import com.bigdata.btree.keys.KeyBuilder;
 import com.bigdata.rdf.internal.DTE;

@@ -24,8 +24,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 package com.bigdata.rdf.model;
 
-import org.openrdf.model.Statement;
-import org.openrdf.model.Value;
+import org.eclipse.rdf4j.model.Statement;
+import org.eclipse.rdf4j.model.Value;
 
 import com.bigdata.rdf.internal.IV;
 import com.bigdata.rdf.internal.impl.bnode.SidIV;
@@ -60,7 +60,7 @@ public class BigdataStatementImpl implements BigdataStatement {
     private static final long serialVersionUID = 6739949195958368365L;
 
     private final BigdataResource s;
-    private final BigdataURI p;
+    private final BigdataIRI p;
     private final BigdataValue o;
     private final BigdataResource c;
     private IV sid = null;
@@ -74,7 +74,7 @@ public class BigdataStatementImpl implements BigdataStatement {
      * Used by {@link BigdataValueFactory}
      */
     public BigdataStatementImpl(final BigdataResource subject,
-            final BigdataURI predicate, final BigdataValue object,
+            final BigdataIRI predicate, final BigdataValue object,
             final BigdataResource context, final StatementEnum type,
             final boolean userFlag) {
 
@@ -113,7 +113,7 @@ public class BigdataStatementImpl implements BigdataStatement {
     }
     
     @Override
-    final public BigdataURI getPredicate() {
+    final public BigdataIRI getPredicate() {
 
         return p;
         

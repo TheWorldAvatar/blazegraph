@@ -2,8 +2,8 @@ package com.bigdata.rdf.sail.remote;
 
 import java.util.concurrent.TimeUnit;
 
-import org.openrdf.query.BooleanQuery;
-import org.openrdf.query.QueryEvaluationException;
+import org.eclipse.rdf4j.query.BooleanQuery;
+import org.eclipse.rdf4j.query.QueryEvaluationException;
 
 import com.bigdata.rdf.sail.webapp.client.IPreparedBooleanQuery;
 import com.bigdata.rdf.sail.webapp.client.RemoteRepository;

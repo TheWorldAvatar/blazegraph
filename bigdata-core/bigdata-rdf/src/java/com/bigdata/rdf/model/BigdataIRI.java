@@ -47,25 +47,25 @@ Modifications:
 
 package com.bigdata.rdf.model;
 
-import org.openrdf.model.URI;
+import org.eclipse.rdf4j.model.IRI;
 
 /**
- * A {@link URI} that exposes the internal term identifier.
+ * A {@link IRI} that exposes the internal term identifier.
  * 
  * @author <a href="mailto:thompsonbry@users.sourceforge.net">Bryan Thompson</a>
  * @version $Id$
  */
-public interface BigdataURI extends URI, BigdataResource {
+public interface BigdataIRI extends IRI, BigdataResource {
 
 	/**
 	 * Return the length of the value that would be returned by
-	 * {@link URI#getNamespace()}.
+	 * {@link IRI#getNamespace()}.
 	 */
 	int getNamespaceLength();
 
 	/**
 	 * Return the length of the value that would be returned by
-	 * {@link URI#getLocalName()}.
+	 * {@link IRI#getLocalName()}.
 	 */
 	int getLocalNameLength();
 

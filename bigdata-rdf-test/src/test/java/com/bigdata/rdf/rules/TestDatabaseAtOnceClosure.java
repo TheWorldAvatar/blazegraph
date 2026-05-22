@@ -15,20 +15,20 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
 
-import org.openrdf.model.Statement;
-import org.openrdf.model.vocabulary.RDFS;
-import org.openrdf.repository.Repository;
-import org.openrdf.repository.RepositoryConnection;
-import org.openrdf.repository.RepositoryResult;
-import org.openrdf.repository.sail.SailRepository;
-import org.openrdf.rio.RDFFormat;
-import org.openrdf.sail.inferencer.fc.ForwardChainingRDFSInferencer;
-import org.openrdf.sail.memory.MemoryStore;
+import org.eclipse.rdf4j.model.Statement;
+import org.eclipse.rdf4j.model.vocabulary.RDFS;
+import org.eclipse.rdf4j.repository.Repository;
+import org.eclipse.rdf4j.repository.RepositoryConnection;
+import org.eclipse.rdf4j.repository.RepositoryResult;
+import org.eclipse.rdf4j.repository.sail.SailRepository;
+import org.eclipse.rdf4j.rio.RDFFormat;
+import org.eclipse.rdf4j.sail.inferencer.fc.ForwardChainingRDFSInferencer;
+import org.eclipse.rdf4j.sail.memory.MemoryStore;
 
 import com.bigdata.rdf.axioms.NoAxioms;
 import com.bigdata.rdf.axioms.RdfsAxioms;
 import com.bigdata.rdf.inf.ClosureStats;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.rio.StatementBuffer;
 import com.bigdata.rdf.store.AbstractTripleStore;
@@ -882,11 +882,11 @@ public class TestDatabaseAtOnceClosure extends AbstractRuleTestCase {
             
             final BigdataValueFactory f = store.getValueFactory();
             
-            final BigdataURI A = f.createURI("http://www.bigdata.com/a");
-            final BigdataURI B = f.createURI("http://www.bigdata.com/b");
-            final BigdataURI C = f.createURI("http://www.bigdata.com/c");
-            final BigdataURI D = f.createURI("http://www.bigdata.com/d");
-            final BigdataURI SCO = f.asValue(RDFS.SUBCLASSOF);
+            final BigdataIRI A = f.createURI("http://www.bigdata.com/a");
+            final BigdataIRI B = f.createURI("http://www.bigdata.com/b");
+            final BigdataIRI C = f.createURI("http://www.bigdata.com/c");
+            final BigdataIRI D = f.createURI("http://www.bigdata.com/d");
+            final BigdataIRI SCO = f.asValue(RDFS.SUBCLASSOF);
             
             final Vocabulary vocab = store.getVocabulary();
 

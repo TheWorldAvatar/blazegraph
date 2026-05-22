@@ -27,7 +27,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 package com.bigdata.rdf.sail.webapp.client;
 
-import org.openrdf.query.TupleQueryResult;
+import org.eclipse.rdf4j.query.TupleQueryResult;
 
 /**
  * A prepared tuple query against a {@link JettyeRemoteRepository}.

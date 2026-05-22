@@ -31,10 +31,10 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-import org.openrdf.model.URI;
-import org.openrdf.query.Binding;
-import org.openrdf.query.BindingSet;
-import org.openrdf.query.impl.MapBindingSet;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.query.Binding;
+import org.eclipse.rdf4j.query.BindingSet;
+import org.eclipse.rdf4j.query.impl.MapBindingSet;
 
 import com.bigdata.bop.Constant;
 import com.bigdata.bop.IBindingSet;
@@ -47,7 +47,7 @@ import com.bigdata.rdf.internal.IV;
 import com.bigdata.rdf.internal.IVCache;
 import com.bigdata.rdf.internal.NotMaterializedException;
 import com.bigdata.rdf.lexicon.LexiconRelation;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.sail.BigdataValueReplacer;
 import com.bigdata.rdf.store.AbstractTripleStore;
@@ -80,7 +80,7 @@ public class ServiceCallUtility {
      *             if the service reference evaluates to an {@link IV} which is
      *             not materialized.
      */
-    static public BigdataURI getConstantServiceURI(
+    static public BigdataIRI getConstantServiceURI(
             final IVariableOrConstant<?> serviceRef) {
 
         if (serviceRef.isVar()) {
@@ -98,7 +98,7 @@ public class ServiceCallUtility {
         if (!serviceRefIV.hasValue())
             throw new NotMaterializedException(ERR_NOT_MATERIALIZED);
 
-        final BigdataURI serviceURI = (BigdataURI) serviceRefIV.getValue();
+        final BigdataIRI serviceURI = (BigdataIRI) serviceRefIV.getValue();
 
         return serviceURI;
 
@@ -121,7 +121,7 @@ public class ServiceCallUtility {
      *             if the service reference evaluates to an {@link IV} which is
      *             not materialized.
      */
-    static public BigdataURI getServiceURI(
+    static public BigdataIRI getServiceURI(
             final IVariableOrConstant<?> serviceRef, final IBindingSet bset) {
 
         // Evaluate the serviceRef expression.
@@ -137,7 +137,7 @@ public class ServiceCallUtility {
         if (!serviceRefIV.hasValue())
             throw new NotMaterializedException(ERR_NOT_MATERIALIZED);
 
-        final BigdataURI serviceURI = (BigdataURI) serviceRefIV.getValue();
+        final BigdataIRI serviceURI = (BigdataIRI) serviceRefIV.getValue();
 
         return serviceURI;
 

@@ -1,8 +1,8 @@
 package com.bigdata.rdf.rio;
 
-import org.openrdf.rio.RDFParser;
-import org.openrdf.rio.RDFParser.DatatypeHandling;
-import org.openrdf.rio.helpers.RDFParserBase;
+import org.eclipse.rdf4j.rio.RDFParser;
+import org.eclipse.rdf4j.rio.RDFParser.DatatypeHandling;
+import org.eclipse.rdf4j.rio.helpers.RDFParserBase;
 
 /**
  * Instances of this interface may be used to configure options on an

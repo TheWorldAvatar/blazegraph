@@ -29,12 +29,12 @@ package com.bigdata.rdf.sparql.ast.optimizers;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.openrdf.query.algebra.StatementPattern.Scope;
+import org.eclipse.rdf4j.query.algebra.StatementPattern.Scope;
 
 import com.bigdata.bop.IBindingSet;
 import com.bigdata.bop.bindingSet.ListBindingSet;
 import com.bigdata.rdf.internal.IV;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.sparql.ast.ASTContainer;
@@ -336,7 +336,7 @@ public class TestASTFilterNormalizationOptimizer extends AbstractASTEvaluationTe
         * Note: DO NOT share structures in this test!!!!
         */
       final BigdataValueFactory f = store.getValueFactory();
-      final BigdataURI testUri = f.createURI("http://www.test.com");
+      final BigdataIRI testUri = f.createURI("http://www.test.com");
 
       final IV test = makeIV(testUri);
       
@@ -1683,7 +1683,7 @@ public class TestASTFilterNormalizationOptimizer extends AbstractASTEvaluationTe
        * Note: DO NOT share structures in this test!!!!
        */
       final BigdataValueFactory f = store.getValueFactory();
-      final BigdataURI testUri = f.createURI("http://www.test.com");
+      final BigdataIRI testUri = f.createURI("http://www.test.com");
 
       final IV test = makeIV(testUri);
       

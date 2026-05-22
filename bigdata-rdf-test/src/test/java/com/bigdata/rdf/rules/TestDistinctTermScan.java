@@ -49,8 +49,8 @@ package com.bigdata.rdf.rules;
 
 import java.util.Arrays;
 import java.util.Properties;
-import org.openrdf.model.URI;
-import org.openrdf.model.impl.URIImpl;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.impl.URIImpl;
 import com.bigdata.rdf.axioms.NoAxioms;
 import com.bigdata.rdf.internal.IV;
 import com.bigdata.rdf.rio.IStatementBuffer;

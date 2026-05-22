@@ -27,10 +27,10 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 package com.bigdata.rdf.rules;
 
-import org.openrdf.model.vocabulary.RDFS;
+import org.eclipse.rdf4j.model.vocabulary.RDFS;
 
 import com.bigdata.rdf.model.BigdataStatement;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.rio.StatementBuffer;
 import com.bigdata.rdf.store.AbstractTripleStore;
@@ -77,11 +77,11 @@ public class TestModelsEqual extends AbstractRuleTestCase {
             {
                 final BigdataValueFactory f = store1.getValueFactory();
                 
-                final BigdataURI A = f.createURI("http://www.bigdata.com/a");
-                final BigdataURI B = f.createURI("http://www.bigdata.com/b");
-                final BigdataURI C = f.createURI("http://www.bigdata.com/c");
-                final BigdataURI D = f.createURI("http://www.bigdata.com/d");
-                final BigdataURI SCO = f.asValue(RDFS.SUBCLASSOF);
+                final BigdataIRI A = f.createURI("http://www.bigdata.com/a");
+                final BigdataIRI B = f.createURI("http://www.bigdata.com/b");
+                final BigdataIRI C = f.createURI("http://www.bigdata.com/c");
+                final BigdataIRI D = f.createURI("http://www.bigdata.com/d");
+                final BigdataIRI SCO = f.asValue(RDFS.SUBCLASSOF);
 
                 StatementBuffer buf = new StatementBuffer(store1, 10);
 
@@ -96,11 +96,11 @@ public class TestModelsEqual extends AbstractRuleTestCase {
             {
                 final BigdataValueFactory f = store1.getValueFactory();
                 
-                final BigdataURI A = f.createURI("http://www.bigdata.com/a");
-                final BigdataURI B = f.createURI("http://www.bigdata.com/b");
-                final BigdataURI C = f.createURI("http://www.bigdata.com/c");
-                final BigdataURI D = f.createURI("http://www.bigdata.com/d");
-                final BigdataURI SCO = f.asValue(RDFS.SUBCLASSOF);
+                final BigdataIRI A = f.createURI("http://www.bigdata.com/a");
+                final BigdataIRI B = f.createURI("http://www.bigdata.com/b");
+                final BigdataIRI C = f.createURI("http://www.bigdata.com/c");
+                final BigdataIRI D = f.createURI("http://www.bigdata.com/d");
+                final BigdataIRI SCO = f.asValue(RDFS.SUBCLASSOF);
 
                 StatementBuffer buf = new StatementBuffer(store2, 10);
 
@@ -142,9 +142,9 @@ public class TestModelsEqual extends AbstractRuleTestCase {
                 
                 final BigdataValueFactory f = store1.getValueFactory();
                 
-                final BigdataURI A = f.createURI("http://www.bigdata.com/a");
-                final BigdataURI B = f.createURI("http://www.bigdata.com/b");
-                final BigdataURI SCO = f.asValue(RDFS.SUBCLASSOF);
+                final BigdataIRI A = f.createURI("http://www.bigdata.com/a");
+                final BigdataIRI B = f.createURI("http://www.bigdata.com/b");
+                final BigdataIRI SCO = f.asValue(RDFS.SUBCLASSOF);
                 
                 assertEquals(1L, store2.removeStatements(A, SCO, B));
                 

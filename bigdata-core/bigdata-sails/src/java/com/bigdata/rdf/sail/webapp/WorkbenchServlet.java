@@ -23,20 +23,21 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 package com.bigdata.rdf.sail.webapp;
 
 import java.io.IOException;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.model.Graph;
-import org.openrdf.model.impl.LinkedHashModel;
-import org.openrdf.model.impl.ValueFactoryImpl;
-import org.openrdf.rio.RDFFormat;
-import org.openrdf.rio.RDFParser;
-import org.openrdf.rio.RDFParserFactory;
-import org.openrdf.rio.RDFParserRegistry;
-import org.openrdf.rio.helpers.StatementCollector;
+import org.eclipse.rdf4j.model.Model;
+import org.eclipse.rdf4j.model.impl.LinkedHashModel;
+import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
+import org.eclipse.rdf4j.rio.RDFFormat;
+import org.eclipse.rdf4j.rio.RDFParser;
+import org.eclipse.rdf4j.rio.RDFParserFactory;
+import org.eclipse.rdf4j.rio.RDFParserRegistry;
+import org.eclipse.rdf4j.rio.helpers.StatementCollector;
 
 import com.bigdata.rdf.sail.webapp.client.MiniMime;
 
@@ -101,10 +102,10 @@ public class WorkbenchServlet extends BigdataRDFServlet {
          * UpdateServlet fails to parse MIMEType when doing conneg. </a>
          */
 
-        final RDFFormat requestBodyFormat = RDFFormat.forMIMEType(new MiniMime(
-                contentType).getMimeType());
+        final Optional<RDFFormat> requestBodyFormat = RDFFormat.matchMIMEType(new MiniMime(
+                contentType).getMimeType(), RDFParserRegistry.getInstance().getKeys());
 
-        if (requestBodyFormat == null) {
+        if (requestBodyFormat.isEmpty()) {
 
             buildAndCommitResponse(resp, HTTP_BADREQUEST, MIME_TEXT_PLAIN,
                     "Content-Type not recognized as RDF: " + contentType);
@@ -113,10 +114,10 @@ public class WorkbenchServlet extends BigdataRDFServlet {
 
         }
 
-        final RDFParserFactory rdfParserFactory = RDFParserRegistry
-                .getInstance().get(requestBodyFormat);
+        final Optional<RDFParserFactory> rdfParserFactory = RDFParserRegistry
+                .getInstance().get(requestBodyFormat.get());
 
-        if (rdfParserFactory == null) {
+        if (rdfParserFactory.isEmpty()) {
 
             buildAndCommitResponse(resp, HTTP_INTERNALERROR, MIME_TEXT_PLAIN,
                     "Parser factory not found: Content-Type="
@@ -129,7 +130,7 @@ public class WorkbenchServlet extends BigdataRDFServlet {
 //        final String s= IOUtil.readString(req.getInputStream());
 //        System.err.println(s);
         
-        final Graph g = new LinkedHashModel();
+        final Model g = new LinkedHashModel();
         
         try {
         
@@ -137,10 +138,10 @@ public class WorkbenchServlet extends BigdataRDFServlet {
 	         * There is a request body, so let's try and parse it.
 	         */
 	
-	        final RDFParser rdfParser = rdfParserFactory
+	        final RDFParser rdfParser = rdfParserFactory.get()
 	                .getParser();
 	
-	        rdfParser.setValueFactory(new ValueFactoryImpl());
+	        rdfParser.setValueFactory(SimpleValueFactory.getInstance());
 	
 	        rdfParser.setVerifyData(true);
 	

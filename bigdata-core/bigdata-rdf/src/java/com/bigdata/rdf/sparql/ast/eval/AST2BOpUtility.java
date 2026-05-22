@@ -16,7 +16,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.model.URI;
+import org.eclipse.rdf4j.model.URI;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.BOpContextBase;
@@ -114,7 +114,7 @@ import com.bigdata.rdf.internal.impl.literal.NumericIV;
 import com.bigdata.rdf.internal.impl.literal.XSDBooleanIV;
 import com.bigdata.rdf.lexicon.LexiconRelation;
 import com.bigdata.rdf.model.BigdataLiteral;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.sparql.ast.ASTBase;
 import com.bigdata.rdf.sparql.ast.ASTContainer;
 import com.bigdata.rdf.sparql.ast.ASTUtil;
@@ -256,7 +256,7 @@ public class AST2BOpUtility extends AST2BOpRTO {
          * (i.e., the bindingSets input to this method) is having the special
          * semantics of "globally scoped vars". We need to record and treat
          * them separately in some places. See also the discussion at
-         * https://groups.google.com/forum/#!topic/sesame-devel/Di_ZLtTVuZA.
+         * https://groups.google.com/forum/#!topic/rdf4j-devel/Di_ZLtTVuZA.
          * 
          * Also note that, unless the solution set stats (which might be
          * adjusted by optimizers as the input binding set is modified),
@@ -1045,7 +1045,7 @@ public class AST2BOpUtility extends AST2BOpRTO {
         final Set<IVariable<IV>> varsToMockResolve = new HashSet<IVariable<IV>>();
         if(serviceRef instanceof IConstant) {
 
-            final BigdataURI serviceURI = ServiceCallUtility
+            final BigdataIRI serviceURI = ServiceCallUtility
                     .getConstantServiceURI(serviceRef);
             
             final ServiceCall<?> serviceCall = ServiceRegistry.getInstance()

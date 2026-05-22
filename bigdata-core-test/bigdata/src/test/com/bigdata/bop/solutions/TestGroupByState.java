@@ -31,7 +31,7 @@ import java.util.LinkedHashSet;
 
 import junit.framework.TestCase2;
 
-import org.openrdf.query.algebra.Compare.CompareOp;
+import org.eclipse.rdf4j.query.algebra.Compare.CompareOp;
 
 import com.bigdata.bop.Bind;
 import com.bigdata.bop.Constant;

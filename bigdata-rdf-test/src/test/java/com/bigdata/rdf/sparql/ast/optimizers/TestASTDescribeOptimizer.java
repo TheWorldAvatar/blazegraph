@@ -29,14 +29,14 @@ package com.bigdata.rdf.sparql.ast.optimizers;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.model.vocabulary.RDF;
-import org.openrdf.model.vocabulary.RDFS;
-import org.openrdf.query.algebra.StatementPattern.Scope;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.vocabulary.RDFS;
+import org.eclipse.rdf4j.query.algebra.StatementPattern.Scope;
 
 import com.bigdata.rdf.model.BigdataLiteral;
 import com.bigdata.rdf.model.BigdataStatement;
 import com.bigdata.rdf.model.BigdataStatementImpl;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.model.StatementEnum;
@@ -95,7 +95,7 @@ public class TestASTDescribeOptimizer extends AbstractASTEvaluationTestCase {
         // Add some data.
         {
 
-            final BigdataURI g = f.createURI("http://www.bigdata.com");
+            final BigdataIRI g = f.createURI("http://www.bigdata.com");
             
             final BigdataStatement[] stmts = new BigdataStatement[] {//
 
@@ -160,17 +160,17 @@ public class TestASTDescribeOptimizer extends AbstractASTEvaluationTestCase {
 
         }
 
-        final BigdataURI rdfType = f.createURI(RDF.TYPE.toString());
+        final BigdataIRI rdfType = f.createURI(RDF.TYPE.toString());
 
-        final BigdataURI rdfsLabel = f.createURI(RDFS.LABEL.toString());
+        final BigdataIRI rdfsLabel = f.createURI(RDFS.LABEL.toString());
 
-        final BigdataURI foafPerson = f.createURI(FOAFVocabularyDecl.Person
+        final BigdataIRI foafPerson = f.createURI(FOAFVocabularyDecl.Person
                 .toString());
 
-        final BigdataURI mikeURI = f
+        final BigdataIRI mikeURI = f
                 .createURI("http://www.bigdata.com/Mike");
 
-        final BigdataURI bryanURI = f
+        final BigdataIRI bryanURI = f
                 .createURI("http://www.bigdata.com/Bryan");
 
         final BigdataLiteral mikeLabel = f.createLiteral("Mike");
@@ -310,7 +310,7 @@ public class TestASTDescribeOptimizer extends AbstractASTEvaluationTestCase {
         // Add some data.
         {
 
-            final BigdataURI g = f.createURI("http://www.bigdata.com");
+            final BigdataIRI g = f.createURI("http://www.bigdata.com");
             
             final BigdataStatement[] stmts = new BigdataStatement[] {//
 
@@ -375,17 +375,17 @@ public class TestASTDescribeOptimizer extends AbstractASTEvaluationTestCase {
 
         }
 
-        final BigdataURI rdfType = f.createURI(RDF.TYPE.toString());
+        final BigdataIRI rdfType = f.createURI(RDF.TYPE.toString());
 
-        final BigdataURI rdfsLabel = f.createURI(RDFS.LABEL.toString());
+        final BigdataIRI rdfsLabel = f.createURI(RDFS.LABEL.toString());
 
-        final BigdataURI foafPerson = f.createURI(FOAFVocabularyDecl.Person
+        final BigdataIRI foafPerson = f.createURI(FOAFVocabularyDecl.Person
                 .toString());
 
-        final BigdataURI mikeURI = f
+        final BigdataIRI mikeURI = f
                 .createURI("http://www.bigdata.com/Mike");
 
-        final BigdataURI bryanURI = f
+        final BigdataIRI bryanURI = f
                 .createURI("http://www.bigdata.com/Bryan");
 
         final BigdataLiteral mikeLabel = f.createLiteral("Mike");
@@ -528,7 +528,7 @@ public class TestASTDescribeOptimizer extends AbstractASTEvaluationTestCase {
         // Add some data.
         {
 
-            final BigdataURI g = f.createURI("http://www.bigdata.com");
+            final BigdataIRI g = f.createURI("http://www.bigdata.com");
             
             final BigdataStatement[] stmts = new BigdataStatement[] {//
 
@@ -593,24 +593,24 @@ public class TestASTDescribeOptimizer extends AbstractASTEvaluationTestCase {
 
         }
 
-        final BigdataURI rdfType = f.createURI(RDF.TYPE.toString());
+        final BigdataIRI rdfType = f.createURI(RDF.TYPE.toString());
 
-        final BigdataURI rdfsLabel = f.createURI(RDFS.LABEL.toString());
+        final BigdataIRI rdfsLabel = f.createURI(RDFS.LABEL.toString());
 
-        final BigdataURI foafPerson = f.createURI(FOAFVocabularyDecl.Person
+        final BigdataIRI foafPerson = f.createURI(FOAFVocabularyDecl.Person
                 .toString());
 
-        final BigdataURI mikeURI = f
+        final BigdataIRI mikeURI = f
                 .createURI("http://www.bigdata.com/Mike");
 
-        final BigdataURI bryanURI = f
+        final BigdataIRI bryanURI = f
                 .createURI("http://www.bigdata.com/Bryan");
 
         final BigdataLiteral mikeLabel = f.createLiteral("Mike");
 
         final BigdataLiteral bryanLabel = f.createLiteral("Bryan");
 
-        final BigdataURI rdfSubject = f.createURI(RDF.SUBJECT.toString());
+        final BigdataIRI rdfSubject = f.createURI(RDF.SUBJECT.toString());
 
         final BigdataValue[] values = new BigdataValue[] { rdfType,
                 rdfsLabel, foafPerson, mikeURI, bryanURI, mikeLabel,
@@ -754,7 +754,7 @@ public class TestASTDescribeOptimizer extends AbstractASTEvaluationTestCase {
         // Add some data.
         {
 
-            final BigdataURI g = f.createURI("http://www.bigdata.com");
+            final BigdataIRI g = f.createURI("http://www.bigdata.com");
             
             final BigdataStatement[] stmts = new BigdataStatement[] {//
 
@@ -819,24 +819,24 @@ public class TestASTDescribeOptimizer extends AbstractASTEvaluationTestCase {
 
         }
 
-        final BigdataURI rdfType = f.createURI(RDF.TYPE.toString());
+        final BigdataIRI rdfType = f.createURI(RDF.TYPE.toString());
 
-        final BigdataURI rdfsLabel = f.createURI(RDFS.LABEL.toString());
+        final BigdataIRI rdfsLabel = f.createURI(RDFS.LABEL.toString());
 
-        final BigdataURI foafPerson = f.createURI(FOAFVocabularyDecl.Person
+        final BigdataIRI foafPerson = f.createURI(FOAFVocabularyDecl.Person
                 .toString());
 
-        final BigdataURI mikeURI = f
+        final BigdataIRI mikeURI = f
                 .createURI("http://www.bigdata.com/Mike");
 
-        final BigdataURI bryanURI = f
+        final BigdataIRI bryanURI = f
                 .createURI("http://www.bigdata.com/Bryan");
 
         final BigdataLiteral mikeLabel = f.createLiteral("Mike");
 
         final BigdataLiteral bryanLabel = f.createLiteral("Bryan");
 
-        final BigdataURI dcURI = f.createURI("http://www.bigdata.com/DC");
+        final BigdataIRI dcURI = f.createURI("http://www.bigdata.com/DC");
 
         final BigdataValue[] values = new BigdataValue[] { rdfType,
                 rdfsLabel, foafPerson, mikeURI, bryanURI, mikeLabel,
@@ -998,7 +998,7 @@ public class TestASTDescribeOptimizer extends AbstractASTEvaluationTestCase {
         // Add some data.
         {
 
-            final BigdataURI g = f.createURI("http://www.bigdata.com");
+            final BigdataIRI g = f.createURI("http://www.bigdata.com");
             
             final BigdataStatement[] stmts = new BigdataStatement[] {//
 
@@ -1063,24 +1063,24 @@ public class TestASTDescribeOptimizer extends AbstractASTEvaluationTestCase {
 
         }
 
-        final BigdataURI rdfType = f.createURI(RDF.TYPE.toString());
+        final BigdataIRI rdfType = f.createURI(RDF.TYPE.toString());
 
-        final BigdataURI rdfsLabel = f.createURI(RDFS.LABEL.toString());
+        final BigdataIRI rdfsLabel = f.createURI(RDFS.LABEL.toString());
 
-        final BigdataURI foafPerson = f.createURI(FOAFVocabularyDecl.Person
+        final BigdataIRI foafPerson = f.createURI(FOAFVocabularyDecl.Person
                 .toString());
 
-        final BigdataURI mikeURI = f
+        final BigdataIRI mikeURI = f
                 .createURI("http://www.bigdata.com/Mike");
 
-        final BigdataURI bryanURI = f
+        final BigdataIRI bryanURI = f
                 .createURI("http://www.bigdata.com/Bryan");
 
         final BigdataLiteral mikeLabel = f.createLiteral("Mike");
 
         final BigdataLiteral bryanLabel = f.createLiteral("Bryan");
 
-        final BigdataURI dcURI = f.createURI("http://www.bigdata.com/DC");
+        final BigdataIRI dcURI = f.createURI("http://www.bigdata.com/DC");
 
         final BigdataValue[] values = new BigdataValue[] { rdfType,
                 rdfsLabel, foafPerson, mikeURI, bryanURI, mikeLabel,

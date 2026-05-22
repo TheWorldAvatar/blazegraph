@@ -5,7 +5,7 @@
  */
 package com.bigdata.rdf.sail.sparql;
 
-import org.openrdf.query.algebra.ValueConstant;
+import org.eclipse.rdf4j.query.algebra.ValueConstant;
 
 
 /**

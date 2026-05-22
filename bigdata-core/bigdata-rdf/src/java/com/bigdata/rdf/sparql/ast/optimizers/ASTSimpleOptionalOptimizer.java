@@ -42,7 +42,7 @@ import com.bigdata.bop.IVariableOrConstant;
 import com.bigdata.rdf.internal.constraints.INeedsMaterialization;
 import com.bigdata.rdf.internal.constraints.INeedsMaterialization.Requirement;
 import com.bigdata.rdf.internal.constraints.TrueBOp;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.sparql.ast.ComputedMaterializationRequirement;
 import com.bigdata.rdf.sparql.ast.FilterNode;
 import com.bigdata.rdf.sparql.ast.GraphPatternGroup;
@@ -192,7 +192,7 @@ public class ASTSimpleOptionalOptimizer implements IASTOptimizer {
 
                 }
 
-                final BigdataURI serviceURI = ServiceCallUtility
+                final BigdataIRI serviceURI = ServiceCallUtility
                         .getConstantServiceURI(serviceRef);
 
                 if (!BDS.SEARCH.equals(serviceURI)) {

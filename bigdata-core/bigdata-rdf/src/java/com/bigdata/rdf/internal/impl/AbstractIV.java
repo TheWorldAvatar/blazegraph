@@ -30,8 +30,8 @@ package com.bigdata.rdf.internal.impl;
 import java.io.IOException;
 import java.util.UUID;
 
-import org.openrdf.model.Literal;
-import org.openrdf.model.Value;
+import org.eclipse.rdf4j.model.Literal;
+import org.eclipse.rdf4j.model.Value;
 
 import com.bigdata.btree.keys.IKeyBuilder;
 import com.bigdata.btree.keys.KeyBuilder;
@@ -62,7 +62,7 @@ import com.bigdata.rdf.internal.impl.uri.URIExtensionIV;
 import com.bigdata.rdf.internal.impl.uri.VocabURIByteIV;
 import com.bigdata.rdf.internal.impl.uri.VocabURIShortIV;
 import com.bigdata.rdf.lexicon.ITermIndexCodes;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 
 /**
@@ -721,7 +721,7 @@ public abstract class AbstractIV<V extends BigdataValue, T>
             if(isExtension()) {
 
                 @SuppressWarnings("unchecked")
-                final URIExtensionIV<BigdataURI> extension = (URIExtensionIV<BigdataURI>) this;
+                final URIExtensionIV<BigdataIRI> extension = (URIExtensionIV<BigdataIRI>) this;
 
                 // The namespaceIV (a Vocabulary item).
                 IVUtility.encode(keyBuilder, extension.getExtensionIV());

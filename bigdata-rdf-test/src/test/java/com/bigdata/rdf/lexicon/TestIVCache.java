@@ -18,7 +18,7 @@ import com.bigdata.rdf.internal.impl.literal.XSDIntegerIV;
 import com.bigdata.rdf.internal.impl.literal.XSDNumericIV;
 import com.bigdata.rdf.model.BigdataBNode;
 import com.bigdata.rdf.model.BigdataLiteral;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.store.AbstractTripleStore;
@@ -52,7 +52,7 @@ public class TestIVCache extends AbstractTripleStoreTestCase {
 
     		final BigdataValueFactory f = lex.getValueFactory();
     		
-    		final BigdataURI uri = f.createURI("http://www.bigdata.com");
+    		final BigdataIRI uri = f.createURI("http://www.bigdata.com");
     		final BigdataBNode bnd = f.createBNode();//"12");
     		final BigdataLiteral lit = f.createLiteral("bigdata");
     		

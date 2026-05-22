@@ -17,7 +17,7 @@ package com.bigdata.rdf.graph.impl.scheduler;
 
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.openrdf.model.Value;
+import org.eclipse.rdf4j.model.Value;
 
 import com.bigdata.rdf.graph.IGASSchedulerImpl;
 import com.bigdata.rdf.graph.IStaticFrontier;

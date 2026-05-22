@@ -42,12 +42,12 @@ import java.util.UUID;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.model.BNode;
-import org.openrdf.model.Literal;
-import org.openrdf.model.URI;
-import org.openrdf.model.Value;
-import org.openrdf.model.datatypes.XMLDatatypeUtil;
-import org.openrdf.model.impl.URIImpl;
+import org.eclipse.rdf4j.model.BNode;
+import org.eclipse.rdf4j.model.Literal;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.Value;
+import org.eclipse.rdf4j.model.datatypes.XMLDatatypeUtil;
+import org.eclipse.rdf4j.model.impl.URIImpl;
 
 import com.bigdata.rdf.internal.constraints.DateTimeUtility;
 import com.bigdata.rdf.internal.constraints.IMathOpHandler;
@@ -76,7 +76,7 @@ import com.bigdata.rdf.internal.impl.uri.URIExtensionIV;
 import com.bigdata.rdf.lexicon.LexiconKeyOrder;
 import com.bigdata.rdf.model.BigdataBNode;
 import com.bigdata.rdf.model.BigdataLiteral;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.model.BigdataValueSerializer;
@@ -427,7 +427,7 @@ public class LexiconConfiguration<V extends BigdataValue>
             final IExtension<?> extension = itr.next();
             
 //            final BigdataURI datatype = extension.getDatatype();
-        	for (BigdataURI datatype : extension.getDatatypes()) {
+        	for (BigdataIRI datatype : extension.getDatatypes()) {
 
 	            if (datatype == null)
 	                continue;
@@ -554,7 +554,7 @@ public class LexiconConfiguration<V extends BigdataValue>
 	 *         can not be inlined into the statement indices.
 	 */
     @SuppressWarnings("unchecked")
-    private IV<BigdataURI, ?> createInlineURIIV(final URI value) {
+    private IV<BigdataIRI, ?> createInlineURIIV(final URI value) {
 
 // deprecated in favor of the extensible InlineURIFactory mechanism
 //    	try {
@@ -592,7 +592,7 @@ public class LexiconConfiguration<V extends BigdataValue>
 
         if (value.stringValue().length() <= maxInlineTextLength) {
 
-            return new FullyInlineURIIV<BigdataURI>(value);
+            return new FullyInlineURIIV<BigdataIRI>(value);
 
         }
 
@@ -602,7 +602,7 @@ public class LexiconConfiguration<V extends BigdataValue>
 
             final String namespace = ((URI) value).getNamespace();
 
-            final IV<BigdataURI, ?> namespaceIV = vocab.get(new URIImpl(namespace));
+            final IV<BigdataIRI, ?> namespaceIV = vocab.get(new URIImpl(namespace));
 
             if (namespaceIV != null) {
 
@@ -610,7 +610,7 @@ public class LexiconConfiguration<V extends BigdataValue>
                         new FullyInlineTypedLiteralIV<BigdataLiteral>(
                                 localName);
 
-                return new URIExtensionIV<BigdataURI>(localNameIV, namespaceIV);
+                return new URIExtensionIV<BigdataIRI>(localNameIV, namespaceIV);
 
             }
 

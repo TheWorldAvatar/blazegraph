@@ -29,11 +29,11 @@ package com.bigdata.rdf.lexicon;
 
 import java.util.Properties;
 
-import org.openrdf.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
 
 import com.bigdata.io.SerializerUtil;
 import com.bigdata.rdf.axioms.NoAxioms;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.store.AbstractTripleStore;
@@ -101,9 +101,9 @@ public class TestVocabulary extends AbstractTripleStoreTestCase {
             // Must be using the same namespace.
             assertTrue(vocab.getNamespace()==f.getNamespace());
             
-            final BigdataURI rdfType = f.asValue(RDF.TYPE);
-            final BigdataURI rdfProperty = f.asValue(RDF.PROPERTY);
-            final BigdataURI unknownURI = f.createURI("http://www.bigdata.com/unknown");
+            final BigdataIRI rdfType = f.asValue(RDF.TYPE);
+            final BigdataIRI rdfProperty = f.asValue(RDF.PROPERTY);
+            final BigdataIRI unknownURI = f.createURI("http://www.bigdata.com/unknown");
             
             // resolve term ids.
             store.addTerms(new BigdataValue[] { rdfType, rdfProperty, unknownURI });
@@ -193,9 +193,9 @@ public class TestVocabulary extends AbstractTripleStoreTestCase {
             // lookup/add some values.
             final BigdataValueFactory f = store.getValueFactory();
 
-            final BigdataURI rdfType = f.asValue(RDF.TYPE);
-            final BigdataURI rdfProperty = f.asValue(RDF.PROPERTY);
-            final BigdataURI unknownURI = f.createURI("http://www.bigdata.com/unknown");
+            final BigdataIRI rdfType = f.asValue(RDF.TYPE);
+            final BigdataIRI rdfProperty = f.asValue(RDF.PROPERTY);
+            final BigdataIRI unknownURI = f.createURI("http://www.bigdata.com/unknown");
             
             // resolve term ids.
             store.addTerms(new BigdataValue[] { rdfType, rdfProperty, unknownURI });

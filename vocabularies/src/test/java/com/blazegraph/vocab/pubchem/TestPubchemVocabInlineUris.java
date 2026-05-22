@@ -9,7 +9,7 @@ import junit.framework.TestSuite;
 
 import com.bigdata.rdf.axioms.NoAxioms;
 import com.bigdata.rdf.model.BigdataStatement;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.rio.StatementBuffer;
 import com.bigdata.rdf.sail.BigdataSail;
@@ -65,15 +65,15 @@ public class TestPubchemVocabInlineUris extends AbstractTripleStoreTestCase {
 
 			final BigdataValueFactory vf = store.getValueFactory();
 
-			final LinkedList<BigdataURI> uriList = new LinkedList<BigdataURI>();
+			final LinkedList<BigdataIRI> uriList = new LinkedList<BigdataIRI>();
 			
 			Random rand = new Random();
 
 			final StatementBuffer<BigdataStatement> sb = new StatementBuffer<BigdataStatement>(
 					store, PubChemInlineURIFactory.uris.length/* capacity */);
 			
-			BigdataURI pred = vf.createURI("http://semanticscience.org/resource/CHEMINF_000461");
-			BigdataURI obj = vf.createURI("http://rdf.ncbi.nlm.nih.gov/pubchem/compound/CID1726184");
+			BigdataIRI pred = vf.createURI("http://semanticscience.org/resource/CHEMINF_000461");
+			BigdataIRI obj = vf.createURI("http://rdf.ncbi.nlm.nih.gov/pubchem/compound/CID1726184");
 			
 			for (int i = 0; i < PubChemInlineURIFactory.uris.length; i++) {
 
@@ -82,7 +82,7 @@ public class TestPubchemVocabInlineUris extends AbstractTripleStoreTestCase {
 
 				final int test = rand.nextInt(999999);
 
-				final BigdataURI uri = vf.createURI(uriStr+prefix+test);
+				final BigdataIRI uri = vf.createURI(uriStr+prefix+test);
 
 				uriList.push(uri);
 				sb.add(uri, pred, obj);
@@ -96,7 +96,7 @@ public class TestPubchemVocabInlineUris extends AbstractTripleStoreTestCase {
 
 				final int test = rand.nextInt(999999);
 
-				final BigdataURI uri = vf.createURI(uriStr+prefix+test+suffix);
+				final BigdataIRI uri = vf.createURI(uriStr+prefix+test+suffix);
 
 				uriList.push(uri);
 				sb.add(uri, pred, obj);
@@ -105,7 +105,7 @@ public class TestPubchemVocabInlineUris extends AbstractTripleStoreTestCase {
 			{  //Add the fixed width ones
 				
 				 // http://www.bioassayontology.org/bao#BAO_0002877 fixed width 7
-				BigdataURI uri = null;
+				BigdataIRI uri = null;
 				uri = vf.createURI("http://www.bioassayontology.org/bao#BAO_002877");
 				uriList.push(uri);
 				sb.add(uri, pred, obj);
@@ -138,7 +138,7 @@ public class TestPubchemVocabInlineUris extends AbstractTripleStoreTestCase {
 			if (log.isDebugEnabled())
 				log.debug(store.dumpStore());
 			
-			for (final BigdataURI uri: uriList ) {
+			for (final BigdataIRI uri: uriList ) {
 
 				if(log.isDebugEnabled()) {
 					log.debug("Checking " + uri.getNamespace() + " "+ uri.getLocalName() + " inline: " + uri.getIV().isInline());

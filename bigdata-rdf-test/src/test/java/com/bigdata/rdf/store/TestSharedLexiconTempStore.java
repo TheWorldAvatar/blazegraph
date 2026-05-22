@@ -31,7 +31,7 @@ import java.util.Properties;
 import java.util.Set;
 
 import com.bigdata.rdf.lexicon.LexiconRelation;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValueFactory;
 
 /**
@@ -72,9 +72,9 @@ public class TestSharedLexiconTempStore extends AbstractTripleStoreTestCase {
 
             final BigdataValueFactory vf = store.getValueFactory();
 
-            final BigdataURI uri1 = vf.createURI(uriString1);
+            final BigdataIRI uri1 = vf.createURI(uriString1);
 //            final BigdataURI uri2 = vf.createURI(uriString2);
-            final BigdataURI uri3 = vf.createURI(uriString3);
+            final BigdataIRI uri3 = vf.createURI(uriString3);
             
             // add term to lexicon.
             store.addTerm(uri1);

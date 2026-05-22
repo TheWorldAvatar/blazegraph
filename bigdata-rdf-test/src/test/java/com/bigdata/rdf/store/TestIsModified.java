@@ -29,12 +29,12 @@ package com.bigdata.rdf.store;
 
 import java.util.Properties;
 
-import org.openrdf.model.vocabulary.RDF;
-import org.openrdf.model.vocabulary.RDFS;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.vocabulary.RDFS;
 
 import com.bigdata.rdf.axioms.NoAxioms;
 import com.bigdata.rdf.model.BigdataStatement;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.model.StatementEnum;
@@ -87,17 +87,17 @@ public class TestIsModified extends AbstractTripleStoreTestCase {
 
             final BigdataValueFactory valueFactory = store.getValueFactory();
 
-            final BigdataURI x = valueFactory.createURI("http://www.foo.org/x");
-            final BigdataURI y = valueFactory.createURI("http://www.foo.org/y");
-            final BigdataURI z = valueFactory.createURI("http://www.foo.org/z");
+            final BigdataIRI x = valueFactory.createURI("http://www.foo.org/x");
+            final BigdataIRI y = valueFactory.createURI("http://www.foo.org/y");
+            final BigdataIRI z = valueFactory.createURI("http://www.foo.org/z");
 
-            final BigdataURI A = valueFactory.createURI("http://www.foo.org/A");
-            final BigdataURI B = valueFactory.createURI("http://www.foo.org/B");
-            final BigdataURI C = valueFactory.createURI("http://www.foo.org/C");
+            final BigdataIRI A = valueFactory.createURI("http://www.foo.org/A");
+            final BigdataIRI B = valueFactory.createURI("http://www.foo.org/B");
+            final BigdataIRI C = valueFactory.createURI("http://www.foo.org/C");
 
-            final BigdataURI rdfType = valueFactory.createURI(RDF.TYPE.stringValue());
+            final BigdataIRI rdfType = valueFactory.createURI(RDF.TYPE.stringValue());
 
-            final BigdataURI rdfsSubClassOf = valueFactory.createURI(RDFS.SUBCLASSOF.stringValue());
+            final BigdataIRI rdfsSubClassOf = valueFactory.createURI(RDFS.SUBCLASSOF.stringValue());
 
             // resolve term identifiers.
             store.addTerms(new BigdataValue[] { x, y, z, A, B, C, rdfType,

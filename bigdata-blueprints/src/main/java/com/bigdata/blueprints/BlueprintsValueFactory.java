@@ -22,8 +22,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 package com.bigdata.blueprints;
 
-import org.openrdf.model.Literal;
-import org.openrdf.model.URI;
+import org.eclipse.rdf4j.model.Literal;
+import org.eclipse.rdf4j.model.IRI;
 
 import com.tinkerpop.blueprints.Element;
 
@@ -36,61 +36,61 @@ import com.tinkerpop.blueprints.Element;
 public interface BlueprintsValueFactory {
 
     /**
-     * Return the URI used for typing elements.
+     * Return the IRI used for typing elements.
      */
-    URI getTypeURI();
+    IRI getTypeURI();
     
     /**
-     * Return the URI used to identify vertices.
+     * Return the IRI used to identify vertices.
      */
-    URI getVertexURI();
+    IRI getVertexURI();
     
     /**
-     * Return the URI used to identify edges.
+     * Return the IRI used to identify edges.
      */
-    URI getEdgeURI();
+    IRI getEdgeURI();
     
     /**
-     * Return the URI used for labeling edges.
+     * Return the IRI used for labeling edges.
      */
-    URI getLabelURI();
+    IRI getLabelURI();
     
     /**
-     * Create a vertex URI from a blueprints vertex id.
+     * Create a vertex IRI from a blueprints vertex id.
      */
-	URI toVertexURI(Object key);
+	IRI toVertexURI(Object key);
 
 	/**
-     * Create an edge URI from a blueprints edge id.
+     * Create an edge IRI from a blueprints edge id.
      */
-	URI toEdgeURI(Object key);
+	IRI toEdgeURI(Object key);
 	
     /**
-     * Create an element URI from a blueprints element id.
+     * Create an element IRI from a blueprints element id.
      */
-	URI toURI(Element e);
+	IRI toURI(Element e);
 	
     /**
-     * Create a property URI from a blueprints property name.
+     * Create a property IRI from a blueprints property name.
      */
-	URI toPropertyURI(String property);
+	IRI toPropertyURI(String property);
 	
 //    /**
-//     * Create a blueprints vertex id from a vertex URI.
+//     * Create a blueprints vertex id from a vertex IRI.
 //     */
-//	String fromVertexURI(URI uri);
+//	String fromVertexURI(IRI IRI);
 //
 //    /**
-//     * Create a blueprints edge id from an edge URI.
+//     * Create a blueprints edge id from an edge IRI.
 //     */
-//	String fromEdgeURI(URI uri);
+//	String fromEdgeURI(IRI IRI);
 //	
 //    /**
-//     * Create a blueprints property name from a property URI.
+//     * Create a blueprints property name from a property IRI.
 //     */
-//	String fromPropertyURI(URI uri);
+//	String fromPropertyURI(IRI IRI);
 
-	String fromURI(URI uri);
+	String fromURI(IRI IRI);
 	
 	/**
 	 * Create a datatyped literal from a blueprints property value.
@@ -103,18 +103,18 @@ public interface BlueprintsValueFactory {
 	Object fromLiteral(Literal lit);
 	
 //	/**
-//	 * Is the URI a vertex?
+//	 * Is the IRI a vertex?
 //	 */
-//	boolean isVertex(URI uri);
+//	boolean isVertex(IRI IRI);
 //	
 //    /**
-//     * Is the URI an edge?
+//     * Is the IRI an edge?
 //     */
-//	boolean isEdge(URI uri);
+//	boolean isEdge(IRI IRI);
 //	
 //    /**
-//     * Is the URI an edge?
+//     * Is the IRI an edge?
 //     */
-//    boolean isProperty(URI uri);
+//    boolean isProperty(IRI IRI);
     
 }

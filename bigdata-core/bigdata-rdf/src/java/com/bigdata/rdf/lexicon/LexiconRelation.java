@@ -55,12 +55,12 @@ import java.util.concurrent.atomic.AtomicReference;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.omg.CORBA.portable.ValueFactory;
-import org.openrdf.model.BNode;
-import org.openrdf.model.Literal;
-import org.openrdf.model.Statement;
-import org.openrdf.model.URI;
-import org.openrdf.model.Value;
-import org.openrdf.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.BNode;
+import org.eclipse.rdf4j.model.Literal;
+import org.eclipse.rdf4j.model.Statement;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.Value;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
 
 import com.bigdata.bop.BOp;
 import com.bigdata.bop.IBindingSet;
@@ -103,7 +103,7 @@ import com.bigdata.rdf.internal.impl.bnode.SidIV;
 import com.bigdata.rdf.internal.impl.extensions.XSDStringExtension;
 import com.bigdata.rdf.model.BigdataBNode;
 import com.bigdata.rdf.model.BigdataLiteral;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.model.BigdataValueFactoryImpl;
@@ -1622,13 +1622,13 @@ public class LexiconRelation extends AbstractRelation<BigdataValue>
      * 
      * @see IDatatypeURIResolver
      */
-    public BigdataURI resolve(final URI uri) {
+    public BigdataIRI resolve(final URI uri) {
 
         if(uri == null)
             throw new IllegalArgumentException();
 
         // Turn the caller's argument into a BigdataURI.
-        final BigdataURI value = valueFactory.asValue(uri);
+        final BigdataIRI value = valueFactory.asValue(uri);
 
         // Lookup against the Vocabulary.
         final IV<?, ?> iv = vocab.get(value);

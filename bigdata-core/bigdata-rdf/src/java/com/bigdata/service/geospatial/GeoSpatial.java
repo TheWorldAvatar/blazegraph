@@ -26,8 +26,9 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 package com.bigdata.service.geospatial;
 
-import org.openrdf.model.URI;
-import org.openrdf.model.impl.URIImpl;
+import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.ValueFactory;
+import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
 
 import com.bigdata.rdf.internal.gis.ICoordinate.UNITS;
 
@@ -131,6 +132,8 @@ public interface GeoSpatial {
     *                                      META DECLARATIONS                                       *
     ************************************************************************************************/
 
+   static final ValueFactory VALUE_FACTORY = SimpleValueFactory.getInstance();
+
    /**
     * The namespace used for magic search predicates.
     */
@@ -139,7 +142,7 @@ public interface GeoSpatial {
 
    // do not use anymore -- need to be retained because it is linked by old vocabulary class
    @Deprecated
-   final URI DEFAULT_DATATYPE= new URIImpl(NAMESPACE + "geoSpatialLiteral");
+   final IRI DEFAULT_DATATYPE= VALUE_FACTORY.createIRI(NAMESPACE, "geoSpatialLiteral");
    
    
    /**
@@ -149,8 +152,8 @@ public interface GeoSpatial {
    final String GEOSPATIAL_LITERAL_V1_LAT_LON = GEOSPATIAL_LITERAL_PREFIX_V1 + "lat-lon";
    final String GEOSPATIAL_LITERAL_V1_LAT_LON_TIME = GEOSPATIAL_LITERAL_PREFIX_V1 + "lat-lon-time";
    
-   final URI DEFAULT_DATATYPE_LAT_LON = new URIImpl(GEOSPATIAL_LITERAL_V1_LAT_LON);
-   final URI DEFAULT_DATATYPE_LAT_LON_TIME = new URIImpl(GEOSPATIAL_LITERAL_V1_LAT_LON_TIME);
+   final IRI DEFAULT_DATATYPE_LAT_LON = VALUE_FACTORY.createIRI(GEOSPATIAL_LITERAL_V1_LAT_LON);
+   final IRI DEFAULT_DATATYPE_LAT_LON_TIME = VALUE_FACTORY.createIRI(GEOSPATIAL_LITERAL_V1_LAT_LON_TIME);
    
    
    /************************************************************************************************
@@ -160,128 +163,128 @@ public interface GeoSpatial {
    /**
     * The name of the search function, pointing to a {@link GeoFunction}.
     */
-   final URI SEARCH = new URIImpl(NAMESPACE + "search");
+   final IRI SEARCH = VALUE_FACTORY.createIRI(NAMESPACE, "search");
 
    /**
     * The datatype for literals we're interested in. If not specified, defaults
     * to DEFAULT_DATATYPE.
     */
-   final URI SEARCH_DATATYPE = new URIImpl(NAMESPACE + "searchDatatype");
+   final IRI SEARCH_DATATYPE = VALUE_FACTORY.createIRI(NAMESPACE, "searchDatatype");
 
    /**
     * Pointer to the predicate used in scanned triples.
     */
-   final URI PREDICATE = new URIImpl(NAMESPACE + "predicate");
+   final IRI PREDICATE = VALUE_FACTORY.createIRI(NAMESPACE, "predicate");
    
    /**
     * Pointer to the context used in scanned triples.
     */
-   final URI CONTEXT = new URIImpl(NAMESPACE + "context");
+   final IRI CONTEXT = VALUE_FACTORY.createIRI(NAMESPACE, "context");
    
    /**
     * In case of a {@link GeoFunction#IN_CIRCLE} query only: center point of the bounding circle.
     */
-   final URI SPATIAL_CIRCLE_CENTER = new URIImpl(NAMESPACE + "spatialCircleCenter");
+   final IRI SPATIAL_CIRCLE_CENTER = VALUE_FACTORY.createIRI(NAMESPACE, "spatialCircleCenter");
    
    /**
     * In case of a {@link GeoFunction#IN_CIRCLE} query only: radius of the bounding circle,
     * specified in SPATIAL_UNIT.
     */   
-   final URI SPATIAL_CIRCLE_RADIUS = new URIImpl(NAMESPACE + "spatialCircleRadius");
+   final IRI SPATIAL_CIRCLE_RADIUS = VALUE_FACTORY.createIRI(NAMESPACE, "spatialCircleRadius");
    
    /**
     * In case of a {@link GeoFunction#IN_RECTANGLE} query only: south west border point of the bounding rectangle.
     */
-   final URI SPATIAL_RECTANGLE_SOUTH_WEST = new URIImpl(NAMESPACE + "spatialRectangleSouthWest");
+   final IRI SPATIAL_RECTANGLE_SOUTH_WEST = VALUE_FACTORY.createIRI(NAMESPACE, "spatialRectangleSouthWest");
    
    /**
     * In case of a {@link GeoFunction#IN_RECTANGLE} query only: north east border point of the bounding rectangle.
     */   
-   final URI SPATIAL_RECTANGLE_NORTH_EAST = new URIImpl(NAMESPACE + "spatialRectangleNorthEast");
+   final IRI SPATIAL_RECTANGLE_NORTH_EAST = VALUE_FACTORY.createIRI(NAMESPACE, "spatialRectangleNorthEast");
    
    /**
     * The spatial unit used for distances specified in the geospatial search request.
     */
-   final URI SPATIAL_UNIT = new URIImpl(NAMESPACE + "spatialUnit");
+   final IRI SPATIAL_UNIT = VALUE_FACTORY.createIRI(NAMESPACE, "spatialUnit");
 
    /**
     * Output variable, supported for "inCircle" query type only. If specified, the variable will, 
     * for each solution, be bound to its distance towards the geospatial circle center.
     */
-   final URI DISTANCE_VALUE = new URIImpl(NAMESPACE + "distanceValue");
+   final IRI DISTANCE_VALUE = VALUE_FACTORY.createIRI(NAMESPACE, "distanceValue");
    
    /**
     * Start time of the time interval to scan for.
     */
-   final URI TIME_START = new URIImpl(NAMESPACE + "timeStart");
+   final IRI TIME_START = VALUE_FACTORY.createIRI(NAMESPACE, "timeStart");
    
    
    /**
     * End time of the time interval to scan for.
     */
-   final URI TIME_END = new URIImpl(NAMESPACE + "timeEnd");
+   final IRI TIME_END = VALUE_FACTORY.createIRI(NAMESPACE, "timeEnd");
 
    /**
     * End time of the time interval to scan for.
     */
-   final URI COORD_SYSTEM = new URIImpl(NAMESPACE + "coordSystem");
+   final IRI COORD_SYSTEM = VALUE_FACTORY.createIRI(NAMESPACE, "coordSystem");
    
    /**
     * #-separated list of custom fields to be queries, e.g. myField1#myField2
     */
-   final URI CUSTOM_FIELDS = new URIImpl(NAMESPACE + "customFields");
+   final IRI CUSTOM_FIELDS = VALUE_FACTORY.createIRI(NAMESPACE, "customFields");
    
    /**
     * Lower bounds for custom fields, e.g. 10#20
     */
-   final URI CUSTOM_FIELDS_LOWER_BOUNDS = new URIImpl(NAMESPACE + "customFieldsLowerBounds");
+   final IRI CUSTOM_FIELDS_LOWER_BOUNDS = VALUE_FACTORY.createIRI(NAMESPACE, "customFieldsLowerBounds");
 
    /**
     * Upper bounds for custom fields, e.g. 11#5000
     */
-   final URI CUSTOM_FIELDS_UPPER_BOUNDS = new URIImpl(NAMESPACE + "customFieldsUpperBounds");
+   final IRI CUSTOM_FIELDS_UPPER_BOUNDS = VALUE_FACTORY.createIRI(NAMESPACE, "customFieldsUpperBounds");
 
    /**
     * Output variable; if set, this variable is bound to the locations component of the search result.
     */
-   final URI LOCATION_VALUE = new URIImpl(NAMESPACE + "locationValue");
+   final IRI LOCATION_VALUE = VALUE_FACTORY.createIRI(NAMESPACE, "locationValue");
 
    /**
     * Output variable; if set, this variable is bound to the time component of the search result.
     */
-   final URI TIME_VALUE = new URIImpl(NAMESPACE + "timeValue");
+   final IRI TIME_VALUE = VALUE_FACTORY.createIRI(NAMESPACE, "timeValue");
    
    /**
     * Output variable; if set, this variable is bound to the literal component "as is".
     */
-   final URI LITERAL_VALUE = new URIImpl(NAMESPACE + "literalValue");
+   final IRI LITERAL_VALUE = VALUE_FACTORY.createIRI(NAMESPACE, "literalValue");
    
    /**
     * Output variable; if set, this variable is bound to the latitude component of the search result.
     */
-   final URI LAT_VALUE = new URIImpl(NAMESPACE + "latValue");
+   final IRI LAT_VALUE = VALUE_FACTORY.createIRI(NAMESPACE, "latValue");
 
    /**
     * Output variable; if set, this variable is bound to the longitude component of the search result.
     */
-   final URI LON_VALUE = new URIImpl(NAMESPACE + "lonValue");
+   final IRI LON_VALUE = VALUE_FACTORY.createIRI(NAMESPACE, "lonValue");
 
    /**
     * Output variable; if set, this variable is bound to the longitude component of the search result.
     */
-   final URI COORD_SYSTEM_VALUE = new URIImpl(NAMESPACE + "coordSystemValue");
+   final IRI COORD_SYSTEM_VALUE = VALUE_FACTORY.createIRI(NAMESPACE, "coordSystemValue");
    
    /**
     * Output variable; if set, this variable is bound to the values for the custom fields,
     * separated by CUSTOM_FIELDS_SEPARATOR (in case there are multiple custom fields)
     */
-   final URI CUSTOM_FIELDS_VALUES = new URIImpl(NAMESPACE + "customFieldsValues");
+   final IRI CUSTOM_FIELDS_VALUES = VALUE_FACTORY.createIRI(NAMESPACE, "customFieldsValues");
    
    /**
     * Output variable; if set, this variable is bound to a combined representation of the
     * locations + time component of the search result, separated through the CUSTOM_FIELDS_SEPARATOR.
     */
-   final URI LOCATION_AND_TIME_VALUE = new URIImpl(NAMESPACE + "locationAndTimeValue");
+   final IRI LOCATION_AND_TIME_VALUE = VALUE_FACTORY.createIRI(NAMESPACE, "locationAndTimeValue");
    
    
 }

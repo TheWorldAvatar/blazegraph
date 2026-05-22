@@ -2,8 +2,8 @@ package com.bigdata.rdf.lexicon;
 
 import java.util.concurrent.Callable;
 
-import org.openrdf.model.BNode;
-import org.openrdf.model.Value;
+import org.eclipse.rdf4j.model.BNode;
+import org.eclipse.rdf4j.model.Value;
 
 import com.bigdata.btree.IIndex;
 import com.bigdata.btree.keys.IKeyBuilder;

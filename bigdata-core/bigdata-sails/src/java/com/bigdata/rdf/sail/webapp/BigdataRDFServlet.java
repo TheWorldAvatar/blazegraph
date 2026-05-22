@@ -42,23 +42,24 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Properties;
 
 import javax.servlet.Servlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.openrdf.model.Graph;
-import org.openrdf.model.Resource;
-import org.openrdf.model.Statement;
-import org.openrdf.model.Value;
-import org.openrdf.model.impl.URIImpl;
-import org.openrdf.query.MalformedQueryException;
-import org.openrdf.rio.RDFFormat;
-import org.openrdf.rio.RDFHandlerException;
-import org.openrdf.rio.RDFWriter;
-import org.openrdf.rio.RDFWriterFactory;
-import org.openrdf.rio.RDFWriterRegistry;
+import org.eclipse.rdf4j.model.Model;
+import org.eclipse.rdf4j.model.Resource;
+import org.eclipse.rdf4j.model.Statement;
+import org.eclipse.rdf4j.model.Value;
+import org.eclipse.rdf4j.model.impl.URIImpl;
+import org.eclipse.rdf4j.query.MalformedQueryException;
+import org.eclipse.rdf4j.rio.RDFFormat;
+import org.eclipse.rdf4j.rio.RDFHandlerException;
+import org.eclipse.rdf4j.rio.RDFWriter;
+import org.eclipse.rdf4j.rio.RDFWriterFactory;
+import org.eclipse.rdf4j.rio.RDFWriterRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -555,7 +556,7 @@ abstract public class BigdataRDFServlet extends BigdataServlet {
      * @param resp
      */
     static public void sendGraph(final HttpServletRequest req,
-            final HttpServletResponse resp, final Graph g) throws IOException {
+            final HttpServletResponse resp, final Model g) throws IOException {
         /*
          * CONNEG for the MIME type.
          */
@@ -572,10 +573,10 @@ abstract public class BigdataRDFServlet extends BigdataServlet {
         if (format == null)
             format = RDFFormat.RDFXML;
 
-		RDFWriterFactory writerFactory = RDFWriterRegistry.getInstance().get(
+		Optional<RDFWriterFactory> writerFactory = RDFWriterRegistry.getInstance().get(
 				format);
 
-		if (writerFactory == null) {
+		if (writerFactory.isEmpty()) {
 
 			log.debug("No writer for format: format={}, Accept=\"{}\"", format, acceptStr);
 
@@ -601,7 +602,7 @@ abstract public class BigdataRDFServlet extends BigdataServlet {
 
         final OutputStream os = resp.getOutputStream();
         try {
-            final RDFWriter writer = writerFactory.getWriter(os);
+            final RDFWriter writer = writerFactory.get().getWriter(os);
             writer.startRDF();
             final Iterator<Statement> itr = g.iterator();
             while (itr.hasNext()) {
@@ -650,7 +651,7 @@ abstract public class BigdataRDFServlet extends BigdataServlet {
         final OutputStream os = resp.getOutputStream();
 		try {
 			final PropertiesWriter writer = PropertiesWriterRegistry
-					.getInstance().get(format).getWriter(os);
+					.getInstance().get(format).get().getWriter(os);
 			writer.write(properties);
 			os.flush();
 		} finally {

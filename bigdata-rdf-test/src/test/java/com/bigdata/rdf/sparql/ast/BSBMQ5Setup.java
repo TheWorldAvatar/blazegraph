@@ -31,12 +31,12 @@ import java.util.Collections;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.openrdf.query.algebra.StatementPattern.Scope;
+import org.eclipse.rdf4j.query.algebra.StatementPattern.Scope;
 
 import com.bigdata.bop.IBindingSet;
 import com.bigdata.rdf.internal.XSD;
 import com.bigdata.rdf.model.BigdataLiteral;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.sparql.ast.eval.AST2BOpContext;
@@ -77,11 +77,11 @@ public class BSBMQ5Setup {
      */
     final AtomicInteger nextId = new AtomicInteger(-1); 
 
-    public final BigdataURI rdfsLabel; 
-    public final BigdataURI productFeature;
-    public final BigdataURI productPropertyNumeric1;
-    public final BigdataURI productPropertyNumeric2;
-    public final BigdataURI product53999;
+    public final BigdataIRI rdfsLabel; 
+    public final BigdataIRI productFeature;
+    public final BigdataIRI productPropertyNumeric1;
+    public final BigdataIRI productPropertyNumeric2;
+    public final BigdataIRI product53999;
     public final BigdataLiteral _120;
     public final BigdataLiteral _170;
 

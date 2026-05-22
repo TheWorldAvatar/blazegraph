@@ -3,7 +3,7 @@ package com.bigdata.rdf.graph.impl.bd;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import org.openrdf.model.Value;
+import org.eclipse.rdf4j.model.Value;
 
 import com.bigdata.rdf.internal.IV;
 import com.bigdata.rdf.internal.IVUtility;

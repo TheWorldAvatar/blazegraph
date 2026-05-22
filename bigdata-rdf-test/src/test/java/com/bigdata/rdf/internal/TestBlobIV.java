@@ -33,7 +33,7 @@ import junit.framework.TestCase2;
 import com.bigdata.btree.keys.IKeyBuilder;
 import com.bigdata.rdf.internal.impl.BlobIV;
 import com.bigdata.rdf.lexicon.BlobsIndexHelper;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.util.BytesUtil;
 
 /**
@@ -64,7 +64,7 @@ public class TestBlobIV extends TestCase2 {
 
     public void test_BlobIV_isExtensionIV() {
 
-        final BlobIV<BigdataURI> iv = new BlobIV<BigdataURI>(VTE.URI,
+        final BlobIV<BigdataIRI> iv = new BlobIV<BigdataIRI>(VTE.URI,
                 12/* hash */, (short) 50/* counter */);
 
         assertEquals(VTE.URI, iv.getVTE());
@@ -86,7 +86,7 @@ public class TestBlobIV extends TestCase2 {
 
 		final IKeyBuilder keyBuilder = helper.newKeyBuilder();
 
-		final BlobIV<?> iv = new BlobIV<BigdataURI>(vte, hashCode,
+		final BlobIV<?> iv = new BlobIV<BigdataIRI>(vte, hashCode,
 				(short) counter);
 
 		assertEquals(BlobIV.toFlags(vte), iv.flags());

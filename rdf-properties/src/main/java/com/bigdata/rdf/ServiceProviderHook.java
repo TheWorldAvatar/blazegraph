@@ -27,7 +27,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 package com.bigdata.rdf;
 
-import info.aduna.lang.service.ServiceRegistry;
+import org.eclipse.rdf4j.common.lang.service.ServiceRegistry;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -37,16 +37,16 @@ import java.util.ServiceLoader;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.query.QueryLanguage;
-import org.openrdf.query.resultio.TupleQueryResultParserFactory;
-import org.openrdf.query.resultio.TupleQueryResultParserRegistry;
-import org.openrdf.query.resultio.TupleQueryResultWriterFactory;
-import org.openrdf.query.resultio.TupleQueryResultWriterRegistry;
-import org.openrdf.rio.RDFFormat;
-import org.openrdf.rio.RDFParserFactory;
-import org.openrdf.rio.RDFParserRegistry;
-import org.openrdf.rio.RDFWriterFactory;
-import org.openrdf.rio.RDFWriterRegistry;
+import org.eclipse.rdf4j.query.QueryLanguage;
+import org.eclipse.rdf4j.query.resultio.TupleQueryResultParserFactory;
+import org.eclipse.rdf4j.query.resultio.TupleQueryResultParserRegistry;
+import org.eclipse.rdf4j.query.resultio.TupleQueryResultWriterFactory;
+import org.eclipse.rdf4j.query.resultio.TupleQueryResultWriterRegistry;
+import org.eclipse.rdf4j.rio.RDFFormat;
+import org.eclipse.rdf4j.rio.RDFParserFactory;
+import org.eclipse.rdf4j.rio.RDFParserRegistry;
+import org.eclipse.rdf4j.rio.RDFWriterFactory;
+import org.eclipse.rdf4j.rio.RDFWriterRegistry;
 
 /**
  * This static class provides a hook which allows the replacement of services
@@ -193,7 +193,7 @@ public class ServiceProviderHook {
 //		 * classes.
 //		 */
 //		{
-//			final String className = "info.aduna.lang.service.ServiceRegistry";
+//			final String className = "rg.eclipse.rdf4j.common.lang.service.ServiceRegistry";
 //			try {
 //				Class.forName(className);
 //			} catch (ClassNotFoundException ex) {

@@ -38,22 +38,22 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.openrdf.model.BNode;
-import org.openrdf.model.Statement;
-import org.openrdf.model.Value;
-import org.openrdf.query.algebra.StatementPattern.Scope;
-import org.openrdf.repository.sail.helpers.SPARQLUpdateDataBlockParser;
-import org.openrdf.rio.RDFHandlerException;
-import org.openrdf.rio.RDFParseException;
-import org.openrdf.rio.helpers.BasicParserSettings;
-import org.openrdf.rio.helpers.StatementCollector;
+import org.eclipse.rdf4j.model.BNode;
+import org.eclipse.rdf4j.model.Statement;
+import org.eclipse.rdf4j.model.Value;
+import org.eclipse.rdf4j.query.algebra.StatementPattern.Scope;
+import org.eclipse.rdf4j.repository.sail.helpers.SPARQLUpdateDataBlockParser;
+import org.eclipse.rdf4j.rio.RDFHandlerException;
+import org.eclipse.rdf4j.rio.RDFParseException;
+import org.eclipse.rdf4j.rio.helpers.BasicParserSettings;
+import org.eclipse.rdf4j.rio.helpers.StatementCollector;
 
 import com.bigdata.bop.BOpUtility;
 import com.bigdata.rdf.internal.IV;
 import com.bigdata.rdf.model.BigdataBNode;
 import com.bigdata.rdf.model.BigdataResource;
 import com.bigdata.rdf.model.BigdataStatement;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.StatementEnum;
 import com.bigdata.rdf.sail.sparql.ast.ASTAdd;
@@ -902,7 +902,7 @@ public class UpdateExprBuilder extends BigdataExprBuilder {
             
             final BigdataStatement spo = context.valueFactory.createStatement(//
                 (BigdataResource) s, //
-                (BigdataURI) sp.p().getValue(), //
+                (BigdataIRI) sp.p().getValue(), //
                 (BigdataValue) o,//
                 (BigdataResource) (sp.c() != null ? sp.c().getValue(): null),//
                 StatementEnum.Explicit//

@@ -29,7 +29,7 @@ package com.bigdata.rdf.sail;
 
 import java.util.Properties;
 
-import org.openrdf.sail.SailException;
+import org.eclipse.rdf4j.sail.SailException;
 
 import com.bigdata.rdf.axioms.NoAxioms;
 import com.bigdata.rdf.internal.LexiconConfiguration;

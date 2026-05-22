@@ -35,12 +35,12 @@ import java.util.Properties;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
-import org.openrdf.query.MalformedQueryException;
-import org.openrdf.query.QueryLanguage;
-import org.openrdf.query.parser.ParsedOperation;
-import org.openrdf.query.parser.QueryParserUtil;
-import org.openrdf.query.parser.sparql.manifest.SPARQL11SyntaxTest;
-import org.openrdf.query.parser.sparql.manifest.SPARQLSyntaxTest;
+import org.eclipse.rdf4j.query.MalformedQueryException;
+import org.eclipse.rdf4j.query.QueryLanguage;
+import org.eclipse.rdf4j.query.parser.ParsedOperation;
+import org.eclipse.rdf4j.query.parser.QueryParserUtil;
+import org.eclipse.rdf4j.query.parser.sparql.manifest.SPARQL11SyntaxTest;
+import org.eclipse.rdf4j.query.parser.sparql.manifest.SPARQLSyntaxTest;
 
 import com.bigdata.journal.BufferMode;
 import com.bigdata.journal.ITx;

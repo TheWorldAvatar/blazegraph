@@ -15,7 +15,7 @@
  */
 package com.bigdata.rdf.graph.impl;
 
-import org.openrdf.model.Statement;
+import org.eclipse.rdf4j.model.Statement;
 
 import com.bigdata.rdf.graph.IGASContext;
 import com.bigdata.rdf.graph.IGASState;

@@ -29,8 +29,8 @@ package com.bigdata.rdf.sail.sparql;
 
 import java.util.Properties;
 
-import org.openrdf.query.MalformedQueryException;
-import org.openrdf.query.parser.sparql.manifest.SPARQLSyntaxTest;
+import org.eclipse.rdf4j.query.MalformedQueryException;
+import org.eclipse.rdf4j.query.parser.sparql.manifest.SPARQLSyntaxTest;
 
 import com.bigdata.journal.BufferMode;
 import com.bigdata.journal.ITx;

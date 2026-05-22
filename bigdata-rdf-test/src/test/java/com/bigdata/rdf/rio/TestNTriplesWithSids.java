@@ -6,16 +6,16 @@ import java.util.Properties;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openrdf.model.vocabulary.RDF;
-import org.openrdf.rio.RDFFormat;
-import org.openrdf.rio.RDFHandlerException;
-import org.openrdf.rio.RDFParseException;
-import org.openrdf.rio.RDFParserRegistry;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.rio.RDFFormat;
+import org.eclipse.rdf4j.rio.RDFHandlerException;
+import org.eclipse.rdf4j.rio.RDFParseException;
+import org.eclipse.rdf4j.rio.RDFParserRegistry;
 
 import com.bigdata.rdf.ServiceProviderHook;
 import com.bigdata.rdf.axioms.NoAxioms;
 import com.bigdata.rdf.model.BigdataStatement;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.rio.ntriples.BigdataNTriplesParser;
 import com.bigdata.rdf.store.AbstractTripleStore;
 import com.bigdata.rdf.store.AbstractTripleStoreTestCase;
@@ -117,13 +117,13 @@ public class TestNTriplesWithSids extends AbstractTripleStoreTestCase {
 			while (it.hasNext())
 				System.err.println(it.next());
 
-			final BigdataURI dcSource = store.getValueFactory().createURI(
+			final BigdataIRI dcSource = store.getValueFactory().createURI(
 					"http://purl.org/dc/terms/source");
 
-			final BigdataURI dcCreated = store.getValueFactory().createURI(
+			final BigdataIRI dcCreated = store.getValueFactory().createURI(
 					"http://purl.org/dc/terms/created");
 			
-			final BigdataURI bobSource = store.getValueFactory().createURI(
+			final BigdataIRI bobSource = store.getValueFactory().createURI(
 					"http://hr.example.com/employees#bob");
 			
 			assertEquals(1,
@@ -264,13 +264,13 @@ public class TestNTriplesWithSids extends AbstractTripleStoreTestCase {
 
 			assertEquals("toldTriples", 3L, store.getStatementCount());//loadStats.toldTriples.get());
 			
-			final BigdataURI dcSource = store.getValueFactory().createURI(
+			final BigdataIRI dcSource = store.getValueFactory().createURI(
 					"http://purl.org/dc/terms/source");
 
-			final BigdataURI dcCreated = store.getValueFactory().createURI(
+			final BigdataIRI dcCreated = store.getValueFactory().createURI(
 					"http://purl.org/dc/terms/created");
 			
-			final BigdataURI bobSource = store.getValueFactory().createURI(
+			final BigdataIRI bobSource = store.getValueFactory().createURI(
 					"http://hr.example.com/employees#bob");
 			
 			assertEquals(1,

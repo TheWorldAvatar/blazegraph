@@ -30,12 +30,12 @@ package com.bigdata.rdf.sail.webapp.client;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.openrdf.model.BNode;
-import org.openrdf.model.Literal;
-import org.openrdf.model.URI;
-import org.openrdf.model.Value;
-import org.openrdf.model.vocabulary.XMLSchema;
-import org.openrdf.query.parser.sparql.SPARQLUtil;
+import org.eclipse.rdf4j.model.BNode;
+import org.eclipse.rdf4j.model.Literal;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.Value;
+import org.eclipse.rdf4j.model.vocabulary.XMLSchema;
+import org.eclipse.rdf4j.query.parser.sparql.SPARQLUtil;
 
 /**
  * Utility class for externalizing SPARQL prefix declaration management.

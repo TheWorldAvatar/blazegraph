@@ -33,8 +33,8 @@ import java.util.LinkedHashSet;
 import java.util.Properties;
 import java.util.Set;
 
-import org.openrdf.model.Literal;
-import org.openrdf.model.Value;
+import org.eclipse.rdf4j.model.Literal;
+import org.eclipse.rdf4j.model.Value;
 
 import com.bigdata.btree.keys.DefaultKeyBuilderFactory;
 import com.bigdata.btree.keys.IKeyBuilder;
@@ -45,7 +45,7 @@ import com.bigdata.rdf.internal.impl.literal.AbstractLiteralIV;
 import com.bigdata.rdf.internal.impl.literal.LiteralExtensionIV;
 import com.bigdata.rdf.internal.impl.literal.XSDIntegerIV;
 import com.bigdata.rdf.model.BigdataLiteral;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.service.geospatial.GeoSpatialDatatypeConfiguration;
@@ -80,7 +80,7 @@ public class GeoSpatialLiteralExtension<V extends BigdataValue> implements IExte
 
    private final IGeoSpatialLiteralSerializer litSerializer;
    
-   private final BigdataURI datatype;
+   private final BigdataIRI datatype;
    
    private final GeoSpatialDatatypeConfiguration datatypeConfig;
    
@@ -95,7 +95,7 @@ public class GeoSpatialLiteralExtension<V extends BigdataValue> implements IExte
    public GeoSpatialLiteralExtension(
        final IDatatypeURIResolver resolver, final GeoSpatialDatatypeConfiguration config) {
 
-       this.datatype = resolver.resolve(config.getUri());
+       this.datatype = resolver.resolve(config.getIri());
        this.datatypeConfig = config; 
        this.litSerializer = config.getLiteralSerializer();
        this.kbfactory = new DefaultKeyBuilderFactory(new Properties());
@@ -106,9 +106,9 @@ public class GeoSpatialLiteralExtension<V extends BigdataValue> implements IExte
    }
    
    @Override
-   public Set<BigdataURI> getDatatypes() {
+   public Set<BigdataIRI> getDatatypes() {
 
-      final HashSet<BigdataURI> datatypes = new LinkedHashSet<BigdataURI>();
+      final HashSet<BigdataIRI> datatypes = new LinkedHashSet<BigdataIRI>();
       datatypes.add(datatype);
       return datatypes;
 

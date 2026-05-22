@@ -3,12 +3,12 @@ package com.bigdata.rdf.sail.sparql.ast;
 
 import java.io.StringReader;
 
-import org.openrdf.model.URI;
-import org.openrdf.model.vocabulary.RDF;
-import org.openrdf.model.vocabulary.XMLSchema;
-import org.openrdf.query.algebra.Compare.CompareOp;
-import org.openrdf.query.algebra.MathExpr.MathOp;
-import org.openrdf.rio.RDFParser.DatatypeHandling;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.vocabulary.XMLSchema;
+import org.eclipse.rdf4j.query.algebra.Compare.CompareOp;
+import org.eclipse.rdf4j.query.algebra.MathExpr.MathOp;
+import org.eclipse.rdf4j.rio.RDFParser.DatatypeHandling;
 
 public class SyntaxTreeBuilder/*@bgen(jjtree)*/implements SyntaxTreeBuilderTreeConstants, SyntaxTreeBuilderConstants {/*@bgen(jjtree)*/
   protected JJTSyntaxTreeBuilderState jjtree = new JJTSyntaxTreeBuilderState();

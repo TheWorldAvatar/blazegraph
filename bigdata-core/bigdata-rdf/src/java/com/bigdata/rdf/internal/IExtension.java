@@ -26,12 +26,12 @@ package com.bigdata.rdf.internal;
 
 import java.util.Set;
 
-import org.openrdf.model.URI;
-import org.openrdf.model.Value;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.Value;
 
 import com.bigdata.rdf.internal.impl.TermId;
 import com.bigdata.rdf.internal.impl.literal.LiteralExtensionIV;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValue;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.vocab.Vocabulary;
@@ -51,11 +51,11 @@ public interface IExtension<V extends BigdataValue> {
 
     /**
      * Return the fully resolved datatype(s) handled by this interface in the
-     * form of a {@link BigdataURI} with the {@link TermId} already set.
+     * form of a {@link BigdataIRI} with the {@link TermId} already set.
      * 
      * @return the datatype
      */
-    Set<BigdataURI> getDatatypes();
+    Set<BigdataIRI> getDatatypes();
     
     /**
      * Create an {@link LiteralExtensionIV} from an RDF value.

@@ -29,7 +29,7 @@ package com.bigdata.rdf.sail.tck;
 
 import java.util.Properties;
 
-import org.openrdf.query.Dataset;
+import org.eclipse.rdf4j.query.Dataset;
 
 import com.bigdata.journal.Journal;
 import com.bigdata.rdf.sail.BigdataSail.Options;

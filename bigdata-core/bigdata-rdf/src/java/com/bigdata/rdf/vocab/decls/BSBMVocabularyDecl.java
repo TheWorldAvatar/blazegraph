@@ -30,9 +30,11 @@ package com.bigdata.rdf.vocab.decls;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 
-import org.openrdf.model.URI;
-import org.openrdf.model.impl.URIImpl;
+import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.ValueFactory;
+import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
 
 import com.bigdata.rdf.vocab.VocabularyDecl;
 
@@ -58,30 +60,32 @@ public class BSBMVocabularyDecl implements VocabularyDecl {
 
     public static final String INSTANCES = "http://www4.wiwiss.fu-berlin.de/bizer/bsbm/v01/instances/";
 
-    public static final URI USD = new URIImpl(VOCABULARY + "USD");
-    
-    static private final URI[] uris = new URI[]{//
-        // namespace for instance data.
-        new URIImpl(INSTANCES),//
-        // namespace for vocabulary
-        new URIImpl(VOCABULARY),//
-        new URIImpl(VOCABULARY + "reviewDate"),//
-        new URIImpl(VOCABULARY + "reviewFor"),//
-        new URIImpl(VOCABULARY + "ProductType"),//
-        new URIImpl(VOCABULARY + "rating1"),//
-        new URIImpl(VOCABULARY + "rating2"),//
-        new URIImpl(VOCABULARY + "rating3"),//
-        new URIImpl(VOCABULARY + "rating4"),//
-        USD,//
-    };
+    private static final ValueFactory VALUE_FACTORY = SimpleValueFactory.getInstance();
+
+    public static final IRI USD = VALUE_FACTORY.createIRI(VOCABULARY, "USD");
+
+    static private final List<IRI> iris = List.of( //
+            // namespace for instance data.
+            VALUE_FACTORY.createIRI(INSTANCES), //
+            // namespace for vocabulary
+            VALUE_FACTORY.createIRI(VOCABULARY), //
+            VALUE_FACTORY.createIRI(VOCABULARY, "reviewDate"), //
+            VALUE_FACTORY.createIRI(VOCABULARY, "reviewFor"), //
+            VALUE_FACTORY.createIRI(VOCABULARY, "ProductType"), //
+            VALUE_FACTORY.createIRI(VOCABULARY, "rating1"), //
+            VALUE_FACTORY.createIRI(VOCABULARY, "rating2"), //
+            VALUE_FACTORY.createIRI(VOCABULARY, "rating3"), //
+            VALUE_FACTORY.createIRI(VOCABULARY, "rating4"), //
+            USD//
+    );
 
     public BSBMVocabularyDecl() {
     }
-    
-    public Iterator<URI> values() {
 
-        return Collections.unmodifiableList(Arrays.asList(uris)).iterator();
-        
+    public Iterator<IRI> values() {
+
+        return iris.iterator();
+
     }
 
 }

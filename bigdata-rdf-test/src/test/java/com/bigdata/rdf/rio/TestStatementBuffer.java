@@ -29,13 +29,13 @@ package com.bigdata.rdf.rio;
 
 import java.util.Properties;
 
-import org.openrdf.model.Literal;
-import org.openrdf.model.Statement;
-import org.openrdf.model.URI;
-import org.openrdf.model.impl.LiteralImpl;
-import org.openrdf.model.impl.URIImpl;
-import org.openrdf.model.vocabulary.RDF;
-import org.openrdf.model.vocabulary.RDFS;
+import org.eclipse.rdf4j.model.Literal;
+import org.eclipse.rdf4j.model.Statement;
+import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.impl.LiteralImpl;
+import org.eclipse.rdf4j.model.impl.URIImpl;
+import org.eclipse.rdf4j.model.vocabulary.RDF;
+import org.eclipse.rdf4j.model.vocabulary.RDFS;
 
 import com.bigdata.rdf.axioms.NoAxioms;
 import com.bigdata.rdf.internal.XSD;
@@ -44,7 +44,7 @@ import com.bigdata.rdf.load.IStatementBufferFactory;
 import com.bigdata.rdf.model.BigdataBNode;
 import com.bigdata.rdf.model.BigdataLiteral;
 import com.bigdata.rdf.model.BigdataStatement;
-import com.bigdata.rdf.model.BigdataURI;
+import com.bigdata.rdf.model.BigdataIRI;
 import com.bigdata.rdf.model.BigdataValueFactory;
 import com.bigdata.rdf.model.StatementEnum;
 import com.bigdata.rdf.sparql.ast.QueryHints;
@@ -343,12 +343,12 @@ public class TestStatementBuffer extends AbstractTripleStoreTestCase {
 
 			final BigdataValueFactory vf = store.getValueFactory();
 
-			final BigdataURI SAP = vf.createURI("http://example.com/SAP");
-			final BigdataURI bought = vf.createURI("http://example.com/bought");
-			final BigdataURI sybase = vf.createURI("http://example.com/sybase");
-			final BigdataURI dcSource = vf.createURI("http://purl.org/dc/terms/source");
-			final BigdataURI dcCreated = vf.createURI("http://purl.org/dc/terms/created");
-			final BigdataURI newsSybase = vf.createURI("http://example.com/news/us-sybase");
+			final BigdataIRI SAP = vf.createURI("http://example.com/SAP");
+			final BigdataIRI bought = vf.createURI("http://example.com/bought");
+			final BigdataIRI sybase = vf.createURI("http://example.com/sybase");
+			final BigdataIRI dcSource = vf.createURI("http://purl.org/dc/terms/source");
+			final BigdataIRI dcCreated = vf.createURI("http://purl.org/dc/terms/created");
+			final BigdataIRI newsSybase = vf.createURI("http://example.com/news/us-sybase");
 			final BigdataLiteral createdDate = vf.createLiteral("2011-04-05T12:00:00Z",XSD.DATETIME);
 			final BigdataBNode s1 = vf.createBNode("s1");
 
@@ -512,12 +512,12 @@ public class TestStatementBuffer extends AbstractTripleStoreTestCase {
 
 			final BigdataValueFactory vf = store.getValueFactory();
 
-			final BigdataURI SAP = vf.createURI("http://example.com/SAP");
-			final BigdataURI bought = vf.createURI("http://example.com/bought");
-			final BigdataURI sybase = vf.createURI("http://example.com/sybase");
-			final BigdataURI dcSource = vf.createURI("http://purl.org/dc/terms/source");
-			final BigdataURI dcCreated = vf.createURI("http://purl.org/dc/terms/created");
-			final BigdataURI newsSybase = vf.createURI("http://example.com/news/us-sybase");
+			final BigdataIRI SAP = vf.createURI("http://example.com/SAP");
+			final BigdataIRI bought = vf.createURI("http://example.com/bought");
+			final BigdataIRI sybase = vf.createURI("http://example.com/sybase");
+			final BigdataIRI dcSource = vf.createURI("http://purl.org/dc/terms/source");
+			final BigdataIRI dcCreated = vf.createURI("http://purl.org/dc/terms/created");
+			final BigdataIRI newsSybase = vf.createURI("http://example.com/news/us-sybase");
 			final BigdataLiteral createdDate = vf.createLiteral("2011-04-05T12:00:00Z",XSD.DATETIME);
 			final BigdataBNode s1 = vf.createBNode("s1");
 
@@ -647,10 +647,10 @@ public class TestStatementBuffer extends AbstractTripleStoreTestCase {
 
           final BigdataValueFactory vf = store.getValueFactory();
 
-          final BigdataURI s = vf.createURI("http://example.com/s");
-          final BigdataURI p = vf.createURI("http://example.com/p");
-          final BigdataURI o = vf.createURI("http://example.com/o");
-          final BigdataURI c = vf.createURI("http://example.com/c");
+          final BigdataIRI s = vf.createURI("http://example.com/s");
+          final BigdataIRI p = vf.createURI("http://example.com/p");
+          final BigdataIRI o = vf.createURI("http://example.com/o");
+          final BigdataIRI c = vf.createURI("http://example.com/c");
 
           final StatementBuffer<Statement> buffer = new StatementBuffer<Statement>(
                 store, capacity);
