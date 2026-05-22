@@ -205,7 +205,7 @@ Copyright 2010 by TalkingTrends (Amsterdam, The Netherlands)
   </contributors>
   <properties>
     <icu.version>4.8.2</icu.version>
-    <zookeeper.version>3.9.3</zookeeper.version>
+    <zookeeper.version>3.9.5</zookeeper.version>
     <sesame.version>2.9.0</sesame.version>
     <jsonld.version>0.13.6</jsonld.version>
     <semargl.version>0.7</semargl.version>
