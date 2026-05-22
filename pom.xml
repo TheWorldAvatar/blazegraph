@@ -205,7 +205,7 @@ Copyright 2010 by TalkingTrends (Amsterdam, The Netherlands)
   </contributors>
   <properties>
     <icu.version>4.8.2</icu.version>
-    <zookeeper.version>3.9.3</zookeeper.version>
+    <zookeeper.version>3.9.5</zookeeper.version>
     <rdf4j.version>3.7.7</rdf4j.version>
     <jsonld.version>0.13.6</jsonld.version>
     <semargl.version>0.7</semargl.version>
@@ -222,7 +222,7 @@ Copyright 2010 by TalkingTrends (Amsterdam, The Netherlands)
     <apache.httpcore.version> 4.4.16</apache.httpcore.version>
     <apache.httpmime.version>4.5.14</apache.httpmime.version>
     <highscalelib.version>1.1.4</highscalelib.version>
-    <log4j.version>2.25.1</log4j.version>
+    <log4j.version>2.26.0</log4j.version>
     <colt.version>${project.version}</colt.version>
     <fastutil.version>6.5.16</fastutil.version>
     <!-- Note, that jackson version no higher than 2.6.x should be used
