@@ -229,7 +229,7 @@ Copyright 2010 by TalkingTrends (Amsterdam, The Netherlands)
         for sesame 2.8.11 compatibility (which specifies 2.4.4 jackson dependency)
 		Ref: https://fasterxml.github.io/jackson-core/javadoc/2.6/deprecated-list.html
     -->
-    <jackson.version>2.6.7</jackson.version>
+    <jackson.version>2.12.7.1</jackson.version>
     <blueprints.version>2.6.0</blueprints.version>
     <jettison.version>1.5.4</jettison.version>
     <rexster.version>2.6.0</rexster.version>
