@@ -1628,6 +1628,63 @@ public class BigdataSail extends SailBase implements Sail {
     }
 
     /**
+     * Return a connection attached to an existing, externally managed
+     * read/write transaction.  The connection may flush writes into that
+     * transaction, but closing the connection does not commit or abort it.
+     *
+     * @param txId
+     *            The identifier of an active read/write transaction.
+     */
+    public BigdataSailConnection getReadWriteConnection(final long txId)
+            throws IOException, InterruptedException {
+
+        if (!TimestampUtility.isReadWriteTx(txId)) {
+            throw new IllegalArgumentException("Not a read/write transaction: "
+                    + txId);
+        }
+
+        final IIndexManager indexManager = getIndexManager();
+
+        if (!(indexManager instanceof Journal)) {
+            throw new UnsupportedOperationException(
+                    "Attached read/write transactions require a standalone Journal.");
+        }
+
+        final ITx tx = ((Journal) indexManager).getTransactionManager()
+                .getTx(txId);
+
+        if (tx == null || !tx.isActive() || tx.isReadOnly()) {
+            throw new IllegalStateException(
+                    "Transaction is not an active read/write transaction: "
+                            + txId);
+        }
+
+        final ITransactionService txService = getTxService();
+        Access access = null;
+        boolean ok = false;
+
+        try {
+            access = ((Journal) indexManager)
+                    .acquireReadWriteConnectionAccess();
+
+            final BigdataSailConnection conn = new BigdataSailRWTxConnection(
+                    access, txId, txService, false/* ownsTransaction */)
+                            .startConn();
+
+            ok = true;
+            manageConnection(conn);
+
+            return conn;
+        } catch (DatasetNotFoundException ex) {
+            throw new RuntimeException(ex);
+        } finally {
+            if (!ok && access != null) {
+                access.release();
+            }
+        }
+    }
+
+    /**
      * Return the {@link ITransactionService}.
      */
 	protected ITransactionService getTxService() {
@@ -1907,6 +1964,16 @@ public class BigdataSail extends SailBase implements Sail {
            
            return isolatable;
            
+        }
+
+        /**
+         * Return true when the transaction lifecycle is owned outside this
+         * connection.
+         */
+        public boolean isExternallyManagedTransaction() {
+
+            return false;
+
         }
 
         @Override
@@ -3010,7 +3077,7 @@ public class BigdataSail extends SailBase implements Sail {
          * buffer references are set to <code>null</code> and the buffers must
          * be re-allocated on demand.
          */
-        private void clearBuffers() {
+        protected void clearBuffers() {
 
             if(assertBuffer != null) {
                 
@@ -4007,7 +4074,13 @@ public class BigdataSail extends SailBase implements Sail {
 
             final IIndexManager im = getIndexManager();
 
-            if (isDirty()) {
+            if (isExternallyManagedTransaction()) {
+                /*
+                 * Preserve request writes in the externally owned transaction.
+                 * Its final outcome is controlled by the transaction API.
+                 */
+                flush();
+            } else if (isDirty()) {
                 /*
                  * Do implicit rollback() of a dirty connection.
                  * 
@@ -4963,6 +5036,9 @@ public class BigdataSail extends SailBase implements Sail {
          * The transaction service.
          */
         private final ITransactionService txService;
+
+        /** True when this connection created and owns the transaction. */
+        private final boolean ownsTransaction;
         
         /**
          * The transaction id.
@@ -4980,6 +5056,15 @@ public class BigdataSail extends SailBase implements Sail {
         public BigdataSailRWTxConnection(final Access access, final long txId, final ITransactionService txService)//, final Lock readLock)
                 throws IOException, DatasetNotFoundException {
 
+            this(access, txId, txService, true/* ownsTransaction */);
+
+        }
+
+        private BigdataSailRWTxConnection(final Access access,
+                final long txId, final ITransactionService txService,
+                final boolean ownsTransaction)
+                throws IOException, DatasetNotFoundException {
+
             super(txId, access);//, false/* unisolated */, false/* readOnly */);
 
             if (!isolatable) {
@@ -4991,9 +5076,18 @@ public class BigdataSail extends SailBase implements Sail {
             }
 
             this.txService = txService;
+
+            this.ownsTransaction = ownsTransaction;
             
             newTx(txId);
             
+        }
+
+        @Override
+        public boolean isExternallyManagedTransaction() {
+
+            return !ownsTransaction;
+
         }
 
         @Override
@@ -5059,6 +5153,15 @@ public class BigdataSail extends SailBase implements Sail {
          */
         @Override
         public synchronized long commit2() throws SailException {
+
+            if (!ownsTransaction) {
+                /*
+                 * A request may flush into this transaction, but only the
+                 * external transaction owner may publish it.
+                 */
+                flushStatementBuffers(true/* assertions */, true/* retractions */);
+                return 0L;
+            }
 
             /*
              * don't double commit, but make a note that writes to the lexicon
@@ -5141,12 +5244,16 @@ public class BigdataSail extends SailBase implements Sail {
 //            super.rollback();
             
             try {
+
+                clearBuffers();
             
                 txService.abort(tx);
                 
                 dirty = false;
 
-                newTx();
+                if (ownsTransaction) {
+                    newTx();
+                }
             
             } catch(IOException|DatasetNotFoundException ex) {
                     
@@ -5171,6 +5278,10 @@ public class BigdataSail extends SailBase implements Sail {
             
             super.close();
             
+            if (!ownsTransaction) {
+                return;
+            }
+
             try {
 
                 txService.abort(tx);

@@ -162,6 +162,25 @@ public class BigdataSailRepository extends SailRepository {
         }
         
     }
+
+    /**
+     * Return a connection attached to an existing, externally managed
+     * read/write transaction.
+     *
+     * @param txId
+     *            The identifier of an active read/write transaction.
+     */
+    public BigdataSailRepositoryConnection getReadWriteConnection(
+            final long txId) throws RepositoryException, InterruptedException {
+
+        try {
+            return new BigdataSailRepositoryConnection(this,
+                    getSail().getReadWriteConnection(txId));
+        } catch (IOException e) {
+            throw new RepositoryException(e);
+        }
+
+    }
     
     /**
      * Return an unisolated connection to the database. Only one of these

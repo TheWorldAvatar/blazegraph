@@ -447,7 +447,8 @@ public class QueryServlet extends BigdataRDFServlet {
 
          final String namespace = getNamespace(req);
 
-         final long timestamp = ITx.UNISOLATED;// getTimestamp(req);
+         final long timestamp = req.getParameter(ATTR_TIMESTAMP) == null
+               ? ITx.UNISOLATED : getTimestamp(req);
 
          /*
           * Note: When GROUP_COMMIT (#566) is enabled the http output stream

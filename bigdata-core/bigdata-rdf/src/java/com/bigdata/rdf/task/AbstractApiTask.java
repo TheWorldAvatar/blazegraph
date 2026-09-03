@@ -248,6 +248,22 @@ abstract public class AbstractApiTask<T> implements IApiTask<T>, IReadOnly {
 
         }
 
+        if (TimestampUtility.isReadWriteTx(timestamp)) {
+
+            try {
+                final BigdataSailRepositoryConnection conn = repo
+                        .getReadWriteConnection(timestamp);
+
+                conn.setAutoCommit(false);
+
+                return conn;
+            } catch (InterruptedException ex) {
+                Thread.currentThread().interrupt();
+                throw new RepositoryException(ex);
+            }
+
+        }
+
         // Read-write connection.
         final BigdataSailRepositoryConnection conn = repo.getConnection();
 
@@ -296,7 +312,18 @@ abstract public class AbstractApiTask<T> implements IApiTask<T>, IReadOnly {
 
         repo.initialize();
 
-        final BigdataSailRepositoryConnection conn = repo.getConnection();
+        final BigdataSailRepositoryConnection conn;
+
+        if (TimestampUtility.isReadWriteTx(timestamp)) {
+            try {
+                conn = repo.getReadWriteConnection(timestamp);
+            } catch (InterruptedException ex) {
+                Thread.currentThread().interrupt();
+                throw new RepositoryException(ex);
+            }
+        } else {
+            conn = repo.getConnection();
+        }
         
         conn.setAutoCommit(false);
         
