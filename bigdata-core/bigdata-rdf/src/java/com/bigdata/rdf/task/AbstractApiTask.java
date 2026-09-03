@@ -321,8 +321,12 @@ abstract public class AbstractApiTask<T> implements IApiTask<T>, IReadOnly {
                 Thread.currentThread().interrupt();
                 throw new RepositoryException(ex);
             }
-        } else {
+        } else if (TimestampUtility.isUnisolated(timestamp)) {
             conn = repo.getConnection();
+        } else {
+            throw new BigdataSail.IncompatibleTransactionException(
+                    "Updates require an active read/write transaction: "
+                            + timestamp);
         }
         
         conn.setAutoCommit(false);

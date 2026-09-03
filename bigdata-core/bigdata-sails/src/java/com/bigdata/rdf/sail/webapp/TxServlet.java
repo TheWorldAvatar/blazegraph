@@ -191,7 +191,14 @@ public class TxServlet extends BigdataRDFServlet {
       final long beginNanos = System.nanoTime();
 
       // Note: This parameter has default values for CREATE-TX.
-      final long timestamp = getTimestamp(req);
+      final long timestamp;
+      try {
+         timestamp = getTimestamp(req);
+      } catch (NumberFormatException ex) {
+         buildAndCommitResponse(resp, HttpServletResponse.SC_BAD_REQUEST,
+               MIME_TEXT_PLAIN, "Transaction timestamp is not numeric");
+         return;
+      }
 
       if (timestamp == ITx.UNISOLATED) {
 
@@ -638,7 +645,7 @@ public class TxServlet extends BigdataRDFServlet {
             if (tx == null) {
 
                // 404 (GONE). No such transaction (definitive).
-               buildAndCommitResponse(resp, HttpServletResponse.SC_GONE,
+               buildAndCommitResponse(resp, HttpServletResponse.SC_NOT_FOUND,
                      MIME_TEXT_PLAIN, "STATUS-TX: Transaction not found: txId="
                            + txId);
 
@@ -807,7 +814,15 @@ public class TxServlet extends BigdataRDFServlet {
          }
       }
 
-      final long txId = Long.valueOf(s);
+      final long txId;
+      try {
+         txId = Long.valueOf(s);
+      } catch (NumberFormatException ex) {
+         buildAndCommitResponse(resp, HttpServletResponse.SC_BAD_REQUEST,
+               MIME_TEXT_HTML,
+               "Transaction identifier is not numeric: pathInfo=" + pathInfo);
+         return false;
+      }
       
       ref.set(txId);
       

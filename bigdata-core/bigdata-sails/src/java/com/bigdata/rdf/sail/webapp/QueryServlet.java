@@ -450,6 +450,15 @@ public class QueryServlet extends BigdataRDFServlet {
          final long timestamp = req.getParameter(ATTR_TIMESTAMP) == null
                ? ITx.UNISOLATED : getTimestamp(req);
 
+         if (!TimestampUtility.isUnisolated(timestamp)
+               && !TimestampUtility.isReadWriteTx(timestamp)) {
+            buildAndCommitResponse(resp, HttpServletResponse.SC_CONFLICT,
+                  MIME_TEXT_PLAIN,
+                  "SPARQL updates require an active read/write transaction: timestamp="
+                        + timestamp);
+            return;
+         }
+
          /*
           * Note: When GROUP_COMMIT (#566) is enabled the http output stream
           * MUST NOT be closed from within the submitted task. Doing so would

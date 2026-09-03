@@ -111,6 +111,7 @@ import com.bigdata.journal.IJournal;
 import com.bigdata.journal.ITransactionService;
 import com.bigdata.journal.ITx;
 import com.bigdata.journal.Journal;
+import com.bigdata.journal.TransactionNotFoundException;
 import com.bigdata.journal.TimestampUtility;
 import com.bigdata.rawstore.IRawStore;
 import com.bigdata.rdf.axioms.NoAxioms;
@@ -261,6 +262,18 @@ public class BigdataSail extends SailBase implements Sail {
 
     private static final String ERR_OPENRDF_QUERY_MODEL = 
             "Support is no longer provided for UpdateExpr or TupleExpr evaluation. Please make sure you are using a BigdataSailRepository.  It will use the bigdata native evaluation model.";
+
+    /** Raised when a transaction can not be used with the requested operation. */
+    public static class IncompatibleTransactionException extends
+            IllegalStateException {
+
+        private static final long serialVersionUID = 1L;
+
+        public IncompatibleTransactionException(final String message) {
+            super(message);
+        }
+
+    }
     
     /**
      * Additional parameters understood by the Sesame 2.x SAIL implementation.
@@ -1639,22 +1652,26 @@ public class BigdataSail extends SailBase implements Sail {
             throws IOException, InterruptedException {
 
         if (!TimestampUtility.isReadWriteTx(txId)) {
-            throw new IllegalArgumentException("Not a read/write transaction: "
-                    + txId);
+            throw new IncompatibleTransactionException(
+                    "Not a read/write transaction: " + txId);
         }
 
         final IIndexManager indexManager = getIndexManager();
 
         if (!(indexManager instanceof Journal)) {
-            throw new UnsupportedOperationException(
+            throw new IncompatibleTransactionException(
                     "Attached read/write transactions require a standalone Journal.");
         }
 
         final ITx tx = ((Journal) indexManager).getTransactionManager()
                 .getTx(txId);
 
-        if (tx == null || !tx.isActive() || tx.isReadOnly()) {
-            throw new IllegalStateException(
+        if (tx == null || !tx.isActive()) {
+            throw new TransactionNotFoundException(txId);
+        }
+
+        if (tx.isReadOnly()) {
+            throw new IncompatibleTransactionException(
                     "Transaction is not an active read/write transaction: "
                             + txId);
         }
@@ -5068,6 +5085,12 @@ public class BigdataSail extends SailBase implements Sail {
             super(txId, access);//, false/* unisolated */, false/* readOnly */);
 
             if (!isolatable) {
+
+                if (!ownsTransaction) {
+                    throw new IncompatibleTransactionException(
+                        "Read/write transactions are not allowed on this database. " +
+                        "See " + Options.ISOLATABLE_INDICES);
+                }
 
                 throw new UnsupportedOperationException(
                     "Read/write transactions are not allowed on this database. " +
