@@ -291,6 +291,17 @@ public class TxServlet extends BigdataRDFServlet {
       if (!getTxId(req, resp, txId))
          return;
 
+      final BigdataRDFContext context = getBigdataRDFContext();
+      final BigdataRDFContext.TransactionUse transactionUse = context
+            .tryAcquireTransaction(txId.get());
+
+      if (transactionUse == null) {
+         buildAndCommitResponse(resp, HttpServletResponse.SC_CONFLICT,
+               MIME_TEXT_PLAIN,
+               "Transaction is already in use: txId=" + txId.get());
+         return;
+      }
+
       try {
 
          if (getIndexManager() instanceof IBigdataFederation) {
@@ -367,7 +378,11 @@ public class TxServlet extends BigdataRDFServlet {
 
          // some other error.
          launderThrowable(t, resp, "ABORT-TX:: txId=" + txId);
-         
+
+      } finally {
+
+         context.releaseTransaction(transactionUse);
+
       }
 
    }
@@ -384,6 +399,17 @@ public class TxServlet extends BigdataRDFServlet {
 
       if (!getTxId(req, resp, txId))
          return;
+
+      final BigdataRDFContext context = getBigdataRDFContext();
+      final BigdataRDFContext.TransactionUse transactionUse = context
+            .tryAcquireTransaction(txId.get());
+
+      if (transactionUse == null) {
+         buildAndCommitResponse(resp, HttpServletResponse.SC_CONFLICT,
+               MIME_TEXT_PLAIN,
+               "Transaction is already in use: txId=" + txId.get());
+         return;
+      }
 
       try {
 
@@ -497,6 +523,10 @@ public class TxServlet extends BigdataRDFServlet {
          // some other error.
          launderThrowable(e, resp, "COMMIT-TX:: txId=" + txId);
 
+      } finally {
+
+         context.releaseTransaction(transactionUse);
+
       }
 
    }
@@ -520,6 +550,17 @@ public class TxServlet extends BigdataRDFServlet {
 
       if (!getTxId(req, resp, txId))
          return;
+
+      final BigdataRDFContext context = getBigdataRDFContext();
+      final BigdataRDFContext.TransactionUse transactionUse = context
+            .tryAcquireTransaction(txId.get());
+
+      if (transactionUse == null) {
+         buildAndCommitResponse(resp, HttpServletResponse.SC_CONFLICT,
+               MIME_TEXT_PLAIN,
+               "Transaction is already in use: txId=" + txId.get());
+         return;
+      }
 
       final boolean ok;
       try {
@@ -604,6 +645,10 @@ public class TxServlet extends BigdataRDFServlet {
          // some other error.
          launderThrowable(t, resp, "PREPARE-TX:: txId=" + txId);
 
+      } finally {
+
+         context.releaseTransaction(transactionUse);
+
       }
 
    }
@@ -620,6 +665,17 @@ public class TxServlet extends BigdataRDFServlet {
 
       if (!getTxId(req, resp, txId))
          return;
+
+      final BigdataRDFContext context = getBigdataRDFContext();
+      final BigdataRDFContext.TransactionUse transactionUse = context
+            .tryAcquireTransaction(txId.get());
+
+      if (transactionUse == null) {
+         buildAndCommitResponse(resp, HttpServletResponse.SC_CONFLICT,
+               MIME_TEXT_PLAIN,
+               "Transaction is already in use: txId=" + txId.get());
+         return;
+      }
 
       try {
 
@@ -700,6 +756,10 @@ public class TxServlet extends BigdataRDFServlet {
 
          // some other error.
          launderThrowable(t, resp, "PREPARE-TX:: txId=" + txId);
+
+      } finally {
+
+         context.releaseTransaction(transactionUse);
 
       }
 

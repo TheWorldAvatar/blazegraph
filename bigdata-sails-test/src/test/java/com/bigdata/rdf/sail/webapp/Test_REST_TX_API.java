@@ -25,11 +25,15 @@ package com.bigdata.rdf.sail.webapp;
 
 import java.util.Properties;
 
+import javax.servlet.http.HttpServletResponse;
+
 import junit.framework.Test;
 
 import com.bigdata.journal.IIndexManager;
 import com.bigdata.rdf.sail.BigdataSail;
+import com.bigdata.rdf.sail.webapp.client.ConnectOptions;
 import com.bigdata.rdf.sail.webapp.client.IRemoteTx;
+import com.bigdata.rdf.sail.webapp.client.JettyResponseListener;
 import com.bigdata.rdf.sail.webapp.client.RemoteTransactionManager;
 
 /**
@@ -233,6 +237,233 @@ public class Test_REST_TX_API<S extends IIndexManager> extends
       }
 
       assertFalse(tx.isActive());
+
+   }
+
+   /**
+    * Verify that a query is rejected while another REST request owns the same
+    * read/write transaction.
+    */
+   public void test_parallelQueryOnSameTransactionRejected() throws Exception {
+
+      final IRemoteTx tx = newReadWriteTx();
+      final BigdataRDFContext context = getRestContext();
+      final BigdataRDFContext.TransactionUse use = context
+            .tryAcquireTransaction(tx.getTxId());
+
+      assertNotNull(use);
+      try {
+         assertEquals(HttpServletResponse.SC_CONFLICT,
+               sparqlStatus("query", "ASK { ?s ?p ?o }", tx.getTxId()));
+      } finally {
+         context.releaseTransaction(use);
+         tx.abort();
+      }
+
+   }
+
+   /**
+    * Verify that an update is rejected while another REST request owns the
+    * same read/write transaction.
+    */
+   public void test_parallelUpdateOnSameTransactionRejected() throws Exception {
+
+      final IRemoteTx tx = newReadWriteTx();
+      final BigdataRDFContext context = getRestContext();
+      final BigdataRDFContext.TransactionUse use = context
+            .tryAcquireTransaction(tx.getTxId());
+
+      assertNotNull(use);
+      try {
+         assertEquals(HttpServletResponse.SC_CONFLICT,
+               sparqlStatus("update",
+                     "INSERT DATA { <urn:test:s> <urn:test:p> <urn:test:o> }",
+                     tx.getTxId()));
+      } finally {
+         context.releaseTransaction(use);
+         tx.abort();
+      }
+
+   }
+
+   /**
+    * Verify that STATUS, PREPARE, COMMIT, and ABORT are rejected while another
+    * REST request owns the transaction.
+    */
+   public void test_parallelLifecycleOperationsRejected() throws Exception {
+
+      final IRemoteTx tx = newReadWriteTx();
+      final BigdataRDFContext context = getRestContext();
+      final BigdataRDFContext.TransactionUse use = context
+            .tryAcquireTransaction(tx.getTxId());
+
+      assertNotNull(use);
+      try {
+         for (String action : new String[] { "STATUS", "PREPARE", "COMMIT",
+               "ABORT" }) {
+            assertEquals(action, HttpServletResponse.SC_CONFLICT,
+                  transactionStatus(tx.getTxId(), action));
+         }
+      } finally {
+         context.releaseTransaction(use);
+         tx.abort();
+      }
+
+   }
+
+   /**
+    * Verify that ownership of one transaction does not prevent a request from
+    * using a different transaction.
+    */
+   public void test_differentTransactionsRemainConcurrent() throws Exception {
+
+      final IRemoteTx txA = newReadOnlyTx();
+      final IRemoteTx txB = newReadOnlyTx();
+      final BigdataRDFContext context = getRestContext();
+      final BigdataRDFContext.TransactionUse use = context
+            .tryAcquireTransaction(txA.getTxId());
+
+      assertNotNull(use);
+      try {
+         assertEquals(HttpServletResponse.SC_OK,
+               sparqlStatus("query", "ASK { ?s ?p ?o }", txB.getTxId()));
+      } finally {
+         context.releaseTransaction(use);
+         try {
+            txB.abort();
+         } finally {
+            txA.abort();
+         }
+      }
+
+   }
+
+   /**
+    * Verify that a malformed query releases its transaction so a subsequent
+    * request can use it.
+    */
+   public void test_queryFailureReleasesTransaction() throws Exception {
+
+      final IRemoteTx tx = newReadOnlyTx();
+
+      try {
+         assertEquals(HttpServletResponse.SC_BAD_REQUEST,
+               sparqlStatus("query", "SELECT WHERE {", tx.getTxId()));
+         assertEquals(HttpServletResponse.SC_OK,
+               sparqlStatus("query", "ASK { ?s ?p ?o }", tx.getTxId()));
+      } finally {
+         tx.abort();
+      }
+
+   }
+
+   /**
+    * Verify that a read-only transaction receives the same exclusive REST
+    * ownership protection as a read/write transaction.
+    */
+   public void test_parallelReadOnlyTransactionUseRejected() throws Exception {
+
+      final IRemoteTx tx = newReadOnlyTx();
+      final BigdataRDFContext context = getRestContext();
+      final BigdataRDFContext.TransactionUse use = context
+            .tryAcquireTransaction(tx.getTxId());
+
+      assertNotNull(use);
+      try {
+         assertEquals(HttpServletResponse.SC_CONFLICT,
+               sparqlStatus("query", "ASK { ?s ?p ?o }", tx.getTxId()));
+      } finally {
+         context.releaseTransaction(use);
+         tx.abort();
+      }
+
+   }
+
+   /**
+    * Verify that a historical commit timestamp is not mistaken for an active
+    * read-only transaction identifier and therefore is not locked.
+    */
+   public void test_historicalTimestampIsNotTransactionLocked()
+         throws Exception {
+
+      final IRemoteTx tx = newReadOnlyTx();
+      final long timestamp = tx.getReadsOnCommitTime();
+      tx.abort();
+
+      final BigdataRDFContext context = getRestContext();
+      final BigdataRDFContext.TransactionUse use = context
+            .tryAcquireTransaction(timestamp);
+
+      assertNotNull(use);
+      try {
+         assertEquals(HttpServletResponse.SC_OK,
+               sparqlStatus("query", "ASK { ?s ?p ?o }", timestamp));
+      } finally {
+         context.releaseTransaction(use);
+      }
+
+   }
+
+   private IRemoteTx newReadWriteTx() {
+
+      return m_mgr.getTransactionManager().createTx(
+            RemoteTransactionManager.UNISOLATED);
+
+   }
+
+   private IRemoteTx newReadOnlyTx() {
+
+      return m_mgr.getTransactionManager().createTx(
+            RemoteTransactionManager.READ_COMMITTED);
+
+   }
+
+   private BigdataRDFContext getRestContext() {
+
+      return (BigdataRDFContext) NanoSparqlServer.getWebApp(m_fixture)
+            .getServletContext().getAttribute(
+                  BigdataServlet.ATTRIBUTE_RDF_CONTEXT);
+
+   }
+
+   private int sparqlStatus(final String operation, final String sparql,
+         final long timestamp) throws Exception {
+
+      final ConnectOptions opts = new ConnectOptions(m_repo
+            .getSparqlEndPoint());
+      opts.method = "POST";
+      opts.addRequestParam(operation, sparql);
+      opts.addRequestParam("timestamp", Long.toString(timestamp));
+
+      return requestStatus(opts);
+
+   }
+
+   private int transactionStatus(final long txId, final String action)
+         throws Exception {
+
+      final ConnectOptions opts = new ConnectOptions(m_serviceURL + "/tx/"
+            + txId);
+      opts.method = "POST";
+      opts.addRequestParam(action);
+
+      return requestStatus(opts);
+
+   }
+
+   private int requestStatus(final ConnectOptions opts) throws Exception {
+
+      JettyResponseListener response = null;
+      try {
+         response = m_mgr.doConnect(opts);
+         final int status = response.getStatus();
+         response.getResponseBody();
+         return status;
+      } finally {
+         if (response != null) {
+            response.abort();
+         }
+      }
 
    }
 

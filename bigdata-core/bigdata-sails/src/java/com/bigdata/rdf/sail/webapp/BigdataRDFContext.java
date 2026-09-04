@@ -84,6 +84,7 @@ import com.bigdata.counters.CAT;
 import com.bigdata.io.NullOutputStream;
 import com.bigdata.journal.IIndexManager;
 import com.bigdata.journal.IJournal;
+import com.bigdata.journal.Journal;
 import com.bigdata.journal.ITransactionService;
 import com.bigdata.journal.ITx;
 import com.bigdata.journal.Journal;
@@ -407,6 +408,77 @@ public class BigdataRDFContext extends BigdataBaseContext {
      *      </a>
      */
     private final ConcurrentHashMap<UUID/* RestAPITask */, TaskAndFutureTask<?>> m_restTasks = new ConcurrentHashMap<UUID, TaskAndFutureTask<?>>();
+
+    /**
+     * Transactions currently owned by a REST request.  The database transaction
+     * lock protects the underlying transaction state.  This registry provides
+     * the REST API's fail-fast, single-request ownership contract.
+     */
+    private final ConcurrentHashMap<Long/* txId */, TransactionUse> m_transactionUses = new ConcurrentHashMap<Long, TransactionUse>();
+
+    /** Ownership token for one REST request using a transaction. */
+    static final class TransactionUse {
+
+        final long txId;
+
+        private TransactionUse(final long txId) {
+            this.txId = txId;
+        }
+
+    }
+
+    /**
+     * Attempt to acquire exclusive REST use of a transaction without waiting.
+     *
+     * @return the ownership token, or <code>null</code> if the transaction is
+     *         already being used by another REST request.
+     */
+    TransactionUse tryAcquireTransaction(final long txId) {
+
+        final TransactionUse use = new TransactionUse(txId);
+
+        return m_transactionUses.putIfAbsent(txId, use) == null ? use : null;
+
+    }
+
+    /** Release a transaction only if it is still owned by this token. */
+    void releaseTransaction(final TransactionUse use) {
+
+        if (use != null) {
+
+            m_transactionUses.remove(use.txId, use);
+
+        }
+
+    }
+
+    /**
+     * Return <code>true</code> if a request timestamp identifies a transaction
+     * and therefore requires exclusive REST use.
+     * <p>
+     * Read/write transaction identifiers are unambiguous.  Positive values can
+     * identify either a read-only transaction or a historical commit point, so
+     * they are checked against the local transaction table.
+     */
+    boolean isTransactionIdentifier(final long timestamp) {
+
+        if (TimestampUtility.isReadWriteTx(timestamp)) {
+
+            return true;
+
+        }
+
+        if (timestamp <= ITx.UNISOLATED
+                || !(getIndexManager() instanceof Journal)) {
+
+            return false;
+
+        }
+
+        return ((Journal) getIndexManager()).getTransactionManager()
+                .getTx(timestamp) != null;
+
+    }
 
     /**
      * Return the {@link RunningQuery} for a currently executing SPARQL QUERY or
