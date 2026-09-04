@@ -241,6 +241,25 @@ public class Test_REST_TX_API<S extends IIndexManager> extends
    }
 
    /**
+    * Verify that an ordinary SPARQL update continues to report the commit
+    * performed by its auto-commit connection.
+    */
+   public void test_nonTransactionalUpdateStillReportsCommit()
+         throws Exception {
+
+      final SparqlResponse response = sparqlResponse("update",
+            "INSERT DATA { <urn:test:autoCommit> <urn:test:p> <urn:test:o> }");
+
+      assertEquals(HttpServletResponse.SC_OK, response.statusCode);
+      assertTrue(response.body.contains("COMMIT:"));
+      assertTrue(response.body.matches(
+            "(?s).*commitTime=[1-9][0-9]*.*"));
+      assertFalse(response.body.contains("commitTime=-1"));
+      assertFalse(response.body.contains("UPDATE:"));
+
+   }
+
+   /**
     * Verify that a query is rejected while another REST request owns the same
     * read/write transaction.
     */
@@ -429,13 +448,32 @@ public class Test_REST_TX_API<S extends IIndexManager> extends
    protected int sparqlStatus(final String operation, final String sparql,
          final long timestamp) throws Exception {
 
+      return sparqlResponse(operation, sparql, timestamp).statusCode;
+
+   }
+
+   protected SparqlResponse sparqlResponse(final String operation,
+         final String sparql) throws Exception {
+
+      final ConnectOptions opts = new ConnectOptions(m_repo
+            .getSparqlEndPoint());
+      opts.method = "POST";
+      opts.addRequestParam(operation, sparql);
+
+      return requestResponse(opts);
+
+   }
+
+   protected SparqlResponse sparqlResponse(final String operation,
+         final String sparql, final long timestamp) throws Exception {
+
       final ConnectOptions opts = new ConnectOptions(m_repo
             .getSparqlEndPoint());
       opts.method = "POST";
       opts.addRequestParam(operation, sparql);
       opts.addRequestParam("timestamp", Long.toString(timestamp));
 
-      return requestStatus(opts);
+      return requestResponse(opts);
 
    }
 
@@ -453,16 +491,37 @@ public class Test_REST_TX_API<S extends IIndexManager> extends
 
    protected int requestStatus(final ConnectOptions opts) throws Exception {
 
+      return requestResponse(opts).statusCode;
+
+   }
+
+   protected SparqlResponse requestResponse(final ConnectOptions opts)
+         throws Exception {
+
       JettyResponseListener response = null;
       try {
          response = m_mgr.doConnect(opts);
          final int status = response.getStatus();
-         response.getResponseBody();
-         return status;
+         final String body = response.getResponseBody();
+         return new SparqlResponse(status, body);
       } finally {
          if (response != null) {
             response.abort();
          }
+      }
+
+   }
+
+   protected static class SparqlResponse {
+
+      public final int statusCode;
+      public final String body;
+
+      public SparqlResponse(final int statusCode, final String body) {
+
+         this.statusCode = statusCode;
+         this.body = body;
+
       }
 
    }
@@ -543,6 +602,30 @@ public class Test_REST_TX_API<S extends IIndexManager> extends
       public ReadWriteTx(final String name) {
 
          super(name);
+
+      }
+
+      /**
+       * Verify that a successful transactional update reports update
+       * completion without claiming that the transaction was committed.
+       */
+      public void test_transactionalUpdateReportsUpdate() throws Exception {
+
+         final IRemoteTx tx = newReadWriteTx();
+
+         try {
+            final SparqlResponse response = sparqlResponse("update",
+                  "INSERT DATA { <urn:test:transactionalUpdate> "
+                        + "<urn:test:p> <urn:test:o> }", tx.getTxId());
+
+            assertEquals(HttpServletResponse.SC_OK, response.statusCode);
+            assertTrue(response.body.contains("UPDATE:"));
+            assertTrue(response.body.contains("mutationCount="));
+            assertFalse(response.body.contains("COMMIT:"));
+            assertFalse(response.body.contains("commitTime="));
+         } finally {
+            getRestContext().abortTransactionIfActive(tx.getTxId());
+         }
 
       }
 

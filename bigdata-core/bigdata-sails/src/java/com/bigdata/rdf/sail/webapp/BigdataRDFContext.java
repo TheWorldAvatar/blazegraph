@@ -2040,7 +2040,16 @@ public class BigdataRDFContext extends BigdataBaseContext {
                 this.commitTime.set(update.execute2());
 
                 // Write out the response.
-                listener.commit(this.commitTime.get());
+                if (cxn.getSailConnection()
+                        .isExternallyManagedTransaction()) {
+
+                    listener.update();
+
+                } else {
+
+                    listener.commit(this.commitTime.get());
+
+                }
 
                 // Flush the listener (close document elements, etc).
                 listener.flush();
@@ -2394,6 +2403,23 @@ public class BigdataRDFContext extends BigdataBaseContext {
                     .text("COMMIT: totalElapsed=" + totalElapsedMillis
                             + "ms, commitTime=" + commitTime
                             + ", mutationCount=" + mutationCount.get())//
+                    .close();
+
+        }
+
+        /**
+         * Report an update that completed within an externally managed
+         * transaction without claiming that the transaction was committed.
+         */
+        public void update() throws IOException {
+
+            // Total elapsed milliseconds from start of update request.
+            final long totalElapsedMillis = TimeUnit.NANOSECONDS
+                    .toMillis(System.nanoTime() - begin);
+
+            body.node("p")
+                    .text("UPDATE: totalElapsed=" + totalElapsedMillis
+                            + "ms, mutationCount=" + mutationCount.get())//
                     .close();
 
         }
