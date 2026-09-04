@@ -2888,6 +2888,37 @@ public class BigdataRDFContext extends BigdataBaseContext {
 		}
 
 	}
+
+   /**
+    * Abort an active read/write transaction, or do nothing if it has already
+    * been completed by an earlier failure cleanup path.
+    *
+    * @param tx
+    *           The read/write transaction identifier.
+    * @return <code>true</code> if this method aborted the transaction.
+    */
+   boolean abortTransactionIfActive(final long tx) {
+
+      if (!TimestampUtility.isReadWriteTx(tx)
+            || !(getIndexManager() instanceof Journal)) {
+
+         return false;
+
+      }
+
+      final Journal journal = (Journal) getIndexManager();
+
+      if (journal.getTransactionManager().getTx(tx) == null) {
+
+         return false;
+
+      }
+
+      abortTx(tx);
+
+      return true;
+
+   }
 	
    /**
     * Commit a transaction obtained by {@link #newTx(long)}

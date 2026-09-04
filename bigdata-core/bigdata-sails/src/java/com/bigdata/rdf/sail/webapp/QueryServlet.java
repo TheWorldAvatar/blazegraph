@@ -486,17 +486,32 @@ public class QueryServlet extends BigdataRDFServlet {
           * the group commit actually occurs. Instead, we leave it to the
           * servlet container to close the http output stream only once the
           * execution thread leaves this context. This provides the appropriate
-          * visibility guarantees.
+         * visibility guarantees.
           */
+         boolean success = false;
          try {
 
             submitApiTask(
                   new SparqlUpdateTask(req, resp, namespace, timestamp,
                         updateStr, bindings, context)).get();
 
+            success = true;
+
          } finally {
 
-            context.releaseTransaction(transactionUse);
+            try {
+
+               if (transactionUse != null && !success) {
+
+                  context.abortTransactionIfActive(timestamp);
+
+               }
+
+            } finally {
+
+               context.releaseTransaction(transactionUse);
+
+            }
 
          }
 

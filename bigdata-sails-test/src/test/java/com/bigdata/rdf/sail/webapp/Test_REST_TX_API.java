@@ -404,21 +404,21 @@ public class Test_REST_TX_API<S extends IIndexManager> extends
 
    }
 
-   private IRemoteTx newReadWriteTx() {
+   protected IRemoteTx newReadWriteTx() {
 
       return m_mgr.getTransactionManager().createTx(
             RemoteTransactionManager.UNISOLATED);
 
    }
 
-   private IRemoteTx newReadOnlyTx() {
+   protected IRemoteTx newReadOnlyTx() {
 
       return m_mgr.getTransactionManager().createTx(
             RemoteTransactionManager.READ_COMMITTED);
 
    }
 
-   private BigdataRDFContext getRestContext() {
+   protected BigdataRDFContext getRestContext() {
 
       return (BigdataRDFContext) NanoSparqlServer.getWebApp(m_fixture)
             .getServletContext().getAttribute(
@@ -426,7 +426,7 @@ public class Test_REST_TX_API<S extends IIndexManager> extends
 
    }
 
-   private int sparqlStatus(final String operation, final String sparql,
+   protected int sparqlStatus(final String operation, final String sparql,
          final long timestamp) throws Exception {
 
       final ConnectOptions opts = new ConnectOptions(m_repo
@@ -439,7 +439,7 @@ public class Test_REST_TX_API<S extends IIndexManager> extends
 
    }
 
-   private int transactionStatus(final long txId, final String action)
+   protected int transactionStatus(final long txId, final String action)
          throws Exception {
 
       final ConnectOptions opts = new ConnectOptions(m_serviceURL + "/tx/"
@@ -451,7 +451,7 @@ public class Test_REST_TX_API<S extends IIndexManager> extends
 
    }
 
-   private int requestStatus(final ConnectOptions opts) throws Exception {
+   protected int requestStatus(final ConnectOptions opts) throws Exception {
 
       JettyResponseListener response = null;
       try {
@@ -543,6 +543,68 @@ public class Test_REST_TX_API<S extends IIndexManager> extends
       public ReadWriteTx(final String name) {
 
          super(name);
+
+      }
+
+      /**
+       * Verify that a syntax error aborts a read/write transaction and
+       * discards its pending writes.
+       */
+      public void test_transactionAbortedAfterUpdateSyntaxFailure()
+            throws Exception {
+
+         final String subject = "urn:test:syntaxFailure";
+         final String predicate = "urn:test:predicate";
+         final String object = "urn:test:object";
+         final String ask = "ASK { <" + subject + "> <" + predicate + "> <"
+               + object + "> }";
+         final IRemoteTx tx = newReadWriteTx();
+
+         try {
+            assertEquals(HttpServletResponse.SC_OK,
+                  sparqlStatus("update", "INSERT DATA { <" + subject + "> <"
+                        + predicate + "> <" + object + "> }", tx.getTxId()));
+            assertEquals(HttpServletResponse.SC_BAD_REQUEST,
+                  sparqlStatus("update", "INSERT DATA WHERE { }",
+                        tx.getTxId()));
+            assertEquals(HttpServletResponse.SC_NOT_FOUND,
+                  sparqlStatus("query", ask, tx.getTxId()));
+            assertFalse(m_repo.prepareBooleanQuery(ask).evaluate());
+         } finally {
+            getRestContext().abortTransactionIfActive(tx.getTxId());
+         }
+
+      }
+
+      /**
+       * Verify that an execution error aborts a read/write transaction and
+       * discards its pending writes.
+       */
+      public void test_transactionAbortedAfterUpdateExecutionFailure()
+            throws Exception {
+
+         final String subject = "urn:test:executionFailure";
+         final String predicate = "urn:test:predicate";
+         final String object = "urn:test:object";
+         final String ask = "ASK { <" + subject + "> <" + predicate + "> <"
+               + object + "> }";
+         final String missingResource = "file:///tmp/blazegraph-missing-"
+               + System.nanoTime() + ".ttl";
+         final IRemoteTx tx = newReadWriteTx();
+
+         try {
+            assertEquals(HttpServletResponse.SC_OK,
+                  sparqlStatus("update", "INSERT DATA { <" + subject + "> <"
+                        + predicate + "> <" + object + "> }", tx.getTxId()));
+            assertEquals(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
+                  sparqlStatus("update", "LOAD <" + missingResource + ">",
+                        tx.getTxId()));
+            assertEquals(HttpServletResponse.SC_NOT_FOUND,
+                  sparqlStatus("query", ask, tx.getTxId()));
+            assertFalse(m_repo.prepareBooleanQuery(ask).evaluate());
+         } finally {
+            getRestContext().abortTransactionIfActive(tx.getTxId());
+         }
 
       }
       
