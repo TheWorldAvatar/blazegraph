@@ -191,7 +191,14 @@ public class TxServlet extends BigdataRDFServlet {
       final long beginNanos = System.nanoTime();
 
       // Note: This parameter has default values for CREATE-TX.
-      final long timestamp = getTimestamp(req);
+      final long timestamp;
+      try {
+         timestamp = getTimestamp(req);
+      } catch (NumberFormatException ex) {
+         buildAndCommitResponse(resp, HttpServletResponse.SC_BAD_REQUEST,
+               MIME_TEXT_PLAIN, "Transaction timestamp is not numeric");
+         return;
+      }
 
       if (timestamp == ITx.UNISOLATED) {
 
@@ -284,6 +291,17 @@ public class TxServlet extends BigdataRDFServlet {
       if (!getTxId(req, resp, txId))
          return;
 
+      final BigdataRDFContext context = getBigdataRDFContext();
+      final BigdataRDFContext.TransactionUse transactionUse = context
+            .tryAcquireTransaction(txId.get());
+
+      if (transactionUse == null) {
+         buildAndCommitResponse(resp, HttpServletResponse.SC_CONFLICT,
+               MIME_TEXT_PLAIN,
+               "Transaction is already in use: txId=" + txId.get());
+         return;
+      }
+
       try {
 
          if (getIndexManager() instanceof IBigdataFederation) {
@@ -360,7 +378,11 @@ public class TxServlet extends BigdataRDFServlet {
 
          // some other error.
          launderThrowable(t, resp, "ABORT-TX:: txId=" + txId);
-         
+
+      } finally {
+
+         context.releaseTransaction(transactionUse);
+
       }
 
    }
@@ -377,6 +399,17 @@ public class TxServlet extends BigdataRDFServlet {
 
       if (!getTxId(req, resp, txId))
          return;
+
+      final BigdataRDFContext context = getBigdataRDFContext();
+      final BigdataRDFContext.TransactionUse transactionUse = context
+            .tryAcquireTransaction(txId.get());
+
+      if (transactionUse == null) {
+         buildAndCommitResponse(resp, HttpServletResponse.SC_CONFLICT,
+               MIME_TEXT_PLAIN,
+               "Transaction is already in use: txId=" + txId.get());
+         return;
+      }
 
       try {
 
@@ -490,6 +523,10 @@ public class TxServlet extends BigdataRDFServlet {
          // some other error.
          launderThrowable(e, resp, "COMMIT-TX:: txId=" + txId);
 
+      } finally {
+
+         context.releaseTransaction(transactionUse);
+
       }
 
    }
@@ -513,6 +550,17 @@ public class TxServlet extends BigdataRDFServlet {
 
       if (!getTxId(req, resp, txId))
          return;
+
+      final BigdataRDFContext context = getBigdataRDFContext();
+      final BigdataRDFContext.TransactionUse transactionUse = context
+            .tryAcquireTransaction(txId.get());
+
+      if (transactionUse == null) {
+         buildAndCommitResponse(resp, HttpServletResponse.SC_CONFLICT,
+               MIME_TEXT_PLAIN,
+               "Transaction is already in use: txId=" + txId.get());
+         return;
+      }
 
       final boolean ok;
       try {
@@ -597,6 +645,10 @@ public class TxServlet extends BigdataRDFServlet {
          // some other error.
          launderThrowable(t, resp, "PREPARE-TX:: txId=" + txId);
 
+      } finally {
+
+         context.releaseTransaction(transactionUse);
+
       }
 
    }
@@ -613,6 +665,17 @@ public class TxServlet extends BigdataRDFServlet {
 
       if (!getTxId(req, resp, txId))
          return;
+
+      final BigdataRDFContext context = getBigdataRDFContext();
+      final BigdataRDFContext.TransactionUse transactionUse = context
+            .tryAcquireTransaction(txId.get());
+
+      if (transactionUse == null) {
+         buildAndCommitResponse(resp, HttpServletResponse.SC_CONFLICT,
+               MIME_TEXT_PLAIN,
+               "Transaction is already in use: txId=" + txId.get());
+         return;
+      }
 
       try {
 
@@ -638,7 +701,7 @@ public class TxServlet extends BigdataRDFServlet {
             if (tx == null) {
 
                // 404 (GONE). No such transaction (definitive).
-               buildAndCommitResponse(resp, HttpServletResponse.SC_GONE,
+               buildAndCommitResponse(resp, HttpServletResponse.SC_NOT_FOUND,
                      MIME_TEXT_PLAIN, "STATUS-TX: Transaction not found: txId="
                            + txId);
 
@@ -693,6 +756,10 @@ public class TxServlet extends BigdataRDFServlet {
 
          // some other error.
          launderThrowable(t, resp, "PREPARE-TX:: txId=" + txId);
+
+      } finally {
+
+         context.releaseTransaction(transactionUse);
 
       }
 
@@ -807,7 +874,15 @@ public class TxServlet extends BigdataRDFServlet {
          }
       }
 
-      final long txId = Long.valueOf(s);
+      final long txId;
+      try {
+         txId = Long.valueOf(s);
+      } catch (NumberFormatException ex) {
+         buildAndCommitResponse(resp, HttpServletResponse.SC_BAD_REQUEST,
+               MIME_TEXT_HTML,
+               "Transaction identifier is not numeric: pathInfo=" + pathInfo);
+         return false;
+      }
       
       ref.set(txId);
       

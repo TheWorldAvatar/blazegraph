@@ -359,7 +359,9 @@ public class AST2BOpUpdate extends AST2BOpUtility {
     	 * wholly different plan).
     	 */
 //        if (!context.isCluster())
-        if (AUTO_COMMIT) {
+        if (AUTO_COMMIT
+                && !context.conn.getSailConnection()
+                        .isExternallyManagedTransaction()) {
 
             if (runOnQueryEngine) {
             

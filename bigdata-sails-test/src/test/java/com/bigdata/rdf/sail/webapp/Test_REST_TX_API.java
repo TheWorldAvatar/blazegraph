@@ -25,11 +25,15 @@ package com.bigdata.rdf.sail.webapp;
 
 import java.util.Properties;
 
+import javax.servlet.http.HttpServletResponse;
+
 import junit.framework.Test;
 
 import com.bigdata.journal.IIndexManager;
 import com.bigdata.rdf.sail.BigdataSail;
+import com.bigdata.rdf.sail.webapp.client.ConnectOptions;
 import com.bigdata.rdf.sail.webapp.client.IRemoteTx;
+import com.bigdata.rdf.sail.webapp.client.JettyResponseListener;
 import com.bigdata.rdf.sail.webapp.client.RemoteTransactionManager;
 
 /**
@@ -44,8 +48,6 @@ import com.bigdata.rdf.sail.webapp.client.RemoteTransactionManager;
  * 
  * @see <a href="http://trac.bigdata.com/ticket/1156"> Support read/write
  *      transactions in the REST API</a>
- * 
- *      FIXME (***) Test operations isolated by transactions.
  * 
  *      FIXME Test that a sequence of queries may be isolated by a read-only
  *      transaction and that the queries have snapshot isolation across the
@@ -99,23 +101,12 @@ public class Test_REST_TX_API<S extends IIndexManager> extends
 
    public static Test suite() {
 
-      return ProxySuiteHelper.suiteWhenStandalone(Test_REST_TX_API.class,
+      return ProxySuiteHelper.suiteWhenStandalone(
+            Test_REST_TX_API.ReadWriteTx.class,
             "test.*", TestMode.quads
       // , TestMode.sids
       // , TestMode.triples
             );
-
-//      return ProxySuiteHelper.suiteWhenStandalone(Test_REST_TX_API.NoReadWriteTx.class,
-//            "test.*", TestMode.quads
-//      // , TestMode.sids
-//      // , TestMode.triples
-//            );
-//
-//      return ProxySuiteHelper.suiteWhenStandalone(Test_REST_TX_API.ReadWriteTx.class,
-//            "test.*", TestMode.quads
-//      // , TestMode.sids
-//      // , TestMode.triples
-//            );
 
    }
 
@@ -236,11 +227,331 @@ public class Test_REST_TX_API<S extends IIndexManager> extends
 
    }
 
-//   public void test_TX_STUFF() {
-//
-//      fail("write lots of tests");
-//
-//   }
+   /**
+    * Verify that an ordinary SPARQL update continues to report the commit
+    * performed by its auto-commit connection.
+    */
+   public void test_nonTransactionalUpdateStillReportsCommit()
+         throws Exception {
+
+      final SparqlResponse response = sparqlResponse("update",
+            "INSERT DATA { <urn:test:autoCommit> <urn:test:p> <urn:test:o> }");
+
+      assertEquals(HttpServletResponse.SC_OK, response.statusCode);
+      assertTrue(response.body.contains("COMMIT:"));
+      assertTrue(response.body.matches(
+            "(?s).*commitTime=[1-9][0-9]*.*"));
+      assertFalse(response.body.contains("commitTime=-1"));
+      assertFalse(response.body.contains("UPDATE:"));
+
+   }
+
+   /**
+    * Verify that a query is rejected while another REST request owns the same
+    * read/write transaction.
+    */
+   public void test_parallelQueryOnSameTransactionRejected() throws Exception {
+
+      final IRemoteTx tx = newReadWriteTx();
+      final BigdataRDFContext context = getRestContext();
+      final BigdataRDFContext.TransactionUse use = context
+            .tryAcquireTransaction(tx.getTxId());
+
+      assertNotNull(use);
+      try {
+         assertEquals(HttpServletResponse.SC_CONFLICT,
+               sparqlStatus("query", "ASK { ?s ?p ?o }", tx.getTxId()));
+      } finally {
+         context.releaseTransaction(use);
+         tx.abort();
+      }
+
+   }
+
+   /**
+    * Verify that an update is rejected while another REST request owns the
+    * same read/write transaction.
+    */
+   public void test_parallelUpdateOnSameTransactionRejected() throws Exception {
+
+      final IRemoteTx tx = newReadWriteTx();
+      final BigdataRDFContext context = getRestContext();
+      final BigdataRDFContext.TransactionUse use = context
+            .tryAcquireTransaction(tx.getTxId());
+
+      assertNotNull(use);
+      try {
+         assertEquals(HttpServletResponse.SC_CONFLICT,
+               sparqlStatus("update",
+                     "INSERT DATA { <urn:test:s> <urn:test:p> <urn:test:o> }",
+                     tx.getTxId()));
+      } finally {
+         context.releaseTransaction(use);
+         tx.abort();
+      }
+
+   }
+
+   /**
+    * Verify that STATUS, PREPARE, COMMIT, and ABORT are rejected while another
+    * REST request owns the transaction.
+    */
+   public void test_parallelLifecycleOperationsRejected() throws Exception {
+
+      final IRemoteTx tx = newReadWriteTx();
+      final BigdataRDFContext context = getRestContext();
+      final BigdataRDFContext.TransactionUse use = context
+            .tryAcquireTransaction(tx.getTxId());
+
+      assertNotNull(use);
+      try {
+         for (String action : new String[] { "STATUS", "PREPARE", "COMMIT",
+               "ABORT" }) {
+            assertEquals(action, HttpServletResponse.SC_CONFLICT,
+                  transactionStatus(tx.getTxId(), action));
+         }
+      } finally {
+         context.releaseTransaction(use);
+         tx.abort();
+      }
+
+   }
+
+   /**
+    * Verify that ownership of one transaction does not prevent a request from
+    * using a different transaction.
+    */
+   public void test_differentTransactionsRemainConcurrent() throws Exception {
+
+      final IRemoteTx txA = newReadOnlyTx();
+      final IRemoteTx txB = newReadOnlyTx();
+      final BigdataRDFContext context = getRestContext();
+      final BigdataRDFContext.TransactionUse use = context
+            .tryAcquireTransaction(txA.getTxId());
+
+      assertNotNull(use);
+      try {
+         assertEquals(HttpServletResponse.SC_OK,
+               sparqlStatus("query", "ASK { ?s ?p ?o }", txB.getTxId()));
+      } finally {
+         context.releaseTransaction(use);
+         try {
+            txB.abort();
+         } finally {
+            txA.abort();
+         }
+      }
+
+   }
+
+   /**
+    * Verify that a malformed query releases its transaction so a subsequent
+    * request can use it.
+    */
+   public void test_queryFailureReleasesTransaction() throws Exception {
+
+      final IRemoteTx tx = newReadOnlyTx();
+
+      try {
+         assertEquals(HttpServletResponse.SC_BAD_REQUEST,
+               sparqlStatus("query", "SELECT WHERE {", tx.getTxId()));
+         assertEquals(HttpServletResponse.SC_OK,
+               sparqlStatus("query", "ASK { ?s ?p ?o }", tx.getTxId()));
+      } finally {
+         tx.abort();
+      }
+
+   }
+
+   /**
+    * Verify that a read-only transaction receives the same exclusive REST
+    * ownership protection as a read/write transaction.
+    */
+   public void test_parallelReadOnlyTransactionUseRejected() throws Exception {
+
+      final IRemoteTx tx = newReadOnlyTx();
+      final BigdataRDFContext context = getRestContext();
+      final BigdataRDFContext.TransactionUse use = context
+            .tryAcquireTransaction(tx.getTxId());
+
+      assertNotNull(use);
+      try {
+         assertEquals(HttpServletResponse.SC_CONFLICT,
+               sparqlStatus("query", "ASK { ?s ?p ?o }", tx.getTxId()));
+      } finally {
+         context.releaseTransaction(use);
+         tx.abort();
+      }
+
+   }
+
+   /**
+    * Verify that a historical commit timestamp is not mistaken for an active
+    * read-only transaction identifier and therefore is not locked.
+    */
+   public void test_historicalTimestampIsNotTransactionLocked()
+         throws Exception {
+
+      final IRemoteTx tx = newReadOnlyTx();
+      final long timestamp = tx.getReadsOnCommitTime();
+      tx.abort();
+
+      final BigdataRDFContext context = getRestContext();
+      final BigdataRDFContext.TransactionUse use = context
+            .tryAcquireTransaction(timestamp);
+
+      assertNotNull(use);
+      try {
+         assertEquals(HttpServletResponse.SC_OK,
+               sparqlStatus("query", "ASK { ?s ?p ?o }", timestamp));
+      } finally {
+         context.releaseTransaction(use);
+      }
+
+   }
+
+   protected IRemoteTx newReadWriteTx() {
+
+      return m_mgr.getTransactionManager().createTx(
+            RemoteTransactionManager.UNISOLATED);
+
+   }
+
+   protected IRemoteTx newReadOnlyTx() {
+
+      return m_mgr.getTransactionManager().createTx(
+            RemoteTransactionManager.READ_COMMITTED);
+
+   }
+
+   protected BigdataRDFContext getRestContext() {
+
+      return (BigdataRDFContext) NanoSparqlServer.getWebApp(m_fixture)
+            .getServletContext().getAttribute(
+                  BigdataServlet.ATTRIBUTE_RDF_CONTEXT);
+
+   }
+
+   protected int sparqlStatus(final String operation, final String sparql,
+         final long timestamp) throws Exception {
+
+      return sparqlResponse(operation, sparql, timestamp).statusCode;
+
+   }
+
+   protected SparqlResponse sparqlResponse(final String operation,
+         final String sparql) throws Exception {
+
+      final ConnectOptions opts = new ConnectOptions(m_repo
+            .getSparqlEndPoint());
+      opts.method = "POST";
+      opts.addRequestParam(operation, sparql);
+      if ("query".equals(operation)) {
+         opts.setAcceptHeader(BigdataRDFServlet.MIME_SPARQL_RESULTS_JSON);
+      }
+
+      return requestResponse(opts);
+
+   }
+
+   protected SparqlResponse sparqlResponse(final String operation,
+         final String sparql, final long timestamp) throws Exception {
+
+      final ConnectOptions opts = new ConnectOptions(m_repo
+            .getSparqlEndPoint());
+      opts.method = "POST";
+      opts.addRequestParam(operation, sparql);
+      opts.addRequestParam("timestamp", Long.toString(timestamp));
+      if ("query".equals(operation)) {
+         opts.setAcceptHeader(BigdataRDFServlet.MIME_SPARQL_RESULTS_JSON);
+      }
+
+      return requestResponse(opts);
+
+   }
+
+   protected int transactionStatus(final long txId, final String action)
+         throws Exception {
+
+      final ConnectOptions opts = new ConnectOptions(m_serviceURL + "/tx/"
+            + txId);
+      opts.method = "POST";
+      opts.addRequestParam(action);
+
+      return requestStatus(opts);
+
+   }
+
+   protected int requestStatus(final ConnectOptions opts) throws Exception {
+
+      return requestResponse(opts).statusCode;
+
+   }
+
+   protected SparqlResponse requestResponse(final ConnectOptions opts)
+         throws Exception {
+
+      JettyResponseListener response = null;
+      try {
+         response = m_mgr.doConnect(opts);
+         final int status = response.getStatus();
+         final String body = response.getResponseBody();
+         return new SparqlResponse(status, body);
+      } finally {
+         if (response != null) {
+            response.abort();
+         }
+      }
+
+   }
+
+   protected static class SparqlResponse {
+
+      public final int statusCode;
+      public final String body;
+
+      public SparqlResponse(final int statusCode, final String body) {
+
+         this.statusCode = statusCode;
+         this.body = body;
+
+      }
+
+   }
+
+   protected void assertAskResult(final boolean expected,
+         final String query, final long timestamp) throws Exception {
+
+      final SparqlResponse response = sparqlResponse("query", query,
+            timestamp);
+
+      assertEquals(HttpServletResponse.SC_OK, response.statusCode);
+      assertTrue(response.body.matches(
+            "(?s).*\"boolean\"\\s*:\\s*" + expected + ".*"));
+
+   }
+
+   protected void assertTransactionUnavailable(final long txId,
+         final String subject) throws Exception {
+
+      final String ask = "ASK { <" + subject + "> ?p ?o }";
+      final String insert = "INSERT DATA { <" + subject
+            + "> <urn:test:p> <urn:test:o> }";
+
+      assertEquals(HttpServletResponse.SC_NOT_FOUND,
+            sparqlStatus("query", ask, txId));
+      assertEquals(HttpServletResponse.SC_NOT_FOUND,
+            sparqlStatus("update", insert, txId));
+
+      for (String action : new String[] { "STATUS", "PREPARE", "COMMIT",
+            "ABORT" }) {
+         assertEquals(action, HttpServletResponse.SC_NOT_FOUND,
+               transactionStatus(txId, action));
+      }
+
+      assertFalse(m_repo.prepareBooleanQuery(ask).evaluate());
+
+   }
 
    /**
     * An *extension* of the test suite that uses a namespace that is NOT
@@ -275,12 +586,6 @@ public class Test_REST_TX_API<S extends IIndexManager> extends
          super(name);
 
       }
-      
-      // FIXME Write tests.
-      public void test_TX_STUFF() {
-         
-      }
-
    }
 
    /**
@@ -314,12 +619,239 @@ public class Test_REST_TX_API<S extends IIndexManager> extends
          super(name);
 
       }
-      
-      // FIXME Write tests.
-      public void test_TX_STUFF() {
-         
+
+      /**
+       * Verify a complete read/write transaction workflow through the REST
+       * API, including read-your-own-writes and commit visibility.
+       */
+      public void test_transactionCommitWorkflow() throws Exception {
+
+         final String a = "urn:test:commitWorkflow:a";
+         final String b = "urn:test:commitWorkflow:b";
+         final String c = "urn:test:commitWorkflow:c";
+         final String d = "urn:test:commitWorkflow:d";
+         final String status = "urn:test:status";
+         final String derivedFrom = "urn:test:derivedFrom";
+         final String anyCommittedData = "ASK { VALUES ?s { <" + a + "> <"
+               + b + "> } ?s ?p ?o }";
+         final String expectedCommittedData = "ASK { <" + a + "> <"
+               + status + "> \"committed\" . <" + b + "> <" + derivedFrom
+               + "> <" + a + "> . FILTER NOT EXISTS { <" + c
+               + "> ?cp ?co } FILTER NOT EXISTS { <" + d
+               + "> ?dp ?do } }";
+         final IRemoteTx tx = newReadWriteTx();
+
+         try {
+            assertEquals(HttpServletResponse.SC_OK,
+                  sparqlStatus("update", "INSERT DATA { <" + a + "> <"
+                        + status + "> \"pending\" . <" + c + "> <" + status
+                        + "> \"delete-data\" . <" + d + "> <" + status
+                        + "> \"delete-where\" . }", tx.getTxId()));
+            assertEquals(HttpServletResponse.SC_OK,
+                  sparqlStatus("update", "INSERT { <" + b + "> <"
+                        + derivedFrom + "> <" + a + "> } WHERE { <" + a
+                        + "> <" + status + "> \"pending\" }", tx.getTxId()));
+            assertEquals(HttpServletResponse.SC_OK,
+                  sparqlStatus("update", "DELETE DATA { <" + c + "> <"
+                        + status + "> \"delete-data\" }", tx.getTxId()));
+            assertEquals(HttpServletResponse.SC_OK,
+                  sparqlStatus("update", "DELETE WHERE { <" + d
+                        + "> ?p ?o }", tx.getTxId()));
+            assertEquals(HttpServletResponse.SC_OK,
+                  sparqlStatus("update", "DELETE { <" + a + "> <" + status
+                        + "> \"pending\" } INSERT { <" + a + "> <" + status
+                        + "> \"committed\" } WHERE { <" + a + "> <" + status
+                        + "> \"pending\" }", tx.getTxId()));
+
+            assertAskResult(true, expectedCommittedData, tx.getTxId());
+
+            final SparqlResponse selectResponse = sparqlResponse("query",
+                  "SELECT ?status WHERE { <" + a + "> <" + status
+                        + "> ?status }", tx.getTxId());
+            assertEquals(HttpServletResponse.SC_OK,
+                  selectResponse.statusCode);
+            assertTrue(selectResponse.body.contains("\"committed\""));
+
+            assertFalse(m_repo.prepareBooleanQuery(anyCommittedData)
+                  .evaluate());
+
+            tx.commit();
+         } finally {
+            getRestContext().abortTransactionIfActive(tx.getTxId());
+         }
+
+         assertTrue(m_repo.prepareBooleanQuery(expectedCommittedData)
+               .evaluate());
+
       }
 
+      /**
+       * Verify that abort discards all writes made by a REST transaction.
+       */
+      public void test_transactionAbortWorkflow() throws Exception {
+
+         final String a = "urn:test:abortWorkflow:a";
+         final String b = "urn:test:abortWorkflow:b";
+         final String status = "urn:test:status";
+         final String derivedFrom = "urn:test:derivedFrom";
+         final String anyTransactionData = "ASK { VALUES ?s { <" + a + "> <"
+               + b + "> } ?s ?p ?o }";
+         final IRemoteTx tx = newReadWriteTx();
+
+         try {
+            assertEquals(HttpServletResponse.SC_OK,
+                  sparqlStatus("update", "INSERT DATA { <" + a + "> <"
+                        + status + "> \"pending\" }", tx.getTxId()));
+            assertEquals(HttpServletResponse.SC_OK,
+                  sparqlStatus("update", "INSERT { <" + b + "> <"
+                        + derivedFrom + "> <" + a + "> } WHERE { <" + a
+                        + "> <" + status + "> \"pending\" }", tx.getTxId()));
+
+            assertAskResult(true, anyTransactionData, tx.getTxId());
+            assertFalse(m_repo.prepareBooleanQuery(anyTransactionData)
+                  .evaluate());
+
+            tx.abort();
+         } finally {
+            getRestContext().abortTransactionIfActive(tx.getTxId());
+         }
+
+         assertFalse(m_repo.prepareBooleanQuery(anyTransactionData)
+               .evaluate());
+
+      }
+
+      /**
+       * Verify that a committed transaction identifier cannot be reused.
+       */
+      public void test_committedTransactionCannotBeReused() throws Exception {
+
+         final IRemoteTx tx = newReadWriteTx();
+         final long txId = tx.getTxId();
+
+         try {
+            tx.commit();
+            assertTransactionUnavailable(txId,
+                  "urn:test:committedTransactionReuse");
+         } finally {
+            getRestContext().abortTransactionIfActive(txId);
+         }
+
+      }
+
+      /**
+       * Verify that an aborted transaction identifier cannot be reused.
+       */
+      public void test_abortedTransactionCannotBeReused() throws Exception {
+
+         final IRemoteTx tx = newReadWriteTx();
+         final long txId = tx.getTxId();
+
+         try {
+            tx.abort();
+            assertTransactionUnavailable(txId,
+                  "urn:test:abortedTransactionReuse");
+         } finally {
+            getRestContext().abortTransactionIfActive(txId);
+         }
+
+      }
+
+      /**
+       * Verify that an unknown read/write transaction identifier is rejected.
+       */
+      public void test_unknownTransactionRejected() throws Exception {
+
+         assertTransactionUnavailable(-9223372036854775000L,
+               "urn:test:unknownTransaction");
+
+      }
+
+      /**
+       * Verify that a successful transactional update reports update
+       * completion without claiming that the transaction was committed.
+       */
+      public void test_transactionalUpdateReportsUpdate() throws Exception {
+
+         final IRemoteTx tx = newReadWriteTx();
+
+         try {
+            final SparqlResponse response = sparqlResponse("update",
+                  "INSERT DATA { <urn:test:transactionalUpdate> "
+                        + "<urn:test:p> <urn:test:o> }", tx.getTxId());
+
+            assertEquals(HttpServletResponse.SC_OK, response.statusCode);
+            assertTrue(response.body.contains("UPDATE:"));
+            assertTrue(response.body.contains("mutationCount="));
+            assertFalse(response.body.contains("COMMIT:"));
+            assertFalse(response.body.contains("commitTime="));
+         } finally {
+            getRestContext().abortTransactionIfActive(tx.getTxId());
+         }
+
+      }
+
+      /**
+       * Verify that a syntax error aborts a read/write transaction and
+       * discards its pending writes.
+       */
+      public void test_transactionAbortedAfterUpdateSyntaxFailure()
+            throws Exception {
+
+         final String subject = "urn:test:syntaxFailure";
+         final String predicate = "urn:test:predicate";
+         final String object = "urn:test:object";
+         final String ask = "ASK { <" + subject + "> <" + predicate + "> <"
+               + object + "> }";
+         final IRemoteTx tx = newReadWriteTx();
+
+         try {
+            assertEquals(HttpServletResponse.SC_OK,
+                  sparqlStatus("update", "INSERT DATA { <" + subject + "> <"
+                        + predicate + "> <" + object + "> }", tx.getTxId()));
+            assertEquals(HttpServletResponse.SC_BAD_REQUEST,
+                  sparqlStatus("update", "INSERT DATA WHERE { }",
+                        tx.getTxId()));
+            assertEquals(HttpServletResponse.SC_NOT_FOUND,
+                  sparqlStatus("query", ask, tx.getTxId()));
+            assertFalse(m_repo.prepareBooleanQuery(ask).evaluate());
+         } finally {
+            getRestContext().abortTransactionIfActive(tx.getTxId());
+         }
+
+      }
+
+      /**
+       * Verify that an execution error aborts a read/write transaction and
+       * discards its pending writes.
+       */
+      public void test_transactionAbortedAfterUpdateExecutionFailure()
+            throws Exception {
+
+         final String subject = "urn:test:executionFailure";
+         final String predicate = "urn:test:predicate";
+         final String object = "urn:test:object";
+         final String ask = "ASK { <" + subject + "> <" + predicate + "> <"
+               + object + "> }";
+         final String missingResource = "file:///tmp/blazegraph-missing-"
+               + System.nanoTime() + ".ttl";
+         final IRemoteTx tx = newReadWriteTx();
+
+         try {
+            assertEquals(HttpServletResponse.SC_OK,
+                  sparqlStatus("update", "INSERT DATA { <" + subject + "> <"
+                        + predicate + "> <" + object + "> }", tx.getTxId()));
+            assertEquals(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
+                  sparqlStatus("update", "LOAD <" + missingResource + ">",
+                        tx.getTxId()));
+            assertEquals(HttpServletResponse.SC_NOT_FOUND,
+                  sparqlStatus("query", ask, tx.getTxId()));
+            assertFalse(m_repo.prepareBooleanQuery(ask).evaluate());
+         } finally {
+            getRestContext().abortTransactionIfActive(tx.getTxId());
+         }
+
+      }
    }
 
 }

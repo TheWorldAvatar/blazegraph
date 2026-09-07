@@ -63,10 +63,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.bigdata.journal.IAtomicStore;
+import com.bigdata.journal.TransactionNotFoundException;
 import com.bigdata.rdf.properties.PropertiesFormat;
 import com.bigdata.rdf.properties.PropertiesWriter;
 import com.bigdata.rdf.properties.PropertiesWriterRegistry;
 import com.bigdata.rdf.rules.ConstraintViolationException;
+import com.bigdata.rdf.sail.BigdataSail.IncompatibleTransactionException;
 import com.bigdata.rdf.sail.webapp.client.EncodeDecodeValue;
 import com.bigdata.rdf.sparql.ast.QuadsOperationInTriplesModeException;
 import com.bigdata.util.InnerCause;
@@ -236,6 +238,27 @@ abstract public class BigdataRDFServlet extends BigdataServlet {
 				 * The addressed KB does not exist.
 				 */
 				resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
+				resp.setContentType(MIME_TEXT_PLAIN);
+			} else if (InnerCause.isInnerCause(t,
+					TransactionNotFoundException.class)) {
+				/*
+				 * The transaction does not exist or is no longer active.
+				 */
+				resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
+				resp.setContentType(MIME_TEXT_PLAIN);
+			} else if (InnerCause.isInnerCause(t,
+					IncompatibleTransactionException.class)) {
+				/*
+				 * The transaction or timestamp can not be used for this request.
+				 */
+				resp.setStatus(HttpServletResponse.SC_CONFLICT);
+				resp.setContentType(MIME_TEXT_PLAIN);
+			} else if (InnerCause.isInnerCause(t,
+					NumberFormatException.class)) {
+				/*
+				 * A numeric request parameter was malformed.
+				 */
+				resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 				resp.setContentType(MIME_TEXT_PLAIN);
 			} else if (InnerCause.isInnerCause(t,
 					ConstraintViolationException.class)) {

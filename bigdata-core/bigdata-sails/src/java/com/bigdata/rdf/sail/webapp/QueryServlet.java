@@ -447,7 +447,37 @@ public class QueryServlet extends BigdataRDFServlet {
 
          final String namespace = getNamespace(req);
 
-         final long timestamp = ITx.UNISOLATED;// getTimestamp(req);
+         final long timestamp = req.getParameter(ATTR_TIMESTAMP) == null
+               ? ITx.UNISOLATED : getTimestamp(req);
+
+         if (!TimestampUtility.isUnisolated(timestamp)
+               && !TimestampUtility.isReadWriteTx(timestamp)) {
+            buildAndCommitResponse(resp, HttpServletResponse.SC_CONFLICT,
+                  MIME_TEXT_PLAIN,
+                  "SPARQL updates require an active read/write transaction: timestamp="
+                        + timestamp);
+            return;
+         }
+
+         final BigdataRDFContext context = getBigdataRDFContext();
+         final BigdataRDFContext.TransactionUse transactionUse;
+
+         if (TimestampUtility.isReadWriteTx(timestamp)) {
+
+            transactionUse = context.tryAcquireTransaction(timestamp);
+
+            if (transactionUse == null) {
+               buildAndCommitResponse(resp, HttpServletResponse.SC_CONFLICT,
+                     MIME_TEXT_PLAIN,
+                     "Transaction is already in use: txId=" + timestamp);
+               return;
+            }
+
+         } else {
+
+            transactionUse = null;
+
+         }
 
          /*
           * Note: When GROUP_COMMIT (#566) is enabled the http output stream
@@ -456,11 +486,34 @@ public class QueryServlet extends BigdataRDFServlet {
           * the group commit actually occurs. Instead, we leave it to the
           * servlet container to close the http output stream only once the
           * execution thread leaves this context. This provides the appropriate
-          * visibility guarantees.
+         * visibility guarantees.
           */
-         submitApiTask(
-               new SparqlUpdateTask(req, resp, namespace, timestamp, updateStr, bindings,
-                     getBigdataRDFContext())).get();
+         boolean success = false;
+         try {
+
+            submitApiTask(
+                  new SparqlUpdateTask(req, resp, namespace, timestamp,
+                        updateStr, bindings, context)).get();
+
+            success = true;
+
+         } finally {
+
+            try {
+
+               if (transactionUse != null && !success) {
+
+                  context.abortTransactionIfActive(timestamp);
+
+               }
+
+            } finally {
+
+               context.releaseTransaction(transactionUse);
+
+            }
+
+         }
 
       } catch (Throwable t) {
 
@@ -676,9 +729,29 @@ public class QueryServlet extends BigdataRDFServlet {
 
          final long timestamp = getTimestamp(req);
 
-         submitApiTask(
-               new SparqlQueryTask(req, resp, namespace, timestamp, queryStr, includeInferred, bindings,
-                     getBigdataRDFContext())).get();
+         final BigdataRDFContext context = getBigdataRDFContext();
+         final boolean transaction = context.isTransactionIdentifier(timestamp);
+         final BigdataRDFContext.TransactionUse transactionUse = transaction
+               ? context.tryAcquireTransaction(timestamp) : null;
+
+         if (transaction && transactionUse == null) {
+            buildAndCommitResponse(resp, HttpServletResponse.SC_CONFLICT,
+                  MIME_TEXT_PLAIN,
+                  "Transaction is already in use: txId=" + timestamp);
+            return;
+         }
+
+         try {
+
+            submitApiTask(
+                  new SparqlQueryTask(req, resp, namespace, timestamp,
+                        queryStr, includeInferred, bindings, context)).get();
+
+         } finally {
+
+            context.releaseTransaction(transactionUse);
+
+         }
 
       } catch (Throwable t) {
 
